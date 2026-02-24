@@ -4,10 +4,11 @@ title: Categories
 permalink: /categories/
 ---
 
-{% for category in site.categories %}
-  <h3>{{ category[0] }}</h3>
+{% assign grouped = site.posts | group_by_exp: "post", "post.categories[0]" %}
+{% for group in grouped | sort: "name" %}
+  <h2>{{ group.name }}</h2>
   <ul>
-    {% for post in category[1] %}
+    {% for post in group.items %}
       <li><a href="{{ post.url }}">{{ post.title }}</a> - {{ post.date | date: "%b %d, %Y" }}</li>
     {% endfor %}
   </ul>
