@@ -1,124 +1,65 @@
 ---
-categories: ['Python', 'General']
 layout: post
-title: Resolving Unicode Encoding and Decoding Errors in Python?
-date: 2021-12-08 02:28:13.000000000 -05:00
-type: post
-parent_id: '0'
-published: true
-password: ''
-status: publish
-- Python
-tags: []
-meta:
-  _aioseo_title: ''
-  _aioseo_description: ''
-  _aioseo_keywords: ''
-  _aioseo_og_title: ''
-  _aioseo_og_description: ''
-  _aioseo_og_article_section: ''
-  _aioseo_og_article_tags: ''
-  _aioseo_twitter_title: ''
-  _aioseo_twitter_description: ''
-  _edit_last: '1'
-  ocean_gallery_link_images: 'off'
-  ocean_sidebar: '0'
-  ocean_second_sidebar: '0'
-  ocean_disable_margins: enable
-  ocean_display_top_bar: default
-  ocean_display_header: default
-  ocean_center_header_left_menu: '0'
-  ocean_custom_header_template: '0'
-  ocean_header_custom_menu: '0'
-  ocean_menu_typo_font_family: '0'
-  ocean_disable_title: default
-  ocean_disable_heading: default
-  ocean_disable_breadcrumbs: default
-  ocean_display_footer_widgets: default
-  ocean_display_footer_bottom: default
-  ocean_custom_footer_template: '0'
-  ocean_link_format_target: self
-  ocean_quote_format_link: post
-  _yoast_wpseo_content_score: '90'
-  _yoast_wpseo_estimated-reading-time-minutes: '1'
-  _yoast_wpseo_primary_category: '39'
-  _thumbnail_id: '1260'
-  _wtpsw_views: '78'
-  rank_math_primary_category: '39'
-  rank_math_news_sitemap_robots: index
-  rank_math_robots: a:1:{i:0;s:5:"index";}
-  rank_math_internal_links_processed: '1'
-  rank_math_seo_score: '64'
-  rank_math_focus_keyword: UnicodeEncodeError,UnicodeDecodeError
-  _yoast_wpseo_wordproof_timestamp: ''
-permalink: "/2021/12/08/unicodeencodeerror-ascii-codec-cant-encode-character-and-unicodedecodeerror-ascii-codec-cant-decode-byte-in-python/"
+title: "Resolving Unicode Encoding and Decoding Errors in Python?"
+date: 2021-12-08
+categories: ['Python', 'General']
 ---
-<p><!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN" "http://www.w3.org/TR/REC-html40/loose.dtd"><br />
-<!-- wp:heading {"style":{"typography":{"fontSize":24}}} --><html><body></p>
-<h2 style="font-size:24px"><strong><span style="text-decoration: underline" class="underline"><span style="color:#ff6900" class="tadv-color">UnicodeEncodeError: 'ascii' codec can't encode character:</span></span></strong></h2>
-<p><!-- /wp:heading --></p>
-<p><!-- wp:paragraph {"fontSize":"medium"} --></p>
-<p class="has-medium-font-size"><strong>UnicodeEncodeError </strong>typically occurs when you attempt to encode a Unicode string using the "ASCII" encoding method instead of using a UTF encoding method.<br><br><strong><span style="text-decoration: underline" class="underline">Example in Python3:</span></strong></p>
-<p><!-- /wp:paragraph --></p>
-<p><!-- wp:code --></p>
-<pre class="wp-block-code"><code>madhu@madhu-Inspiron-5567:~$<strong> <span style="color:#313131" class="tadv-color">cat unicode-encode-error.py</span><span style="color:#ff6900" class="tadv-color"> </span></strong>
+
+## **UnicodeEncodeError: 'ascii' codec can't encode character:**
+
+**UnicodeEncodeError **typically occurs when you attempt to encode a Unicode string using the "ASCII" encoding method instead of using a UTF encoding method.
+
+**Example in Python3:**
+
+```
+`madhu@madhu-Inspiron-5567:~$** cat unicode-encode-error.py **
 s = "s3rr2Ä"
 print(s)
 print(type(s))
-e1 = s.encode("<strong><span style="color:#ff6900" class="tadv-color">ascii</span></strong>")  # <strong><span style="color:#ff6900" class="tadv-color">Should use "utf-8" instead of "ascii", as we are dealing with a non ascii character in the string</span></strong>.
+e1 = s.encode("**ascii**")  # **Should use "utf-8" instead of "ascii", as we are dealing with a non ascii character in the string**.
 print(e1)
-print(type(e1))</code></pre>
-<p><!-- /wp:code --></p>
-<p><!-- wp:paragraph {"style":{"typography":{"fontSize":21}}} --></p>
-<p style="font-size:21px"><br><strong><span style="text-decoration: underline" class="underline">Output:</span></strong></p>
-<p><!-- /wp:paragraph --></p>
-<p><!-- wp:code --></p>
-<pre class="wp-block-code"><code>madhu@madhu-Inspiron-5567:~$ <span style="color:#313131" class="tadv-color"><strong>python unicode-encode-error.py</strong> </span>
+print(type(e1))`
+```
+
+**Output:**
+
+```
+`madhu@madhu-Inspiron-5567:~$ **python unicode-encode-error.py** 
 s3rr2Ä
-&lt;class 'str'&gt;
+<class 'str'>
 Traceback (most recent call last):
-  File "unicode-encode-error.py", line 4, in &lt;module&gt;
+  File "unicode-encode-error.py", line 4, in <module>
     e1 = s.encode("ascii")
-<strong><span style="color:#ff6900" class="tadv-color">UnicodeEncodeError: 'ascii' codec can't encode character '\xc4' in position 5: ordinal not in range(128)</span></strong>
-</code></pre>
-<p><!-- /wp:code --></p>
-<p><!-- wp:paragraph --></p>
-<p><br></p>
-<p><!-- /wp:paragraph --></p>
-<p><!-- wp:paragraph --></p>
-<p><!-- /wp:paragraph --></p>
-<p><!-- wp:paragraph {"style":{"typography":{"fontSize":24}}} --></p>
-<p style="font-size:24px"><strong><span style="text-decoration: underline" class="underline"><span style="color:#ff6900" class="tadv-color">UnicodeDecodeError: 'ascii' codec can't decode byte</span></span></strong></p>
-<p><!-- /wp:paragraph --></p>
-<p><!-- wp:paragraph {"fontSize":"medium"} --></p>
-<p class="has-medium-font-size"><strong>UnicodeDecodeError </strong>typically arises when you attempt to decode a byte string, created by encoding a Unicode string containing at least one non-ASCII character using a UTF encoding method, using the "ASCII" decoding method instead of using the corresponding UTF decoding method.<br></p>
-<p><!-- /wp:paragraph --></p>
-<p><!-- wp:paragraph {"style":{"typography":{"fontSize":22}}} --></p>
-<p style="font-size:22px"><strong><span style="text-decoration: underline" class="underline">Example in Python3:</span></strong></p>
-<p><!-- /wp:paragraph --></p>
-<p><!-- wp:code --></p>
-<pre class="wp-block-code"><code>madhu@madhu-Inspiron-5567:~$ <span style="color:#ff6900" class="tadv-color"><strong>cat unicode-decode-error.py</strong></span> 
-s = b"s3rr2\xc3\x84"   # <span style="color:#ff6900" class="tadv-color"><strong>Actual character string related to this byte string is an Unicode string (s3rr2Ä)</strong></span>
+**UnicodeEncodeError: 'ascii' codec can't encode character '\xc4' in position 5: ordinal not in range(128)**
+`
+```
+
+**UnicodeDecodeError: 'ascii' codec can't decode byte**
+
+**UnicodeDecodeError **typically arises when you attempt to decode a byte string, created by encoding a Unicode string containing at least one non-ASCII character using a UTF encoding method, using the "ASCII" decoding method instead of using the corresponding UTF decoding method.
+
+**Example in Python3:**
+
+```
+`madhu@madhu-Inspiron-5567:~$ **cat unicode-decode-error.py** 
+s = b"s3rr2\xc3\x84"   # **Actual character string related to this byte string is an Unicode string (s3rr2Ä)**
 print(s)
 print(type(s))
-e1 = s.decode("<span style="color:#ff6900" class="tadv-color"><strong>ascii</strong></span>")  # <span style="color:#ff6900" class="tadv-color"><strong>In this case, should use "utf-8" instead of "ascii", otherwise  we get UnicodeDecodeError</strong></span>.
+e1 = s.decode("**ascii**")  # **In this case, should use "utf-8" instead of "ascii", otherwise  we get UnicodeDecodeError**.
 print(e1)
 print(type(e1))
-</code></pre>
-<p><!-- /wp:code --></p>
-<p><!-- wp:paragraph {"style":{"typography":{"fontSize":22}}} --></p>
-<p style="font-size:22px"><br><strong><span style="text-decoration: underline" class="underline">Output:</span></strong><br></p>
-<p><!-- /wp:paragraph --></p>
-<p><!-- wp:code --></p>
-<pre class="wp-block-code"><code>madhu@madhu-Inspiron-5567:~$ <strong><span style="color:#ff6900" class="tadv-color">python unicode-decode-error.py </span></strong>
+`
+```
+
+**Output:**
+
+```
+`madhu@madhu-Inspiron-5567:~$ **python unicode-decode-error.py **
 b's3rr2\xc3\x84'
-&lt;class 'bytes'&gt;
+<class 'bytes'>
 Traceback (most recent call last):
-  File "unicode-decode-error.py", line 4, in &lt;module&gt;
+  File "unicode-decode-error.py", line 4, in <module>
     e1 = s.decode("ascii")
-<strong><span style="color:#ff6900" class="tadv-color">UnicodeDecodeError: 'ascii' codec can't decode byte 0xc3 in position 5: ordinal not in range(128)</span></strong>
-</code></pre>
-<p><!-- /wp:code --></p>
-<p><!-- wp:paragraph --></p>
-<p><!-- /wp:paragraph --><br />
-</body></html></p>
+**UnicodeDecodeError: 'ascii' codec can't decode byte 0xc3 in position 5: ordinal not in range(128)**
+`
+```

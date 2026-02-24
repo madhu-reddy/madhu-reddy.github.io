@@ -1,138 +1,64 @@
 ---
-categories: ['Linux', 'Administration']
 layout: post
-title: Steps for upgrading Ubuntu Linux from 14.04 to 20.04 version?
-date: 2021-11-21 19:40:57.000000000 -05:00
-type: post
-parent_id: '0'
-published: true
-password: ''
-status: publish
-- Linux
-tags: []
-meta:
-  _aioseo_title: ''
-  _aioseo_description: ''
-  _aioseo_keywords: ''
-  _aioseo_og_title: ''
-  _aioseo_og_description: ''
-  _aioseo_og_article_section: ''
-  _aioseo_og_article_tags: ''
-  _aioseo_twitter_title: ''
-  _aioseo_twitter_description: ''
-  _edit_last: '1'
-  ocean_gallery_link_images: 'off'
-  ocean_sidebar: '0'
-  ocean_second_sidebar: '0'
-  ocean_disable_margins: enable
-  ocean_display_top_bar: default
-  ocean_display_header: default
-  ocean_center_header_left_menu: '0'
-  ocean_custom_header_template: '0'
-  ocean_header_custom_menu: '0'
-  ocean_menu_typo_font_family: '0'
-  ocean_disable_title: default
-  ocean_disable_heading: default
-  ocean_disable_breadcrumbs: default
-  ocean_display_footer_widgets: default
-  ocean_display_footer_bottom: default
-  ocean_custom_footer_template: '0'
-  ocean_link_format_target: self
-  ocean_quote_format_link: post
-  _yoast_wpseo_estimated-reading-time-minutes: '2'
-  _yoast_wpseo_primary_category: '2'
-  _yoast_wpseo_content_score: '90'
-  _thumbnail_id: '1132'
-  _wtpsw_views: '106'
-  rank_math_primary_category: '2'
-  rank_math_news_sitemap_robots: index
-  rank_math_robots: a:1:{i:0;s:5:"index";}
-  rank_math_seo_score: '70'
-  rank_math_focus_keyword: upgrading ubuntu
-  rank_math_internal_links_processed: '1'
-  _yoast_wpseo_wordproof_timestamp: ''
-permalink: "/2021/11/21/steps-for-upgrading-ubuntu-linux-from-14-04-to-20-04-version/"
+title: "Steps for upgrading Ubuntu Linux from 14.04 to 20.04 version?"
+date: 2021-11-21
+categories: ['Linux', 'Administration']
 ---
-<p><!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN" "http://www.w3.org/TR/REC-html40/loose.dtd"><br />
-<!-- wp:paragraph {"fontSize":"medium"} --><html><body></p>
-<p class="has-medium-font-size">To upgrade Ubuntu to the latest version, follow this sequential upgrade path: <br>14.04 ➔ 16.04 <br>16.04 ➔ 18.04 <br>18.04 ➔ 20.04<br><br><strong><span style="text-decoration: underline" class="underline">NOTE: </span></strong><br>Based on my experience with OS upgrades, it's advisable not to rely solely on LDAP logins. I recommend ensuring the presence of a local admin user on the server beforehand. This precaution allows for access in case of any LDAP login issues post-upgrade, enabling resolution through the local admin user login.</p>
-<p><!-- /wp:paragraph --></p>
-<p><!-- wp:paragraph --></p>
-<p>                                                                                                                                                                                                           .                                                                                                                                                                                                 </p>
-<p><!-- /wp:paragraph --></p>
-<p><!-- wp:heading {"style":{"typography":{"fontSize":25}}} --></p>
-<h2 style="font-size:25px"><strong><span style="text-decoration: underline" class="underline"><span style="color:#0693e3" class="tadv-color">Steps for upgrading ubuntu (from 14.04 -&gt; 16.04,  16.04 -&gt; 18.04,  18.04 -&gt; 20.04)</span></span></strong></h2>
-<p><!-- /wp:heading --></p>
-<p><!-- wp:kadence/iconlist {"items":[{"icon":"fe_checkCircle","link":"","target":"_self","size":20,"text":"apt-get update","width":2,"color":"","background":"","border":"","borderRadius":0,"borderWidth":1,"padding":5,"style":"default"},{"icon":"fe_checkCircle","link":"","target":"_self","size":20,"text":"apt-get upgrade","width":2,"color":"","background":"","border":"","borderRadius":0,"borderWidth":1,"padding":5,"style":"default"},{"icon":"fe_checkCircle","link":"","target":"_self","size":20,"text":"apt-get dist-upgrade","width":2,"color":"","background":"","border":"","borderRadius":0,"borderWidth":1,"padding":5,"style":"default"},{"icon":"fe_checkCircle","link":"","target":"_self","size":20,"text":"do-release-upgrade","width":2,"color":"","background":"","border":"","borderRadius":0,"borderWidth":1,"padding":5,"style":"default"}],"listStyles":[{"size":[22,"",""],"sizeType":"px","lineHeight":["","",""],"lineType":"px","letterSpacing":"","family":"","google":false,"style":"","weight":"","variant":"","subset":"","loadGoogle":true,"color":"#ff6900","textTransform":""}],"listCount":4,"uniqueID":"_f39e5b-c3"} --></p>
-<div class="wp-block-kadence-iconlist kt-svg-icon-list-items kt-svg-icon-list-items_f39e5b-c3 kt-svg-icon-list-columns-1 alignnone">
-<ul class="kt-svg-icon-list">
-<li class="kt-svg-icon-list-style-default kt-svg-icon-list-item-wrap kt-svg-icon-list-item-0">
-<div style="display:inline-flex;justify-content:center;align-items:center" class="kt-svg-icon-list-single kt-svg-icon-list-single-fe_checkCircle"><svg style="display:inline-block;vertical-align:middle" viewbox="0 0 24 24" height="20" width="20" fill="none" stroke="currentColor" xmlns="http://www.w3.org/2000/svg" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-<path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"></path>
-<polyline points="22 4 12 14.01 9 11.01"></polyline></svg></div>
-<p><span class="kt-svg-icon-list-text">apt-get update</span>
-</li>
-<li class="kt-svg-icon-list-style-default kt-svg-icon-list-item-wrap kt-svg-icon-list-item-1">
-<div style="display:inline-flex;justify-content:center;align-items:center" class="kt-svg-icon-list-single kt-svg-icon-list-single-fe_checkCircle"><svg style="display:inline-block;vertical-align:middle" viewbox="0 0 24 24" height="20" width="20" fill="none" stroke="currentColor" xmlns="http://www.w3.org/2000/svg" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-<path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"></path>
-<polyline points="22 4 12 14.01 9 11.01"></polyline></svg></div>
-<p><span class="kt-svg-icon-list-text">apt-get upgrade</span>
-</li>
-<li class="kt-svg-icon-list-style-default kt-svg-icon-list-item-wrap kt-svg-icon-list-item-2">
-<div style="display:inline-flex;justify-content:center;align-items:center" class="kt-svg-icon-list-single kt-svg-icon-list-single-fe_checkCircle"><svg style="display:inline-block;vertical-align:middle" viewbox="0 0 24 24" height="20" width="20" fill="none" stroke="currentColor" xmlns="http://www.w3.org/2000/svg" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-<path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"></path>
-<polyline points="22 4 12 14.01 9 11.01"></polyline></svg></div>
-<p><span class="kt-svg-icon-list-text">apt-get dist-upgrade</span>
-</li>
-<li class="kt-svg-icon-list-style-default kt-svg-icon-list-item-wrap kt-svg-icon-list-item-3">
-<div style="display:inline-flex;justify-content:center;align-items:center" class="kt-svg-icon-list-single kt-svg-icon-list-single-fe_checkCircle"><svg style="display:inline-block;vertical-align:middle" viewbox="0 0 24 24" height="20" width="20" fill="none" stroke="currentColor" xmlns="http://www.w3.org/2000/svg" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-<path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"></path>
-<polyline points="22 4 12 14.01 9 11.01"></polyline></svg></div>
-<p><span class="kt-svg-icon-list-text">do-release-upgrade</span>
-</li>
-</ul>
-</div>
-<p><!-- /wp:kadence/iconlist --></p>
-<p><!-- wp:paragraph {"fontSize":"medium"} --></p>
-<p class="has-medium-font-size"><br>Regarding the steps involving "<strong>apt-get update</strong>," "<strong>apt-get upgrade</strong>," and "<strong>apt-get dist-upgrade</strong>," I've previously written an article explaining these commands. Here's the <a href="https://mylearningsguru.com/2021/05/17/how-to-use-apt-get-package-management-tool/">link</a> if you'd like to understand their functionality.</p>
-<p><!-- /wp:paragraph --></p>
-<p><!-- wp:paragraph {"fontSize":"medium"} --></p>
-<p class="has-medium-font-size">Now, let's talk about the "<strong>do-release-upgrade</strong>" command. This command facilitates the upgrade of the operating system to the next available LTS release directly from the command line. For instance, if the server's current version is 14.04, the next LTS release would be 16.04. Similarly, for 16.04, it would be 18.04, and for 18.04, the next would be 20.04. If no further LTS release is available, it indicates that the OS is already running the latest LTS release.</p>
-<p><!-- /wp:paragraph --></p>
-<p><!-- wp:paragraph {"fontSize":"medium"} --></p>
-<p class="has-medium-font-size">To execute unattended upgrades (without the OS requesting user input or confirmation), use the following command:</p>
-<p><!-- /wp:paragraph --></p>
-<p><!-- wp:paragraph {"textColor":"luminous-vivid-orange","fontSize":"medium"} --></p>
-<p class="has-luminous-vivid-orange-color has-text-color has-medium-font-size"><strong>do-release-upgrade -f DistUpgradeViewNonInteractive</strong></p>
-<p><!-- /wp:paragraph --></p>
-<p><!-- wp:paragraph {"style":{"typography":{"fontSize":27}}} --></p>
-<p style="font-size:27px"><br>                                                                                                                                                         <br><strong><span style="text-decoration: underline" class="underline"><span style="color:#0693e3" class="tadv-color">Issues faced:</span></span></strong></p>
-<p><!-- /wp:paragraph --></p>
-<p><!-- wp:paragraph {"style":{"typography":{"fontSize":27}}} --></p>
-<p style="font-size:27px"><strong><span style="text-decoration: underline" class="underline"><span style="color:#ff6900" class="tadv-color">Issue1:</span></span></strong></p>
-<p><!-- /wp:paragraph --></p>
-<p><!-- wp:paragraph {"fontSize":"medium"} --></p>
-<p class="has-medium-font-size">When upgrading from 18.04 to 20.04, I encountered an error during the "<strong>do-release-upgrade</strong>" step. The problem appeared to stem from the /boot partition being full. To address this, I needed to remove old, unused Linux kernels and then rerun the "<strong>do-release-upgrade</strong>" command.</p>
-<p><!-- /wp:paragraph --></p>
-<p><!-- wp:code --></p>
-<pre class="wp-block-code"><code>Error 24 : Write error : cannot write compressed block  
+
+To upgrade Ubuntu to the latest version, follow this sequential upgrade path: 
+14.04 ➔ 16.04 
+16.04 ➔ 18.04 
+18.04 ➔ 20.04
+
+**NOTE: **
+Based on my experience with OS upgrades, it's advisable not to rely solely on LDAP logins. I recommend ensuring the presence of a local admin user on the server beforehand. This precaution allows for access in case of any LDAP login issues post-upgrade, enabling resolution through the local admin user login.
+
+                                                                                                                                                                                                           .                                                                                                                                                                                                 
+
+## **Steps for upgrading ubuntu (from 14.04 -> 16.04,  16.04 -> 18.04,  18.04 -> 20.04)**
+
+- 
+
+apt-get update
+
+- 
+
+apt-get upgrade
+
+- 
+
+apt-get dist-upgrade
+
+- 
+
+do-release-upgrade
+
+Regarding the steps involving "**apt-get update**," "**apt-get upgrade**," and "**apt-get dist-upgrade**," I've previously written an article explaining these commands. Here's the [link if you'd like to understand their functionality.
+
+Now, let's talk about the "**do-release-upgrade**" command. This command facilitates the upgrade of the operating system to the next available LTS release directly from the command line. For instance, if the server's current version is 14.04, the next LTS release would be 16.04. Similarly, for 16.04, it would be 18.04, and for 18.04, the next would be 20.04. If no further LTS release is available, it indicates that the OS is already running the latest LTS release.
+
+To execute unattended upgrades (without the OS requesting user input or confirmation), use the following command:
+
+**do-release-upgrade -f DistUpgradeViewNonInteractive**
+
+                                                                                                                                                         
+**Issues faced:**
+
+**Issue1:**
+
+When upgrading from 18.04 to 20.04, I encountered an error during the "**do-release-upgrade**" step. The problem appeared to stem from the /boot partition being full. To address this, I needed to remove old, unused Linux kernels and then rerun the "**do-release-upgrade**" command.
+
+```
+`Error 24 : Write error : cannot write compressed block  
 E: mkinitramfs failure cpio 141 lz4 -9 -l 24 
 update-initramfs: failed for /boot/initrd.img-5.4.0-84-generic with 1. 
 dpkg: error processing package initramfs-tools (--configure): 
 installed initramfs-tools package post-installation script subprocess returned error exit status 1 
 Errors were encountered while processing: 
 initramfs-tools 
-E: Sub-process /usr/bin/dpkg returned an error code (1)</code></pre>
-<p><!-- /wp:code --></p>
-<p><!-- wp:paragraph --></p>
-<p><!-- /wp:paragraph --></p>
-<p><!-- wp:paragraph {"fontSize":"medium"} --></p>
-<p class="has-medium-font-size">
-<p><!-- /wp:paragraph --></p>
-<p><!-- wp:paragraph {"style":{"typography":{"fontSize":28}}} --></p>
-<p style="font-size:28px"><br><strong><span style="color:#ff6900" class="tadv-color"><span style="text-decoration: underline" class="underline">Issue2:</span></span></strong></p>
-<p><!-- /wp:paragraph --></p>
-<p><!-- wp:paragraph {"fontSize":"medium"} --></p>
-<p class="has-medium-font-size">Following the successful upgrade from 16.04 to 18.04, I encountered an issue with my LDAP login. To resolve this, I booted the system into rescue mode and created a local administrator user with full sudo privileges.<br></p>
-<p><!-- /wp:paragraph --><br />
-</body></html></p>
+E: Sub-process /usr/bin/dpkg returned an error code (1)`
+```
+
+**Issue2:**
+
+Following the successful upgrade from 16.04 to 18.04, I encountered an issue with my LDAP login. To resolve this, I booted the system into rescue mode and created a local administrator user with full sudo privileges.

@@ -1,202 +1,58 @@
 ---
-categories: ['DevOps', 'Ansible']
 layout: post
-title: Ansible Roles vs Collections and installing them from Galaxy
-date: 2024-02-28 04:41:21.000000000 -05:00
-type: post
-parent_id: '0'
-published: true
-password: ''
-status: publish
-- Ansible
-- Devops
-tags:
-- ansible
-- collections
-- role
-meta:
-  _edit_last: '1'
-  _aioseo_title: ''
-  _aioseo_description: ''
-  _aioseo_keywords: ''
-  _aioseo_og_title: ''
-  _aioseo_og_description: ''
-  _aioseo_og_article_section: ''
-  _aioseo_og_article_tags: ''
-  _aioseo_twitter_title: ''
-  _aioseo_twitter_description: ''
-  ocean_gallery_link_images: 'off'
-  ocean_sidebar: '0'
-  ocean_second_sidebar: '0'
-  ocean_disable_margins: enable
-  ocean_display_top_bar: default
-  ocean_display_header: default
-  ocean_center_header_left_menu: '0'
-  ocean_custom_header_template: '0'
-  ocean_header_custom_menu: '0'
-  ocean_menu_typo_font_family: '0'
-  ocean_disable_title: default
-  ocean_disable_heading: default
-  ocean_disable_breadcrumbs: default
-  ocean_display_footer_widgets: default
-  ocean_display_footer_bottom: default
-  ocean_custom_footer_template: '0'
-  ocean_link_format_target: self
-  ocean_quote_format_link: post
-  _yoast_wpseo_primary_category: '1'
-  _yoast_wpseo_estimated-reading-time-minutes: '0'
-  _yoast_wpseo_wordproof_timestamp: ''
-  _thumbnail_id: '2265'
-  _wtpsw_views: '184'
-permalink: "/2024/02/28/ansible-roles-vs-collections-and-install-them-from-galaxy/"
+title: "Ansible Roles vs Collections and installing them from Galaxy"
+date: 2024-02-28
+categories: ['DevOps', 'Ansible']
 ---
-<p><!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN" "http://www.w3.org/TR/REC-html40/loose.dtd"><br />
-<!-- wp:heading {"textColor":"luminous-vivid-orange","fontSize":"large"} --><html><body></p>
-<h2 class="has-luminous-vivid-orange-color has-text-color has-large-font-size">
-<br><strong><span style="text-decoration: underline" class="underline">Roles</span></strong><br />
-</h2>
-<p><!-- /wp:heading --></p>
-<p><!-- wp:group {"layout":{"type":"constrained"}} --></p>
-<div class="wp-block-group">
-<!-- wp:paragraph {"fontSize":"medium"} --></p>
-<p class="has-medium-font-size">- <strong>Roles</strong> are community-provided resources in Ansible.</p>
-<p><!-- /wp:paragraph --></p>
-<p><!-- wp:paragraph {"fontSize":"medium"} --></p>
-<p class="has-medium-font-size">- They serve as standardized solutions for common tasks, making it easier for users to work with Ansible.</p>
-<p><!-- /wp:paragraph --></p>
-<p><!-- wp:paragraph {"fontSize":"medium"} --></p>
-<p class="has-medium-font-size">- Users can incorporate community roles directly into their playbooks.</p>
-<p><!-- /wp:paragraph --></p>
-<p><!-- wp:paragraph {"fontSize":"medium"} --></p>
-<p class="has-medium-font-size">- Instead of reinventing the wheel for common tasks, users can leverage community-provided roles.</p>
-<p><!-- /wp:paragraph --></p>
-<p><!-- wp:paragraph {"fontSize":"medium"} --></p>
-<p class="has-medium-font-size">- Users can customize the behavior of community roles by providing site-specific configurations using variables in their playbooks. This allows users to tailor the role to their specific requirements without modifying the role itself.</p>
-<p><!-- /wp:paragraph --></p>
-<p><!-- wp:paragraph {"fontSize":"medium"} --></p>
-<p class="has-medium-font-size">- By using roles, playbooks become cleaner and more modular.</p>
-<p><!-- /wp:paragraph --></p>
-<p><!-- wp:paragraph {"fontSize":"medium"} --></p>
-<p class="has-medium-font-size">- Playbooks mainly consist of tasks that involve the execution of roles. The heavy lifting of task implementation is handled within the roles.</p>
-<p><!-- /wp:paragraph --></p>
-<p><!-- wp:paragraph {"fontSize":"medium"} --></p>
-<p class="has-medium-font-size">- Tasks in roles are normally executed before other tasks in the playbook.</p>
-<p><!-- /wp:paragraph --></p>
-<p><!-- wp:paragraph {"fontSize":"medium"} --></p>
-<p class="has-medium-font-size">- Use<strong> pre_tasks</strong> to execute tasks before the role. Handlers that are triggered by <strong>pre_tasks </strong>are also executed before the roles.</p>
-<p><!-- /wp:paragraph --></p>
-<p><!-- wp:paragraph {"fontSize":"medium"} --></p>
-<p class="has-medium-font-size">- Tasks within a role are typically executed after the <strong>pre_tasks</strong> section and before the <strong>post_tasks</strong> section of a playbook.</p>
-<p><!-- /wp:paragraph -->
-</div>
-<p><!-- /wp:group --></p>
-<p><!-- wp:spacer {"height":"78px"} --></p>
-<div style="height:78px" aria-hidden="true" class="wp-block-spacer"></div>
-<p><!-- /wp:spacer --></p>
-<p><!-- wp:paragraph {"style":{"typography":{"fontSize":"27px"}}} --></p>
-<p style="font-size:27px"><strong><span style="text-decoration: underline" class="underline">Installing an Ansible Role</span></strong></p>
-<p><!-- /wp:paragraph --></p>
-<p><!-- wp:paragraph {"fontSize":"medium"} --></p>
-<p class="has-medium-font-size">The role mentioned below can be utilized to install <strong>Docker</strong> and <strong>Docker Compose</strong> binaries, configure the <strong>/etc/docker/daemon.json</strong> file, and optionally add any user to the Docker group, etc.</p>
-<p><!-- /wp:paragraph --></p>
-<p><!-- wp:image {"id":2249,"sizeSlug":"full","linkDestination":"none"} --></p>
-<figure class="wp-block-image size-full"><img src="{{site.baseurl}}/assets/2024/02/image.png" alt="" class="wp-image-2249"></figure>
-<p><!-- /wp:image --></p>
-<p><!-- wp:paragraph {"fontSize":"medium"} --></p>
-<p class="has-medium-font-size">After installing the role (<strong>geerlingguy.docker</strong>), you can customize the defaults in the <mark>/root/.ansible/roles/geerlingguy.docker/defaults/main.yaml</mark> file according to your needs. For example, specify the version of <strong>Docker</strong> and <strong>Docker Compose</strong>, choose <strong>'ce' (Community Edition)</strong> or <strong>'ee' (Enterprise Edition)</strong>, and update the <strong>docker_daemon_options</strong> dictionary.</p>
-<p><!-- /wp:paragraph --></p>
-<p><!-- wp:spacer {"height":"81px"} --></p>
-<div style="height:81px" aria-hidden="true" class="wp-block-spacer"></div>
-<p><!-- /wp:spacer --></p>
-<p><!-- wp:paragraph {"style":{"typography":{"fontSize":"27px"}}} --></p>
-<p style="font-size:27px"><strong><span style="text-decoration: underline" class="underline">main.yaml</span></strong></p>
-<p><!-- /wp:paragraph --></p>
-<p><!-- wp:paragraph {"fontSize":"medium"} --></p>
-<p class="has-medium-font-size">Now we are ready to execute the main playbook (<strong>main.yaml</strong>), which includes just the role (name of the role) that you want to be executed from the main playbook.</p>
-<p><!-- /wp:paragraph --></p>
-<p><!-- wp:image {"align":"left","id":2250,"sizeSlug":"full","linkDestination":"none"} --></p>
-<figure class="wp-block-image alignleft size-full"><img src="{{site.baseurl}}/assets/2024/02/image-1.png" alt="" class="wp-image-2250"></figure>
-<p><!-- /wp:image --></p>
-<p><!-- wp:paragraph --></p>
-<p><!-- /wp:paragraph --></p>
-<p><!-- wp:paragraph --></p>
-<p><!-- /wp:paragraph --></p>
-<p><!-- wp:paragraph --></p>
-<p><!-- /wp:paragraph --></p>
-<p><!-- wp:spacer {"height":"118px"} --></p>
-<div style="height:118px" aria-hidden="true" class="wp-block-spacer"></div>
-<p><!-- /wp:spacer --></p>
-<p><!-- wp:paragraph {"textColor":"luminous-vivid-orange","fontSize":"large"} --></p>
-<p class="has-luminous-vivid-orange-color has-text-color has-large-font-size"><strong><span style="text-decoration: underline" class="underline">Collections</span></strong></p>
-<p><!-- /wp:paragraph --></p>
-<p><!-- wp:paragraph {"fontSize":"medium"} --></p>
-<p class="has-medium-font-size">- <strong>Collections</strong> are a modern approach to packaging Ansible content for improved manageability. <br><br>- They can originate from various sources, such as the Ansible community and Red Hat partners. Collections encompass a range of components, including <strong>roles</strong> (included in playbooks for common task execution), <strong>modules</strong> (provides Ansible core functionality), and <strong>plugins</strong> (extend the Python code on the Ansible control host).</p>
-<p><!-- /wp:paragraph --></p>
-<p><!-- wp:paragraph {"fontSize":"medium"} --></p>
-<p class="has-medium-font-size">- Collections introduce a fully qualified Collection Name (FQCN) structure, this contrasts with the pre-collection era, where you would address a module simply by its name, such as <code><strong>user</strong></code>. Now, you address the same module as <code><strong>ansible.builtin.user</strong></code> within the context of Collections.</p>
-<p><!-- /wp:paragraph --></p>
-<p><!-- wp:spacer {"height":"76px"} --></p>
-<div style="height:76px" aria-hidden="true" class="wp-block-spacer"></div>
-<p><!-- /wp:spacer --></p>
-<p><!-- wp:paragraph {"style":{"typography":{"fontSize":"27px"}}} --></p>
-<p style="font-size:27px"><strong><span style="text-decoration: underline" class="underline">Installing a Collection</span></strong></p>
-<p><!-- /wp:paragraph --></p>
-<p><!-- wp:paragraph {"textColor":"luminous-vivid-orange","fontSize":"medium"} --></p>
-<p class="has-luminous-vivid-orange-color has-text-color has-medium-font-size"><strong>ansible-galaxy collection install freeipa.ansible_freeipa</strong></p>
-<p><!-- /wp:paragraph --></p>
-<p><!-- wp:image {"id":2257,"sizeSlug":"large","linkDestination":"none"} --></p>
-<figure class="wp-block-image size-large"><img src="{{site.baseurl}}/assets/2024/02/image-2-1024x137.png" alt="" class="wp-image-2257"></figure>
-<p><!-- /wp:image --></p>
-<p><!-- wp:spacer {"height":"38px"} --></p>
-<div style="height:38px" aria-hidden="true" class="wp-block-spacer"></div>
-<p><!-- /wp:spacer --></p>
-<p><!-- wp:paragraph {"fontSize":"medium"} --></p>
-<p class="has-medium-font-size">To list the available Roles in the above Collection,</p>
-<p><!-- /wp:paragraph --></p>
-<p><!-- wp:image {"id":2258,"sizeSlug":"full","linkDestination":"none"} --></p>
-<figure class="wp-block-image size-full"><img src="{{site.baseurl}}/assets/2024/02/image-3.png" alt="" class="wp-image-2258"></figure>
-<p><!-- /wp:image --></p>
-<p><!-- wp:spacer {"height":"34px"} --></p>
-<div style="height:34px" aria-hidden="true" class="wp-block-spacer"></div>
-<p><!-- /wp:spacer --></p>
-<p><!-- wp:paragraph {"fontSize":"medium"} --></p>
-<p class="has-medium-font-size">Now to include the above Collection Roles in our main playbook (<strong>main.yaml</strong>), we can use define it as following,</p>
-<p><!-- /wp:paragraph --></p>
-<p><!-- wp:paragraph {"style":{"typography":{"fontSize":"27px"}}} --></p>
-<p style="font-size:27px"><strong><span style="text-decoration: underline" class="underline">main.yaml</span></strong></p>
-<p><!-- /wp:paragraph --></p>
-<p><!-- wp:image {"align":"left","id":2259,"width":497,"height":247,"sizeSlug":"full","linkDestination":"none"} --></p>
-<figure class="wp-block-image alignleft size-full is-resized"><img src="{{site.baseurl}}/assets/2024/02/image-4.png" alt="" class="wp-image-2259" width="497" height="247"></figure>
-<p><!-- /wp:image --></p>
-<p><!-- wp:spacer --></p>
-<div style="height:100px" aria-hidden="true" class="wp-block-spacer"></div>
-<p><!-- /wp:spacer --></p>
-<p><!-- wp:paragraph --></p>
-<p><!-- /wp:paragraph --></p>
-<p><!-- wp:paragraph --></p>
-<p><!-- /wp:paragraph --></p>
-<p><!-- wp:paragraph --></p>
-<p><!-- /wp:paragraph --></p>
-<p><!-- wp:paragraph --></p>
-<p><!-- /wp:paragraph --></p>
-<p><!-- wp:paragraph --></p>
-<p><!-- /wp:paragraph --></p>
-<p><!-- wp:paragraph --></p>
-<p><!-- /wp:paragraph --></p>
-<p><!-- wp:paragraph --></p>
-<p><!-- /wp:paragraph --></p>
-<p><!-- wp:paragraph --></p>
-<p><!-- /wp:paragraph --></p>
-<p><!-- wp:paragraph --></p>
-<p><!-- /wp:paragraph --></p>
-<p><!-- wp:paragraph --></p>
-<p><!-- /wp:paragraph --></p>
-<p><!-- wp:paragraph --></p>
-<p><!-- /wp:paragraph --></p>
-<p><!-- wp:paragraph --></p>
-<p><!-- /wp:paragraph --></p>
-<p><!-- wp:paragraph --></p>
-<p><!-- /wp:paragraph --></p>
-<p><!-- wp:paragraph --></p>
-<p><!-- /wp:paragraph --><br />
-</body></html></p>
+
+## 
+
+**Roles**
+
+- **Roles** are community-provided resources in Ansible.
+
+- They serve as standardized solutions for common tasks, making it easier for users to work with Ansible.
+
+- Users can incorporate community roles directly into their playbooks.
+
+- Instead of reinventing the wheel for common tasks, users can leverage community-provided roles.
+
+- Users can customize the behavior of community roles by providing site-specific configurations using variables in their playbooks. This allows users to tailor the role to their specific requirements without modifying the role itself.
+
+- By using roles, playbooks become cleaner and more modular.
+
+- Playbooks mainly consist of tasks that involve the execution of roles. The heavy lifting of task implementation is handled within the roles.
+
+- Tasks in roles are normally executed before other tasks in the playbook.
+
+- Use** pre_tasks** to execute tasks before the role. Handlers that are triggered by **pre_tasks **are also executed before the roles.
+
+- Tasks within a role are typically executed after the **pre_tasks** section and before the **post_tasks** section of a playbook.
+
+**Installing an Ansible Role**
+
+The role mentioned below can be utilized to install **Docker** and **Docker Compose** binaries, configure the **/etc/docker/daemon.json** file, and optionally add any user to the Docker group, etc.
+
+After installing the role (**geerlingguy.docker**), you can customize the defaults in the /root/.ansible/roles/geerlingguy.docker/defaults/main.yaml file according to your needs. For example, specify the version of **Docker** and **Docker Compose**, choose **'ce' (Community Edition)** or **'ee' (Enterprise Edition)**, and update the **docker_daemon_options** dictionary.
+
+**main.yaml**
+
+Now we are ready to execute the main playbook (**main.yaml**), which includes just the role (name of the role) that you want to be executed from the main playbook.
+
+**Collections**
+
+- **Collections** are a modern approach to packaging Ansible content for improved manageability. 
+
+- They can originate from various sources, such as the Ansible community and Red Hat partners. Collections encompass a range of components, including **roles** (included in playbooks for common task execution), **modules** (provides Ansible core functionality), and **plugins** (extend the Python code on the Ansible control host).
+
+- Collections introduce a fully qualified Collection Name (FQCN) structure, this contrasts with the pre-collection era, where you would address a module simply by its name, such as `**user**`. Now, you address the same module as `**ansible.builtin.user**` within the context of Collections.
+
+**Installing a Collection**
+
+**ansible-galaxy collection install freeipa.ansible_freeipa**
+
+To list the available Roles in the above Collection,
+
+Now to include the above Collection Roles in our main playbook (**main.yaml**), we can use define it as following,
+
+**main.yaml**

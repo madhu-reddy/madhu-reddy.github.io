@@ -1,110 +1,52 @@
 ---
-categories: ['Linux', 'Bash']
 layout: post
-title: About the POSIX-compliant shell and is Bash shell POSIX-compliant?
-date: 2021-11-26 10:15:07.000000000 -05:00
-type: post
-parent_id: '0'
-published: true
-password: ''
-status: publish
-- Linux
-tags: []
-meta:
-  _aioseo_title: ''
-  _aioseo_description: ''
-  _aioseo_keywords: ''
-  _aioseo_og_title: ''
-  _aioseo_og_description: ''
-  _aioseo_og_article_section: ''
-  _aioseo_og_article_tags: ''
-  _aioseo_twitter_title: ''
-  _aioseo_twitter_description: ''
-  _edit_last: '1'
-  ocean_gallery_link_images: 'off'
-  ocean_sidebar: '0'
-  ocean_second_sidebar: '0'
-  ocean_disable_margins: enable
-  ocean_display_top_bar: default
-  ocean_display_header: default
-  ocean_center_header_left_menu: '0'
-  ocean_custom_header_template: '0'
-  ocean_header_custom_menu: '0'
-  ocean_menu_typo_font_family: '0'
-  ocean_disable_title: default
-  ocean_disable_heading: default
-  ocean_disable_breadcrumbs: default
-  ocean_display_footer_widgets: default
-  ocean_display_footer_bottom: default
-  ocean_custom_footer_template: '0'
-  ocean_link_format_target: self
-  ocean_quote_format_link: post
-  _yoast_wpseo_estimated-reading-time-minutes: '3'
-  _yoast_wpseo_primary_category: '2'
-  _thumbnail_id: '1198'
-  _wtpsw_views: '145'
-  rank_math_primary_category: '2'
-  rank_math_news_sitemap_robots: index
-  rank_math_robots: a:1:{i:0;s:5:"index";}
-  rank_math_og_content_image: a:2:{s:5:"check";s:32:"36acbe945f8d8bb1e0c8323b0d0f7f02";s:6:"images";a:2:{i:0;i:1189;i:1;i:1191;}}
-  rank_math_internal_links_processed: '1'
-  rank_math_seo_score: '67'
-  rank_math_focus_keyword: POSIX compliant
-  _yoast_wpseo_wordproof_timestamp: ''
-  _yoast_wpseo_content_score: '60'
-permalink: "/2021/11/26/about-posix-compliant-shell-and-is-bash-shell-posix-complaint/"
+title: "About the POSIX-compliant shell and is Bash shell POSIX-compliant?"
+date: 2021-11-26
+categories: ['Linux', 'Bash']
 ---
-<p><!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN" "http://www.w3.org/TR/REC-html40/loose.dtd"><br />
-<!-- wp:paragraph {"fontSize":"medium"} --><html><body></p>
-<p class="has-medium-font-size">POSIX, short for "Portable Operating System Interface," is a family of standards developed to ensure compatibility between various operating systems. This compatibility extends to user interfaces, allowing users to interact with the operating system kernel through a consistent shell environment.</p>
-<p><!-- /wp:paragraph --></p>
-<p><!-- wp:paragraph {"fontSize":"medium"} --></p>
-<p class="has-medium-font-size">A shell is nothing but a user interface through which a user can interact with the OS Kernel.<br></p>
-<p><!-- /wp:paragraph --></p>
-<p><!-- wp:spacer {"height":"67px"} --></p>
-<div style="height:67px" aria-hidden="true" class="wp-block-spacer"></div>
-<p><!-- /wp:spacer --></p>
-<p><!-- wp:heading {"style":{"typography":{"fontSize":"29px"}}} --></p>
-<h2 style="font-size:29px">
-<span style="text-decoration: underline" class="underline"><mark style="background-color:rgba(0, 0, 0, 0)" class="has-inline-color has-luminous-vivid-orange-color">About POSIX-compliant shells</mark></span><strong><mark style="background-color:rgba(0, 0, 0, 0)" class="has-inline-color has-luminous-vivid-orange-color"><span style="text-decoration: underline" class="underline">: </span></mark></strong><br />
-</h2>
-<p><!-- /wp:heading --></p>
-<p><!-- wp:paragraph {"fontSize":"medium"} --></p>
-<p class="has-medium-font-size"><br>By utilizing fully POSIX-compliant shells, software developers can create applications that operate seamlessly across different operating systems, provided the OS supports POSIX-compliant shells. <br>For instance, a shell script written in the "dash" shell to retrieve resource utilization information on an Ubuntu Linux server can be executed on a macOS server using the "dash" shell or any other POSIX-compliant shell installed on macOS or any other OS.<br>                                                                                                                                               </p>
-<p><!-- /wp:paragraph --></p>
-<p><!-- wp:paragraph {"fontSize":"medium"} --></p>
-<p class="has-medium-font-size">In most UNIX-based operating systems, shell scripts typically begin with a shebang line, either <strong>#!/bin/bash</strong> or <strong>#!/bin/sh</strong>. <br>The "sh" command, also known as the "Bourne shell," is often implemented by programs like "bash" or "dash" or other POSIX-compliant shells.<br><br> For example, in Ubuntu 20.04, the "sh" command is symlinked to the POSIX-compliant shell "dash".</p>
-<p><!-- /wp:paragraph --></p>
-<p><!-- wp:code --></p>
-<pre class="wp-block-code"><code>root@madhu-Inspiron-5567:~# ls -ltrh /bin/sh
-lrwxrwxrwx 1 root root 4 Jan  3  2021 /bin/sh -&gt; dash
-</code></pre>
-<p><!-- /wp:code --></p>
-<p><!-- wp:paragraph --></p>
-<p><!-- /wp:paragraph --></p>
-<p><!-- wp:spacer {"height":"52px"} --></p>
-<div style="height:52px" aria-hidden="true" class="wp-block-spacer"></div>
-<p><!-- /wp:spacer --></p>
-<p><!-- wp:paragraph --></p>
-<p>                                                                                                              .</p>
-<p><!-- /wp:paragraph --></p>
-<p><!-- wp:heading {"style":{"typography":{"fontSize":"29px"}}} --></p>
-<h2 style="font-size:29px"><strong><span style="text-decoration: underline" class="underline"><span style="color:#ff6900" class="tadv-color">Now whether "bash" POSIX-compliant?</span></span></strong></h2>
-<p><!-- /wp:heading --></p>
-<p><!-- wp:paragraph {"fontSize":"medium"} --></p>
-<p class="has-medium-font-size">Yes, the "bash" shell is fully POSIX compliant, but it also includes additional features and extensions that are not part of the POSIX standard.<br><a href="https://betterprogramming.pub/24-bashism-to-avoid-for-posix-compliant-shell-scripts-8e7c09e0f49a">https://betterprogramming.pub/24-bashism-to-avoid-for-posix-compliant-shell-scripts-8e7c09e0f49a</a></p>
-<p><!-- /wp:paragraph --></p>
-<p><!-- wp:paragraph {"fontSize":"medium"} --></p>
-<p class="has-medium-font-size"><br>For many years, "/bin/sh" was linked to "/bin/bash". However, as new features and extensions were incorporated into "bash," some of which contradict the POSIX standards, this linkage was discontinued<br><br>To verify if your shell script complies with POSIX standards, you can utilize the "spellcheck" application with the following option (<strong>-s dash</strong>) as demonstrated below:<br></p>
-<p><!-- /wp:paragraph --></p>
-<p><!-- wp:code --></p>
-<pre class="wp-block-code"><code>shellcheck -s dash shell-script-name.sh</code></pre>
-<p><!-- /wp:code --></p>
-<p><!-- wp:paragraph {"fontSize":"medium"} --></p>
-<p class="has-medium-font-size"><strong><span style="text-decoration: underline" class="underline"><span style="color:#ff6900" class="tadv-color">Example:</span></span></strong><br>In the following example bash script, we utilize double square brackets "[[" which are not defined in POSIX but have been introduced as an extension to the single square brackets defined in POSIX within the "bash" shell.<br></p>
-<p><!-- /wp:paragraph --></p>
-<p><!-- wp:code --></p>
-<pre class="wp-block-code"><code>#name:  mytest.sh
+
+POSIX, short for "Portable Operating System Interface," is a family of standards developed to ensure compatibility between various operating systems. This compatibility extends to user interfaces, allowing users to interact with the operating system kernel through a consistent shell environment.
+
+A shell is nothing but a user interface through which a user can interact with the OS Kernel.
+
+## 
+About POSIX-compliant shells**: **
+
+By utilizing fully POSIX-compliant shells, software developers can create applications that operate seamlessly across different operating systems, provided the OS supports POSIX-compliant shells. 
+For instance, a shell script written in the "dash" shell to retrieve resource utilization information on an Ubuntu Linux server can be executed on a macOS server using the "dash" shell or any other POSIX-compliant shell installed on macOS or any other OS.
+                                                                                                                                               
+
+In most UNIX-based operating systems, shell scripts typically begin with a shebang line, either **#!/bin/bash** or **#!/bin/sh**. 
+The "sh" command, also known as the "Bourne shell," is often implemented by programs like "bash" or "dash" or other POSIX-compliant shells.
+
+ For example, in Ubuntu 20.04, the "sh" command is symlinked to the POSIX-compliant shell "dash".
+
+```
+`root@madhu-Inspiron-5567:~# ls -ltrh /bin/sh
+lrwxrwxrwx 1 root root 4 Jan  3  2021 /bin/sh -> dash
+`
+```
+
+                                                                                                              .
+
+## **Now whether "bash" POSIX-compliant?**
+
+Yes, the "bash" shell is fully POSIX compliant, but it also includes additional features and extensions that are not part of the POSIX standard.
+[https://betterprogramming.pub/24-bashism-to-avoid-for-posix-compliant-shell-scripts-8e7c09e0f49a
+
+For many years, "/bin/sh" was linked to "/bin/bash". However, as new features and extensions were incorporated into "bash," some of which contradict the POSIX standards, this linkage was discontinued
+
+To verify if your shell script complies with POSIX standards, you can utilize the "spellcheck" application with the following option (**-s dash**) as demonstrated below:
+
+```
+`shellcheck -s dash shell-script-name.sh`
+```
+
+**Example:**
+In the following example bash script, we utilize double square brackets "[[" which are not defined in POSIX but have been introduced as an extension to the single square brackets defined in POSIX within the "bash" shell.
+
+```
+`#name:  mytest.sh
 
 #!/bin/bash
 if [[ -z $1 ]]
@@ -114,37 +56,15 @@ else
    echo "entered value other than numbers"
 exit 1
 fi
-</code></pre>
-<p><!-- /wp:code --></p>
-<p><!-- wp:paragraph {"fontSize":"medium"} --></p>
-<p class="has-medium-font-size"><br><br>Upon observation of the output below, it becomes evident that when attempting to analyze the aforementioned bash script using the "dash" shell (which is fully POSIX compatible), an error is encountered.</p>
-<p><!-- /wp:paragraph --></p>
-<p><!-- wp:image {"align":"left","id":1189,"sizeSlug":"large","linkDestination":"none"} --></p>
-<figure class="wp-block-image alignleft size-large"><img src="{{site.baseurl}}/assets/2021/11/image-14.png" alt="" class="wp-image-1189"></figure>
-<p><!-- /wp:image --></p>
-<p><!-- wp:paragraph {"fontSize":"medium"} --></p>
-<p class="has-medium-font-size"><br><br><br><br><br><br>However, when the same bash script is analyzed using the "bash" shell, no errors occur as double square brackets are supported within the "bash" shell.</p>
-<p><!-- /wp:paragraph --></p>
-<p><!-- wp:image {"align":"left","id":1191,"sizeSlug":"large","linkDestination":"none"} --></p>
-<figure class="wp-block-image alignleft size-large"><img src="{{site.baseurl}}/assets/2021/11/image-16.png" alt="" class="wp-image-1191"></figure>
-<p><!-- /wp:image --></p>
-<p><!-- wp:paragraph --></p>
-<p><!-- /wp:paragraph --></p>
-<p><!-- wp:paragraph {"style":{"typography":{"fontSize":"28px"}}} --></p>
-<p style="font-size:28px"><br></p>
-<p><!-- /wp:paragraph --></p>
-<p><!-- wp:spacer {"height":"115px"} --></p>
-<div style="height:115px" aria-hidden="true" class="wp-block-spacer"></div>
-<p><!-- /wp:spacer --></p>
-<p><!-- wp:paragraph {"style":{"typography":{"fontSize":"28px"}}} --></p>
-<p style="font-size:28px"><span style="text-decoration: underline" class="underline"><strong><span style="color:#ff6900" class="tadv-color">Few additional features in "bash" that are not present in POSIX:</span></strong></span></p>
-<p><!-- /wp:paragraph --></p>
-<p><!-- wp:paragraph --></p>
-<p><!-- /wp:paragraph --></p>
-<p><!-- wp:paragraph {"fontSize":"medium"} --></p>
-<p class="has-medium-font-size">1) Using Command-line completion in "bash", a command can be completed faster just by typing a few words of the command and then using &lt;TAB&gt; to complete the command.</p>
-<p><!-- /wp:paragraph --></p>
-<p><!-- wp:paragraph {"fontSize":"medium"} --></p>
-<p class="has-medium-font-size">2) Scrolling through history can be done using the &lt;UP&gt; arrow.</p>
-<p><!-- /wp:paragraph --><br />
-</body></html></p>
+`
+```
+
+Upon observation of the output below, it becomes evident that when attempting to analyze the aforementioned bash script using the "dash" shell (which is fully POSIX compatible), an error is encountered.
+
+However, when the same bash script is analyzed using the "bash" shell, no errors occur as double square brackets are supported within the "bash" shell.
+
+**Few additional features in "bash" that are not present in POSIX:**
+
+1) Using Command-line completion in "bash", a command can be completed faster just by typing a few words of the command and then using <TAB> to complete the command.
+
+2) Scrolling through history can be done using the <UP> arrow.

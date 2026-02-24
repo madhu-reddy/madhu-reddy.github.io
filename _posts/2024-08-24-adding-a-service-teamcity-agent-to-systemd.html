@@ -1,57 +1,33 @@
 ---
-categories: ['DevOps', 'TeamCity']
 layout: post
-title: Adding a service (TeamCity Agent) to systemd
-date: 2024-08-24 02:18:25.000000000 -04:00
-type: post
-parent_id: '0'
-published: true
-password: ''
-status: publish
-- Linux
-- Sysadmin
-tags: []
-meta:
-  _edit_last: '1'
-  _aioseo_title: ''
-  _aioseo_description: ''
-  _aioseo_keywords: a:0:{}
-  _aioseo_og_title: ''
-  _aioseo_og_description: ''
-  _aioseo_og_article_section: ''
-  _aioseo_og_article_tags: a:0:{}
-  _aioseo_twitter_title: ''
-  _aioseo_twitter_description: ''
-  _thumbnail_id: '2330'
-  _wtpsw_views: '131'
-  wp_statistics_words_count: '259'
-permalink: "/2024/08/24/adding-a-service-teamcity-agent-to-systemd/"
+title: "Adding a service (TeamCity Agent) to systemd"
+date: 2024-08-24
+categories: ['DevOps', 'TeamCity']
 ---
-<p><!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN" "http://www.w3.org/TR/REC-html40/loose.dtd"><br />
-<!-- wp:paragraph {"fontSize":"medium"} --><html><body></p>
-<p class="has-medium-font-size"><a href="https://www.jetbrains.com/help/teamcity/start-teamcity-agent.html#Automatic+Agent+Start+Under+Linux" title="This">This</a> configuration is a <code>systemd</code> service unit file for managing a TeamCity Build Agent.</p>
-<p><!-- /wp:paragraph --></p>
-<p><!-- wp:paragraph {"fontSize":"medium"} --></p>
-<p class="has-medium-font-size"><code><strong>cat /etc/systemd/system/teamcity-agent.service</strong></code></p>
-<p><!-- /wp:paragraph --></p>
-<p><!-- wp:image {"id":2324,"sizeSlug":"full","linkDestination":"none"} --></p>
-<figure class="wp-block-image size-full"><img src="{{site.baseurl}}/assets/2024/08/image-13.png" alt="" class="wp-image-2324"></figure>
-<p><!-- /wp:image --></p>
-<p><!-- wp:paragraph {"fontSize":"medium"} --></p>
-<p class="has-medium-font-size"><code><strong>After=network.target</strong>:</code> <br>This directive ensures that the service starts only after the network is available.</p>
-<p><!-- /wp:paragraph --></p>
-<p><!-- wp:paragraph {"fontSize":"medium"} --></p>
-<p class="has-medium-font-size"><strong><code>Type=oneshot</code>:</strong> <br>This indicates that the service runs a single task and then exits. In this case, the <code>agent.sh start</code> script runs, starts an agent child process in the background, and then exits (meaning the main process runs and exits immediately after initiating the child process).<br>If <code>RemainAfterExit</code> is not set, a <code>Type=oneshot</code> service will be marked as <code>inactive (dead)</code> once the <code>ExecStart</code> command completes, <mark>regardless of the exit status</mark>.</p>
-<p><!-- /wp:paragraph --></p>
-<p><!-- wp:paragraph --></p>
-<p><!-- /wp:paragraph --></p>
-<p><!-- wp:paragraph {"fontSize":"medium"} --></p>
-<p class="has-medium-font-size"><br><strong><code>ExecStart=/home/teamcityagent/agent/bin/agent.sh start</code>: </strong><br>Command to start the agent.<br><br><strong><code>ExecStop=-/home/teamcityagent/agent/bin/agent.sh stop</code>:</strong> <br>Command to stop the agent. The <code>-</code> prefix allows the service to ignore errors if the stop command fails.<br><br><strong><code>RemainAfterExit=yes</code>: </strong><br>This keeps the service in an active state after the <code>ExecStart</code> command completes. When you set <code>RemainAfterExit=yes</code> in a systemd service file, it means that the service will remain in an "active" state even after the <code>ExecStart</code> command completes. <br>The <code>systemctl status teamcity-agent</code> command will show the service as "<code>active (running)</code>", rather than "<code>inactive</code> <code>(dead)</code>" even though the <code>ExecStart</code> command (in this case, <code>agent.sh start</code>) has finished executing.<br><strong>With </strong><code>RemainAfterExit=yes</code>: <br>--&gt; It keeps the status as <mark style="background-color:rgba(0, 0, 0, 0)" class="has-inline-color has-vivid-red-color"><strong>active (running)</strong></mark>,  if the <code>ExecStart</code> command exited with a status defined in <code><mark style="background-color:rgba(0, 0, 0, 0)" class="has-inline-color has-luminous-vivid-amber-color">SuccessExitStatus</mark></code>. <br>--&gt; It keeps the status as <mark style="background-color:rgba(0, 0, 0, 0)" class="has-inline-color has-vivid-red-color"><strong>active (exited)</strong></mark>, if the <code>ExecStart</code> command exited with a status code, which is not listed in <code><mark style="background-color:rgba(0, 0, 0, 0)" class="has-inline-color has-luminous-vivid-amber-color">SuccessExitStatus</mark></code>.</p>
-<p><!-- /wp:paragraph --></p>
-<p><!-- wp:image {"align":"left","id":2328,"sizeSlug":"full","linkDestination":"none"} --></p>
-<figure class="wp-block-image alignleft size-full"><img src="{{site.baseurl}}/assets/2024/08/image-14.png" alt="" class="wp-image-2328"></figure>
-<p><!-- /wp:image --></p>
-<p><!-- wp:paragraph {"fontSize":"medium"} --></p>
-<p class="has-medium-font-size"><br><br><br><strong><code>SuccessExitStatus=0 143</code>:</strong><br>Defines the exit codes that systemd will consider a successful exit. <code>143</code> is used when the process is killed with <code>SIGTERM</code>, which is expected during an upgrade.<br></p>
-<p><!-- /wp:paragraph --><br />
-</body></html></p>
+
+[This configuration is a `systemd` service unit file for managing a TeamCity Build Agent.
+
+`**cat /etc/systemd/system/teamcity-agent.service**`
+
+`**After=network.target**:` 
+This directive ensures that the service starts only after the network is available.
+
+**`Type=oneshot`:** 
+This indicates that the service runs a single task and then exits. In this case, the `agent.sh start` script runs, starts an agent child process in the background, and then exits (meaning the main process runs and exits immediately after initiating the child process).
+If `RemainAfterExit` is not set, a `Type=oneshot` service will be marked as `inactive (dead)` once the `ExecStart` command completes, regardless of the exit status.
+
+**`ExecStart=/home/teamcityagent/agent/bin/agent.sh start`: **
+Command to start the agent.
+
+**`ExecStop=-/home/teamcityagent/agent/bin/agent.sh stop`:** 
+Command to stop the agent. The `-` prefix allows the service to ignore errors if the stop command fails.
+
+**`RemainAfterExit=yes`: **
+This keeps the service in an active state after the `ExecStart` command completes. When you set `RemainAfterExit=yes` in a systemd service file, it means that the service will remain in an "active" state even after the `ExecStart` command completes. 
+The `systemctl status teamcity-agent` command will show the service as "`active (running)`", rather than "`inactive` `(dead)`" even though the `ExecStart` command (in this case, `agent.sh start`) has finished executing.
+**With **`RemainAfterExit=yes`: 
+--> It keeps the status as **active (running)**,  if the `ExecStart` command exited with a status defined in `SuccessExitStatus`. 
+--> It keeps the status as **active (exited)**, if the `ExecStart` command exited with a status code, which is not listed in `SuccessExitStatus`.
+
+**`SuccessExitStatus=0 143`:**
+Defines the exit codes that systemd will consider a successful exit. `143` is used when the process is killed with `SIGTERM`, which is expected during an upgrade.

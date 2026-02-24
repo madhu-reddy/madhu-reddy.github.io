@@ -1,115 +1,36 @@
 ---
-categories: ['VMware', 'General']
 layout: post
-title: About NUMA Node Affinity in VMWare?
-date: 2022-09-04 02:28:37.000000000 -04:00
-type: post
-parent_id: '0'
-published: true
-password: ''
-status: publish
-- Sysadmin
-- VMware
-tags: []
-meta:
-  _edit_last: '1'
-  _aioseo_title: ''
-  _aioseo_description: ''
-  _aioseo_keywords: ''
-  _aioseo_og_title: ''
-  _aioseo_og_description: ''
-  _aioseo_og_article_section: ''
-  _aioseo_og_article_tags: ''
-  _aioseo_twitter_title: ''
-  _aioseo_twitter_description: ''
-  _yoast_wpseo_primary_category: '34'
-  ocean_gallery_link_images: 'off'
-  ocean_sidebar: '0'
-  ocean_second_sidebar: '0'
-  ocean_disable_margins: enable
-  ocean_display_top_bar: default
-  ocean_display_header: default
-  ocean_center_header_left_menu: '0'
-  ocean_custom_header_template: '0'
-  ocean_header_custom_menu: '0'
-  ocean_menu_typo_font_family: '0'
-  ocean_disable_title: default
-  ocean_disable_heading: default
-  ocean_disable_breadcrumbs: default
-  ocean_display_footer_widgets: default
-  ocean_display_footer_bottom: default
-  ocean_custom_footer_template: '0'
-  ocean_link_format_target: self
-  ocean_quote_format_link: post
-  _yoast_wpseo_estimated-reading-time-minutes: '3'
-  _thumbnail_id: '1599'
-  _yoast_wpseo_content_score: '30'
-  _wtpsw_views: '126'
-  rank_math_primary_category: '34'
-  rank_math_news_sitemap_robots: index
-  rank_math_robots: a:1:{i:0;s:5:"index";}
-  rank_math_internal_links_processed: '1'
-  rank_math_seo_score: '65'
-  rank_math_focus_keyword: numa,node affinity
-  rank_math_og_content_image: a:2:{s:5:"check";s:32:"7e850095d0c1a02b3bf7ae1f87d92e72";s:6:"images";a:1:{i:0;i:1589;}}
-  _yoast_wpseo_wordproof_timestamp: ''
-permalink: "/2022/09/04/about-numa-node-affinity-in-vmware/"
+title: "About NUMA Node Affinity in VMWare?"
+date: 2022-09-04
+categories: ['VMware', 'General']
 ---
-<p><!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN" "http://www.w3.org/TR/REC-html40/loose.dtd"><br />
-<!-- wp:paragraph {"fontSize":"medium"} --><html><body></p>
-<p class="has-medium-font-size">NUMA, which stands for '<code>Non-Uniform Memory Access</code>,' in a multi-processor system refers to a set of memory sockets considered local to a particular CPU, allowing faster access. The memory local to the 1st CPU becomes remote memory for the 2nd CPU and vice versa.</p>
-<p><!-- /wp:paragraph --></p>
-<p><!-- wp:paragraph {"fontSize":"medium"} --></p>
-<p class="has-medium-font-size">As shown in the picture below, you can observe how the set of 12 memory sockets is local (and remote) to each of the CPUs (CPU1 and CPU2)</p>
-<p><!-- /wp:paragraph --></p>
-<p><!-- wp:image {"id":1589,"width":396,"height":141,"sizeSlug":"large","linkDestination":"none"} --></p>
-<figure class="wp-block-image size-large is-resized"><img src="{{site.baseurl}}/assets/2022/09/image-5.png" alt="" class="wp-image-1589" width="396" height="141"></figure>
-<p><!-- /wp:image --></p>
-<p><!-- wp:paragraph {"fontSize":"medium"} --></p>
-<p class="has-medium-font-size"><br>The NUMA architecture, as the name implies, provides non-uniform memory access. This means that the time required for the CPU to access memory is not uniform. For instance, the 1st CPU has faster memory access (low latency) to its local memory but experiences slower access (higher latency) to remote memory related to the 2nd CPU. The distinction between low and high latency memory access depends on whether the memory for the CPU is local or remote in NUMA (non-uniform remote access) architecture.</p>
-<p><!-- /wp:paragraph --></p>
-<p><!-- wp:paragraph {"fontSize":"medium"} --></p>
-<p class="has-medium-font-size">To better leverage NUMA, configuring something called '<strong><code>NUMA node affinity</code></strong>' is necessary.</p>
-<p><!-- /wp:paragraph --></p>
-<p><!-- wp:paragraph --></p>
-<p><!-- /wp:paragraph --></p>
-<p><!-- wp:paragraph {"style":{"typography":{"fontSize":"25px"}}} --></p>
-<p style="font-size:25px"><strong><span style="text-decoration: underline" class="underline"><span style="color:#ff6900" class="tadv-color">Without NUMA Node Affinity</span></span></strong></p>
-<p><!-- /wp:paragraph --></p>
-<p><!-- wp:paragraph {"fontSize":"medium"} --></p>
-<p class="has-medium-font-size"><br>Without 'NUMA node affinity,' a process scheduled to run on a CPU (e.g., CPU 0) may find its related data in remote memory (memory related to CPU 1), potentially causing performance issues for the application."</p>
-<p><!-- /wp:paragraph --></p>
-<p><!-- wp:image {"id":1593,"width":447,"height":346,"sizeSlug":"large","linkDestination":"none"} --></p>
-<figure class="wp-block-image size-large is-resized"><img src="{{site.baseurl}}/assets/2022/09/image-9.png" alt="" class="wp-image-1593" width="447" height="346"></figure>
-<p><!-- /wp:image --></p>
-<p><!-- wp:paragraph {"style":{"typography":{"fontSize":"26px"}}} --></p>
-<p style="font-size:26px"><br><br><strong><span style="text-decoration: underline" class="underline"><span style="color:#ff6900" class="tadv-color">With NUMA Node Affinity</span></span></strong></p>
-<p><!-- /wp:paragraph --></p>
-<p><!-- wp:paragraph {"fontSize":"medium"} --></p>
-<p class="has-medium-font-size">However, with '<code>NUMA node affinity'</code>, a process scheduled to run on a CPU (e.g., CPU 0) ensures that the related data is consistently present in local memory (related to CPU 0 itself) when needed. This optimizes memory access speed for the CPU when processing the application."</p>
-<p><!-- /wp:paragraph --></p>
-<p><!-- wp:image {"id":1594,"width":440,"height":359,"sizeSlug":"large","linkDestination":"none"} --></p>
-<figure class="wp-block-image size-large is-resized"><img src="{{site.baseurl}}/assets/2022/09/image-10.png" alt="" class="wp-image-1594" width="440" height="359"></figure>
-<p><!-- /wp:image --></p>
-<p><!-- wp:paragraph --></p>
-<p><br><br></p>
-<p><!-- /wp:paragraph --></p>
-<p><!-- wp:paragraph --></p>
-<p>.</p>
-<p><!-- /wp:paragraph --></p>
-<p><!-- wp:paragraph {"style":{"typography":{"fontSize":"26px"}}} --></p>
-<p style="font-size:26px"><span style="text-decoration: underline" class="underline"><span style="color:#ff6900" class="tadv-color"><strong>Enabling NUMA Node affinity for Virtual Machines in VMWare ESXi</strong></span></span></p>
-<p><!-- /wp:paragraph --></p>
-<p><!-- wp:paragraph {"fontSize":"medium"} --></p>
-<p class="has-medium-font-size"><br>In this example, I have an ESXi host (Dell PowerEdge R610), which has 2 CPU sockets with 6 cores each.<br>I have created 2 VMs with 1 vCPU and 6 cores each.</p>
-<p><!-- /wp:paragraph --></p>
-<p><!-- wp:paragraph {"fontSize":"medium"} --></p>
-<p class="has-medium-font-size">To configure NUMA node affinity for each VM, follow these steps:<br>1) Go to VM settings.<br>2) Navigate to VM options &gt; Advanced &gt; Edit configuration.<br>3) Add an option with the key name '<code>numa.nodeAffinity</code>' and set a value of either 0 or 1. This constrains the virtual machine resource scheduling to NUMA nodes 0 or 1."</p>
-<p><!-- /wp:paragraph --></p>
-<p><!-- wp:image {"id":1596,"width":554,"height":271,"sizeSlug":"large","linkDestination":"none"} --></p>
-<figure class="wp-block-image size-large is-resized"><img src="{{site.baseurl}}/assets/2022/09/image-12.png" alt="" class="wp-image-1596" width="554" height="271"></figure>
-<p><!-- /wp:image --></p>
-<p><!-- wp:paragraph {"fontSize":"medium"} --></p>
-<p class="has-medium-font-size">By configuring NUMA node affinity, you're ensuring that the applications in each VM can efficiently access the local memory associated with the dedicated NUMA nodes, optimizing their processing speed.</p>
-<p><!-- /wp:paragraph --><br />
-</body></html></p>
+
+NUMA, which stands for '`Non-Uniform Memory Access`,' in a multi-processor system refers to a set of memory sockets considered local to a particular CPU, allowing faster access. The memory local to the 1st CPU becomes remote memory for the 2nd CPU and vice versa.
+
+As shown in the picture below, you can observe how the set of 12 memory sockets is local (and remote) to each of the CPUs (CPU1 and CPU2)
+
+The NUMA architecture, as the name implies, provides non-uniform memory access. This means that the time required for the CPU to access memory is not uniform. For instance, the 1st CPU has faster memory access (low latency) to its local memory but experiences slower access (higher latency) to remote memory related to the 2nd CPU. The distinction between low and high latency memory access depends on whether the memory for the CPU is local or remote in NUMA (non-uniform remote access) architecture.
+
+To better leverage NUMA, configuring something called '**`NUMA node affinity`**' is necessary.
+
+**Without NUMA Node Affinity**
+
+Without 'NUMA node affinity,' a process scheduled to run on a CPU (e.g., CPU 0) may find its related data in remote memory (memory related to CPU 1), potentially causing performance issues for the application."
+
+**With NUMA Node Affinity**
+
+However, with '`NUMA node affinity'`, a process scheduled to run on a CPU (e.g., CPU 0) ensures that the related data is consistently present in local memory (related to CPU 0 itself) when needed. This optimizes memory access speed for the CPU when processing the application."
+
+.
+
+**Enabling NUMA Node affinity for Virtual Machines in VMWare ESXi**
+
+In this example, I have an ESXi host (Dell PowerEdge R610), which has 2 CPU sockets with 6 cores each.
+I have created 2 VMs with 1 vCPU and 6 cores each.
+
+To configure NUMA node affinity for each VM, follow these steps:
+1) Go to VM settings.
+2) Navigate to VM options > Advanced > Edit configuration.
+3) Add an option with the key name '`numa.nodeAffinity`' and set a value of either 0 or 1. This constrains the virtual machine resource scheduling to NUMA nodes 0 or 1."
+
+By configuring NUMA node affinity, you're ensuring that the applications in each VM can efficiently access the local memory associated with the dedicated NUMA nodes, optimizing their processing speed.

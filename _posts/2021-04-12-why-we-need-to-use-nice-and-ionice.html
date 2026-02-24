@@ -1,131 +1,62 @@
 ---
-categories: ['Linux', 'Administration']
 layout: post
-title: why do we need to use nice and ionice?
-date: 2021-04-12 03:35:36.000000000 -04:00
-type: post
-parent_id: '0'
-published: true
-password: ''
-status: publish
-- Linux
-tags:
-- ionice
-- linux
-- nice
-meta:
-  _aioseo_title: ''
-  _aioseo_description: ''
-  _aioseo_keywords: ''
-  _aioseo_og_title: ''
-  _aioseo_og_description: ''
-  _aioseo_og_article_section: ''
-  _aioseo_og_article_tags: ''
-  _aioseo_twitter_title: ''
-  _aioseo_twitter_description: ''
-  _edit_last: '1'
-  _kad_blog_head: default
-  _kad_post_summery: default
-  _kad_post_sidebar: 'yes'
-  _kad_sidebar_choice: sidebar-primary
-  _kad_blog_  _yoast_wpseo_estimated-reading-time-minutes: '5'
-  _wtpsw_views: '366'
-  rank_math_primary_category: '2'
-  rank_math_news_sitemap_robots: index
-  rank_math_robots: a:1:{i:0;s:5:"index";}
-  rank_math_og_content_image: a:2:{s:5:"check";s:32:"3fb3b94ca291273448aecca05cf5473a";s:6:"images";a:1:{i:0;i:207;}}
-  rank_math_internal_links_processed: '1'
-permalink: "/2021/04/12/why-we-need-to-use-nice-and-ionice/"
+title: "why do we need to use nice and ionice?"
+date: 2021-04-12
+categories: ['Linux', 'Administration']
 ---
-<p><!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN" "http://www.w3.org/TR/REC-html40/loose.dtd"><br />
-<!-- wp:heading {"level":4,"style":{"typography":{"fontSize":"25px"}}} --><html><body></p>
-<h4 style="font-size:25px"><strong><span style="text-decoration: underline;"><span style="color:#a31200" class="has-inline-color">Schedule the Linux process CPU priority with nice?</span></span></strong></h4>
-<p><!-- /wp:heading --></p>
-<p><!-- wp:paragraph {"fontSize":"medium"} --></p>
-<p class="has-medium-font-size">By default, every process is assigned the same CPU scheduling priority level. Consequently, the kernel strives to allocate a fair amount of CPU time to each process competing for CPU resources, considering the nature of each process.<br><br>For instance, when 10 processes are running at the same scheduling priority, their CPU time allocation depends on the individual CPU requirements of each process.<br><br>In simpler terms, a highly CPU-intensive process receives more CPU time, while a less CPU-intensive process receives less CPU time.</p>
-<p><!-- /wp:paragraph --></p>
-<p><!-- wp:paragraph {"fontSize":"medium"} --></p>
-<p class="has-medium-font-size"><br><mark style="background-color:rgba(0, 0, 0, 0)" class="has-inline-color has-black-color">Now let's think of 2 scenarios here, </mark></p>
-<p><!-- /wp:paragraph --></p>
-<p><!-- wp:paragraph {"style":{"typography":{"fontSize":"19px"}}} --></p>
-<p style="font-size:19px"><code>1) We aim to execute a critical and highly CPU-intensive process, desiring to grant this process the utmost CPU time possible.</code></p>
-<p><!-- /wp:paragraph --></p>
-<p><!-- wp:paragraph {"style":{"typography":{"fontSize":"19px"}}} --></p>
-<p style="font-size:19px"><code>2) Another crucial CPU-intensive process is essential, yet it can patiently await its turn for CPU time, allowing other processes requiring CPU resources to utilize them.</code></p>
-<p><!-- /wp:paragraph --></p>
-<p><!-- wp:paragraph {"fontSize":"medium"} --></p>
-<p class="has-medium-font-size"><br>In both scenarios, we utilize "<strong>nice</strong>" to manage the CPU scheduling priority.</p>
-<p><!-- /wp:paragraph --></p>
-<p><!-- wp:paragraph {"fontSize":"medium"} --></p>
-<p class="has-medium-font-size">The nice value can range from <strong>-20 (highest priority)</strong> to <strong>+19 (lowest priority)</strong>. The default nice value for all processes typically inherited from their parent process is usually 0.</p>
-<p><!-- /wp:paragraph --></p>
-<p><!-- wp:paragraph {"fontSize":"medium"} --></p>
-<p class="has-medium-font-size">A higher positive nice value (+19) indicates the process has lower priority, utilizing CPU time only when there is no demand from other competing processes.</p>
-<p><!-- /wp:paragraph --></p>
-<p><!-- wp:paragraph {"fontSize":"medium"} --></p>
-<p class="has-medium-font-size">Conversely, a lower negative nice value (-20) signifies the process has higher priority, utilizing most of the CPU time, causing lower priority processes to wait for their turn.</p>
-<p><!-- /wp:paragraph --></p>
-<p><!-- wp:paragraph {"fontSize":"medium"} --></p>
-<p class="has-medium-font-size">In the screenshot below, process ID 25822 exhibits a nice value of +19, indicating it has the least CPU priority, receiving CPU time only in the absence of contention from other processes.</p>
-<p><!-- /wp:paragraph --></p>
-<p><!-- wp:paragraph {"fontSize":"medium"} --></p>
-<p class="has-medium-font-size">Additionally, process IDs like 3, 4, 6, and 9 hold a nice value of -20, portraying the highest CPU priority among them, consequently receiving most of the CPU time compared to others.</p>
-<p><!-- /wp:paragraph --></p>
-<p><!-- wp:paragraph {"fontSize":"medium"} --></p>
-<p class="has-medium-font-size"><mark style="background-color:rgba(0, 0, 0, 0)" class="has-inline-color has-black-color">Setting CPU priority for a command using <strong>nice</strong> as shown below:</mark></p>
-<p><!-- /wp:paragraph --></p>
-<p><!-- wp:paragraph {"fontSize":"medium"} --></p>
-<p class="has-medium-font-size"><code><strong><span style="color:#a33e00" class="has-inline-color">nice -n 19 top </span> --&gt; giving "top' command least CPU prioriy<br><span style="color:#a34b00" class="has-inline-color">nice -n -20 htop</span> --&gt; giving "htop" command highest CPU priority</strong></code></p>
-<p><!-- /wp:paragraph --></p>
-<p><!-- wp:image {"id":207,"sizeSlug":"large","linkDestination":"none"} --></p>
-<figure class="wp-block-image size-large"><img src="{{site.baseurl}}/assets/2021/04/image-20.png" alt="" class="wp-image-207"></figure>
-<p><!-- /wp:image --></p>
-<p><!-- wp:paragraph --></p>
-<p><!-- /wp:paragraph --></p>
-<p><!-- wp:spacer {"height":"77px"} --></p>
-<div style="height:77px" aria-hidden="true" class="wp-block-spacer"></div>
-<p><!-- /wp:spacer --></p>
-<p><!-- wp:heading {"level":4,"style":{"typography":{"fontSize":"25px"}}} --></p>
-<h4 style="font-size:25px"><span style="text-decoration: underline;"><span style="color:#a31200" class="has-inline-color">Schedule the Linux process IO priority with ionice?</span></span></h4>
-<p><!-- /wp:heading --></p>
-<p><!-- wp:paragraph {"fontSize":"medium"} --></p>
-<p class="has-medium-font-size"><strong>ionice</strong> sets or retrieves the I/O scheduling class and priority for a program. It is employed to specify the priority for I/O operations, thereby lessening the load on a disk by minimizing disk input/output operations.</p>
-<p><!-- /wp:paragraph --></p>
-<p><!-- wp:paragraph {"fontSize":"medium"} --></p>
-<p class="has-medium-font-size">A process can belong to one of three scheduling classes:</p>
-<p><!-- /wp:paragraph --></p>
-<p><!-- wp:paragraph {"fontSize":"medium"} --></p>
-<p class="has-medium-font-size"><strong>Idle</strong> – This falls under scheduling class 3, and this class does not accept any priority argument. A program operating with the "Idle" scheduling class will only receive disk time when no other program has requested disk I/O within a defined grace period. Idle I/O processes are expected to have zero impact on normal system activity. This scheduling class is currently permitted for an ordinary user (since kernel 2.6.25).</p>
-<p><!-- /wp:paragraph --></p>
-<p><!-- wp:paragraph {"fontSize":"medium"} --></p>
-<p class="has-medium-font-size"><strong>Best Effort</strong> – This is scheduling class 2, and it accommodates priorities ranging from 0 to 7, with lower numbers indicating higher priority. Programs operating at the same best-effort priority are served in a round-robin fashion. A process that has not requested an I/O priority formally uses "none" as a scheduling class, yet the I/O scheduler treats such processes as if they were in the best-effort class. Priority within the best-effort class dynamically derives from the CPU nice level of the process: io_priority = (cpu_nice + 20) / 5.</p>
-<p><!-- /wp:paragraph --></p>
-<p><!-- wp:paragraph {"fontSize":"medium"} --></p>
-<p class="has-medium-font-size"><strong>Real Time</strong> – This is scheduling class 1, with 8 priority levels that define the size of a time slice a given process will receive on each scheduling window. This scheduling class is not accessible for an ordinary (non-root) user. Processes in this class are granted primary access to the disk, regardless of other system activities. Thus, the RT class requires careful usage as it can starve other processes.</p>
-<p><!-- /wp:paragraph --></p>
-<p><!-- wp:paragraph {"fontSize":"medium"} --></p>
-<p class="has-medium-font-size"><mark style="background-color:rgba(0, 0, 0, 0)" class="has-inline-color has-black-color">Setting IO priority for a process using <strong>ionice</strong> as shown below,</mark></p>
-<p><!-- /wp:paragraph --></p>
-<p><!-- wp:image {"id":216,"sizeSlug":"large","linkDestination":"none"} --></p>
-<figure class="wp-block-image size-large"><img src="{{site.baseurl}}/assets/2021/04/image-21.png" alt="" class="wp-image-216"></figure>
-<p><!-- /wp:image --></p>
-<p><!-- wp:paragraph --></p>
-<p><!-- /wp:paragraph --></p>
-<p><!-- wp:spacer {"height":"77px"} --></p>
-<div style="height:77px" aria-hidden="true" class="wp-block-spacer"></div>
-<p><!-- /wp:spacer --></p>
-<p><!-- wp:paragraph --></p>
-<p><!-- /wp:paragraph --></p>
-<p><!-- wp:paragraph {"style":{"typography":{"fontSize":"25px"}}} --></p>
-<p style="font-size:25px"><span style="text-decoration: underline;"><mark style="background-color:rgba(0, 0, 0, 0);color:#a30400" class="has-inline-color"><strong>Using nice and ionice together for a command</strong></mark></span></p>
-<p><!-- /wp:paragraph --></p>
-<p><!-- wp:paragraph {"fontSize":"medium"} --></p>
-<p class="has-medium-font-size"><strong>I'll provide a brief example here:</strong> Let's consider a scenario where a production server has a 1TB disk allocated for the / partition, which is nearly full. The objective is to identify which directory is consuming the most space within this 1TB disk.</p>
-<p><!-- /wp:paragraph --></p>
-<p><!-- wp:paragraph {"fontSize":"medium"} --></p>
-<p class="has-medium-font-size">However, a concern arises if several CPU-intensive critical processes are already running within the production server. These processes are both CPU and disk I/O intensive. Consequently, we aim to execute commands (such as du or ncdu) to evaluate disk usage, but we prefer these commands not to consume CPU cycles or perform disk I/O activities when the CPU or disk is busy due to the critical processes.<br><br>To address this situation, we can employ "<strong>nice</strong>" and "<strong>ionice</strong>" in conjunction, as exemplified below:<br><strong><code> nice -n 19 ionice -c 3 ncdu -x  /</code></strong></p>
-<p><!-- /wp:paragraph --></p>
-<p><!-- wp:paragraph {"fontSize":"medium"} --></p>
-<p class="has-medium-font-size">The command provided is safe to execute on any production server without causing concerns regarding CPU or disk I/O issues. It won't impact CPU or disk I/O activities on the production server.</p>
-<p><!-- /wp:paragraph --><br />
-</body></html></p>
+
+#### **Schedule the Linux process CPU priority with nice?**
+
+By default, every process is assigned the same CPU scheduling priority level. Consequently, the kernel strives to allocate a fair amount of CPU time to each process competing for CPU resources, considering the nature of each process.
+
+For instance, when 10 processes are running at the same scheduling priority, their CPU time allocation depends on the individual CPU requirements of each process.
+
+In simpler terms, a highly CPU-intensive process receives more CPU time, while a less CPU-intensive process receives less CPU time.
+
+Now let's think of 2 scenarios here, 
+
+`1) We aim to execute a critical and highly CPU-intensive process, desiring to grant this process the utmost CPU time possible.`
+
+`2) Another crucial CPU-intensive process is essential, yet it can patiently await its turn for CPU time, allowing other processes requiring CPU resources to utilize them.`
+
+In both scenarios, we utilize "**nice**" to manage the CPU scheduling priority.
+
+The nice value can range from **-20 (highest priority)** to **+19 (lowest priority)**. The default nice value for all processes typically inherited from their parent process is usually 0.
+
+A higher positive nice value (+19) indicates the process has lower priority, utilizing CPU time only when there is no demand from other competing processes.
+
+Conversely, a lower negative nice value (-20) signifies the process has higher priority, utilizing most of the CPU time, causing lower priority processes to wait for their turn.
+
+In the screenshot below, process ID 25822 exhibits a nice value of +19, indicating it has the least CPU priority, receiving CPU time only in the absence of contention from other processes.
+
+Additionally, process IDs like 3, 4, 6, and 9 hold a nice value of -20, portraying the highest CPU priority among them, consequently receiving most of the CPU time compared to others.
+
+Setting CPU priority for a command using **nice** as shown below:
+
+`**nice -n 19 top  --> giving "top' command least CPU prioriy
+nice -n -20 htop --> giving "htop" command highest CPU priority**`
+
+#### Schedule the Linux process IO priority with ionice?
+
+**ionice** sets or retrieves the I/O scheduling class and priority for a program. It is employed to specify the priority for I/O operations, thereby lessening the load on a disk by minimizing disk input/output operations.
+
+A process can belong to one of three scheduling classes:
+
+**Idle** – This falls under scheduling class 3, and this class does not accept any priority argument. A program operating with the "Idle" scheduling class will only receive disk time when no other program has requested disk I/O within a defined grace period. Idle I/O processes are expected to have zero impact on normal system activity. This scheduling class is currently permitted for an ordinary user (since kernel 2.6.25).
+
+**Best Effort** – This is scheduling class 2, and it accommodates priorities ranging from 0 to 7, with lower numbers indicating higher priority. Programs operating at the same best-effort priority are served in a round-robin fashion. A process that has not requested an I/O priority formally uses "none" as a scheduling class, yet the I/O scheduler treats such processes as if they were in the best-effort class. Priority within the best-effort class dynamically derives from the CPU nice level of the process: io_priority = (cpu_nice + 20) / 5.
+
+**Real Time** – This is scheduling class 1, with 8 priority levels that define the size of a time slice a given process will receive on each scheduling window. This scheduling class is not accessible for an ordinary (non-root) user. Processes in this class are granted primary access to the disk, regardless of other system activities. Thus, the RT class requires careful usage as it can starve other processes.
+
+Setting IO priority for a process using **ionice** as shown below,
+
+**Using nice and ionice together for a command**
+
+**I'll provide a brief example here:** Let's consider a scenario where a production server has a 1TB disk allocated for the / partition, which is nearly full. The objective is to identify which directory is consuming the most space within this 1TB disk.
+
+However, a concern arises if several CPU-intensive critical processes are already running within the production server. These processes are both CPU and disk I/O intensive. Consequently, we aim to execute commands (such as du or ncdu) to evaluate disk usage, but we prefer these commands not to consume CPU cycles or perform disk I/O activities when the CPU or disk is busy due to the critical processes.
+
+To address this situation, we can employ "**nice**" and "**ionice**" in conjunction, as exemplified below:
+**` nice -n 19 ionice -c 3 ncdu -x  /`**
+
+The command provided is safe to execute on any production server without causing concerns regarding CPU or disk I/O issues. It won't impact CPU or disk I/O activities on the production server.

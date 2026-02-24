@@ -1,146 +1,81 @@
 ---
-categories: ['Sysadmin', 'Backup']
 layout: post
-title: Parted Magic (Pmagic) magical way to backup and restore data in a hard drive?
-date: 2021-11-21 03:26:14.000000000 -05:00
-type: post
-parent_id: '0'
-published: true
-password: ''
-status: publish
-- Sysadmin
-tags: []
-meta:
-  _edit_last: '1'
-  ocean_gallery_link_images: 'off'
-  ocean_sidebar: '0'
-  ocean_second_sidebar: '0'
-  ocean_disable_margins: enable
-  ocean_display_top_bar: default
-  ocean_display_header: default
-  ocean_center_header_left_menu: '0'
-  ocean_custom_header_template: '0'
-  ocean_header_custom_menu: '0'
-  ocean_menu_typo_font_family: '0'
-  ocean_disable_title: default
-  ocean_disable_heading: default
-  ocean_disable_breadcrumbs: default
-  ocean_display_footer_widgets: default
-  ocean_display_footer_bottom: default
-  ocean_custom_footer_template: '0'
-  ocean_link_format_target: self
-  ocean_quote_format_link: post
-  _yoast_wpseo_estimated-reading-time-minutes: '5'
-  _aioseo_title: ''
-  _aioseo_description: ''
-  _aioseo_keywords: ''
-  _aioseo_og_title: ''
-  _aioseo_og_description: ''
-  _aioseo_og_article_section: ''
-  _aioseo_og_article_tags: ''
-  _aioseo_twitter_title: ''
-  _aioseo_twitter_description: ''
-  _yoast_wpseo_primary_category: '34'
-  _yoast_wpseo_content_score: '60'
-  _thumbnail_id: '1094'
-  _wtpsw_views: '106'
-  rank_math_primary_category: '34'
-  rank_math_news_sitemap_robots: index
-  rank_math_robots: a:1:{i:0;s:5:"index";}
-  rank_math_og_content_image: a:2:{s:5:"check";s:32:"0c51a215e00114867e4f93747c613f50";s:6:"images";a:3:{i:0;i:1088;i:1;i:1089;i:2;i:1090;}}
-  rank_math_internal_links_processed: '1'
-  rank_math_seo_score: '72'
-  rank_math_focus_keyword: parted magic
-  _yoast_wpseo_wordproof_timestamp: ''
-permalink: "/2021/11/21/parted-magic-pmagic-magical-way-to-backup-and-restore-data-in-a-hard-drive/"
+title: "Parted Magic (Pmagic) magical way to backup and restore data in a hard drive?"
+date: 2021-11-21
+categories: ['Sysadmin', 'Backup']
 ---
-<p><!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN" "http://www.w3.org/TR/REC-html40/loose.dtd"><br />
-<!-- wp:paragraph {"fontSize":"medium"} --><html><body></p>
-<p class="has-medium-font-size"><a data-type="URL" data-id="https://partedmagic.com/" href="https://partedmagic.com/">Parted Magic</a> is a software that allows one to take a complete backup of a hard drive and restore the backup to the hard drive when needed. It can also be used to do some low-level formatting of the hard disk.</p>
-<p><!-- /wp:paragraph --></p>
-<p><!-- wp:heading {"style":{"typography":{"fontSize":27}}} --></p>
-<h2 style="font-size:27px"><strong><span style="text-decoration: underline" class="underline"><span style="color:#ff6900" class="tadv-color">Backup disk using Parted Magic to an NFS server:</span></span></strong></h2>
-<p><!-- /wp:heading --></p>
-<p><!-- wp:paragraph {"fontSize":"medium"} --></p>
-<p class="has-medium-font-size">1) Boot the system using Pmagic bootable USB.<br><br>2) Next click on the “Disk Cloning” icon present on the desktop.<br><img width="223" height="207" src="{{site.baseurl}}/assets/2021/11/zYmcWpMT0VgG2SFjM6d6jPK71sMhGJZWID8XiX6qsC2nZhcv4IaktARdGse7EXiyx_l_gtA3OESfzMmZzpGRkBAJ4e3C8hqRbGMkcZVA5JFEObgBEh4s918VCAnz3xqu-HIzCx4"><br><br>3) Next click on “device-image”.<br><img style="width: 500px;" src="{{site.baseurl}}/assets/2021/11/BZR4QrL0wKmSwEEyN7TCeshdH0sH3LTwFvTm9uOVnwN-vGbcghvWzm2lRy4rp9MjzXcJH8LXrC5f6AcsJoLlBT_SvS82SRIGvHvOiaR1UsJ2QDGm4MgUt1fsZageQNiAZrUqT9g"><br><br>4) Next click on nfs_server.<br><img style="width: 500px;" src="{{site.baseurl}}/assets/2021/11/AZtTD04XfGYhrf8DSNuhLfO24dOpEE_zDvKrpsCgKl1CMI1PudhtrPBbxK1VwHmsfl-uem2FLTNpnPkOMYjLEHS5cPMkfaUjCx1Q_uN5KplP6JmjMLh3S_SWzxiVFIZkaHtF1NA"><br><br>5) Next choose the NFS server version.<br><br>6) Next provide the IP address / DNS name for the backup server.</p>
-<p><!-- /wp:paragraph --></p>
-<p><!-- wp:image {"id":1088,"sizeSlug":"large","linkDestination":"none"} --></p>
-<figure class="wp-block-image size-large"><img src="{{site.baseurl}}/assets/2021/11/image-4.png" alt="" class="wp-image-1088"></figure>
-<p><!-- /wp:image --></p>
-<p><!-- wp:paragraph {"fontSize":"medium"} --></p>
-<p class="has-medium-font-size"><br>7) Next provide the location (Ex: <strong>/home/usersbackup</strong>), where the backup image will be stored inside the NFS server.<br><br>8) Next choose the default option(Beginner).<br><br>9) Next select the “savedisk” option to save the backup as an image.<img style="width: 800px;" src="{{site.baseurl}}/assets/2021/11/oWl3OQogt9swuMkXW0XERKEkbSoWzB03bxDK2a7bHYh9X2Tl2sHKcBt4ZH2spwFxGBXRmPYnEWPS0TC91nOJyGb3SrXE8utStpOdjs-l7Ig_WP7LwqkvzJWIPS4cv1RT_LeDgvI"></p>
-<p><!-- /wp:paragraph --></p>
-<p><!-- wp:paragraph {"fontSize":"medium"} --></p>
-<p class="has-medium-font-size"><br>10) Next provide a name for the backup image.<br><br>11) Next choose which disk has to be backed up.<img width="516" height="181" src="{{site.baseurl}}/assets/2021/11/SRgo9fHiK2We2hSUsfudsIAIUxbcX4fridVn5pMd0oXZiXF3CrKqGmRptaPA69Z7D37EXd-vv-T7gNKsRc9FdlJuUZw5rRGWl6MsyL_gOMVrJUSIgU1MWF_WJexZv36r0RmvXf0"></p>
-<p><!-- /wp:paragraph --></p>
-<p><!-- wp:paragraph {"fontSize":"medium"} --></p>
-<p class="has-medium-font-size"><br>12) Next choose a few default options.</p>
-<p><!-- /wp:paragraph --></p>
-<p><!-- wp:kadence/iconlist {"items":[{"icon":"fe_checkCircle","link":"","target":"_self","size":20,"width":2,"text":"-sfsck","color":"","background":"","border":"","borderRadius":0,"padding":5,"borderWidth":1,"style":"default"},{"icon":"fe_checkCircle","link":"","target":"_self","size":20,"width":2,"color":"","background":"","border":"","borderRadius":0,"borderWidth":1,"padding":5,"style":"default","text":"yes, check the saved image"},{"icon":"fe_checkCircle","link":"","target":"_self","size":20,"width":2,"color":"","background":"","border":"","borderRadius":0,"borderWidth":1,"padding":5,"style":"default","text":"-senc Not to encrypt the image"}],"listStyles":[{"size":[21,"",""],"sizeType":"px","lineHeight":["","",""],"lineType":"px","letterSpacing":"","family":"","google":false,"style":"","weight":"","variant":"","subset":"","loadGoogle":true,"color":"#cf2e2e","textTransform":""}],"listCount":3,"uniqueID":"_21a737-7a"} --></p>
-<div class="wp-block-kadence-iconlist kt-svg-icon-list-items kt-svg-icon-list-items_21a737-7a kt-svg-icon-list-columns-1 alignnone">
-<ul class="kt-svg-icon-list">
-<li class="kt-svg-icon-list-style-default kt-svg-icon-list-item-wrap kt-svg-icon-list-item-0">
-<div style="display:inline-flex;justify-content:center;align-items:center" class="kt-svg-icon-list-single kt-svg-icon-list-single-fe_checkCircle"><svg style="display:inline-block;vertical-align:middle" viewbox="0 0 24 24" height="20" width="20" fill="none" stroke="currentColor" xmlns="http://www.w3.org/2000/svg" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-<path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"></path>
-<polyline points="22 4 12 14.01 9 11.01"></polyline></svg></div>
-<p><span class="kt-svg-icon-list-text">-sfsck</span>
-</li>
-<li class="kt-svg-icon-list-style-default kt-svg-icon-list-item-wrap kt-svg-icon-list-item-1">
-<div style="display:inline-flex;justify-content:center;align-items:center" class="kt-svg-icon-list-single kt-svg-icon-list-single-fe_checkCircle"><svg style="display:inline-block;vertical-align:middle" viewbox="0 0 24 24" height="20" width="20" fill="none" stroke="currentColor" xmlns="http://www.w3.org/2000/svg" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-<path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"></path>
-<polyline points="22 4 12 14.01 9 11.01"></polyline></svg></div>
-<p><span class="kt-svg-icon-list-text">yes, check the saved image</span>
-</li>
-<li class="kt-svg-icon-list-style-default kt-svg-icon-list-item-wrap kt-svg-icon-list-item-2">
-<div style="display:inline-flex;justify-content:center;align-items:center" class="kt-svg-icon-list-single kt-svg-icon-list-single-fe_checkCircle"><svg style="display:inline-block;vertical-align:middle" viewbox="0 0 24 24" height="20" width="20" fill="none" stroke="currentColor" xmlns="http://www.w3.org/2000/svg" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-<path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"></path>
-<polyline points="22 4 12 14.01 9 11.01"></polyline></svg></div>
-<p><span class="kt-svg-icon-list-text">-senc Not to encrypt the image</span>
-</li>
-</ul>
-</div>
-<p><!-- /wp:kadence/iconlist --></p>
-<p><!-- wp:paragraph --></p>
-<p>                                       .</p>
-<p><!-- /wp:paragraph --></p>
-<p><!-- wp:paragraph {"fontSize":"medium"} --></p>
-<p class="has-medium-font-size">13)  Next choose the action to perform after the backup is completed.<img width="536" height="161" src="{{site.baseurl}}/assets/2021/11/ko2FgQa49KP69I2U-P2Hc8urZNcGDrWujTZYbwASetvvXq4WPAp2wtdCXRWoWjqfThpJlNOLL5Xr-XuXFY9vcJYoGN9imLBv2kNOMaDrbn1qgYwI4BSyVoAIv32SB-7NUJQ56eA"></p>
-<p><!-- /wp:paragraph --></p>
-<p><!-- wp:paragraph --></p>
-<p><!-- /wp:paragraph --></p>
-<p><!-- wp:paragraph --></p>
-<p><!-- /wp:paragraph --></p>
-<p><!-- wp:paragraph --></p>
-<p>                                                                                                                                              .</p>
-<p><!-- /wp:paragraph --></p>
-<p><!-- wp:paragraph {"style":{"typography":{"fontSize":28}}} --></p>
-<p style="font-size:28px"><strong><span style="text-decoration: underline" class="underline"><span style="color:#ff6900" class="tadv-color">Restore the backup image in the NFS server to the Disk:</span></span></strong></p>
-<p><!-- /wp:paragraph --></p>
-<p><!-- wp:paragraph {"fontSize":"medium"} --></p>
-<p class="has-medium-font-size">1) Boot the system using Pmagic bootable USB.<br><br>2) Next click on the “disk cloning” icon present on the desktop.<br><br>3) Next click on “device-image”.<br><br>4) Next click on nfs_server.<br><br>5) Next choose the NFS server version.<br><img width="511" height="155" src="{{site.baseurl}}/assets/2021/11/UwT5fc6Cg73tVEVcsR3vPYOPNmn1XYXyl6GX8pF9B-dK6b7izkIf-ew8sqMdpdBdJeHTk7DRfj3Y_nhzy_v-ju9GKLnb31X-C76Jv_ITe_KAHvPJjLmfISofVk54b9I_7qcXMAY"><br><br><br>6) Next provide the IP address / DNS name for the NFS server.<br><br>7) Next provide the directory path where the backup image is stored.</p>
-<p><!-- /wp:paragraph --></p>
-<p><!-- wp:image {"id":1089,"sizeSlug":"large","linkDestination":"none"} --></p>
-<figure class="wp-block-image size-large"><img src="{{site.baseurl}}/assets/2021/11/image-5.png" alt="" class="wp-image-1089"></figure>
-<p><!-- /wp:image --></p>
-<p><!-- wp:paragraph {"fontSize":"medium"} --></p>
-<p class="has-medium-font-size"><br>8) Next choose the default option (Beginner).<br><br>9) Now select “restoredisk” &amp; click “ok”.<br><img width="519" height="352" src="{{site.baseurl}}/assets/2021/11/gJIQf_8R4CSb3wTe1ofRDTdNoPzm-cvGOMw7qsjX1CnZW8lVoPJ48j6-OXwfmV7HhrQE0GJvuBKXI9ZQPYLVGYLyFAsB6tc1ecUocow2_6b9BR_Od8uLpBeOSRNu0NDObto-UF8"></p>
-<p><!-- /wp:paragraph --></p>
-<p><!-- wp:paragraph {"fontSize":"medium"} --></p>
-<p class="has-medium-font-size"><br>10) Select the image file to restore.</p>
-<p><!-- /wp:paragraph --></p>
-<p><!-- wp:image {"id":1090,"sizeSlug":"large","linkDestination":"none"} --></p>
-<figure class="wp-block-image size-large"><img src="{{site.baseurl}}/assets/2021/11/image-6.png" alt="" class="wp-image-1090"></figure>
-<p><!-- /wp:image --></p>
-<p><!-- wp:paragraph {"fontSize":"medium"} --></p>
-<p class="has-medium-font-size"><br>11) Now select the Target disk to which the image has to be restored. <img src="{{site.baseurl}}/assets/2021/11/zkkol8SQRZmTFAPcdL0rJHRVrB6sBB-45bHcwRjKpv8UmiS2uRPuAd3scvweuBsCCJV4QjF5NhLhAAy16kOtmB3gMTJoQnxEipFdp5EZe4lsdtmZzZHR5o7E-TPPowmiJA3rMTo" style="width: 800px;"></p>
-<p><!-- /wp:paragraph --></p>
-<p><!-- wp:paragraph {"fontSize":"medium"} --></p>
-<p class="has-medium-font-size"><br><br>12) Verify the image before restoring.<br><img width="531" height="124" src="{{site.baseurl}}/assets/2021/11/ClCnak3wGzA5tyl1ICg50dEBppTkXr4yIdObtre-3fpFdJL28HBDrshP_u3LbnJusqWhpVIZygGN08pvetXOkZcMwLUgwUU28zlBVgaX-bCtivC3yNAymwgjAZV2EN9bkfHZ358"></p>
-<p><!-- /wp:paragraph --></p>
-<p><!-- wp:paragraph {"fontSize":"medium"} --></p>
-<p class="has-medium-font-size"><br><br>13) Choose what to do after the restore is completed.<br><strong><img width="535" height="193" src="{{site.baseurl}}/assets/2021/11/DP5eoc6aMC4TfYRQMiCCwjuenyGOcjEryPJ9rxWm_mFB-GIwgBbzn3fm5eIeyyZY9qIKnDMXmKjBW9vBeZSpfdve5yOUgwSUolozD7CqhoqDgBKIAkkyke6qRhWLxsLYc0GZ1z4"></strong></p>
-<p><!-- /wp:paragraph --></p>
-<p><!-- wp:paragraph --></p>
-<p><br></p>
-<p><!-- /wp:paragraph --><br />
-</body></html></p>
+
+[Parted Magic is a software that allows one to take a complete backup of a hard drive and restore the backup to the hard drive when needed. It can also be used to do some low-level formatting of the hard disk.
+
+## **Backup disk using Parted Magic to an NFS server:**
+
+1) Boot the system using Pmagic bootable USB.
+
+2) Next click on the “Disk Cloning” icon present on the desktop.
+
+3) Next click on “device-image”.
+
+4) Next click on nfs_server.
+
+5) Next choose the NFS server version.
+
+6) Next provide the IP address / DNS name for the backup server.
+
+7) Next provide the location (Ex: **/home/usersbackup**), where the backup image will be stored inside the NFS server.
+
+8) Next choose the default option(Beginner).
+
+9) Next select the “savedisk” option to save the backup as an image.
+
+10) Next provide a name for the backup image.
+
+11) Next choose which disk has to be backed up.
+
+12) Next choose a few default options.
+
+- 
+
+-sfsck
+
+- 
+
+yes, check the saved image
+
+- 
+
+-senc Not to encrypt the image
+
+                                       .
+
+13)  Next choose the action to perform after the backup is completed.
+
+                                                                                                                                              .
+
+**Restore the backup image in the NFS server to the Disk:**
+
+1) Boot the system using Pmagic bootable USB.
+
+2) Next click on the “disk cloning” icon present on the desktop.
+
+3) Next click on “device-image”.
+
+4) Next click on nfs_server.
+
+5) Next choose the NFS server version.
+
+6) Next provide the IP address / DNS name for the NFS server.
+
+7) Next provide the directory path where the backup image is stored.
+
+8) Next choose the default option (Beginner).
+
+9) Now select “restoredisk” & click “ok”.
+
+10) Select the image file to restore.
+
+11) Now select the Target disk to which the image has to be restored. 
+
+12) Verify the image before restoring.
+
+13) Choose what to do after the restore is completed.
+****

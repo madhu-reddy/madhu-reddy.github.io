@@ -1,171 +1,81 @@
 ---
-categories: ['Python', 'General']
 layout: post
-title: About Encoding in Python and handling Unicode characters in Python2.x?
-date: 2021-12-08 02:21:35.000000000 -05:00
-type: post
-parent_id: '0'
-published: true
-password: ''
-status: publish
-- Python
-tags: []
-meta:
-  _aioseo_title: "#post_title"
-  _aioseo_description: "#In Python2.x, by default, the encoding method used is ASCII
-    and in Python3.x the default encoding method is UTF-8. #site_title"
-  _aioseo_keywords: ''
-  _aioseo_og_title: ''
-  _aioseo_og_description: ''
-  _aioseo_og_article_section: ''
-  _aioseo_og_article_tags: ''
-  _aioseo_twitter_title: ''
-  _aioseo_twitter_description: ''
-  _edit_last: '1'
-  ocean_gallery_link_images: 'off'
-  ocean_sidebar: '0'
-  ocean_second_sidebar: '0'
-  ocean_disable_margins: enable
-  ocean_display_top_bar: default
-  ocean_display_header: default
-  ocean_center_header_left_menu: '0'
-  ocean_custom_header_template: '0'
-  ocean_header_custom_menu: '0'
-  ocean_menu_typo_font_family: '0'
-  ocean_disable_title: default
-  ocean_disable_heading: default
-  ocean_disable_breadcrumbs: default
-  ocean_display_footer_widgets: default
-  ocean_display_footer_bottom: default
-  ocean_custom_footer_template: '0'
-  ocean_link_format_target: self
-  ocean_quote_format_link: post
-  _yoast_wpseo_content_score: '60'
-  _yoast_wpseo_estimated-reading-time-minutes: '2'
-  _yoast_wpseo_primary_category: '39'
-  _thumbnail_id: '1254'
-  _wtpsw_views: '61'
-  rank_math_primary_category: '39'
-  rank_math_news_sitemap_robots: index
-  rank_math_robots: a:1:{i:0;s:5:"index";}
-  rank_math_internal_links_processed: '1'
-  rank_math_seo_score: '65'
-  rank_math_focus_keyword: encoding,unicode,python
-  _yoast_wpseo_wordproof_timestamp: ''
-permalink: "/2021/12/08/about-encoding-in-python-and-handling-unicode-characters-in-python2-x/"
+title: "About Encoding in Python and handling Unicode characters in Python2.x?"
+date: 2021-12-08
+categories: ['Python', 'General']
 ---
-<p><!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN" "http://www.w3.org/TR/REC-html40/loose.dtd"><br />
-<!-- wp:paragraph --><html><body></p>
-<p><!-- /wp:paragraph --></p>
-<p><!-- wp:paragraph {"fontSize":"medium"} --></p>
-<p class="has-medium-font-size">In Python 2.x, the default encoding method is ASCII, while in Python 3.x, the default encoding method is UTF-8.</p>
-<p><!-- /wp:paragraph --></p>
-<p><!-- wp:paragraph {"fontSize":"medium"} --></p>
-<p class="has-medium-font-size">In Python 2.x, strings are treated as ASCII by default, while in Python 3.x, strings are treated as Unicode by default.</p>
-<p><!-- /wp:paragraph --></p>
-<p><!-- wp:paragraph {"style":{"typography":{"fontSize":"29px"}}} --></p>
-<p style="font-size:29px"><br><br><strong><mark style="background-color:rgba(0, 0, 0, 0)" class="has-inline-color has-luminous-vivid-orange-color"><span style="text-decoration: underline" class="underline">What is an encoding method?</span></mark></strong></p>
-<p><!-- /wp:paragraph --></p>
-<p><!-- wp:paragraph --></p>
-<p><!-- /wp:paragraph --></p>
-<p><!-- wp:paragraph {"fontSize":"medium"} --></p>
-<p class="has-medium-font-size">Encoding is the process of converting data into a format that a computer can understand. This format is typically binary, as computers store and process information in binary form. Different encoding methods exist, each with its own way of representing characters and symbols.<br><br>Each character is assigned a number, called a code point.<br>Code points are mapped to binary. Each code point is represented as a sequence of bits, which corresponds to a specific binary number. This binary representation allows computers to store and process characters in a standardized way.<br><br>There are different ways to map code points to binary. The most common encoding schemes are ASCII, UTF-8, UTF-16, and UTF-32. Each scheme uses a different number of bits to represent each code point.</p>
-<p><!-- /wp:paragraph --></p>
-<p><!-- wp:kadence/iconlist {"items":[{"icon":"fe_checkCircle","link":"","target":"_self","size":20,"width":2,"color":"","background":"","border":"","borderRadius":0,"borderWidth":1,"padding":5,"style":"default","text":"Ascii character set has 127 characters and thus has 128 code points, which are not enough for all human languages."},{"icon":"fe_checkCircle","link":"","target":"_self","size":20,"width":2,"color":"","background":"","border":"","borderRadius":0,"borderWidth":1,"padding":5,"style":"default","text":"The Unicode character set is huge and has about 1,114,112 possible code points."},{"icon":"fe_checkCircle","link":"","target":"_self","size":20,"width":2,"color":"","background":"","border":"","borderRadius":0,"borderWidth":1,"padding":5,"style":"default","text":"The first 128 code points of Unicode are ASCII \u002d\u002d backward compatible."}],"listStyles":[{"size":[19,"",""],"sizeType":"px","lineHeight":["","",""],"lineType":"px","letterSpacing":"","family":"","google":false,"style":"","weight":"","variant":"","subset":"","loadGoogle":true,"color":"#ff6900","textTransform":""}],"listCount":3,"uniqueID":"_e01a10-1d"} --></p>
-<div class="wp-block-kadence-iconlist kt-svg-icon-list-items kt-svg-icon-list-items_e01a10-1d kt-svg-icon-list-columns-1 alignnone">
-<ul class="kt-svg-icon-list">
-<li class="kt-svg-icon-list-style-default kt-svg-icon-list-item-wrap kt-svg-icon-list-item-0">
-<div style="display:inline-flex;justify-content:center;align-items:center" class="kt-svg-icon-list-single kt-svg-icon-list-single-fe_checkCircle"><svg style="display:inline-block;vertical-align:middle" viewbox="0 0 24 24" height="20" width="20" fill="none" stroke="currentColor" xmlns="http://www.w3.org/2000/svg" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-<path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"></path>
-<polyline points="22 4 12 14.01 9 11.01"></polyline></svg></div>
-<p><span class="kt-svg-icon-list-text">Ascii character set has 127 characters and thus has 128 code points, which are not enough for all human languages.</span>
-</li>
-<li class="kt-svg-icon-list-style-default kt-svg-icon-list-item-wrap kt-svg-icon-list-item-1">
-<div style="display:inline-flex;justify-content:center;align-items:center" class="kt-svg-icon-list-single kt-svg-icon-list-single-fe_checkCircle"><svg style="display:inline-block;vertical-align:middle" viewbox="0 0 24 24" height="20" width="20" fill="none" stroke="currentColor" xmlns="http://www.w3.org/2000/svg" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-<path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"></path>
-<polyline points="22 4 12 14.01 9 11.01"></polyline></svg></div>
-<p><span class="kt-svg-icon-list-text">The Unicode character set is huge and has about 1,114,112 possible code points.</span>
-</li>
-<li class="kt-svg-icon-list-style-default kt-svg-icon-list-item-wrap kt-svg-icon-list-item-2">
-<div style="display:inline-flex;justify-content:center;align-items:center" class="kt-svg-icon-list-single kt-svg-icon-list-single-fe_checkCircle"><svg style="display:inline-block;vertical-align:middle" viewbox="0 0 24 24" height="20" width="20" fill="none" stroke="currentColor" xmlns="http://www.w3.org/2000/svg" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-<path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"></path>
-<polyline points="22 4 12 14.01 9 11.01"></polyline></svg></div>
-<p><span class="kt-svg-icon-list-text">The first 128 code points of Unicode are ASCII -- backward compatible.</span>
-</li>
-</ul>
-</div>
-<p><!-- /wp:kadence/iconlist --></p>
-<p><!-- wp:paragraph {"fontSize":"medium"} --></p>
-<p class="has-medium-font-size"><br><br>ASCII and UTF-8 are 2 popular encoding methods used in Python.</p>
-<p><!-- /wp:paragraph --></p>
-<p><!-- wp:kadence/iconlist {"items":[{"icon":"fe_checkCircle","link":"","target":"_self","size":20,"width":2,"text":"UTF-8 encoding follows the Unicode character set.","color":"","background":"","border":"","borderRadius":0,"padding":5,"borderWidth":1,"style":"default"},{"icon":"fe_checkCircle","link":"","target":"_self","size":20,"width":2,"color":"","background":"","border":"","borderRadius":0,"borderWidth":1,"padding":5,"style":"default","text":"ASCII encoding follows the ASCII character set."}],"listStyles":[{"size":[20,"",""],"sizeType":"px","lineHeight":["","",""],"lineType":"px","letterSpacing":"","family":"","google":false,"style":"","weight":"","variant":"","subset":"","loadGoogle":true,"color":"#ff6900","textTransform":""}],"listCount":2,"uniqueID":"_dccdc8-43"} --></p>
-<div class="wp-block-kadence-iconlist kt-svg-icon-list-items kt-svg-icon-list-items_dccdc8-43 kt-svg-icon-list-columns-1 alignnone">
-<ul class="kt-svg-icon-list">
-<li class="kt-svg-icon-list-style-default kt-svg-icon-list-item-wrap kt-svg-icon-list-item-0">
-<div style="display:inline-flex;justify-content:center;align-items:center" class="kt-svg-icon-list-single kt-svg-icon-list-single-fe_checkCircle"><svg style="display:inline-block;vertical-align:middle" viewbox="0 0 24 24" height="20" width="20" fill="none" stroke="currentColor" xmlns="http://www.w3.org/2000/svg" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-<path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"></path>
-<polyline points="22 4 12 14.01 9 11.01"></polyline></svg></div>
-<p><span class="kt-svg-icon-list-text">UTF-8 encoding follows the Unicode character set.</span>
-</li>
-<li class="kt-svg-icon-list-style-default kt-svg-icon-list-item-wrap kt-svg-icon-list-item-1">
-<div style="display:inline-flex;justify-content:center;align-items:center" class="kt-svg-icon-list-single kt-svg-icon-list-single-fe_checkCircle"><svg style="display:inline-block;vertical-align:middle" viewbox="0 0 24 24" height="20" width="20" fill="none" stroke="currentColor" xmlns="http://www.w3.org/2000/svg" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-<path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"></path>
-<polyline points="22 4 12 14.01 9 11.01"></polyline></svg></div>
-<p><span class="kt-svg-icon-list-text">ASCII encoding follows the ASCII character set.</span>
-</li>
-</ul>
-</div>
-<p><!-- /wp:kadence/iconlist --></p>
-<p><!-- wp:paragraph {"fontSize":"medium"} --></p>
-<p class="has-medium-font-size"><br>In <strong>ASCII</strong> and <strong>UTF-8</strong>, every code point from 0 to 127 is stored in a single byte.<br>In <strong>UTF-8</strong>, code points above 128 are stored using 2, 3, up to 6 bytes.</p>
-<p><!-- /wp:paragraph --></p>
-<p><!-- wp:paragraph {"fontSize":"medium"} --></p>
-<p class="has-medium-font-size"><br><br></p>
-<p><!-- /wp:paragraph --></p>
-<p><!-- wp:heading {"style":{"typography":{"fontSize":26}},"textColor":"luminous-vivid-orange"} --></p>
-<h2 class="has-luminous-vivid-orange-color has-text-color" style="font-size:26px"><span style="text-decoration: underline" class="underline">Encoding and d<strong><span style="color:#ff6900" class="tadv-color">ealing with Unicode characters in Python2.x</span></strong></span></h2>
-<p><!-- /wp:heading --></p>
-<p><!-- wp:paragraph {"fontSize":"medium"} --></p>
-<p class="has-medium-font-size">Since Python 2.x uses ASCII as the default encoding method, attempting to process a string containing non-ASCII characters (e.g., Unicode characters not part of the ASCII character set) will result in errors.</p>
-<p><!-- /wp:paragraph --></p>
-<p><!-- wp:code --></p>
-<pre class="wp-block-code"><code>SyntaxError: Non-ASCII character '\xef' in file pyss1.py on line 2, but no encoding declared; see http://www.python.org/peps/pep-0263.html for details</code></pre>
-<p><!-- /wp:code --></p>
-<p><!-- wp:paragraph --></p>
-<p><!-- /wp:paragraph --></p>
-<p><!-- wp:paragraph {"fontSize":"medium"} --></p>
-<p class="has-medium-font-size">To handle Unicode characters in Python 2.x, you need to explicitly specify the encoding method using a special comment at the beginning of the program file as shown below,</p>
-<p><!-- /wp:paragraph --></p>
-<p><!-- wp:code --></p>
-<pre class="wp-block-code"><code># -*- coding: utf-8 -*-</code></pre>
-<p><!-- /wp:code --></p>
-<p><!-- wp:paragraph {"fontSize":"medium"} --></p>
-<p class="has-medium-font-size"><br>This comment informs the interpreter to use UTF-8 (or UTF-16 or UTF-32) for encoding Unicode characters. Additionally, Unicode strings in Python 2.x must be prefixed with the letter "u" (e.g., u"s3rr2�"). This tells the interpreter to treat the string as a Unicode type variable.</p>
-<p><!-- /wp:paragraph --></p>
-<p><!-- wp:paragraph {"style":{"typography":{"fontSize":26}}} --></p>
-<p style="font-size:26px"><br><span style="text-decoration: underline" class="underline"><strong><span style="color:#ff6900" class="tadv-color">Example:</span></strong></span></p>
-<p><!-- /wp:paragraph --></p>
-<p><!-- wp:code --></p>
-<pre class="wp-block-code"><code>#-*- coding: utf-8 -*- 
+
+In Python 2.x, the default encoding method is ASCII, while in Python 3.x, the default encoding method is UTF-8.
+
+In Python 2.x, strings are treated as ASCII by default, while in Python 3.x, strings are treated as Unicode by default.
+
+**What is an encoding method?**
+
+Encoding is the process of converting data into a format that a computer can understand. This format is typically binary, as computers store and process information in binary form. Different encoding methods exist, each with its own way of representing characters and symbols.
+
+Each character is assigned a number, called a code point.
+Code points are mapped to binary. Each code point is represented as a sequence of bits, which corresponds to a specific binary number. This binary representation allows computers to store and process characters in a standardized way.
+
+There are different ways to map code points to binary. The most common encoding schemes are ASCII, UTF-8, UTF-16, and UTF-32. Each scheme uses a different number of bits to represent each code point.
+
+- 
+
+Ascii character set has 127 characters and thus has 128 code points, which are not enough for all human languages.
+
+- 
+
+The Unicode character set is huge and has about 1,114,112 possible code points.
+
+- 
+
+The first 128 code points of Unicode are ASCII -- backward compatible.
+
+ASCII and UTF-8 are 2 popular encoding methods used in Python.
+
+- 
+
+UTF-8 encoding follows the Unicode character set.
+
+- 
+
+ASCII encoding follows the ASCII character set.
+
+In **ASCII** and **UTF-8**, every code point from 0 to 127 is stored in a single byte.
+In **UTF-8**, code points above 128 are stored using 2, 3, up to 6 bytes.
+
+## Encoding and d**ealing with Unicode characters in Python2.x**
+
+Since Python 2.x uses ASCII as the default encoding method, attempting to process a string containing non-ASCII characters (e.g., Unicode characters not part of the ASCII character set) will result in errors.
+
+```
+`SyntaxError: Non-ASCII character '\xef' in file pyss1.py on line 2, but no encoding declared; see http://www.python.org/peps/pep-0263.html for details`
+```
+
+To handle Unicode characters in Python 2.x, you need to explicitly specify the encoding method using a special comment at the beginning of the program file as shown below,
+
+```
+`# -*- coding: utf-8 -*-`
+```
+
+This comment informs the interpreter to use UTF-8 (or UTF-16 or UTF-32) for encoding Unicode characters. Additionally, Unicode strings in Python 2.x must be prefixed with the letter "u" (e.g., u"s3rr2�"). This tells the interpreter to treat the string as a Unicode type variable.
+
+**Example:**
+
+```
+`#-*- coding: utf-8 -*- 
 s = u"s3rr2�"
 print(s)
 print(type(s))
-</code></pre>
-<p><!-- /wp:code --></p>
-<p><!-- wp:paragraph {"style":{"typography":{"fontSize":26}}} --></p>
-<p style="font-size:26px"><strong><span style="text-decoration: underline" class="underline"><span style="color:#ff6900" class="tadv-color">Output:</span></span></strong></p>
-<p><!-- /wp:paragraph --></p>
-<p><!-- wp:code --></p>
-<pre class="wp-block-code"><code>root@my-server:~# python python2.x-unicode-test.py  
+`
+```
+
+**Output:**
+
+```
+`root@my-server:~# python python2.x-unicode-test.py  
 s3rr2�
-&lt;type 'unicode'&gt;</code></pre>
-<p><!-- /wp:code --></p>
-<p><!-- wp:paragraph --></p>
-<p><!-- /wp:paragraph --></p>
-<p><!-- wp:spacer --></p>
-<div style="height:100px" aria-hidden="true" class="wp-block-spacer"></div>
-<p><!-- /wp:spacer --></p>
-<p><!-- wp:paragraph {"textColor":"luminous-vivid-orange","fontSize":"medium"} --></p>
-<p class="has-luminous-vivid-orange-color has-text-color has-medium-font-size"><strong><span style="text-decoration: underline" class="underline">NOTE:</span></strong><br>In case you want to learn about "UnicodeEncodeError" and "UnicodeDecodeError" related errors when dealing with Python and why they happen, click on this <a href="https://mylearningsguru.com/2021/12/08/unicodeencodeerror-ascii-codec-cant-encode-character-and-unicodedecodeerror-ascii-codec-cant-decode-byte-in-python/">blog post</a>.</p>
-<p><!-- /wp:paragraph --><br />
-</body></html></p>
+<type 'unicode'>`
+```
+
+**NOTE:**
+In case you want to learn about "UnicodeEncodeError" and "UnicodeDecodeError" related errors when dealing with Python and why they happen, click on this [blog post.

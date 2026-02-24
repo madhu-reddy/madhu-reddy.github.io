@@ -1,117 +1,67 @@
 ---
-categories: ['Networking', 'Troubleshooting']
 layout: post
-title: '"Destination Host Unreachable" when doing a ping request?'
-date: 2022-08-30 00:39:52.000000000 -04:00
-type: post
-parent_id: '0'
-published: true
-password: ''
-status: publish
-- Network
-- Sysadmin
-tags: []
-meta:
-  _edit_last: '1'
-  _aioseo_title: ''
-  _aioseo_description: ''
-  _aioseo_keywords: ''
-  _aioseo_og_title: ''
-  _aioseo_og_description: ''
-  _aioseo_og_article_section: ''
-  _aioseo_og_article_tags: ''
-  _aioseo_twitter_title: ''
-  _aioseo_twitter_description: ''
-  ocean_gallery_link_images: 'off'
-  ocean_sidebar: '0'
-  ocean_second_sidebar: '0'
-  ocean_disable_margins: enable
-  ocean_display_top_bar: default
-  ocean_display_header: default
-  ocean_center_header_left_menu: '0'
-  ocean_custom_header_template: '0'
-  ocean_header_custom_menu: '0'
-  ocean_menu_typo_font_family: '0'
-  ocean_disable_title: default
-  ocean_disable_heading: default
-  ocean_disable_breadcrumbs: default
-  ocean_display_footer_widgets: default
-  ocean_display_footer_bottom: default
-  ocean_custom_footer_template: '0'
-  ocean_link_format_target: self
-  ocean_quote_format_link: post
-  _yoast_wpseo_estimated-reading-time-minutes: '2'
-  _yoast_wpseo_primary_category: '34'
-  _yoast_wpseo_content_score: '60'
-  _wtpsw_views: '41'
-  _thumbnail_id: '1532'
-  rank_math_primary_category: '34'
-  rank_math_news_sitemap_robots: index
-  rank_math_robots: a:1:{i:0;s:5:"index";}
-  rank_math_seo_score: '65'
-  rank_math_focus_keyword: destination,unreachable,ping
-  rank_math_internal_links_processed: '1'
-  _yoast_wpseo_wordproof_timestamp: ''
-permalink: "/2022/08/30/destination-host-unreachable-when-doing-a-ping-request/"
+title: "'"Destination Host Unreachable" when doing a ping request?'"
+date: 2022-08-30
+categories: ['Networking', 'Troubleshooting']
 ---
-<p><!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN" "http://www.w3.org/TR/REC-html40/loose.dtd"><br />
-<!-- wp:paragraph {"fontSize":"medium"} --><html><body></p>
-<p class="has-medium-font-size">Are you seeing '<code>From x.x.x.x icmp_seq=1 Destination Host Unreachable'</code> when you ping an IP Address using ICMP?</p>
-<p><!-- /wp:paragraph --></p>
-<p><!-- wp:paragraph {"fontSize":"medium"} --></p>
-<p class="has-medium-font-size">This could be due to various reasons, which I'll cover here.</p>
-<p><!-- /wp:paragraph --></p>
-<p><!-- wp:paragraph {"fontSize":"medium"} --></p>
-<p class="has-medium-font-size">Let me first explain how routing works on a host.</p>
-<p><!-- /wp:paragraph --></p>
-<p><!-- wp:paragraph {"fontSize":"medium"} --></p>
-<p class="has-medium-font-size">I'll use a Linux box as an example, and below is the output for '<code><strong>route -n</strong></code>,' which displays all the route table information present on your host.</p>
-<p><!-- /wp:paragraph --></p>
-<p><!-- wp:code --></p>
-<pre class="wp-block-code"><code>Kernel IP routing table
+
+Are you seeing '`From x.x.x.x icmp_seq=1 Destination Host Unreachable'` when you ping an IP Address using ICMP?
+
+This could be due to various reasons, which I'll cover here.
+
+Let me first explain how routing works on a host.
+
+I'll use a Linux box as an example, and below is the output for '`**route -n**`,' which displays all the route table information present on your host.
+
+```
+`Kernel IP routing table
 Destination     Gateway         Genmask         Flags Metric Ref    Use Iface
 0.0.0.0         192.168.10.1     0.0.0.0         UG    600    0        0 wlp2s0
 172.13.10.0     0.0.0.0         255.255.255.0   U     600    0        0 wlp2s0
 192.168.16.0    0.0.0.0         255.255.240.0   U     0      0        0 docker0
-</code></pre>
-<p><!-- /wp:code --></p>
-<p><!-- wp:paragraph {"fontSize":"medium"} --></p>
-<p class="has-medium-font-size">Now, considering the above routing table, we can infer that any ping request with a destination outside the network (172.13.10.0/24, 192.168.16.0/20) is directed to the default gateway 192.168.10.1, which is usually the router's IP.</p>
-<p><!-- /wp:paragraph --></p>
-<p><!-- wp:paragraph {"fontSize":"medium"} --></p>
-<p class="has-medium-font-size">However, for ping requests where the destination host IP belongs to the networks (172.13.10.0/24, 192.168.16.0/20) that have 0.0.0.0 as their gateway, it indicates there's no gateway or external route available. <br><br>This situation occurs due to two reasons:<br><br><strong>1) </strong>These networks are directly connected to the machine itself. For instance, when utilizing Docker within your machine, this setup appears as follows:</p>
-<p><!-- /wp:paragraph --></p>
-<p><!-- wp:code --></p>
-<pre class="wp-block-code"><code>docker0: &lt;BROADCAST,MULTICAST,UP,LOWER_UP&gt; mtu 1500 qdisc noqueue state UP group default 
+`
+```
+
+Now, considering the above routing table, we can infer that any ping request with a destination outside the network (172.13.10.0/24, 192.168.16.0/20) is directed to the default gateway 192.168.10.1, which is usually the router's IP.
+
+However, for ping requests where the destination host IP belongs to the networks (172.13.10.0/24, 192.168.16.0/20) that have 0.0.0.0 as their gateway, it indicates there's no gateway or external route available. 
+
+This situation occurs due to two reasons:
+
+**1) **These networks are directly connected to the machine itself. For instance, when utilizing Docker within your machine, this setup appears as follows:
+
+```
+`docker0: <BROADCAST,MULTICAST,UP,LOWER_UP> mtu 1500 qdisc noqueue state UP group default 
     link/ether 02:42:12:d3:aa:96 brd ff:ff:ff:ff:ff:ff
     inet 192.168.16.1/20 brd 192.168.31.255 scope global docker0
        valid_lft forever preferred_lft forever
     inet6 fe80::42:12ff:fed3:aa96/64 scope link 
        valid_lft forever preferred_lft forever
-</code></pre>
-<p><!-- /wp:code --></p>
-<p><!-- wp:paragraph {"fontSize":"medium"} --></p>
-<p class="has-medium-font-size">As a result, packets related to <code>192.168.16.0/24</code> are directly forwarded to the destination host within these networks. In this scenario, there's no need for external routing since the machine handles the internal routing process.<br><br><strong>2)</strong> Additionally, if the packet is destined for another device (e.g., with an IP of 172.13.10.45) within the same network (172.13.10.0/24) as your machine (with an IP of 172.13.10.56), there's no need for a gateway or external routing. In this scenario, both the source and destination are within the same network, and the packet is directly transmitted to the destination machine by the switch using the MAC address. If the switch lacks this information, it initiates an ARP request to locate the respective MAC address of the destination machine.</p>
-<p><!-- /wp:paragraph --></p>
-<p><!-- wp:paragraph --></p>
-<p><!-- /wp:paragraph --></p>
-<p><!-- wp:paragraph --></p>
-<p>.</p>
-<p><!-- /wp:paragraph --></p>
-<p><!-- wp:heading {"level":3,"style":{"typography":{"fontSize":24}}} --></p>
-<h3 style="font-size:24px"><strong><span style="text-decoration: underline" class="underline">Now coming back to "Destination Host Unreachable" when doing a "ping" request?</span></strong></h3>
-<p><!-- /wp:heading --></p>
-<p><!-- wp:paragraph {"fontSize":"medium"} --></p>
-<p class="has-medium-font-size">There could be several reasons for this. Firstly, the destination host might genuinely be down, or it's possible that the network cable for that host is disconnected. Secondly, this issue could be related to conflicting routes in your <a data-type="URL" data-id="http://linux-ip.net/html/routing-tables.html" href="http://linux-ip.net/html/routing-tables.html">route table</a>.</p>
-<p><!-- /wp:paragraph --></p>
-<p><!-- wp:preformatted --></p>
-<pre class="wp-block-preformatted">Destination     Gateway         Genmask         Flags   MSS Window  irtt Iface
+`
+```
+
+As a result, packets related to `192.168.16.0/24` are directly forwarded to the destination host within these networks. In this scenario, there's no need for external routing since the machine handles the internal routing process.
+
+**2)** Additionally, if the packet is destined for another device (e.g., with an IP of 172.13.10.45) within the same network (172.13.10.0/24) as your machine (with an IP of 172.13.10.56), there's no need for a gateway or external routing. In this scenario, both the source and destination are within the same network, and the packet is directly transmitted to the destination machine by the switch using the MAC address. If the switch lacks this information, it initiates an ARP request to locate the respective MAC address of the destination machine.
+
+.
+
+### **Now coming back to "Destination Host Unreachable" when doing a "ping" request?**
+
+There could be several reasons for this. Firstly, the destination host might genuinely be down, or it's possible that the network cable for that host is disconnected. Secondly, this issue could be related to conflicting routes in your [route table.
+
+```
+Destination     Gateway         Genmask         Flags   MSS Window  irtt Iface
 0.0.0.0         172.14.5.1      0.0.0.0         UG        0 0          0 wlp2s0
 169.254.0.0     0.0.0.0         255.255.0.0     U         0 0          0 docker0
 172.14.0.0      0.0.0.0         255.255.0.0     U         0 0          0 br-b2cef7603ade
-</pre>
-<p><!-- /wp:preformatted --></p>
-<p><!-- wp:paragraph {"fontSize":"medium"} --></p>
-<p class="has-medium-font-size"><mark style="background-color:rgba(0, 0, 0, 0)" class="has-inline-color has-luminous-vivid-orange-color">An example of the<strong> above route table</strong> illustrates this issue. </mark><br><br>When attempting to ping a host (172.14.10.52) from my laptop (172.14.5.34), I encounter '<strong>Destination Host Unreachable.</strong>' <br><br>This problem arises from a conflicting route present as the third entry in my route table, associated with the docker bridge network interface on my laptop. Due to this route, my laptop attempts to deliver the packet locally to the bridge network interface, but there is no IP (172.14.10.52) linked to any of the interfaces on the docker bridge network. <br><br>It's important to note that a bridge network interface functions similarly to a network switch, forwarding packets between connected interfaces.</p>
-<p><!-- /wp:paragraph --><br />
-</body></html></p>
+
+```
+
+An example of the** above route table** illustrates this issue. 
+
+When attempting to ping a host (172.14.10.52) from my laptop (172.14.5.34), I encounter '**Destination Host Unreachable.**' 
+
+This problem arises from a conflicting route present as the third entry in my route table, associated with the docker bridge network interface on my laptop. Due to this route, my laptop attempts to deliver the packet locally to the bridge network interface, but there is no IP (172.14.10.52) linked to any of the interfaces on the docker bridge network. 
+
+It's important to note that a bridge network interface functions similarly to a network switch, forwarding packets between connected interfaces.

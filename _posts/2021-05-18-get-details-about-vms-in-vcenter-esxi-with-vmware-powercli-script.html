@@ -1,142 +1,15 @@
 ---
-categories: ['VMware', 'General']
 layout: post
-title: How to get info about VMs in vCenter/ESXi with a VMware PowerCLI script?
-date: 2021-05-18 02:06:43.000000000 -04:00
-type: post
-parent_id: '0'
-published: true
-password: ''
-status: publish
-- VMware
-tags:
-- powercli
-- vmware
-meta:
-  _edit_last: '1'
-  _yoast_wpseo_primary_category: '14'
-  ocean_gallery_link_images: 'off'
-  ocean_sidebar: '0'
-  ocean_second_sidebar: '0'
-  ocean_disable_margins: enable
-  ocean_display_top_bar: default
-  ocean_display_header: default
-  ocean_center_header_left_menu: '0'
-  ocean_custom_header_template: '0'
-  ocean_header_custom_menu: '0'
-  ocean_menu_typo_font_family: '0'
-  ocean_disable_title: default
-  ocean_disable_heading: default
-  ocean_disable_breadcrumbs: default
-  ocean_display_footer_widgets: default
-  ocean_display_footer_bottom: default
-  ocean_custom_footer_template: '0'
-  ocean_link_format_target: self
-  ocean_quote_format_link: post
-  _yoast_wpseo_content_score: '90'
-  _yoast_wpseo_estimated-reading-time-minutes: '1'
-  _thumbnail_id: '705'
-  _wtpsw_views: '142'
-  _aioseo_title: ''
-  _aioseo_description: ''
-  _aioseo_keywords: ''
-  _aioseo_og_title: ''
-  _aioseo_og_description: ''
-  _aioseo_og_article_section: ''
-  _aioseo_og_article_tags: ''
-  _aioseo_twitter_title: ''
-  _aioseo_twitter_description: ''
-  rank_math_primary_category: '14'
-  rank_math_news_sitemap_robots: index
-  rank_math_robots: a:1:{i:0;s:5:"index";}
-  rank_math_og_content_image: a:2:{s:5:"check";s:32:"c998b19331e0c4fdfcf64d68327ad4d1";s:6:"images";a:1:{i:0;i:726;}}
-  rank_math_internal_links_processed: '1'
-  _yoast_wpseo_wordproof_timestamp: ''
-permalink: "/2021/05/18/get-details-about-vms-in-vcenter-esxi-with-vmware-powercli-script/"
+title: "How to get info about VMs in vCenter/ESXi with a VMware PowerCLI script?"
+date: 2021-05-18
+categories: ['VMware', 'General']
 ---
-<p><!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN" "http://www.w3.org/TR/REC-html40/loose.dtd"><br />
-<!-- wp:heading {"style":{"typography":{"fontSize":24}}} --><html><body></p>
-<h2 style="font-size:24px">
-<strong><span style="text-decoration: underline" class="underline"><span style="color:#ff6900" class="tadv-color">1) VMware PowerCLI Script using Linux PowerShell (pwsh-preview)</span></span></strong><span style="text-decoration: underline" class="underline"><span style="color:#fcb900" class="tadv-color"><strong>,</strong></span><span style="color:#ff6900" class="tadv-color"><strong> which has the </strong>"VMware.PowerCLI" module installed</span></span>.</h2>
-<p><!-- /wp:heading --></p>
-<p><!-- wp:code --></p>
-<pre class="wp-block-code"><code><span style="color:#313131" class="tadv-color">Connect-VIServer -Server myvcenter.mylearningsguru.com -User username -Password password</span>
 
-<span style="color:#313131" class="tadv-color">New-VIProperty -Name VMToolsStatus -ObjectType VirtualMachine ` -ValueFromExtensionProperty 'Guest.ToolsStatus' ` -Force</span>
+## 
+**1) VMware PowerCLI Script using Linux PowerShell (pwsh-preview)****,**** which has the **"VMware.PowerCLI" module installed.
 
-<span style="color:#313131" class="tadv-color">New-VIProperty -Name CORESPERSOCKET -ObjectType VirtualMachine ` -ValueFromExtensionProperty 'config.Hardware.NumCoresPerSocket' ` -Force</span>
-
-<span style="color:#313131" class="tadv-color">New-VIProperty -Name GuestOS -ObjectType VirtualMachine ` -ValueFromExtensionProperty 'config.GuestFullName' ` -Force</span>
-
-<span style="color:#313131" class="tadv-color">$VMs =  Get-VM  | Select Name,GuestOS,VMHost,NumCPU,CORESPERSOCKET,PowerState,MemoryMB,
-VMToolsStatus,@{N="Datastore"; E={$_ | Get-Datastore}},@{N='DNSHostname';E={$_.guest.hostname}},@{N="IP";E={@($_.Guest.IPAddress -match "192.168." -join ',') }}  ##To get all IPs which start with 192.168</span>
-
-<span style="color:#313131" class="tadv-color">$result = @()
-foreach ($vm in $VMs) {
-$result += $vm
-}</span>
-
-<span style="color:#313131" class="tadv-color">$result | Export-Csv -path "/home/user/vcenterdetails.csv"
-</span></code></pre>
-<p><!-- /wp:code --></p>
-<p><!-- wp:heading {"style":{"typography":{"fontSize":18}}} --></p>
-<h2 style="font-size:18px">
-<br><span style="text-decoration: underline" class="underline"><span style="color:#ff6900" class="tadv-color">Output:</span></span><br><br />
-</h2>
-<p><!-- /wp:heading --></p>
-<p><!-- wp:code --></p>
-<pre class="wp-block-code"><code><span style="color:#ff6900" class="tadv-color"><span style="text-decoration: underline" class="underline">Name</span>	<span style="text-decoration: underline" class="underline">GuestOS</span>	<span style="text-decoration: underline" class="underline">VMHost</span>	<span style="text-decoration: underline" class="underline">NumCpu</span>	<span style="text-decoration: underline" class="underline">CORESPERSOCKET</span>	<span style="text-decoration: underline" class="underline">PowerState</span>	<span style="text-decoration: underline" class="underline">MemoryMB</span>	<span style="text-decoration: underline" class="underline">VMToolsStatus</span>	<span style="text-decoration: underline" class="underline">Datastore</span>	<span style="text-decoration: underline" class="underline">DNSHostname</span>	<span style="text-decoration: underline" class="underline">IP</span></span>
-
-<span style="color:#313131" class="tadv-color">myserver1	Ubuntu Linux (64-bit)	myesxi1	4	1	PoweredOn	8192	toolsOk	datastore1	myserver1.test.net	192.168.1.10</span>
-
-<span style="color:#313131" class="tadv-color">myserver2	Ubuntu Linux (64-bit)	myesxi2	4	4	PoweredOn	2048	toolsOk	datastore1	myserver2.test.net	192.168.1.11</span>
-
-<span style="color:#313131" class="tadv-color">myserver3	Ubuntu Linux (64-bit)	myesxi3	4	1	PoweredOn	2048	toolsOk	datastore1	myserver3.test.net	192.168.1.12</span></code></pre>
-<p><!-- /wp:code --></p>
-<p><!-- wp:spacer --></p>
-<div style="height:100px" aria-hidden="true" class="wp-block-spacer"></div>
-<p><!-- /wp:spacer --></p>
-<p><!-- wp:heading {"style":{"typography":{"fontSize":18}}} --></p>
-<h2 style="font-size:18px"><span style="text-decoration: underline" class="underline"><span style="color:#ff6900" class="tadv-color">Check the PowerCLI module installed version in the PowerShell</span></span></h2>
-<p><!-- /wp:heading --></p>
-<p><!-- wp:code --></p>
-<pre class="wp-block-code"><code>Get-Module VMware.PowerCLI -ListAvailable</code></pre>
-<p><!-- /wp:code --></p>
-<p><!-- wp:image {"id":726,"sizeSlug":"large","linkDestination":"none"} --></p>
-<figure class="wp-block-image size-large"><img src="{{site.baseurl}}/assets/2021/05/powercli-1.png" alt="" class="wp-image-726"></figure>
-<p><!-- /wp:image --></p>
-<p><!-- wp:spacer {"height":"132px"} --></p>
-<div style="height:132px" aria-hidden="true" class="wp-block-spacer"></div>
-<p><!-- /wp:spacer --></p>
-<p><!-- wp:heading {"level":1} --></p>
-<h1><span style="text-decoration: underline" class="underline"><span style="color:#ff6900" class="tadv-color">NOTE: </span></span></h1>
-<p><!-- /wp:heading --></p>
-<p><!-- wp:tadv/classic-paragraph --></p>
-<blockquote>
-<p><span style="color: #993300; font-size: 20px;"><em><strong>From VMware PowerCLI 10.0 version, we no need to do,</strong></em></span><br><span style="color: #ffcc00; font-size: 20px;"><em><strong><span style="color: #0000ff;">Add-PSSnapin "VMware.VimAutomation.Core",</span> <span style="color: #993300;">which otherwise is required if the PowerCLI or PowerShell has to recognise any PowerCLI cmdlets.</span></strong></em></span></p>
-</blockquote>
-<p><!-- /wp:tadv/classic-paragraph --></p>
-<p><!-- wp:heading --></p>
-<h2><br></h2>
-<p><!-- /wp:heading --></p>
-<p><!-- wp:tadv/classic-paragraph --></p>
-<p> </p>
-<p> </p>
-<p><!-- /wp:tadv/classic-paragraph --></p>
-<p><!-- wp:heading {"style":{"typography":{"fontSize":24}}} --></p>
-<h2 style="font-size:24px"><span style="text-decoration: underline" class="underline"><span style="color:#ff6900" class="tadv-color"><strong>2) VMware PowerCLI Script (PowerCLI version </strong>&lt; 10.0)</span></span></h2>
-<p><!-- /wp:heading --></p>
-<p><!-- wp:code --></p>
-<pre class="wp-block-code"><code>f<span style="color:#313131" class="tadv-color">unction LoadSnapin{
-  param($PSSnapinName)
-  if (!(Get-PSSnapin | where {$_.Name   -eq $PSSnapinName})){
-    Add-pssnapin -name $PSSnapinName
-  }
-}
-# Load PowerCLI snapin
-LoadSnapin -PSSnapinName   "VMware.VimAutomation.Core"
-</span>
-<span style="color:#313131" class="tadv-color">Connect-VIServer -Server myvcenter.mylearningsguru.com -User username -Password password
+```
+`Connect-VIServer -Server myvcenter.mylearningsguru.com -User username -Password password
 
 New-VIProperty -Name VMToolsStatus -ObjectType VirtualMachine ` -ValueFromExtensionProperty 'Guest.ToolsStatus' ` -Force
 
@@ -145,27 +18,89 @@ New-VIProperty -Name CORESPERSOCKET -ObjectType VirtualMachine ` -ValueFromExten
 New-VIProperty -Name GuestOS -ObjectType VirtualMachine ` -ValueFromExtensionProperty 'config.GuestFullName' ` -Force
 
 $VMs =  Get-VM  | Select Name,GuestOS,VMHost,NumCPU,CORESPERSOCKET,PowerState,MemoryMB,
-VMToolsStatus,@{N="Datastore"; E={$_ | Get-Datastore}},@{N='DNSHostname';E={$_.guest.hostname}},@{N="IP";E={@($_.Guest.IPAddress -match "192.168." -join ',') }}  ##To get all IPs which start with 192.168</span>
+VMToolsStatus,@{N="Datastore"; E={$_ | Get-Datastore}},@{N='DNSHostname';E={$_.guest.hostname}},@{N="IP";E={@($_.Guest.IPAddress -match "192.168." -join ',') }}  ##To get all IPs which start with 192.168
 
-<span style="color:#313131" class="tadv-color">$result = @()</span>
-
-<span style="color:#313131" class="tadv-color">foreach ($vm in $VMs) {
+$result = @()
+foreach ($vm in $VMs) {
 $result += $vm
-}</span>
-<span style="color:#313131" class="tadv-color">$result | Export-Csv -path c:\powerclioutput\vmdetails.csv
+}
 
-</span></code></pre>
-<p><!-- /wp:code --></p>
-<p><!-- wp:heading {"fontSize":"medium"} --></p>
-<h2 class="has-medium-font-size"><span style="text-decoration: underline" class="underline"><span style="color:#ff6900" class="tadv-color">Output:</span></span></h2>
-<p><!-- /wp:heading --></p>
-<p><!-- wp:code --></p>
-<pre class="wp-block-code"><code><span style="color:#ff6900" class="tadv-color"><span style="text-decoration: underline" class="underline">Name</span>	<span style="text-decoration: underline" class="underline">GuestOS</span>	<span style="text-decoration: underline" class="underline">VMHost</span>	<span style="text-decoration: underline" class="underline">NumCpu</span>	<span style="text-decoration: underline" class="underline">CORESPERSOCKET</span>	<span style="text-decoration: underline" class="underline">PowerState</span>	<span style="text-decoration: underline" class="underline">MemoryMB</span>	<span style="text-decoration: underline" class="underline">VMToolsStatus</span>	<span style="text-decoration: underline" class="underline">Datastore</span>	<span style="text-decoration: underline" class="underline">DNSHostname</span>	<span style="text-decoration: underline" class="underline">IP</span>
-</span><span style="color:#313131" class="tadv-color">
+$result | Export-Csv -path "/home/user/vcenterdetails.csv"
+`
+```
+
+## 
+
+Output:
+
+```
+`Name	GuestOS	VMHost	NumCpu	CORESPERSOCKET	PowerState	MemoryMB	VMToolsStatus	Datastore	DNSHostname	IP
+
 myserver1	Ubuntu Linux (64-bit)	myesxi1	4	1	PoweredOn	8192	toolsOk	datastore1	myserver1.test.net	192.168.1.10
 
 myserver2	Ubuntu Linux (64-bit)	myesxi2	4	4	PoweredOn	2048	toolsOk	datastore1	myserver2.test.net	192.168.1.11
 
-myserver3	Ubuntu Linux (64-bit)	myesxi3	4	1	PoweredOn	2048	toolsOk	datastore1	myserver3.test.net	192.168.1.12</span></code></pre>
-<p><!-- /wp:code --><br />
-</body></html></p>
+myserver3	Ubuntu Linux (64-bit)	myesxi3	4	1	PoweredOn	2048	toolsOk	datastore1	myserver3.test.net	192.168.1.12`
+```
+
+## Check the PowerCLI module installed version in the PowerShell
+
+```
+`Get-Module VMware.PowerCLI -ListAvailable`
+```
+
+# NOTE: 
+
+***From VMware PowerCLI 10.0 version, we no need to do,***
+***Add-PSSnapin "VMware.VimAutomation.Core", which otherwise is required if the PowerCLI or PowerShell has to recognise any PowerCLI cmdlets.***
+
+## 
+
+ 
+
+ 
+
+## **2) VMware PowerCLI Script (PowerCLI version **< 10.0)
+
+```
+`function LoadSnapin{
+  param($PSSnapinName)
+  if (!(Get-PSSnapin | where {$_.Name   -eq $PSSnapinName})){
+    Add-pssnapin -name $PSSnapinName
+  }
+}
+# Load PowerCLI snapin
+LoadSnapin -PSSnapinName   "VMware.VimAutomation.Core"
+
+Connect-VIServer -Server myvcenter.mylearningsguru.com -User username -Password password
+
+New-VIProperty -Name VMToolsStatus -ObjectType VirtualMachine ` -ValueFromExtensionProperty 'Guest.ToolsStatus' ` -Force
+
+New-VIProperty -Name CORESPERSOCKET -ObjectType VirtualMachine ` -ValueFromExtensionProperty 'config.Hardware.NumCoresPerSocket' ` -Force
+
+New-VIProperty -Name GuestOS -ObjectType VirtualMachine ` -ValueFromExtensionProperty 'config.GuestFullName' ` -Force
+
+$VMs =  Get-VM  | Select Name,GuestOS,VMHost,NumCPU,CORESPERSOCKET,PowerState,MemoryMB,
+VMToolsStatus,@{N="Datastore"; E={$_ | Get-Datastore}},@{N='DNSHostname';E={$_.guest.hostname}},@{N="IP";E={@($_.Guest.IPAddress -match "192.168." -join ',') }}  ##To get all IPs which start with 192.168
+
+$result = @()
+
+foreach ($vm in $VMs) {
+$result += $vm
+}
+$result | Export-Csv -path c:\powerclioutput\vmdetails.csv
+
+`
+```
+
+## Output:
+
+```
+`Name	GuestOS	VMHost	NumCpu	CORESPERSOCKET	PowerState	MemoryMB	VMToolsStatus	Datastore	DNSHostname	IP
+
+myserver1	Ubuntu Linux (64-bit)	myesxi1	4	1	PoweredOn	8192	toolsOk	datastore1	myserver1.test.net	192.168.1.10
+
+myserver2	Ubuntu Linux (64-bit)	myesxi2	4	4	PoweredOn	2048	toolsOk	datastore1	myserver2.test.net	192.168.1.11
+
+myserver3	Ubuntu Linux (64-bit)	myesxi3	4	1	PoweredOn	2048	toolsOk	datastore1	myserver3.test.net	192.168.1.12`
+```

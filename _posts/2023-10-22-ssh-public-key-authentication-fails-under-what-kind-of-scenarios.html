@@ -1,106 +1,42 @@
 ---
-categories: ['Linux', 'SSH']
 layout: post
-title: SSH public key authentication fails under what kind of scenarios?
-date: 2023-10-22 13:07:22.000000000 -04:00
-type: post
-parent_id: '0'
-published: true
-password: ''
-status: publish
-tags: []
-meta:
-  _edit_last: '1'
-  _aioseo_title: ''
-  _aioseo_description: ''
-  _aioseo_keywords: ''
-  _aioseo_og_title: ''
-  _aioseo_og_description: ''
-  _aioseo_og_article_section: ''
-  _aioseo_og_article_tags: ''
-  _aioseo_twitter_title: ''
-  _aioseo_twitter_description: ''
-  ocean_gallery_link_images: 'off'
-  ocean_sidebar: '0'
-  ocean_second_sidebar: '0'
-  ocean_disable_margins: enable
-  ocean_display_top_bar: default
-  ocean_display_header: default
-  ocean_center_header_left_menu: '0'
-  ocean_custom_header_template: '0'
-  ocean_header_custom_menu: '0'
-  ocean_menu_typo_font_family: '0'
-  ocean_disable_title: default
-  ocean_disable_heading: default
-  ocean_disable_breadcrumbs: default
-  ocean_display_footer_widgets: default
-  ocean_display_footer_bottom: default
-  ocean_custom_footer_template: '0'
-  ocean_link_format_target: self
-  ocean_quote_format_link: post
-  _yoast_wpseo_primary_category: '1'
-  _yoast_wpseo_content_score: '60'
-  _yoast_wpseo_estimated-reading-time-minutes: '2'
-  _yoast_wpseo_wordproof_timestamp: ''
-  _thumbnail_id: '2008'
-  _wtpsw_views: '6'
-permalink: "/2023/10/22/ssh-public-key-authentication-fails-under-what-kind-of-scenarios/"
+title: "SSH public key authentication fails under what kind of scenarios?"
+date: 2023-10-22
+categories: ['Linux', 'SSH']
 ---
-<p><!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN" "http://www.w3.org/TR/REC-html40/loose.dtd"><br />
-<!-- wp:paragraph --><html><body></p>
-<p><!-- /wp:paragraph --></p>
-<p><!-- wp:paragraph {"style":{"typography":{"fontSize":"30px"}}} --></p>
-<p style="font-size:30px"><strong><span style="text-decoration: underline" class="underline"><mark style="background-color:rgba(0, 0, 0, 0)" class="has-inline-color has-luminous-vivid-orange-color">Scenario 1</mark></span></strong></p>
-<p><!-- /wp:paragraph --></p>
-<p><!-- wp:paragraph --></p>
-<p><!-- /wp:paragraph --></p>
-<p><!-- wp:paragraph {"style":{"typography":{"fontSize":"21px"}}} --></p>
-<p style="font-size:21px"><br>I recently encountered an issue while attempting to log in to a server with an LDAP user using SSH public key authentication. <br>Unfortunately, the public key authentication was failing, even though the public key had been added to the user in LDAP (FreeIPA in our case). After some troubleshooting, I found that the following line must be present:</p>
-<p><!-- /wp:paragraph --></p>
-<p><!-- wp:preformatted --></p>
-<pre class="wp-block-preformatted">AuthorizedKeysCommand /usr/bin/sss_ssh_authorizedkeys
-</pre>
-<p><!-- /wp:preformatted --></p>
-<p><!-- wp:paragraph {"fontSize":"medium"} --></p>
-<p class="has-medium-font-size">This command instructs the SSH server to retrieve user public keys from an external source, such as an LDAP server (FreeIPA in my case), using the SSSD daemon running on the server. This is in contrast to fetching public keys from the conventional <code>~/.ssh/authorized_keys</code> file.</p>
-<p><!-- /wp:paragraph --></p>
-<p><!-- wp:kadence/spacer {"uniqueID":"_15e4b0-8e"} --></p>
-<div class="wp-block-kadence-spacer aligncenter kt-block-spacer-_15e4b0-8e">
-<div class="kt-block-spacer kt-block-spacer-halign-center" style="height:60px">
-<hr class="kt-divider" style="border-top-color:rgba(238, 238, 238, 1);border-top-width:1px;width:80%;border-top-style:solid"></div>
-</div>
-<p><!-- /wp:kadence/spacer --></p>
-<p><!-- wp:paragraph {"style":{"typography":{"fontSize":"29px"}}} --></p>
-<p style="font-size:29px"><strong><span style="text-decoration: underline" class="underline"><mark style="background-color:rgba(0, 0, 0, 0)" class="has-inline-color has-luminous-vivid-orange-color">Scenario 2</mark></span></strong></p>
-<p><!-- /wp:paragraph --></p>
-<p><!-- wp:paragraph {"fontSize":"medium"} --></p>
-<p class="has-medium-font-size">With the release of OpenSSH version 8.8, the RSA algorithm/signature is disabled (refer to <a href="https://www.openssh.com/txt/release-8.8">https://www.openssh.com/txt/release-8.8</a>). Consequently, if a user attempts to SSH to a server with OpenSSH version greater than or equal to 8.8 using an RSA key, public authentication will fail in this scenario. To address this issue, there are two possible solutions:</p>
-<p><!-- /wp:paragraph --></p>
-<p><!-- wp:paragraph {"fontSize":"medium"} --></p>
-<p class="has-medium-font-size">1) Re-enable RSA by editing the sshd_config file and adding the following lines:</p>
-<p><!-- /wp:paragraph --></p>
-<p><!-- wp:code --></p>
-<pre class="wp-block-code"><code>HostKeyAlgorithms +ssh-rsa
-PubkeyAcceptedKeyTypes +ssh-rsa</code></pre>
-<p><!-- /wp:code --></p>
-<p><!-- wp:paragraph {"fontSize":"medium"} --></p>
-<p class="has-medium-font-size">2) Generate SSH keys using another key type, such as ECDSA or Ed25519, and then copy the public key to the remote SSH server (which has OpenSSH version greater than or equal to 8.8).</p>
-<p><!-- /wp:paragraph --></p>
-<p><!-- wp:code --></p>
-<pre class="wp-block-code"><code>ssh-keygen -t ed25519</code></pre>
-<p><!-- /wp:code --></p>
-<p><!-- wp:paragraph {"fontSize":"medium"} --></p>
-<p class="has-medium-font-size"><br><br></p>
-<p><!-- /wp:paragraph --></p>
-<p><!-- wp:paragraph --></p>
-<p><!-- /wp:paragraph --></p>
-<p><!-- wp:paragraph {"style":{"typography":{"fontSize":"29px"}}} --></p>
-<p style="font-size:29px"><mark style="background-color:rgba(0, 0, 0, 0)" class="has-inline-color has-luminous-vivid-orange-color"><span style="text-decoration: underline" class="underline"><strong>Scenario3</strong></span></mark></p>
-<p><!-- /wp:paragraph --></p>
-<p><!-- wp:paragraph {"fontSize":"medium"} --></p>
-<p class="has-medium-font-size">Verify the presence of the entry "PubkeyAuthentication yes" in your sshd_config file. If it is set to "no," it indicates that public key authentication is disabled on this host.<br><br><code>root@my-host-:~# cat /etc/ssh/sshd_config | grep -i pubkey<br><mark style="background-color:rgba(0, 0, 0, 0)" class="has-inline-color has-luminous-vivid-amber-color">PubkeyAuthentication yes</mark></code><br></p>
-<p><!-- /wp:paragraph --></p>
-<p><!-- wp:paragraph {"fontSize":"medium"} --></p>
-<p class="has-medium-font-size"><br></p>
-<p><!-- /wp:paragraph --><br />
-</body></html></p>
+
+**Scenario 1**
+
+I recently encountered an issue while attempting to log in to a server with an LDAP user using SSH public key authentication. 
+Unfortunately, the public key authentication was failing, even though the public key had been added to the user in LDAP (FreeIPA in our case). After some troubleshooting, I found that the following line must be present:
+
+```
+AuthorizedKeysCommand /usr/bin/sss_ssh_authorizedkeys
+
+```
+
+This command instructs the SSH server to retrieve user public keys from an external source, such as an LDAP server (FreeIPA in my case), using the SSSD daemon running on the server. This is in contrast to fetching public keys from the conventional `~/.ssh/authorized_keys` file.
+
+**Scenario 2**
+
+With the release of OpenSSH version 8.8, the RSA algorithm/signature is disabled (refer to [https://www.openssh.com/txt/release-8.8). Consequently, if a user attempts to SSH to a server with OpenSSH version greater than or equal to 8.8 using an RSA key, public authentication will fail in this scenario. To address this issue, there are two possible solutions:
+
+1) Re-enable RSA by editing the sshd_config file and adding the following lines:
+
+```
+`HostKeyAlgorithms +ssh-rsa
+PubkeyAcceptedKeyTypes +ssh-rsa`
+```
+
+2) Generate SSH keys using another key type, such as ECDSA or Ed25519, and then copy the public key to the remote SSH server (which has OpenSSH version greater than or equal to 8.8).
+
+```
+`ssh-keygen -t ed25519`
+```
+
+**Scenario3**
+
+Verify the presence of the entry "PubkeyAuthentication yes" in your sshd_config file. If it is set to "no," it indicates that public key authentication is disabled on this host.
+
+`root@my-host-:~# cat /etc/ssh/sshd_config | grep -i pubkey
+PubkeyAuthentication yes`

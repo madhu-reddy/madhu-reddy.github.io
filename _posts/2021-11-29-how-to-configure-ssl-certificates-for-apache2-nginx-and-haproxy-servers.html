@@ -1,74 +1,22 @@
 ---
-categories: ['Sysadmin', 'SSL']
 layout: post
-title: How to configure SSL Certificates for Apache2, Nginx and HaProxy servers?
-date: 2021-11-29 08:15:03.000000000 -05:00
-type: post
-parent_id: '0'
-published: true
-password: ''
-status: publish
-- SSL
-tags: []
-meta:
-  _edit_last: '1'
-  ocean_gallery_link_images: 'off'
-  ocean_sidebar: '0'
-  ocean_second_sidebar: '0'
-  ocean_disable_margins: enable
-  ocean_display_top_bar: default
-  ocean_display_header: default
-  ocean_center_header_left_menu: '0'
-  ocean_custom_header_template: '0'
-  ocean_header_custom_menu: '0'
-  ocean_menu_typo_font_family: '0'
-  ocean_disable_title: default
-  ocean_disable_heading: default
-  ocean_disable_breadcrumbs: default
-  ocean_display_footer_widgets: default
-  ocean_display_footer_bottom: default
-  ocean_custom_footer_template: '0'
-  ocean_link_format_target: self
-  ocean_quote_format_link: post
-  _yoast_wpseo_estimated-reading-time-minutes: '1'
-  _aioseo_title: ''
-  _aioseo_description: ''
-  _aioseo_keywords: ''
-  _aioseo_og_title: ''
-  _aioseo_og_description: ''
-  _aioseo_og_article_section: ''
-  _aioseo_og_article_tags: ''
-  _aioseo_twitter_title: ''
-  _aioseo_twitter_description: ''
-  _yoast_wpseo_primary_category: '37'
-  _yoast_wpseo_content_score: '90'
-  _thumbnail_id: '1218'
-  _wtpsw_views: '125'
-  rank_math_primary_category: '37'
-  rank_math_news_sitemap_robots: index
-  rank_math_robots: a:1:{i:0;s:5:"index";}
-  rank_math_internal_links_processed: '1'
-  rank_math_ca_keyword: a:2:{s:7:"keyword";s:15:"ssl certificate";s:7:"country";s:3:"all";}
-  rank_math_seo_score: '67'
-  rank_math_focus_keyword: ssl certificate
-  rank_math_contentai_score: a:5:{s:9:"wordCount";s:4:"39.6";s:9:"linkCount";s:5:"18.46";s:12:"headingCount";s:2:"24";s:10:"mediaCount";s:2:"16";s:8:"keywords";s:5:"32.81";}
-  _yoast_wpseo_wordproof_timestamp: ''
-permalink: "/2021/11/29/how-to-configure-ssl-certificates-for-apache2-nginx-and-haproxy-servers/"
+title: "How to configure SSL Certificates for Apache2, Nginx and HaProxy servers?"
+date: 2021-11-29
+categories: ['Sysadmin', 'SSL']
 ---
-<p><!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN" "http://www.w3.org/TR/REC-html40/loose.dtd"><br />
-<!-- wp:paragraph --><html><body></p>
-<p><!-- /wp:paragraph --></p>
-<p><!-- wp:paragraph {"fontSize":"medium"} --></p>
-<p class="has-medium-font-size">To configure the SSL certificate, follow these steps:<br><br>1) First, generate a private key and a CSR, a process common to all three servers (Apache2, Nginx, HAProxy).</p>
-<p><!-- /wp:paragraph --></p>
-<p><!-- wp:code --></p>
-<pre class="wp-block-code"><code><span style="color:#fcb900" class="tadv-color"><strong>openssl req –new –newkey rsa:2048 –nodes –keyout mylearningsguru.key –out mylearningsguru.csr</strong></span></code></pre>
-<p><!-- /wp:code --></p>
-<p><!-- wp:paragraph {"fontSize":"medium"} --></p>
-<p class="has-medium-font-size"><br><strong><span style="text-decoration: underline" class="underline"><span style="color:#ff6900" class="tadv-color">Example:</span></span></strong></p>
-<p><!-- /wp:paragraph --></p>
-<p><!-- wp:code --></p>
-<pre class="wp-block-code"><code>root@madhuserver:~# <span style="color:#fcb900" class="tadv-color"><strong>openssl req -new -newkey rsa:2048 -nodes -keyout mylearningsguru.key -out mylearningsguru.csr</strong></span>
+
+To configure the SSL certificate, follow these steps:
+
+1) First, generate a private key and a CSR, a process common to all three servers (Apache2, Nginx, HAProxy).
+
+```
+`**openssl req –new –newkey rsa:2048 –nodes –keyout mylearningsguru.key –out mylearningsguru.csr**`
+```
+
+**Example:**
+
+```
+`root@madhuserver:~# **openssl req -new -newkey rsa:2048 -nodes -keyout mylearningsguru.key -out mylearningsguru.csr**
 Generating a 2048 bit RSA private key
 .................+++
 .....................................................................................+++
@@ -81,86 +29,71 @@ There are quite a few fields but you can leave some blank
 For some fields there will be a default value,
 If you enter '.', the field will be left blank.
 -----
-Country Name (2 letter code) [AU]:<strong><span style="color:#fcb900" class="tadv-color">IN</span></strong>
-State or Province Name (full name) [Some-State]:<strong><span style="color:#fcb900" class="tadv-color">TS</span></strong>
-Locality Name (eg, city) []:<strong><span style="color:#fcb900" class="tadv-color">HYD</span></strong>
-Organization Name (eg, company) [Internet Widgits Pty Ltd]:<strong><span style="color:#fcb900" class="tadv-color">mylearningsguru</span></strong>
-Organizational Unit Name (eg, section) []:<strong><span style="color:#fcb900" class="tadv-color">BLOG</span></strong>
-Common Name (e.g. server FQDN or YOUR name) []:<strong><span style="color:#fcb900" class="tadv-color">mylearningsguru.com</span></strong>
-Email Address []:<strong><span style="color:#fcb900" class="tadv-color">madhukunta@mylearningsguru.com</span></strong>
+Country Name (2 letter code) [AU]:**IN**
+State or Province Name (full name) [Some-State]:**TS**
+Locality Name (eg, city) []:**HYD**
+Organization Name (eg, company) [Internet Widgits Pty Ltd]:**mylearningsguru**
+Organizational Unit Name (eg, section) []:**BLOG**
+Common Name (e.g. server FQDN or YOUR name) []:**mylearningsguru.com**
+Email Address []:**madhukunta@mylearningsguru.com**
 
 Please enter the following 'extra' attributes
 to be sent with your certificate request
 A challenge password []:
 An optional company name []:
-</code></pre>
-<p><!-- /wp:code --></p>
-<p><!-- wp:paragraph --></p>
-<p><!-- /wp:paragraph --></p>
-<p><!-- wp:paragraph {"fontSize":"medium"} --></p>
-<p class="has-medium-font-size">2) Upload the CSR file to your certificate provider's portal (e.g., GoDaddy, DigiCert, Comodo, etc.) to obtain the new SSL certificate.</p>
-<p><!-- /wp:paragraph --></p>
-<p><!-- wp:paragraph {"fontSize":"medium"} --></p>
-<p class="has-medium-font-size">3) Download the SSL certificate bundle, which includes the <strong>actual certificate file and the intermediate CA certificate chain files,</strong> from the certificate provider after the certificate has been issued.</p>
-<p><!-- /wp:paragraph --></p>
-<p><!-- wp:paragraph --></p>
-<p><!-- /wp:paragraph --></p>
-<p><!-- wp:paragraph --></p>
-<p>                                                                                                                                                                                                             .</p>
-<p><!-- /wp:paragraph --></p>
-<p><!-- wp:heading {"style":{"typography":{"fontSize":25}}} --></p>
-<h2 style="font-size:25px"><strong><span style="text-decoration: underline" class="underline"><span style="color:#ff6900" class="tadv-color">SSL certificate for apache2</span></span></strong></h2>
-<p><!-- /wp:heading --></p>
-<p><!-- wp:paragraph {"fontSize":"medium"} --></p>
-<p class="has-medium-font-size">In your Apache2 server, access the related site config file (e.g., /etc/apache2/sites-enabled/mylearningsguru). Insert the specified directives and their corresponding values within the suitable &lt;VirtualHost&gt; block.</p>
-<p><!-- /wp:paragraph --></p>
-<p><!-- wp:code --></p>
-<pre class="wp-block-code"><code>SSLEngine on
+`
+```
+
+2) Upload the CSR file to your certificate provider's portal (e.g., GoDaddy, DigiCert, Comodo, etc.) to obtain the new SSL certificate.
+
+3) Download the SSL certificate bundle, which includes the **actual certificate file and the intermediate CA certificate chain files,** from the certificate provider after the certificate has been issued.
+
+                                                                                                                                                                                                             .
+
+## **SSL certificate for apache2**
+
+In your Apache2 server, access the related site config file (e.g., /etc/apache2/sites-enabled/mylearningsguru). Insert the specified directives and their corresponding values within the suitable <VirtualHost> block.
+
+```
+`SSLEngine on
 SSLCertificateFile /path/to/actualcertificate/mylearningsguru.crt
 SSLCertificateKeyFile /path/to/privatekey/mylearningsguru.key
-SSLCACertificateFile /path/to/intermediate-CA-certificate-chain-bundle.crt</code></pre>
-<p><!-- /wp:code --></p>
-<p><!-- wp:paragraph --></p>
-<p><!-- /wp:paragraph --></p>
-<p><!-- wp:paragraph --></p>
-<p>                                                                                                                                                                                                             .</p>
-<p><!-- /wp:paragraph --></p>
-<p><!-- wp:heading {"style":{"typography":{"fontSize":25}}} --></p>
-<h2 style="font-size:25px"><strong><span style="text-decoration: underline" class="underline"><span style="color:#ff6900" class="tadv-color">SSL certificate for Nginx</span></span></strong></h2>
-<p><!-- /wp:heading --></p>
-<p><!-- wp:paragraph {"fontSize":"medium"} --></p>
-<p class="has-medium-font-size">For Nginx, open the relevant site config file (e.g., /etc/nginx/sites-enabled/mylearningsguru). Insert the directives and their respective values within the appropriate "server" block.</p>
-<p><!-- /wp:paragraph --></p>
-<p><!-- wp:code --></p>
-<pre class="wp-block-code"><code>ssl on
+SSLCACertificateFile /path/to/intermediate-CA-certificate-chain-bundle.crt`
+```
+
+                                                                                                                                                                                                             .
+
+## **SSL certificate for Nginx**
+
+For Nginx, open the relevant site config file (e.g., /etc/nginx/sites-enabled/mylearningsguru). Insert the directives and their respective values within the appropriate "server" block.
+
+```
+`ssl on
 ssl_certificate /path/to/actualcert-and-CA-bundle/mylearningsguru-nginx.crt
 ssl_certificate_key /path/to/privatekey/mylearningsguru.key
-</code></pre>
-<p><!-- /wp:code --></p>
-<p><!-- wp:paragraph {"fontSize":"medium"} --></p>
-<p class="has-medium-font-size"><strong><span style="text-decoration: underline" class="underline"><span style="color:#ff6900" class="tadv-color">NOTE: </span></span></strong><br>Unlike Apache2, in Nginx, both the actual certificate and intermediate CA certificate chain bundle are combined into a single file.</p>
-<p><!-- /wp:paragraph --></p>
-<p><!-- wp:code {"style":{"typography":{"fontSize":23}}} --></p>
-<pre class="wp-block-code" style="font-size:23px"><code><span style="color:#ff6900" class="tadv-color">cat mylearningaguru.crt intermediate-CA-certificate-chain-bundle.crt &gt; mylearningsguru-nginx.crt</span></code></pre>
-<p><!-- /wp:code --></p>
-<p><!-- wp:paragraph --></p>
-<p><!-- /wp:paragraph --></p>
-<p><!-- wp:paragraph --></p>
-<p>                                                                                                                                                                                               .</p>
-<p><!-- /wp:paragraph --></p>
-<p><!-- wp:heading {"style":{"typography":{"fontSize":25}}} --></p>
-<h2 style="font-size:25px"><strong><span style="color:#ff6900" class="tadv-color"><span style="text-decoration: underline" class="underline">SSL certificate for HaProxy</span></span></strong></h2>
-<p><!-- /wp:heading --></p>
-<p><!-- wp:paragraph {"fontSize":"medium"} --></p>
-<p class="has-medium-font-size">For HAProxy, access the related haproxy config file (e.g., /etc/haproxy/haproxy.conf). Within the suitable "frontend" section, include the specified directive with its related value.</p>
-<p><!-- /wp:paragraph --></p>
-<p><!-- wp:code --></p>
-<pre class="wp-block-code"><code>bind *:443 ssl crt /etc/ssl/mylearningsguru-haproxy.pem</code></pre>
-<p><!-- /wp:code --></p>
-<p><!-- wp:paragraph {"fontSize":"medium"} --></p>
-<p class="has-medium-font-size"><strong><span style="text-decoration: underline" class="underline"><span style="color:#ff6900" class="tadv-color">NOTE: </span></span></strong><br>In HAProxy, the actual certificate, intermediate CA certificate chain bundle, and the private key are combined into a single file with a .pem extension.</p>
-<p><!-- /wp:paragraph --></p>
-<p><!-- wp:code --></p>
-<pre class="wp-block-code"><code><span style="color:#ff6900" class="tadv-color">cat mylearningaguru.crt intermediate-CA-certificate-chain-bundle.crt mylearningsguru.key  &gt; mylearningsguru-haproxy.pem</span></code></pre>
-<p><!-- /wp:code --><br />
-</body></html></p>
+`
+```
+
+**NOTE: **
+Unlike Apache2, in Nginx, both the actual certificate and intermediate CA certificate chain bundle are combined into a single file.
+
+```
+`cat mylearningaguru.crt intermediate-CA-certificate-chain-bundle.crt > mylearningsguru-nginx.crt`
+```
+
+                                                                                                                                                                                               .
+
+## **SSL certificate for HaProxy**
+
+For HAProxy, access the related haproxy config file (e.g., /etc/haproxy/haproxy.conf). Within the suitable "frontend" section, include the specified directive with its related value.
+
+```
+`bind *:443 ssl crt /etc/ssl/mylearningsguru-haproxy.pem`
+```
+
+**NOTE: **
+In HAProxy, the actual certificate, intermediate CA certificate chain bundle, and the private key are combined into a single file with a .pem extension.
+
+```
+`cat mylearningaguru.crt intermediate-CA-certificate-chain-bundle.crt mylearningsguru.key  > mylearningsguru-haproxy.pem`
+```

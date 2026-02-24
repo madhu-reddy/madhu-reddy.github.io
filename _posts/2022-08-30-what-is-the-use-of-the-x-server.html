@@ -1,162 +1,60 @@
 ---
-categories: ['Sysadmin', 'General']
 layout: post
-title: What is the use of the X server?
-date: 2022-08-30 18:18:38.000000000 -04:00
-type: post
-parent_id: '0'
-published: true
-password: ''
-status: publish
-- Sysadmin
-tags: []
-meta:
-  _edit_last: '1'
-  _aioseo_title: ''
-  _aioseo_description: ''
-  _aioseo_keywords: ''
-  _aioseo_og_title: ''
-  _aioseo_og_description: ''
-  _aioseo_og_article_section: ''
-  _aioseo_og_article_tags: ''
-  _aioseo_twitter_title: ''
-  _aioseo_twitter_description: ''
-  ocean_gallery_link_images: 'off'
-  ocean_sidebar: '0'
-  ocean_second_sidebar: '0'
-  ocean_disable_margins: enable
-  ocean_display_top_bar: default
-  ocean_display_header: default
-  ocean_center_header_left_menu: '0'
-  ocean_custom_header_template: '0'
-  ocean_header_custom_menu: '0'
-  ocean_menu_typo_font_family: '0'
-  ocean_disable_title: default
-  ocean_disable_heading: default
-  ocean_disable_breadcrumbs: default
-  ocean_display_footer_widgets: default
-  ocean_display_footer_bottom: default
-  ocean_custom_footer_template: '0'
-  ocean_link_format_target: self
-  ocean_quote_format_link: post
-  _yoast_wpseo_estimated-reading-time-minutes: '4'
-  _yoast_wpseo_primary_category: '34'
-  _yoast_wpseo_content_score: '30'
-  _thumbnail_id: '1566'
-  _wtpsw_views: '39'
-  rank_math_primary_category: '34'
-  rank_math_news_sitemap_robots: index
-  rank_math_robots: a:1:{i:0;s:5:"index";}
-  rank_math_og_content_image: a:2:{s:5:"check";s:32:"7b06c97b11aecb167a84d1fd66a87e5c";s:6:"images";a:3:{i:0;i:1554;i:1;i:1537;i:2;i:1543;}}
-  rank_math_internal_links_processed: '1'
-  rank_math_seo_score: '71'
-  rank_math_focus_keyword: x server
-  _yoast_wpseo_wordproof_timestamp: ''
-permalink: "/2022/08/30/what-is-the-use-of-the-x-server/"
+title: "What is the use of the X server?"
+date: 2022-08-30
+categories: ['Sysadmin', 'General']
 ---
-<p><!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN" "http://www.w3.org/TR/REC-html40/loose.dtd"><br />
-<!-- wp:paragraph --><html><body></p>
-<p><!-- /wp:paragraph --></p>
-<p><!-- wp:paragraph {"fontSize":"medium"} --></p>
-<p class="has-medium-font-size">In a Linux server OS, such as the Ubuntu server version, we can utilize the '<strong>X server</strong>' to execute GUI-based applications.</p>
-<p><!-- /wp:paragraph --></p>
-<p><!-- wp:paragraph {"fontSize":"medium"} --></p>
-<p class="has-medium-font-size">Are you attempting to run a GUI application—such as '<strong>xclock</strong>' or '<strong>Firefox</strong>'—on a remote Linux system but encountering display-related issues?</p>
-<p><!-- /wp:paragraph --></p>
-<p><!-- wp:image {"align":"left","id":1554,"sizeSlug":"large","linkDestination":"none"} --></p>
-<figure class="wp-block-image alignleft size-large"><img src="{{site.baseurl}}/assets/2022/08/image-7.png" alt="" class="wp-image-1554"></figure>
-<p><!-- /wp:image --></p>
-<p><!-- wp:paragraph {"fontSize":"medium"} --></p>
-<p class="has-medium-font-size"><br><br><br><br>Now, this is because there is no "<strong>X server</strong>" running on the remote Linux system.<br><br>In this article, we'll explore the steps to resolve this problem.<br>Utilizing the '<strong>X server</strong>' enables the display of graphical applications such as Firefox or the clock."</p>
-<p><!-- /wp:paragraph --></p>
-<p><!-- wp:paragraph {"style":{"typography":{"fontSize":"26px"}}} --></p>
-<p style="font-size:26px"><span style="text-decoration: underline" class="underline"><span style="color:#ff6900" class="tadv-color"><strong>To check if "X server" is running</strong></span></span></p>
-<p><!-- /wp:paragraph --></p>
-<p><!-- wp:paragraph {"fontSize":"medium"} --></p>
-<p class="has-medium-font-size"><strong>ps -e | grep X </strong>     # checks if the X11 or X server is currently running on your system.</p>
-<p><!-- /wp:paragraph --></p>
-<p><!-- wp:image {"align":"left","id":1537,"sizeSlug":"large","linkDestination":"none"} --></p>
-<figure class="wp-block-image alignleft size-large"><img src="{{site.baseurl}}/assets/2022/08/image-1.png" alt="" class="wp-image-1537"></figure>
-<p><!-- /wp:image --></p>
-<p><!-- wp:paragraph {"fontSize":"medium"} --></p>
-<p class="has-medium-font-size"><br><br>If your remote Linux server already has an '<strong>X server</strong>' running, running GUI-based applications like '<strong>firefox</strong>' or '<strong>xclock</strong>' is straightforward without any issues. However, if the remote Linux server doesn't have an '<strong>X server</strong>' active, '<mark style="background-color:rgba(0, 0, 0, 0)" class="has-inline-color has-luminous-vivid-orange-color"><strong>X11 forwarding</strong></mark>' can help resolve this problem.<br><br></p>
-<p><!-- /wp:paragraph --></p>
-<p><!-- wp:heading {"level":1,"style":{"typography":{"fontSize":"27px"}}} --></p>
-<h1 style="font-size:27px"><span style="text-decoration: underline" class="underline"><mark style="background-color:rgba(0, 0, 0, 0)" class="has-inline-color has-luminous-vivid-orange-color">Steps to perform X11 Forwarding from a Linux desktop-based operating system and execute GUI-based applications on a remote Linux server</mark></span></h1>
-<p><!-- /wp:heading --></p>
-<p><!-- wp:paragraph {"fontSize":"medium"} --></p>
-<p class="has-medium-font-size"><br>In a Linux desktop environment, the '<strong>X server</strong>' is typically installed and active by default. To enable '<strong>X11 Forwarding</strong>' on any Linux desktop OS, simply execute the command below, using the '<strong>-X</strong>' option."</p>
-<p><!-- /wp:paragraph --></p>
-<p><!-- wp:code --></p>
-<pre class="wp-block-code"><code>ssh -X user@remotelinuxserver-name</code></pre>
-<p><!-- /wp:code --></p>
-<p><!-- wp:paragraph {"fontSize":"medium"} --></p>
-<p class="has-medium-font-size">2) This single command connects you to a remote Linux server lacking an '<strong>X server</strong>,' allowing you to execute GUI-based applications effortlessly.</p>
-<p><!-- /wp:paragraph --></p>
-<p><!-- wp:paragraph --></p>
-<p><!-- /wp:paragraph --></p>
-<p><!-- wp:paragraph --></p>
-<p><!-- /wp:paragraph --></p>
-<p><!-- wp:spacer {"height":"36px"} --></p>
-<div style="height:36px" aria-hidden="true" class="wp-block-spacer"></div>
-<p><!-- /wp:spacer --></p>
-<p><!-- wp:paragraph {"style":{"typography":{"fontSize":"27px"}}} --></p>
-<p style="font-size:27px"><span style="text-decoration: underline" class="underline"><mark style="background-color:rgba(0, 0, 0, 0)" class="has-inline-color has-luminous-vivid-orange-color"><strong>Steps to perform X11 Forwarding from a Windows desktop-based operating system and execute GUI-based applications on a remote Linux server</strong></mark></span></p>
-<p><!-- /wp:paragraph --></p>
-<p><!-- wp:paragraph {"fontSize":"medium"} --></p>
-<p class="has-medium-font-size">In a Windows environment, the '<strong>X server</strong>' isn't pre-installed, requiring the installation and launch of an application named '<strong>Xming</strong>' to serve as the '<strong>X server</strong>' for Windows.<br><br>1) Begin by installing and running '<strong>Xming</strong>,' the designated '<strong>X server</strong>' application for Microsoft Windows.<br><br>2) Upon launching '<strong>Xming</strong>,' access the '<strong>xlaunch</strong>' application to configure display settings, dictating how '<strong>Xming</strong>' should exhibit GUI programs.</p>
-<p><!-- /wp:paragraph --></p>
-<p><!-- wp:image {"align":"left","id":1543,"width":306,"height":238,"sizeSlug":"large","linkDestination":"none"} --></p>
-<figure class="wp-block-image alignleft size-large is-resized"><img src="{{site.baseurl}}/assets/2022/08/image-2.png" alt="" class="wp-image-1543" width="306" height="238"></figure>
-<p><!-- /wp:image --></p>
-<p><!-- wp:paragraph {"fontSize":"medium"} --></p>
-<p class="has-medium-font-size"><br><br><br><br><br><br><br><br>3) Now at this stage, using "<strong>putty</strong>" you are ready to connect to the remote Linux server and start running the GUI-dependent programs.<br><strong><span style="text-decoration: underline" class="underline">NOTE:</span></strong> Don't forget to enable  "<strong>X11 forwarding</strong>" in "<strong>putty</strong>".</p>
-<p><!-- /wp:paragraph --></p>
-<p><!-- wp:paragraph {"align":"left"} --></p>
-<p class="has-text-align-left"><img src="{{site.baseurl}}/assets/2022/08/Nxxl_xpVCNxwtQFNAerbdscRU7pw2A2T7yU9IYA310TOK2gYlKsY8qE3dpv-cBCv6wNq4W7WUykF9OWZsmso3bnaYYh_g582GcDW8brtC8-1WkLX3_pWMX4BUw2jRfvMLggUH8qAQOAwq9DRGkXVsg" width="381" height="129"></p>
-<p><!-- /wp:paragraph --></p>
-<p><!-- wp:paragraph {"align":"left"} --></p>
-<p class="has-text-align-left"><img width="416" height="153" src="{{site.baseurl}}/assets/2022/08/aRag9PYSkhIW5-hjdGh4mnfNNslsA8HLLkS78dqEhj-bGhI3LJRZNZkMbybmQkiGGrV9y5jy2ZiPO9NAKW1R7wh8YBi46zDTFO7gs-QAxWabCnn91BW40fjoidr1REbo1DBVeLXPZHVtMkmigDmwrQ"><br></p>
-<p><!-- /wp:paragraph --></p>
-<p><!-- wp:paragraph {"fontSize":"medium"} --></p>
-<p class="has-medium-font-size">4) That's it! With this command, you've successfully connected to the remote Linux server, even though it doesn't have an 'X server' running, enabling you to run GUI-based applications seamlessly.</p>
-<p><!-- /wp:paragraph --></p>
-<p><!-- wp:paragraph --></p>
-<p><!-- /wp:paragraph --></p>
-<p><!-- wp:spacer {"height":"24px"} --></p>
-<div style="height:24px" aria-hidden="true" class="wp-block-spacer"></div>
-<p><!-- /wp:spacer --></p>
-<p><!-- wp:heading {"level":1,"style":{"typography":{"fontSize":"27px"}}} --></p>
-<h1 style="font-size:27px"><span style="text-decoration: underline" class="underline"><mark style="background-color:rgba(0, 0, 0, 0)" class="has-inline-color has-luminous-vivid-orange-color">Now unable to run GUI-based programs on the remote Linux server after using sudo or su -?</mark></span></h1>
-<p><!-- /wp:heading --></p>
-<p><!-- wp:paragraph {"fontSize":"medium"} --></p>
-<p class="has-medium-font-size">If you encounter the following error while attempting to run GUI-based applications on the remote Linux server after executing 'sudo' or 'su -'</p>
-<p><!-- /wp:paragraph --></p>
-<p><!-- wp:image {"align":"left","id":1555,"sizeSlug":"large","linkDestination":"none"} --></p>
-<figure class="wp-block-image alignleft size-large"><img src="{{site.baseurl}}/assets/2022/08/image-8.png" alt="" class="wp-image-1555"></figure>
-<p><!-- /wp:image --></p>
-<p><!-- wp:paragraph {"fontSize":"medium"} --></p>
-<p class="has-medium-font-size"><br><br><br>The '<strong>X11 authentication</strong>' is typically cookie-based and generated upon the user's initial login to the server via SSH or Putty. <br>However, when you switch users using 'su -' or 'sudo,' these cookies are not automatically transferred to the new user ('root,' for example). Consequently, this leads to the '<code>X11 connection rejected because of wrong authentication</code>' error.</p>
-<p><!-- /wp:paragraph --></p>
-<p><!-- wp:paragraph {"fontSize":"medium"} --></p>
-<p class="has-medium-font-size">To resolve this, <br>1) You can execute the command '<strong><code>xauth list</code></strong>' to retrieve the cookie value associated with the initial user used to log in via SSH or Putty.</p>
-<p><!-- /wp:paragraph --></p>
-<p><!-- wp:image {"align":"left","id":1549,"sizeSlug":"large","linkDestination":"none"} --></p>
-<figure class="wp-block-image alignleft size-large"><img src="{{site.baseurl}}/assets/2022/08/image-5.png" alt="" class="wp-image-1549"></figure>
-<p><!-- /wp:image --></p>
-<p><!-- wp:paragraph {"fontSize":"medium"} --></p>
-<p class="has-medium-font-size">2) Next, utilize the '<strong>xauth add</strong>' command to incorporate this cookie for the '<strong>root</strong>' user (or any other user to which you've switched). <br><strong><span style="text-decoration: underline" class="underline">Example</span></strong><br><span style="color:#ff6900" class="tadv-color">xauth add madhu-server/unix:10  MIT-MAGIC-COOKIE-1  f95a2f111fb4ae17435ccf3b245e9770</span></p>
-<p><!-- /wp:paragraph --></p>
-<p><!-- wp:image {"align":"left","id":1550,"sizeSlug":"large","linkDestination":"none"} --></p>
-<figure class="wp-block-image alignleft size-large"><img src="{{site.baseurl}}/assets/2022/08/image-6-1024x75.png" alt="" class="wp-image-1550"></figure>
-<p><!-- /wp:image --></p>
-<p><!-- wp:paragraph {"fontSize":"medium"} --></p>
-<p class="has-medium-font-size">3) At this stage, you should be able to execute GUI-based applications even after transitioning to any desired user via 'sudo' or 'su -'.</p>
-<p><!-- /wp:paragraph --></p>
-<p><!-- wp:paragraph {"style":{"typography":{"fontSize":18}}} --></p>
-<p style="font-size:18px"><br><br></p>
-<p><!-- /wp:paragraph --></p>
-<p><!-- wp:paragraph {"style":{"typography":{"fontSize":18}}} --></p>
-<p style="font-size:18px"><br></p>
-<p><!-- /wp:paragraph --><br />
-</body></html></p>
+
+In a Linux server OS, such as the Ubuntu server version, we can utilize the '**X server**' to execute GUI-based applications.
+
+Are you attempting to run a GUI application—such as '**xclock**' or '**Firefox**'—on a remote Linux system but encountering display-related issues?
+
+Now, this is because there is no "**X server**" running on the remote Linux system.
+
+In this article, we'll explore the steps to resolve this problem.
+Utilizing the '**X server**' enables the display of graphical applications such as Firefox or the clock."
+
+**To check if "X server" is running**
+
+**ps -e | grep X **     # checks if the X11 or X server is currently running on your system.
+
+If your remote Linux server already has an '**X server**' running, running GUI-based applications like '**firefox**' or '**xclock**' is straightforward without any issues. However, if the remote Linux server doesn't have an '**X server**' active, '**X11 forwarding**' can help resolve this problem.
+
+# Steps to perform X11 Forwarding from a Linux desktop-based operating system and execute GUI-based applications on a remote Linux server
+
+In a Linux desktop environment, the '**X server**' is typically installed and active by default. To enable '**X11 Forwarding**' on any Linux desktop OS, simply execute the command below, using the '**-X**' option."
+
+```
+`ssh -X user@remotelinuxserver-name`
+```
+
+2) This single command connects you to a remote Linux server lacking an '**X server**,' allowing you to execute GUI-based applications effortlessly.
+
+**Steps to perform X11 Forwarding from a Windows desktop-based operating system and execute GUI-based applications on a remote Linux server**
+
+In a Windows environment, the '**X server**' isn't pre-installed, requiring the installation and launch of an application named '**Xming**' to serve as the '**X server**' for Windows.
+
+1) Begin by installing and running '**Xming**,' the designated '**X server**' application for Microsoft Windows.
+
+2) Upon launching '**Xming**,' access the '**xlaunch**' application to configure display settings, dictating how '**Xming**' should exhibit GUI programs.
+
+3) Now at this stage, using "**putty**" you are ready to connect to the remote Linux server and start running the GUI-dependent programs.
+**NOTE:** Don't forget to enable  "**X11 forwarding**" in "**putty**".
+
+4) That's it! With this command, you've successfully connected to the remote Linux server, even though it doesn't have an 'X server' running, enabling you to run GUI-based applications seamlessly.
+
+# Now unable to run GUI-based programs on the remote Linux server after using sudo or su -?
+
+If you encounter the following error while attempting to run GUI-based applications on the remote Linux server after executing 'sudo' or 'su -'
+
+The '**X11 authentication**' is typically cookie-based and generated upon the user's initial login to the server via SSH or Putty. 
+However, when you switch users using 'su -' or 'sudo,' these cookies are not automatically transferred to the new user ('root,' for example). Consequently, this leads to the '`X11 connection rejected because of wrong authentication`' error.
+
+To resolve this, 
+1) You can execute the command '**`xauth list`**' to retrieve the cookie value associated with the initial user used to log in via SSH or Putty.
+
+2) Next, utilize the '**xauth add**' command to incorporate this cookie for the '**root**' user (or any other user to which you've switched). 
+**Example**
+xauth add madhu-server/unix:10  MIT-MAGIC-COOKIE-1  f95a2f111fb4ae17435ccf3b245e9770
+
+3) At this stage, you should be able to execute GUI-based applications even after transitioning to any desired user via 'sudo' or 'su -'.

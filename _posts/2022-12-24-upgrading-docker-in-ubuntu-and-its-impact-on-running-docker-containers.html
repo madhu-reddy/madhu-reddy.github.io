@@ -1,113 +1,69 @@
 ---
-categories: ['DevOps', 'Docker']
 layout: post
-title: Upgrading docker in Ubuntu and its impact on running containers?
-date: 2022-12-24 04:28:55.000000000 -05:00
-type: post
-parent_id: '0'
-published: true
-password: ''
-status: publish
-- Docker
-tags: []
-meta:
-  _edit_last: '1'
-  _aioseo_title: ''
-  _aioseo_description: "#post_excerpt &nbsp; &nbsp;"
-  _aioseo_keywords: ''
-  _aioseo_og_title: ''
-  _aioseo_og_description: ''
-  _aioseo_og_article_section: ''
-  _aioseo_og_article_tags: ''
-  _aioseo_twitter_title: ''
-  _aioseo_twitter_description: ''
-  ocean_gallery_link_images: 'off'
-  ocean_sidebar: '0'
-  ocean_second_sidebar: '0'
-  ocean_disable_margins: enable
-  ocean_display_top_bar: default
-  ocean_display_header: default
-  ocean_center_header_left_menu: '0'
-  ocean_custom_header_template: '0'
-  ocean_header_custom_menu: '0'
-  ocean_menu_typo_font_family: '0'
-  ocean_disable_title: default
-  ocean_disable_heading: default
-  ocean_disable_breadcrumbs: default
-  ocean_display_footer_widgets: default
-  ocean_display_footer_bottom: default
-  ocean_custom_footer_template: '0'
-  ocean_link_format_target: self
-  ocean_quote_format_link: post
-  _yoast_wpseo_content_score: '90'
-  _yoast_wpseo_estimated-reading-time-minutes: '2'
-  _yoast_wpseo_primary_category: '9'
-  _thumbnail_id: '1766'
-  _wtpsw_views: '131'
-  _yoast_wpseo_wordproof_timestamp: ''
-  _yoast_wpseo_focuskw: upgrading docker
-  _yoast_wpseo_linkdex: '72'
-  rank_math_primary_category: '9'
-  rank_math_focus_keyword: upgrading docker
-  rank_math_news_sitemap_robots: index
-  rank_math_robots: a:1:{i:0;s:5:"index";}
-  rank_math_seo_score: '62'
-  rank_math_og_content_image: a:2:{s:5:"check";s:32:"d383d564419f0e604c964910998c2e40";s:6:"images";a:1:{i:0;i:1710;}}
-  rank_math_internal_links_processed: '1'
-permalink: "/2022/12/24/upgrading-docker-in-ubuntu-and-its-impact-on-running-docker-containers/"
+title: "Upgrading docker in Ubuntu and its impact on running containers?"
+date: 2022-12-24
+categories: ['DevOps', 'Docker']
 ---
-<p><!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN" "http://www.w3.org/TR/REC-html40/loose.dtd"><br />
-<!-- wp:paragraph --><html><body></p>
-<p><!-- /wp:paragraph --></p>
-<p><!-- wp:paragraph {"fontSize":"medium"} --></p>
-<p class="has-medium-font-size">Suppose the current Docker version is 18.09, and the target version for the upgrade is 20.10. There are several methods for upgrading, such as manual upgrading, utilizing convenience scripts, or leveraging the APT repository.<br><br><strong><span style="text-decoration: underline" class="underline">Upgrading Docker Using the APT Repository</span></strong><br><br>1) Verify the latest Docker package version in the APT cache with the command:  <code>apt-cache policy docker-ce</code></p>
-<p><!-- /wp:paragraph --></p>
-<p><!-- wp:image {"align":"left","id":1710,"sizeSlug":"large","linkDestination":"none"} --></p>
-<figure class="wp-block-image alignleft size-large"><img src="{{site.baseurl}}/assets/2022/12/image-4.png" alt="" class="wp-image-1710"></figure>
-<p><!-- /wp:image --></p>
-<p><!-- wp:paragraph {"fontSize":"medium"} --></p>
-<p class="has-medium-font-size"><br><br><br><br><br><strong><span style="color:#cf2e2e" class="tadv-color">If the package is present</span></strong>, execute the following command,</p>
-<p><!-- /wp:paragraph --></p>
-<p><!-- wp:code --></p>
-<pre class="wp-block-code"><code>apt-get install docker-ce docker-ce-cli containerd.io</code></pre>
-<p><!-- /wp:code --></p>
-<p><!-- wp:paragraph {"fontSize":"medium"} --></p>
-<p class="has-medium-font-size">Where, <br><code><strong>docker-ce</strong></code> is the primary Docker engine package for the community edition.<br><br><code><strong>docker-ce-cli</strong></code>, is optional but recommended to upgrade alongside the Docker engine package. It provides a Docker client that communicates with the Docker engine (<code>dockerd</code> daemon) through API calls.<br><br><code><strong>containerd.io</strong></code>, is also optional but advisable to upgrade alongside the Docker engine package. <code>containerd</code> is the service responsible for managing the complete lifecycle of a container on a host.<br> <br>After completing the upgrade, execute '<code>docker version</code>.' You should observe the latest Docker version (<code>20.10.7</code>) installed.<br><br><strong><span style="text-decoration: underline" class="underline"><span style="color:#cf2e2e" class="tadv-color">Example output</span></span></strong></p>
-<p><!-- /wp:paragraph --></p>
-<p><!-- wp:preformatted --></p>
-<pre class="wp-block-preformatted"><code>Client:
+
+Suppose the current Docker version is 18.09, and the target version for the upgrade is 20.10. There are several methods for upgrading, such as manual upgrading, utilizing convenience scripts, or leveraging the APT repository.
+
+**Upgrading Docker Using the APT Repository**
+
+1) Verify the latest Docker package version in the APT cache with the command:  `apt-cache policy docker-ce`
+
+**If the package is present**, execute the following command,
+
+```
+`apt-get install docker-ce docker-ce-cli containerd.io`
+```
+
+Where, 
+`**docker-ce**` is the primary Docker engine package for the community edition.
+
+`**docker-ce-cli**`, is optional but recommended to upgrade alongside the Docker engine package. It provides a Docker client that communicates with the Docker engine (`dockerd` daemon) through API calls.
+
+`**containerd.io**`, is also optional but advisable to upgrade alongside the Docker engine package. `containerd` is the service responsible for managing the complete lifecycle of a container on a host.
+ 
+After completing the upgrade, execute '`docker version`.' You should observe the latest Docker version (`20.10.7`) installed.
+
+**Example output**
+
+```
+`Client:
  Version:           20.10.7
  API version:       1.39
  
 Server: Docker Engine - Community
  Engine:
   Version:          20.10.7
-  API version:      1.41 (minimum version 1.12)</code>
+  API version:      1.41 (minimum version 1.12)`
 
  containerd:
   Version:          1.4.6
   GitCommit:        d71fcd7d8303cbf684402823e425e9dd2e99285d
 
-</pre>
-<p><!-- /wp:preformatted --></p>
-<p><!-- wp:paragraph --></p>
-<p><!-- /wp:paragraph --></p>
-<p><!-- wp:paragraph --></p>
-<p><!-- /wp:paragraph --></p>
-<p><!-- wp:paragraph {"fontSize":"medium"} --></p>
-<p class="has-medium-font-size"><br><br>In case the latest Docker package version (<code>20.10</code>) is<strong> not found in the APT cache</strong>, you need to initially add the Docker APT repository and perform an '<code>apt-get update</code>.' Afterward, you can proceed to upgrade the Docker version to the latest using the following command:<br><code>apt-get install docker-ce docker-ce-cli containerd.io</code><br><br><strong>docker APT repository</strong> information found here,<br><a href="https://docs.docker.com/engine/install/ubuntu/#install-docker-engine">https://docs.docker.com/engine/install/ubuntu/#install-docker-engine</a></p>
-<p><!-- /wp:paragraph --></p>
-<p><!-- wp:heading {"level":3,"style":{"typography":{"fontSize":"27px"}}} --></p>
-<h3 style="font-size:27px"> <br><br><span style="text-decoration: underline" class="underline">What is the impact of upgrading Docker on already running containers?</span><br />
-</h3>
-<p><!-- /wp:heading --></p>
-<p><!-- wp:paragraph {"fontSize":"medium"} --></p>
-<p class="has-medium-font-size"><strong><span style="text-decoration: underline" class="underline"><span style="color:#cf2e2e" class="tadv-color">NOTE:</span></span><span style="color:#cf2e2e" class="tadv-color"> </span></strong>Prior to the Docker upgrade, the Docker daemon is automatically stopped, thereby halting all running Docker containers. After the upgrade, the Docker daemon restarts automatically, but it does not resume the stopped containers.<br><br>Suppose your application, running on Docker containers, is sensitive and requires zero downtime. In such cases, careful planning and maintenance are necessary during the Docker upgrade.<br><br>However, if a brief period of container downtime is acceptable (depending on the application's ability to quickly start and resume traffic), there is an option called</p>
-<p><!-- /wp:paragraph --></p>
-<p><!-- wp:code --></p>
-<pre class="wp-block-code"><code>restart: unless-stopped</code></pre>
-<p><!-- /wp:code --></p>
-<p><!-- wp:paragraph {"fontSize":"medium"} --></p>
-<p class="has-medium-font-size">When this option is added to each section of the Docker containers in the <code>docker-compose.yml</code> file, the Docker containers that automatically stop just before the Docker upgrade will be automatically restarted after the upgrade. This automated process eliminates the need to start each Docker container manually, minimizing downtime for the applications.<br><br>The <code>restart: unless-stopped</code> option essentially means that the container will always be restarted (even after the Docker daemon restarts) if it stops, except in the case when the container is manually stopped by a user.</p>
-<p><!-- /wp:paragraph --><br />
-</body></html></p>
+```
+
+In case the latest Docker package version (`20.10`) is** not found in the APT cache**, you need to initially add the Docker APT repository and perform an '`apt-get update`.' Afterward, you can proceed to upgrade the Docker version to the latest using the following command:
+`apt-get install docker-ce docker-ce-cli containerd.io`
+
+**docker APT repository** information found here,
+[https://docs.docker.com/engine/install/ubuntu/#install-docker-engine
+
+###  
+
+What is the impact of upgrading Docker on already running containers?
+
+**NOTE: **Prior to the Docker upgrade, the Docker daemon is automatically stopped, thereby halting all running Docker containers. After the upgrade, the Docker daemon restarts automatically, but it does not resume the stopped containers.
+
+Suppose your application, running on Docker containers, is sensitive and requires zero downtime. In such cases, careful planning and maintenance are necessary during the Docker upgrade.
+
+However, if a brief period of container downtime is acceptable (depending on the application's ability to quickly start and resume traffic), there is an option called
+
+```
+`restart: unless-stopped`
+```
+
+When this option is added to each section of the Docker containers in the `docker-compose.yml` file, the Docker containers that automatically stop just before the Docker upgrade will be automatically restarted after the upgrade. This automated process eliminates the need to start each Docker container manually, minimizing downtime for the applications.
+
+The `restart: unless-stopped` option essentially means that the container will always be restarted (even after the Docker daemon restarts) if it stops, except in the case when the container is manually stopped by a user.

@@ -1,91 +1,51 @@
 ---
-categories: ['Linux', 'Administration']
 layout: post
-title: Get to know about Symbolic links and Hard links?
-date: 2021-11-06 16:13:07.000000000 -04:00
-type: post
-parent_id: '0'
-published: true
-password: ''
-status: publish
-- Linux
-tags:
-- hardlinks
-- symlinks
-meta:
-  _edit_last: '1'
-  ocean_gallery_link_images: 'off'
-  ocean_sidebar: '0'
-  ocean_second_sidebar: '0'
-  ocean_disable_margins: enable
-  ocean_display_top_bar: default
-  ocean_display_header: default
-  ocean_center_header_left_menu: '0'
-  ocean_custom_header_template: '0'
-  ocean_header_custom_menu: '0'
-  ocean_menu_typo_font_family: '0'
-  ocean_disable_title: default
-  ocean_disable_heading: default
-  ocean_disable_breadcrumbs: default
-  ocean_display_footer_widgets: default
-  ocean_display_footer_bottom: default
-  ocean_custom_footer_template: '0'
-  ocean_link_format_target: self
-  ocean_quote_format_link: post
-  _yoast_wpseo_content_score: '90'
-  _yoast_wpseo_estimated-reading-time-minutes: '2'
-  _yoast_wpseo_primary_category: '2'
-  _thumbnail_id: '932'
-  _wtpsw_views: '63'
-  _aioseo_title: ''
-  _aioseo_description: ''
-  _aioseo_keywords: ''
-  _aioseo_og_title: ''
-  _aioseo_og_description: ''
-  _aioseo_og_article_section: ''
-  _aioseo_og_article_tags: ''
-  _aioseo_twitter_title: ''
-  _aioseo_twitter_description: ''
-  _yoast_wpseo_wordproof_timestamp: ''
-  rank_math_primary_category: '2'
-  rank_math_news_sitemap_robots: index
-  rank_math_robots: a:1:{i:0;s:5:"index";}
-  rank_math_internal_links_processed: '1'
-permalink: "/2021/11/06/get-to-know-about-symbolic-links-and-hard-links/"
+title: "Get to know about Symbolic links and Hard links?"
+date: 2021-11-06
+categories: ['Linux', 'Administration']
 ---
-<p><!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN" "http://www.w3.org/TR/REC-html40/loose.dtd"><br />
-<!-- wp:paragraph --><html><body></p>
-<p><!-- /wp:paragraph --></p>
-<p><!-- wp:heading {"level":4,"style":{"typography":{"fontSize":"29px"}}} --></p>
-<h4 style="font-size:29px"><span style="text-decoration: underline" class="underline"><strong><mark style="background-color:rgba(0, 0, 0, 0)" class="has-inline-color has-luminous-vivid-orange-color">Symbolic links:</mark></strong></span></h4>
-<p><!-- /wp:heading --></p>
-<p><!-- wp:paragraph {"align":"left","fontSize":"medium"} --></p>
-<p class="has-text-align-left has-medium-font-size">-&gt; A symbolic link (also known as a symlink) is a file that points to another file within the system.<br>-&gt; These links are analogous to shortcuts in Windows.<br>-&gt; Symlinks can be created for any regular files, special files, or directories.<br>-&gt; A symlink can span across different filesystems.<br>-&gt; The original file and the symlink file have distinct inode numbers.</p>
-<p><!-- /wp:paragraph --></p>
-<p><!-- wp:paragraph {"align":"left","fontSize":"medium"} --></p>
-<p class="has-text-align-left has-medium-font-size"><br><strong><span style="text-decoration: underline" class="underline">NOTE:</span></strong> If you happen to delete the original file, the symlink file will no longer function and its existence will become meaningless.<strong><span style="text-decoration: underline" class="underline"><br><br></span></strong>A common use case where symlinks can be beneficial is when one of your filesystems (e.g., /) is approaching full capacity, and you want to relocate some files or directories to a larger filesystem (e.g., /mnt/data). However, directly moving the files or directories is not feasible because certain applications (e.g., Docker) are linked to specific locations under / (e.g., /var/lib/docker).</p>
-<p><!-- /wp:paragraph --></p>
-<p><!-- wp:paragraph {"fontSize":"medium"} --></p>
-<p class="has-medium-font-size">In this scenario, you have two options:</p>
-<p><!-- /wp:paragraph --></p>
-<p><!-- wp:paragraph {"align":"left","fontSize":"medium"} --></p>
-<p class="has-text-align-left has-medium-font-size"><br><strong><span style="text-decoration: underline" class="underline">Option 1:</span></strong><br>Directly copy the files and directories from the original location (/var/lib/docker) to the new location (/mnt/data/var-lib-docker) using the command:<br><code>mv /var/lib/docker/* /mnt/data/var-lib-docker</code><br><br>Once the files and directories have been copied, modify the application's configuration to point to the new location (/mnt/data/var-lib-docker) instead of the original location (/var/lib/docker).<br><br><strong><span style="text-decoration: underline" class="underline">Option 2:</span></strong><br>Utilize symbolic links to maintain the application's existing location (/var/lib/docker) while actually storing the files and directories in the new location (/mnt/data/var-lib-docker).<br>1) <code>mv /var/lib/docker/* /mnt/data/var-lib-docker<br></code>2) <code>ln -s /mnt/data/var-lib-docker /var/lib/docker</code><br><br>Now when you run the below command, <br><span style="color:#ff6900" class="tadv-color">ls -ltrh /var/lib/ | grep docker</span><br><br>You should see the Symlink as follows,<br><span style="color:#ff6900" class="tadv-color">lrwxrwxrwx  1 root       root         22 Nov  6 08:46 docker -&gt; /mnt/data/var-lib-docker</span><br><br></p>
-<p><!-- /wp:paragraph --></p>
-<p><!-- wp:paragraph {"fontSize":"medium"} --></p>
-<p class="has-medium-font-size"><strong><span style="text-decoration: underline" class="underline">NOTE:</span></strong><br>For both options described above, it is crucial to temporarily halt any applications, such as the Docker application in our case, that are accessing or modifying the directory in question (/var/lib/docker).</p>
-<p><!-- /wp:paragraph --></p>
-<p><!-- wp:paragraph --></p>
-<p><!-- /wp:paragraph --></p>
-<p><!-- wp:spacer {"height":"97px"} --></p>
-<div style="height:97px" aria-hidden="true" class="wp-block-spacer"></div>
-<p><!-- /wp:spacer --></p>
-<p><!-- wp:heading {"level":1,"style":{"typography":{"fontSize":"29px"}}} --></p>
-<h1 style="font-size:29px"><strong><span style="text-decoration: underline" class="underline"><mark style="background-color:rgba(0, 0, 0, 0)" class="has-inline-color has-luminous-vivid-orange-color">Hard Links:</mark></span></strong></h1>
-<p><!-- /wp:heading --></p>
-<p><!-- wp:paragraph {"fontSize":"medium"} --></p>
-<p class="has-medium-font-size">-&gt; Hard links can only be created for regular files, not directories or special files.<br>-&gt; A hard link cannot exist across multiple filesystems.<br>-&gt; The original file and the hard link file share the same inode number.<br><br><strong><span style="text-decoration: underline" class="underline">NOTE:</span></strong> Even if the original file is deleted, the hard link file remains functional, and its contents remain accessible.<br><br><strong><span style="text-decoration: underline" class="underline">Syntax:</span></strong><br><strong><code><span style="color:#ff6900" class="tadv-color">ln actual_file_name hard_link_file_name</span></code></strong></p>
-<p><!-- /wp:paragraph --></p>
-<p><!-- wp:paragraph --></p>
-<p><br></p>
-<p><!-- /wp:paragraph --><br />
-</body></html></p>
+
+#### **Symbolic links:**
+
+-> A symbolic link (also known as a symlink) is a file that points to another file within the system.
+-> These links are analogous to shortcuts in Windows.
+-> Symlinks can be created for any regular files, special files, or directories.
+-> A symlink can span across different filesystems.
+-> The original file and the symlink file have distinct inode numbers.
+
+**NOTE:** If you happen to delete the original file, the symlink file will no longer function and its existence will become meaningless.**
+
+**A common use case where symlinks can be beneficial is when one of your filesystems (e.g., /) is approaching full capacity, and you want to relocate some files or directories to a larger filesystem (e.g., /mnt/data). However, directly moving the files or directories is not feasible because certain applications (e.g., Docker) are linked to specific locations under / (e.g., /var/lib/docker).
+
+In this scenario, you have two options:
+
+**Option 1:**
+Directly copy the files and directories from the original location (/var/lib/docker) to the new location (/mnt/data/var-lib-docker) using the command:
+`mv /var/lib/docker/* /mnt/data/var-lib-docker`
+
+Once the files and directories have been copied, modify the application's configuration to point to the new location (/mnt/data/var-lib-docker) instead of the original location (/var/lib/docker).
+
+**Option 2:**
+Utilize symbolic links to maintain the application's existing location (/var/lib/docker) while actually storing the files and directories in the new location (/mnt/data/var-lib-docker).
+1) `mv /var/lib/docker/* /mnt/data/var-lib-docker
+`2) `ln -s /mnt/data/var-lib-docker /var/lib/docker`
+
+Now when you run the below command, 
+ls -ltrh /var/lib/ | grep docker
+
+You should see the Symlink as follows,
+lrwxrwxrwx  1 root       root         22 Nov  6 08:46 docker -> /mnt/data/var-lib-docker
+
+**NOTE:**
+For both options described above, it is crucial to temporarily halt any applications, such as the Docker application in our case, that are accessing or modifying the directory in question (/var/lib/docker).
+
+# **Hard Links:**
+
+-> Hard links can only be created for regular files, not directories or special files.
+-> A hard link cannot exist across multiple filesystems.
+-> The original file and the hard link file share the same inode number.
+
+**NOTE:** Even if the original file is deleted, the hard link file remains functional, and its contents remain accessible.
+
+**Syntax:**
+**`ln actual_file_name hard_link_file_name`**

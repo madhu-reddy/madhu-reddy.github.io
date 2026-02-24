@@ -1,69 +1,22 @@
 ---
-categories: ['DevOps', 'Docker']
 layout: post
-title: How to map docker container with a veth interface?
-date: 2021-05-15 07:48:06.000000000 -04:00
-type: post
-parent_id: '0'
-published: true
-password: ''
-status: publish
-- Docker
-tags:
-- docker
-- veth docker network interface
-meta:
-  _edit_last: '1'
-  ocean_gallery_link_images: 'off'
-  ocean_sidebar: '0'
-  ocean_second_sidebar: '0'
-  ocean_disable_margins: enable
-  ocean_display_top_bar: default
-  ocean_display_header: default
-  ocean_center_header_left_menu: '0'
-  ocean_custom_header_template: '0'
-  ocean_header_custom_menu: '0'
-  ocean_menu_typo_font_family: '0'
-  ocean_disable_title: default
-  ocean_disable_heading: default
-  ocean_disable_breadcrumbs: default
-  ocean_display_footer_widgets: default
-  ocean_display_footer_bottom: default
-  ocean_custom_footer_template: '0'
-  ocean_link_format_target: self
-  ocean_quote_format_link: post
-  _yoast_wpseo_content_score: '60'
-  _yoast_wpseo_estimated-reading-time-minutes: '2'
-  _yoast_wpseo_primary_category: '9'
-  _thumbnail_id: '638'
-  _wtpsw_views: '168'
-  _aioseo_title: ''
-  _aioseo_description: ''
-  _aioseo_keywords: ''
-  _aioseo_og_title: ''
-  _aioseo_og_description: ''
-  _aioseo_og_article_section: ''
-  _aioseo_og_article_tags: ''
-  _aioseo_twitter_title: ''
-  _aioseo_twitter_description: ''
-  _wp_old_slug: how-to-map-docker-container-id-name-with-the-host-veth-network-interface
-  rank_math_primary_category: '9'
-  rank_math_news_sitemap_robots: index
-  rank_math_robots: a:1:{i:0;s:5:"index";}
-  rank_math_internal_links_processed: '1'
-permalink: "/2021/05/15/how-to-map-docker-container-with-a-veth-interface/"
+title: "How to map docker container with a veth interface?"
+date: 2021-05-15
+categories: ['DevOps', 'Docker']
 ---
-<p><!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN" "http://www.w3.org/TR/REC-html40/loose.dtd"><br />
-<!-- wp:tadv/classic-paragraph --><html><body></p>
-<p><span style="font-size: 20px;">In certain scenarios, especially when numerous Docker containers are operational within a server host, it becomes pivotal to identify the specific <strong>veth</strong> interface associated with each container. This enables us to effectively monitor the inbound and outbound traffic of individual Docker containers.<br><br>Consider a scenario with <strong>15</strong> active Docker containers. In such instances, determining the exact <strong>veth</strong> interface linked to a particular container proves essential for comprehensive traffic analysis and management.<br></span></p>
-<p><!-- /wp:tadv/classic-paragraph --></p>
-<p><!-- wp:code --></p>
-<pre class="wp-block-code"><code>madhu@myserver:~$ <span style="color:#ff6900" class="tadv-color">ip addr list | grep veth | wc -l</span>
+
+In certain scenarios, especially when numerous Docker containers are operational within a server host, it becomes pivotal to identify the specific **veth** interface associated with each container. This enables us to effectively monitor the inbound and outbound traffic of individual Docker containers.
+
+Consider a scenario with **15** active Docker containers. In such instances, determining the exact **veth** interface linked to a particular container proves essential for comprehensive traffic analysis and management.
+
+```
+`madhu@myserver:~$ ip addr list | grep veth | wc -l
 15
-</code></pre>
-<p><!-- /wp:code --></p>
-<p><!-- wp:code --></p>
-<pre class="wp-block-code"><code>madhu@myserver:~$ <span style="color:#ff6900" class="tadv-color">sudo docker ps --format '{{.ID}}'</span>
+`
+```
+
+```
+`madhu@myserver:~$ sudo docker ps --format '{{.ID}}'
 dcfb47b708fc
 b4e72699410a
 4c187a15f99d
@@ -81,46 +34,41 @@ f87bc82d5ab7
 f607fbc8eb3c
 308a1363eaf6
 
-</code></pre>
-<p><!-- /wp:code --></p>
-<p><!-- wp:tadv/classic-paragraph --></p>
-<blockquote>
-<p><span style="font-size: 20px;">Each Docker container is associated with a distinct "veth" network interface, resulting in a total of 15 "veth" network interfaces for the 15 Docker containers running concurrently. </span></p>
-</blockquote>
-<p><!-- /wp:tadv/classic-paragraph --></p>
-<p><!-- wp:code --></p>
-<pre class="wp-block-code"><code>madhu@myserver:~$ <span style="color:#ff6900" class="tadv-color">ip addr list | grep veth</span>
-6: veth7948fb0@if5: &lt;BROADCAST,MULTICAST,UP,LOWER_UP&gt; mtu 1500 qdisc noqueue master br-56185a481942 state UP group default 
-8: vetha1a7201@if7: &lt;BROADCAST,MULTICAST,UP,LOWER_UP&gt; mtu 1500 qdisc noqueue master docker0 state UP group default 
-10: veth615757e@if9: &lt;BROADCAST,MULTICAST,UP,LOWER_UP&gt; mtu 1500 qdisc noqueue master br-56185a481942 state UP group default 
-12: vethebb8592@if11: &lt;BROADCAST,MULTICAST,UP,LOWER_UP&gt; mtu 1500 qdisc noqueue master docker0 state UP group default 
-16: veth740737f@if15: &lt;BROADCAST,MULTICAST,UP,LOWER_UP&gt; mtu 1500 qdisc noqueue master br-56185a481942 state UP group default 
-20: veth84fc46c@if19: &lt;BROADCAST,MULTICAST,UP,LOWER_UP&gt; mtu 1500 qdisc noqueue master br-56185a481942 state UP group default 
-22: veth84c7bdf@if21: &lt;BROADCAST,MULTICAST,UP,LOWER_UP&gt; mtu 1500 qdisc noqueue master docker0 state UP group default 
-24: veth75c2a1f@if23: &lt;BROADCAST,MULTICAST,UP,LOWER_UP&gt; mtu 1500 qdisc noqueue master br-56185a481942 state UP group default 
-26: veth0eac4c9@if25: &lt;BROADCAST,MULTICAST,UP,LOWER_UP&gt; mtu 1500 qdisc noqueue master docker0 state UP group default 
-28: veth703f874@if27: &lt;BROADCAST,MULTICAST,UP,LOWER_UP&gt; mtu 1500 qdisc noqueue master docker0 state UP group default 
-30: veth9ee258e@if29: &lt;BROADCAST,MULTICAST,UP,LOWER_UP&gt; mtu 1500 qdisc noqueue master docker0 state UP group default 
-32: vetha9a1a85@if31: &lt;BROADCAST,MULTICAST,UP,LOWER_UP&gt; mtu 1500 qdisc noqueue master docker0 state UP group default 
-34: vethc51f83f@if33: &lt;BROADCAST,MULTICAST,UP,LOWER_UP&gt; mtu 1500 qdisc noqueue master docker0 state UP group default 
-36: veth03fe67a@if35: &lt;BROADCAST,MULTICAST,UP,LOWER_UP&gt; mtu 1500 qdisc noqueue master docker0 state UP group default 
-48: vethb4659b0@if47: &lt;BROADCAST,MULTICAST,UP,LOWER_UP&gt; mtu 1500 qdisc noqueue master docker0 state UP group default 
-</code></pre>
-<p><!-- /wp:code --></p>
-<p><!-- wp:heading --></p>
-<h2><span style="text-decoration: underline" class="underline"><span style="color:#ff6900" class="tadv-color">Get the "veth" interface ID specific to a docker container</span></span></h2>
-<p><!-- /wp:heading --></p>
-<p><!-- wp:code --></p>
-<pre class="wp-block-code"><code><span style="color:#ff6900" class="tadv-color">ip addr list | grep ^$(sudo docker exec dcfb47b708fc cat /sys/class/net/eth0/iflink)</span></code></pre>
-<p><!-- /wp:code --></p>
-<p><!-- wp:heading --></p>
-<h2><span style="text-decoration: underline" class="underline"><span style="color:#ff6900" class="tadv-color">Output:</span></span></h2>
-<p><!-- /wp:heading --></p>
-<p><!-- wp:code --></p>
-<pre class="wp-block-code"><code><span style="color:#313131" class="tadv-color">48: vethb4659b0@if47: &lt;BROADCAST,MULTICAST,UP,LOWER_UP&gt; mtu 1500 qdisc noqueue master docker0 state UP group default</span></code></pre>
-<p><!-- /wp:code --></p>
-<p><!-- wp:tadv/classic-paragraph --></p>
-<p><span style="font-size: 20px;">More information about "<strong>/sys/class/net</strong>" can be found in this <span style="background-color: #ff9900;"><a style="background-color: #ff9900;" href="https://www.kernel.org/doc/Documentation/ABI/testing/sysfs-class-net">link </a></span></span><br><br><br></p>
-<p> </p>
-<p><!-- /wp:tadv/classic-paragraph --><br />
-</body></html></p>
+`
+```
+
+Each Docker container is associated with a distinct "veth" network interface, resulting in a total of 15 "veth" network interfaces for the 15 Docker containers running concurrently. 
+
+```
+`madhu@myserver:~$ ip addr list | grep veth
+6: veth7948fb0@if5: <BROADCAST,MULTICAST,UP,LOWER_UP> mtu 1500 qdisc noqueue master br-56185a481942 state UP group default 
+8: vetha1a7201@if7: <BROADCAST,MULTICAST,UP,LOWER_UP> mtu 1500 qdisc noqueue master docker0 state UP group default 
+10: veth615757e@if9: <BROADCAST,MULTICAST,UP,LOWER_UP> mtu 1500 qdisc noqueue master br-56185a481942 state UP group default 
+12: vethebb8592@if11: <BROADCAST,MULTICAST,UP,LOWER_UP> mtu 1500 qdisc noqueue master docker0 state UP group default 
+16: veth740737f@if15: <BROADCAST,MULTICAST,UP,LOWER_UP> mtu 1500 qdisc noqueue master br-56185a481942 state UP group default 
+20: veth84fc46c@if19: <BROADCAST,MULTICAST,UP,LOWER_UP> mtu 1500 qdisc noqueue master br-56185a481942 state UP group default 
+22: veth84c7bdf@if21: <BROADCAST,MULTICAST,UP,LOWER_UP> mtu 1500 qdisc noqueue master docker0 state UP group default 
+24: veth75c2a1f@if23: <BROADCAST,MULTICAST,UP,LOWER_UP> mtu 1500 qdisc noqueue master br-56185a481942 state UP group default 
+26: veth0eac4c9@if25: <BROADCAST,MULTICAST,UP,LOWER_UP> mtu 1500 qdisc noqueue master docker0 state UP group default 
+28: veth703f874@if27: <BROADCAST,MULTICAST,UP,LOWER_UP> mtu 1500 qdisc noqueue master docker0 state UP group default 
+30: veth9ee258e@if29: <BROADCAST,MULTICAST,UP,LOWER_UP> mtu 1500 qdisc noqueue master docker0 state UP group default 
+32: vetha9a1a85@if31: <BROADCAST,MULTICAST,UP,LOWER_UP> mtu 1500 qdisc noqueue master docker0 state UP group default 
+34: vethc51f83f@if33: <BROADCAST,MULTICAST,UP,LOWER_UP> mtu 1500 qdisc noqueue master docker0 state UP group default 
+36: veth03fe67a@if35: <BROADCAST,MULTICAST,UP,LOWER_UP> mtu 1500 qdisc noqueue master docker0 state UP group default 
+48: vethb4659b0@if47: <BROADCAST,MULTICAST,UP,LOWER_UP> mtu 1500 qdisc noqueue master docker0 state UP group default 
+`
+```
+
+## Get the "veth" interface ID specific to a docker container
+
+```
+`ip addr list | grep ^$(sudo docker exec dcfb47b708fc cat /sys/class/net/eth0/iflink)`
+```
+
+## Output:
+
+```
+`48: vethb4659b0@if47: <BROADCAST,MULTICAST,UP,LOWER_UP> mtu 1500 qdisc noqueue master docker0 state UP group default`
+```
+
+More information about "**/sys/class/net**" can be found in this [link

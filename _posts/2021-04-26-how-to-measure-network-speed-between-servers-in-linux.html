@@ -1,93 +1,30 @@
 ---
-categories: ['Networking', 'General']
 layout: post
-title: HOW TO MEASURE NETWORK SPEED BETWEEN SERVERS IN LINUX?
-date: 2021-04-26 12:15:23.000000000 -04:00
-type: post
-parent_id: '0'
-published: true
-password: ''
-status: publish
-- Network
-tags: []
-meta:
-  _edit_last: '1'
-  _yoast_wpseo_content_score: '90'
-  _yoast_wpseo_estimated-reading-time-minutes: '1'
-  _yoast_wpseo_primary_category: '15'
-  _thumbnail_id: '497'
-  ocean_gallery_link_images: 'off'
-  ocean_sidebar: '0'
-  ocean_second_sidebar: '0'
-  ocean_disable_margins: enable
-  ocean_display_top_bar: default
-  ocean_display_header: default
-  ocean_center_header_left_menu: '0'
-  ocean_custom_header_template: '0'
-  ocean_header_custom_menu: '0'
-  ocean_menu_typo_font_family: '0'
-  ocean_disable_title: default
-  ocean_disable_heading: default
-  ocean_disable_breadcrumbs: default
-  ocean_display_footer_widgets: default
-  ocean_display_footer_bottom: default
-  ocean_custom_footer_template: '0'
-  ocean_link_format_target: self
-  ocean_quote_format_link: post
-  _wtpsw_views: '49'
-  _aioseo_title: ''
-  _aioseo_description: ''
-  _aioseo_keywords: ''
-  _aioseo_og_title: ''
-  _aioseo_og_description: ''
-  _aioseo_og_article_section: ''
-  _aioseo_og_article_tags: ''
-  _aioseo_twitter_title: ''
-  _aioseo_twitter_description: ''
-  rank_math_primary_category: '15'
-  rank_math_news_sitemap_robots: index
-  rank_math_robots: a:1:{i:0;s:5:"index";}
-  rank_math_og_content_image: a:2:{s:5:"check";s:32:"702df0c62970c9da1bcacdb3bca03806";s:6:"images";a:2:{i:0;i:486;i:1;i:487;}}
-  rank_math_internal_links_processed: '1'
-permalink: "/2021/04/26/how-to-measure-network-speed-between-servers-in-linux/"
+title: "HOW TO MEASURE NETWORK SPEED BETWEEN SERVERS IN LINUX?"
+date: 2021-04-26
+categories: ['Networking', 'General']
 ---
-<p><!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN" "http://www.w3.org/TR/REC-html40/loose.dtd"><br />
-<!-- wp:heading --><html><body></p>
-<h2>
-<strong><span style="text-decoration: underline;"><span class="has-inline-color has-luminous-vivid-orange-color">On receiving server B:</span></span></strong><br><br />
-</h2>
-<p><!-- /wp:heading --></p>
-<p><!-- wp:paragraph {"fontSize":"medium"} --></p>
-<p class="has-medium-font-size"><code><span class="has-inline-color has-very-dark-gray-color">madhu@192.168.1.100:~$ </span><strong>while true; do netcat -vvlnp 5656 &gt; /dev/null; done</strong><span class="has-inline-color has-very-dark-gray-color"><br>Listening on [0.0.0.0] (family 0, port 5656)<br>Connection from [192.168.1.100] port 5656 [tcp/*] accepted (family 2, sport 53714)<br>Listening on [0.0.0.0] (family 0, port 5656)</span></code></p>
-<p><!-- /wp:paragraph --></p>
-<p><!-- wp:image {"id":486,"sizeSlug":"large","linkDestination":"none"} --></p>
-<figure class="wp-block-image size-large"><img src="{{site.baseurl}}/assets/2021/04/image-29.png" alt="" class="wp-image-486"></figure>
-<p><!-- /wp:image --></p>
-<p><!-- wp:paragraph --></p>
-<p><!-- /wp:paragraph --></p>
-<p><!-- wp:heading --></p>
-<h2><br></h2>
-<p><!-- /wp:heading --></p>
-<p><!-- wp:heading --></p>
-<h2><span style="text-decoration: underline;"><span class="has-inline-color has-luminous-vivid-orange-color">On sending server A:</span></span></h2>
-<p><!-- /wp:heading --></p>
-<p><!-- wp:heading --></p>
-<h2></h2>
-<p><!-- /wp:heading --></p>
-<p><!-- wp:paragraph {"fontSize":"medium"} --></p>
-<p class="has-medium-font-size"><strong><span class="has-inline-color has-vivid-cyan-blue-color"><code>dd if=/dev/zero bs=1024k count=1024 | nc -vvn 192.168.1.100 5656</code></span></strong></p>
-<p><!-- /wp:paragraph --></p>
-<p><!-- wp:image {"id":487,"sizeSlug":"large","linkDestination":"none"} --></p>
-<figure class="wp-block-image size-large"><img src="{{site.baseurl}}/assets/2021/04/image-30.png" alt="" class="wp-image-487"></figure>
-<p><!-- /wp:image --></p>
-<p><!-- wp:paragraph --></p>
-<p><!-- /wp:paragraph --></p>
-<p><!-- wp:paragraph --></p>
-<p><!-- /wp:paragraph --></p>
-<p><!-- wp:paragraph {"fontSize":"medium"} --></p>
-<p class="has-medium-font-size">Based on the results, it's evident that we successfully transmitted <strong>1 GB</strong> of data at a rate of <strong>82.1 MB/s</strong> (Megabytes per second).<br><br>However, considering that network speed is typically measured in bits, we need to convert <strong>MB (Megabytes)</strong> to <strong>Mb (Megabits)</strong> using the formula:</p>
-<p><!-- /wp:paragraph --></p>
-<p><!-- wp:paragraph {"fontSize":"medium"} --></p>
-<p class="has-medium-font-size"><mark class="kt-highlight">82.1 * 8 = 656 Mbps (Megabits per second) (This calculation involves multiplying by 8, as 1 byte equals 8 bits.)</mark><br><br>Therefore, our data transfer from<strong> server A</strong> to <strong>server B</strong> amounted to <strong>1 GB</strong> at a speed of <strong>656 Mbps (Megabits per second)</strong>.<br><br></p>
-<p><!-- /wp:paragraph --><br />
-</body></html></p>
+
+## 
+**On receiving server B:**
+
+`madhu@192.168.1.100:~$ **while true; do netcat -vvlnp 5656 > /dev/null; done**
+Listening on [0.0.0.0] (family 0, port 5656)
+Connection from [192.168.1.100] port 5656 [tcp/*] accepted (family 2, sport 53714)
+Listening on [0.0.0.0] (family 0, port 5656)`
+
+## 
+
+## On sending server A:
+
+## 
+
+**`dd if=/dev/zero bs=1024k count=1024 | nc -vvn 192.168.1.100 5656`**
+
+Based on the results, it's evident that we successfully transmitted **1 GB** of data at a rate of **82.1 MB/s** (Megabytes per second).
+
+However, considering that network speed is typically measured in bits, we need to convert **MB (Megabytes)** to **Mb (Megabits)** using the formula:
+
+82.1 * 8 = 656 Mbps (Megabits per second) (This calculation involves multiplying by 8, as 1 byte equals 8 bits.)
+
+Therefore, our data transfer from** server A** to **server B** amounted to **1 GB** at a speed of **656 Mbps (Megabits per second)**.
