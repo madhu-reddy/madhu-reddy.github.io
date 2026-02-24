@@ -1,0 +1,166 @@
+---
+layout: post
+title: All about system-resolved DNS resolution
+date: 2023-11-13 17:21:38.000000000 -05:00
+type: post
+parent_id: '0'
+published: true
+password: ''
+status: publish
+categories:
+- DNS
+- Linux
+- Sysadmin
+tags: []
+meta:
+  _edit_last: '1'
+  _aioseo_title: ''
+  _aioseo_description: ''
+  _aioseo_keywords: ''
+  _aioseo_og_title: ''
+  _aioseo_og_description: ''
+  _aioseo_og_article_section: ''
+  _aioseo_og_article_tags: ''
+  _aioseo_twitter_title: ''
+  _aioseo_twitter_description: ''
+  ocean_gallery_link_images: 'off'
+  ocean_sidebar: '0'
+  ocean_second_sidebar: '0'
+  ocean_disable_margins: enable
+  ocean_display_top_bar: default
+  ocean_display_header: default
+  ocean_center_header_left_menu: '0'
+  ocean_custom_header_template: '0'
+  ocean_header_custom_menu: '0'
+  ocean_menu_typo_font_family: '0'
+  ocean_disable_title: default
+  ocean_disable_heading: default
+  ocean_disable_breadcrumbs: default
+  ocean_display_footer_widgets: default
+  ocean_display_footer_bottom: default
+  ocean_custom_footer_template: '0'
+  ocean_link_format_target: self
+  ocean_quote_format_link: post
+  _yoast_wpseo_primary_category: '7'
+  _yoast_wpseo_estimated-reading-time-minutes: '3'
+  _yoast_wpseo_wordproof_timestamp: ''
+  _yoast_wpseo_content_score: '30'
+  _thumbnail_id: '2052'
+  _wtpsw_views: '56'
+permalink: "/2023/11/13/all-about-system-resolved-dns-resolution/"
+---
+<p><!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN" "http://www.w3.org/TR/REC-html40/loose.dtd"><br />
+<!-- wp:paragraph {"fontSize":"medium"} --><html><body></p>
+<p class="has-medium-font-size">You might be familiar with the <code>/etc/resolv.conf</code> file and configuring it by manually specifying the desired name servers for DNS resolution.</p>
+<p><!-- /wp:paragraph --></p>
+<p><!-- wp:paragraph {"fontSize":"medium"} --></p>
+<p class="has-medium-font-size">However, the configuration within <code>/etc/resolv.conf</code> can also be dynamically managed by various programs such as <strong>NetworkManager</strong>, <strong>resolvconf</strong>, <strong>rdnssd</strong>, and <strong>systemd-resolved</strong>.</p>
+<p><!-- /wp:paragraph --></p>
+<p><!-- wp:paragraph {"fontSize":"medium"} --></p>
+<p class="has-medium-font-size">If any of the aforementioned programs are actively managing <code>/etc/resolv.conf</code>, attempting to modify the file without disabling the program's control may result in your changes being overwritten after a few minutes or reverted upon system reboot.</p>
+<p><!-- /wp:paragraph --></p>
+<p><!-- wp:spacer --></p>
+<div style="height:100px" aria-hidden="true" class="wp-block-spacer"></div>
+<p><!-- /wp:spacer --></p>
+<p><!-- wp:paragraph {"style":{"typography":{"fontSize":"28px"}},"textColor":"vivid-red"} --></p>
+<p class="has-vivid-red-color has-text-color" style="font-size:28px"><strong><span style="text-decoration: underline" class="underline">Identifying  which program currently controls your /etc/resolv.conf</span></strong></p>
+<p><!-- /wp:paragraph --></p>
+<p><!-- wp:paragraph {"fontSize":"medium"} --></p>
+<p class="has-medium-font-size">If you closely examine the file, you should find comments indicating the program that is currently managing the <code>/etc/resolv.conf</code> file.</p>
+<p><!-- /wp:paragraph --></p>
+<p><!-- wp:spacer {"height":"37px"} --></p>
+<div style="height:37px" aria-hidden="true" class="wp-block-spacer"></div>
+<p><!-- /wp:spacer --></p>
+<p><!-- wp:paragraph {"style":{"typography":{"fontSize":"23px"}},"textColor":"luminous-vivid-orange"} --></p>
+<p class="has-luminous-vivid-orange-color has-text-color" style="font-size:23px"><strong><span style="text-decoration: underline" class="underline">Example1 (when using “resolvconf”)</span></strong></p>
+<p><!-- /wp:paragraph --></p>
+<p><!-- wp:image {"align":"left","id":2032,"sizeSlug":"full","linkDestination":"none"} --></p>
+<figure class="wp-block-image alignleft size-full"><img src="{{site.baseurl}}/assets/2023/11/image.png" alt="" class="wp-image-2032"></figure>
+<p><!-- /wp:image --></p>
+<p><!-- wp:paragraph --></p>
+<p><!-- /wp:paragraph --></p>
+<p><!-- wp:spacer {"height":"48px"} --></p>
+<div style="height:48px" aria-hidden="true" class="wp-block-spacer"></div>
+<p><!-- /wp:spacer --></p>
+<p><!-- wp:paragraph {"style":{"typography":{"fontSize":"23px"}},"textColor":"luminous-vivid-orange"} --></p>
+<p class="has-luminous-vivid-orange-color has-text-color" style="font-size:23px"><strong><span style="text-decoration: underline" class="underline">Example2 (when using “systemd-resolved”)</span></strong></p>
+<p><!-- /wp:paragraph --></p>
+<p><!-- wp:paragraph --></p>
+<p><img width="624" height="276" src="{{site.baseurl}}/assets/2023/11/-6fN2LYE__3XKhNMhHylIoJJdJhz9ubxpyVVoSw78rQ_fSD8Ix7F_pg14pBhDkuqCqgaQrTGdAcnERE07CLJXeME_cLVakxMyBFOZCKCx16TOQBB8jBt6OYSZd1biPyy-wmptAFQWDozvOl-hBiPQ6w"></p>
+<p><!-- /wp:paragraph --></p>
+<p><!-- wp:paragraph --></p>
+<p><!-- /wp:paragraph --></p>
+<p><!-- wp:spacer --></p>
+<div style="height:100px" aria-hidden="true" class="wp-block-spacer"></div>
+<p><!-- /wp:spacer --></p>
+<p><!-- wp:paragraph {"style":{"typography":{"fontSize":"27px"}},"textColor":"vivid-red"} --></p>
+<p class="has-vivid-red-color has-text-color" style="font-size:27px"><strong><span style="text-decoration: underline" class="underline">About systemd-resolved</span></strong></p>
+<p><!-- /wp:paragraph --></p>
+<p><!-- wp:paragraph {"fontSize":"medium"} --></p>
+<p class="has-medium-font-size"><code>systemd-resolved</code> can be configured by editing <code>/etc/systemd/resolved.conf</code> and/or by using drop-in <code>.conf</code> files in <code>/etc/systemd/resolved.conf.d/</code></p>
+<p><!-- /wp:paragraph --></p>
+<p><!-- wp:image {"align":"left","id":2037,"width":769,"height":316,"sizeSlug":"full","linkDestination":"none"} --></p>
+<figure class="wp-block-image alignleft size-full is-resized"><img src="{{site.baseurl}}/assets/2023/11/image-2.png" alt="" class="wp-image-2037" width="769" height="316"></figure>
+<p><!-- /wp:image --></p>
+<p><!-- wp:paragraph {"fontSize":"medium"} --></p>
+<p class="has-medium-font-size"><br><br><br><br><br><br><br><br><br><br><br><code>systemd-resolved</code> has four different modes (<strong>stub</strong>, <strong>uplink</strong>, <strong>static</strong>, <strong>foreign</strong>) for handling the DNS resolution file (<code>/etc/resolv.conf</code>), with <strong>stub mode</strong> being the <strong>default</strong> and <strong>recommended</strong> option.</p>
+<p><!-- /wp:paragraph --></p>
+<p><!-- wp:spacer {"height":"39px"} --></p>
+<div style="height:39px" aria-hidden="true" class="wp-block-spacer"></div>
+<p><!-- /wp:spacer --></p>
+<p><!-- wp:paragraph {"style":{"typography":{"fontSize":"25px"}},"textColor":"vivid-red"} --></p>
+<p class="has-vivid-red-color has-text-color" style="font-size:25px"><strong><span style="text-decoration: underline" class="underline">About "stub" mode</span></strong></p>
+<p><!-- /wp:paragraph --></p>
+<p><!-- wp:spacer {"height":"0px"} --></p>
+<div style="height:0px" aria-hidden="true" class="wp-block-spacer"></div>
+<p><!-- /wp:spacer --></p>
+<p><!-- wp:paragraph {"fontSize":"medium"} --></p>
+<p class="has-medium-font-size">1) <code>/run/systemd/resolve/stub-resolv.conf</code> is the stub resolver configuration file, dynamically created. The file typically contains the local stub address <code>127.0.0.53</code> as the sole DNS server and includes a list of search domains for domain search suffixes.</p>
+<p><!-- /wp:paragraph --></p>
+<p><!-- wp:paragraph {"fontSize":"medium"} --></p>
+<p class="has-medium-font-size">2) The address <code>127.0.0.53</code> is the loopback address where <code>systemd-resolved</code> operates as a local stub resolver.</p>
+<p><!-- /wp:paragraph --></p>
+<p><!-- wp:paragraph {"fontSize":"medium"} --></p>
+<p class="has-medium-font-size">3) When DNS resolution is needed, the request first goes to the local stub resolver at <code>127.0.0.53</code>, which then forwards the DNS query request to the appropriate DNS server configured in the file <code>/etc/systemd/resolved.conf</code>.</p>
+<p><!-- /wp:paragraph --></p>
+<p><!-- wp:paragraph {"fontSize":"medium"} --></p>
+<p class="has-medium-font-size">4) The file <code>/etc/resolv.conf</code> is often symbolically linked (symlinked) to <code>/run/systemd/resolve/stub-resolv.conf</code>.</p>
+<p><!-- /wp:paragraph --></p>
+<p><!-- wp:paragraph --></p>
+<p><!-- /wp:paragraph --></p>
+<p><!-- wp:paragraph --></p>
+<p><!-- /wp:paragraph --></p>
+<p><!-- wp:spacer {"height":"66px"} --></p>
+<div style="height:66px" aria-hidden="true" class="wp-block-spacer"></div>
+<p><!-- /wp:spacer --></p>
+<p><!-- wp:paragraph {"style":{"typography":{"fontSize":"25px"}},"textColor":"vivid-red"} --></p>
+<p class="has-vivid-red-color has-text-color" style="font-size:25px"><strong><span style="text-decoration: underline" class="underline">Enabling only systemd-resolved ("stub" mode) for managing DNS</span></strong></p>
+<p><!-- /wp:paragraph --></p>
+<p><!-- wp:paragraph {"fontSize":"medium"} --></p>
+<p class="has-medium-font-size">$ ls -la /etc/resolv.conf</p>
+<p><!-- /wp:paragraph --></p>
+<p><!-- wp:paragraph {"fontSize":"medium"} --></p>
+<p class="has-medium-font-size">$ mv /etc/resolv.conf /etc/resolv.conf.BAK</p>
+<p><!-- /wp:paragraph --></p>
+<p><!-- wp:paragraph {"fontSize":"medium"} --></p>
+<p class="has-medium-font-size">$ ln -s /run/systemd/resolve/stub-resolv.conf /etc/resolv.conf</p>
+<p><!-- /wp:paragraph --></p>
+<p><!-- wp:paragraph {"fontSize":"medium"} --></p>
+<p class="has-medium-font-size">$ systemctl restart systemd-resolved</p>
+<p><!-- /wp:paragraph --></p>
+<p><!-- wp:paragraph {"fontSize":"medium"} --></p>
+<p class="has-medium-font-size">$ resolvectl</p>
+<p><!-- /wp:paragraph --></p>
+<p><!-- wp:image {"align":"left","id":2055,"sizeSlug":"full","linkDestination":"none"} --></p>
+<figure class="wp-block-image alignleft size-full"><img src="{{site.baseurl}}/assets/2023/11/image-3.png" alt="" class="wp-image-2055"></figure>
+<p><!-- /wp:image --></p>
+<p><!-- wp:spacer --></p>
+<div style="height:100px" aria-hidden="true" class="wp-block-spacer"></div>
+<p><!-- /wp:spacer --></p>
+<p><!-- wp:paragraph {"fontSize":"medium"} --></p>
+<p class="has-medium-font-size"><strong><span style="text-decoration: underline" class="underline">NOTE:</span></strong><br>If multiple programs or services are attempting to manage the <code>/etc/resolv.conf</code> file simultaneously, conflicts and inconsistencies can arise. The <code>/etc/resolv.conf</code> file is a critical configuration file for DNS resolution, and having multiple sources trying to control it can lead to unexpected behavior.</p>
+<p><!-- /wp:paragraph --></p>
+<p><!-- wp:paragraph {"fontSize":"medium"} --></p>
+<p class="has-medium-font-size">On systems using <code>systemd-resolved</code>, it's recommended to let <code>systemd-resolved</code> manage <code>resolv.conf</code> and to avoid interference from other programs unless necessary.</p>
+<p><!-- /wp:paragraph --><br />
+</body></html></p>

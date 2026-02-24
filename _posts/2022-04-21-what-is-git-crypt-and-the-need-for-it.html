@@ -1,0 +1,194 @@
+---
+layout: post
+title: what is git-crypt and the need for it?
+date: 2022-04-21 03:46:13.000000000 -04:00
+type: post
+parent_id: '0'
+published: true
+password: ''
+status: publish
+categories:
+- GitHub
+tags: []
+meta:
+  _aioseo_title: ''
+  _aioseo_description: ''
+  _aioseo_keywords: ''
+  _aioseo_og_title: ''
+  _aioseo_og_description: ''
+  _aioseo_og_article_section: ''
+  _aioseo_og_article_tags: ''
+  _aioseo_twitter_title: ''
+  _aioseo_twitter_description: ''
+  _edit_last: '1'
+  _yoast_wpseo_primary_category: '1'
+  ocean_gallery_link_images: 'off'
+  ocean_sidebar: '0'
+  ocean_second_sidebar: '0'
+  ocean_disable_margins: enable
+  ocean_display_top_bar: default
+  ocean_display_header: default
+  ocean_center_header_left_menu: '0'
+  ocean_custom_header_template: '0'
+  ocean_header_custom_menu: '0'
+  ocean_menu_typo_font_family: '0'
+  ocean_disable_title: default
+  ocean_disable_heading: default
+  ocean_disable_breadcrumbs: default
+  ocean_display_footer_widgets: default
+  ocean_display_footer_bottom: default
+  ocean_custom_footer_template: '0'
+  ocean_link_format_target: self
+  ocean_quote_format_link: post
+  _yoast_wpseo_estimated-reading-time-minutes: '2'
+  _yoast_wpseo_content_score: '90'
+  _thumbnail_id: '1343'
+  _wtpsw_views: '38'
+  rank_math_primary_category: '1'
+  rank_math_news_sitemap_robots: index
+  rank_math_robots: a:1:{i:0;s:5:"index";}
+  rank_math_internal_links_processed: '1'
+  rank_math_seo_score: '65'
+  rank_math_focus_keyword: git-crypt
+  _yoast_wpseo_wordproof_timestamp: ''
+permalink: "/2022/04/21/what-is-git-crypt-and-the-need-for-it/"
+---
+<p><!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN" "http://www.w3.org/TR/REC-html40/loose.dtd"><br />
+<!-- wp:paragraph {"fontSize":"medium"} --><html><body></p>
+<p class="has-medium-font-size"><code>git-crypt</code> is a tool that secures sensitive data within GitHub repositories by encrypting files. Here's a step-by-step guide on how to utilize <code>git-crypt</code> for encrypting files:<br></p>
+<p><!-- /wp:paragraph --></p>
+<p><!-- wp:paragraph {"style":{"typography":{"fontSize":"30px"}}} --></p>
+<p style="font-size:30px"><strong><mark style="background-color:rgba(0, 0, 0, 0)" class="has-inline-color has-vivid-red-color"><span style="text-decoration: underline" class="underline">Step-by-Step Procedure:</span></mark></strong></p>
+<p><!-- /wp:paragraph --></p>
+<p><!-- wp:paragraph {"fontSize":"medium"} --></p>
+<p class="has-medium-font-size"><strong><span style="text-decoration: underline" class="underline"><mark style="background-color:rgba(0, 0, 0, 0)" class="has-inline-color has-luminous-vivid-orange-color">Step 1: Creation and Initialization</mark></span></strong></p>
+<p><!-- /wp:paragraph --></p>
+<p><!-- wp:paragraph {"fontSize":"medium"} --></p>
+<p class="has-medium-font-size">Create the file you intend to encrypt within your Git repository and add the relevant sensitive information.</p>
+<p><!-- /wp:paragraph --></p>
+<p><!-- wp:code {"fontSize":"medium"} --></p>
+<pre class="wp-block-code has-medium-font-size"><code>madhu@madhu-Inspiron-5567:~/madhu-github-testing$ cat mysecretsfile.txt 
+<span style="color:#00d084" class="tadv-color">MysecretPassword
+MysecretPassword1</span>
+</code></pre>
+<p><!-- /wp:code --></p>
+<p><!-- wp:paragraph --></p>
+<p><!-- /wp:paragraph --></p>
+<p><!-- wp:paragraph {"fontSize":"medium"} --></p>
+<p class="has-medium-font-size"> Run the command <code>git-crypt init</code> to generate the encryption key and configure the current Git repository to use <code>git-crypt</code>.</p>
+<p><!-- /wp:paragraph --></p>
+<p><!-- wp:code --></p>
+<pre class="wp-block-code"><code>madhu@madhu-Inspiron-5567:~/madhu-github-testing$ git-crypt init
+Generating key...</code></pre>
+<p><!-- /wp:code --></p>
+<p><!-- wp:spacer {"height":"79px"} --></p>
+<div style="height:79px" aria-hidden="true" class="wp-block-spacer"></div>
+<p><!-- /wp:spacer --></p>
+<p><!-- wp:paragraph {"fontSize":"medium"} --></p>
+<p class="has-medium-font-size"><strong><span style="text-decoration: underline" class="underline"><mark style="background-color:rgba(0, 0, 0, 0)" class="has-inline-color has-luminous-vivid-orange-color">Step 2: Exporting <code>git-crypt</code> Symmetric K</mark></span></strong><mark style="background-color:rgba(0, 0, 0, 0)" class="has-inline-color has-luminous-vivid-orange-color"><strong><span style="text-decoration: underline" class="underline">e</span>y</strong></mark></p>
+<p><!-- /wp:paragraph --></p>
+<p><!-- wp:paragraph {"fontSize":"medium"} --></p>
+<p class="has-medium-font-size">Export the <code>git-crypt</code> symmetric key using the command <code>git-crypt export-key</code></p>
+<p><!-- /wp:paragraph --></p>
+<p><!-- wp:code --></p>
+<pre class="wp-block-code"><code>madhu@madhu-Inspiron-5567:~/madhu-github-testing$ git-crypt export-key /home/user/git-crypt-symmetric
+
+madhu@madhu-Inspiron-5567:~/madhu-github-testing$ ls -ltrh /home/madhu/git-crypt-symmetric 
+-rw------- 1 root root 148 Apr 10 23:23 <span style="color:#00d084" class="tadv-color">/home/madhu/git-crypt-symmetric</span>
+</code></pre>
+<p><!-- /wp:code --></p>
+<p><!-- wp:paragraph {"fontSize":"medium"} --></p>
+<p class="has-medium-font-size"><span style="color:#ff6900" class="tadv-color"><strong><span style="text-decoration: underline" class="underline">NOTE:</span></strong> </span><code>git-crypt</code> symmetric key is crucial for collaborators who need access to the encrypted file within the repository.</p>
+<p><!-- /wp:paragraph --></p>
+<p><!-- wp:spacer {"height":"86px"} --></p>
+<div style="height:86px" aria-hidden="true" class="wp-block-spacer"></div>
+<p><!-- /wp:spacer --></p>
+<p><!-- wp:paragraph {"fontSize":"medium"} --></p>
+<p class="has-medium-font-size"><strong><span style="text-decoration: underline" class="underline"><mark style="background-color:rgba(0, 0, 0, 0)" class="has-inline-color has-luminous-vivid-orange-color">Step 3: Specifying Files for Encryption</mark></span></strong></p>
+<p><!-- /wp:paragraph --></p>
+<p><!-- wp:paragraph {"fontSize":"medium"} --></p>
+<p class="has-medium-font-size">Indicate the file to encrypt within the <code>.gitattributes</code> file using <code>git-crypt</code>.</p>
+<p><!-- /wp:paragraph --></p>
+<p><!-- wp:code {"fontSize":"medium"} --></p>
+<pre class="wp-block-code has-medium-font-size"><code>madhu@madhu-Inspiron-5567:~/madhu-github-testing$ cat .gitattributes 
+<span style="color:#00d084" class="tadv-color">mysecretsfile.txt filter=git-crypt diff=git-crypt</span>
+</code></pre>
+<p><!-- /wp:code --></p>
+<p><!-- wp:spacer {"height":"84px"} --></p>
+<div style="height:84px" aria-hidden="true" class="wp-block-spacer"></div>
+<p><!-- /wp:spacer --></p>
+<p><!-- wp:paragraph {"fontSize":"medium"} --></p>
+<p class="has-medium-font-size"><strong><span style="text-decoration: underline" class="underline"><mark style="background-color:rgba(0, 0, 0, 0)" class="has-inline-color has-luminous-vivid-orange-color">Step 4: Git Operations</mark></span></strong><br><br>Perform Git operations like <code>git add</code>, <code>git commit</code>, and <code>git push</code> to push the updated code to GitHub.</p>
+<p><!-- /wp:paragraph --></p>
+<p><!-- wp:code --></p>
+<pre class="wp-block-code"><code>madhu@madhu-Inspiron-5567:~/madhu-github-testing$ <span style="color:#00d084" class="tadv-color">git add .</span>
+
+madhu@madhu-Inspiron-5567:~/madhu-github-testing$ <span style="color:#00d084" class="tadv-color">git commit -m "testing secrets"</span>
+[main 7bbe54c] testing secrets
+ 2 files changed, 1 insertion(+)
+ create mode 100644 .gitattributes
+ create mode 100644 mysecretsfile.txt
+
+madhu@madhu-Inspiron-5567:~/madhu-github-testing$ <span style="color:#00d084" class="tadv-color">git push</span>
+Enumerating objects: 5, done.
+Counting objects: 100% (5/5), done.
+Delta compression using up to 4 threads
+Compressing objects: 100% (4/4), done.
+Writing objects: 100% (4/4), 439 bytes | 439.00 KiB/s, done.
+Total 4 (delta 0), reused 0 (delta 0)
+</code></pre>
+<p><!-- /wp:code --></p>
+<p><!-- wp:paragraph --></p>
+<p><!-- /wp:paragraph --></p>
+<p><!-- wp:spacer {"height":"79px"} --></p>
+<div style="height:79px" aria-hidden="true" class="wp-block-spacer"></div>
+<p><!-- /wp:spacer --></p>
+<p><!-- wp:paragraph {"fontSize":"medium"} --></p>
+<p class="has-medium-font-size"><strong><span style="text-decoration: underline" class="underline"><mark style="background-color:rgba(0, 0, 0, 0)" class="has-inline-color has-luminous-vivid-orange-color">Step 5: Validation on GitHub</mark></span></strong></p>
+<p><!-- /wp:paragraph --></p>
+<p><!-- wp:paragraph {"fontSize":"medium"} --></p>
+<p class="has-medium-font-size">Verify on GitHub that the encrypted file (<code>mysecretsfile.txt</code>) is no longer readable.<br></p>
+<p><!-- /wp:paragraph --></p>
+<p><!-- wp:image {"id":1326,"sizeSlug":"large","linkDestination":"none"} --></p>
+<figure class="wp-block-image size-large"><img src="{{site.baseurl}}/assets/2022/04/image-1.png" alt="" class="wp-image-1326"></figure>
+<p><!-- /wp:image --></p>
+<p><!-- wp:paragraph {"fontSize":"medium"} --></p>
+<p class="has-medium-font-size">You can see that the git-crypt has successfully encrypted the <span style="color:#ff6900" class="tadv-color">"mysecretsfile.txt</span>" file contents and the contents of the file are not visible anymore.</p>
+<p><!-- /wp:paragraph --></p>
+<p><!-- wp:spacer --></p>
+<div style="height:100px" aria-hidden="true" class="wp-block-spacer"></div>
+<p><!-- /wp:spacer --></p>
+<p><!-- wp:paragraph --></p>
+<p>.</p>
+<p><!-- /wp:paragraph --></p>
+<p><!-- wp:paragraph {"style":{"typography":{"fontSize":"29px"}}} --></p>
+<p style="font-size:29px"><strong><span style="text-decoration: underline" class="underline"><mark style="background-color:rgba(0, 0, 0, 0)" class="has-inline-color has-vivid-red-color">Using the Same <code>git-crypt</code> Symmetric Key for Other Repositories</mark></span></strong></p>
+<p><!-- /wp:paragraph --></p>
+<p><!-- wp:paragraph --></p>
+<p><!-- /wp:paragraph --></p>
+<p><!-- wp:paragraph {"fontSize":"medium"} --></p>
+<p class="has-medium-font-size">Unlock encrypted files in other repositories using the same <code>git-crypt</code> symmetric key via <code>git-crypt unlock</code>.</p>
+<p><!-- /wp:paragraph --></p>
+<p><!-- wp:code --></p>
+<pre class="wp-block-code"><code>git-crypt unlock ../git-crypt-key</code></pre>
+<p><!-- /wp:code --></p>
+<p><!-- wp:paragraph {"fontSize":"medium"} --></p>
+<p class="has-medium-font-size"><br></p>
+<p><!-- /wp:paragraph --></p>
+<p><!-- wp:paragraph --></p>
+<p>.</p>
+<p><!-- /wp:paragraph --></p>
+<p><!-- wp:paragraph {"style":{"typography":{"fontSize":"29px"}}} --></p>
+<p style="font-size:29px"><span style="color:#ff6900" class="tadv-color"><span style="text-decoration: underline" class="underline"><strong><mark style="background-color:rgba(0, 0, 0, 0)" class="has-inline-color has-vivid-red-color">Other collaborators wants to access the GitHub Repo?</mark></strong></span></span></p>
+<p><!-- /wp:paragraph --></p>
+<p><!-- wp:paragraph {"fontSize":"medium"} --></p>
+<p class="has-medium-font-size">Collaborators who need access to the encrypted file can use either of the following two methods:<br>1) Sharing the <code>git-crypt</code> symmetric key with collaborators directly.<br>2) Utilizing GPG keys with <code>git-crypt</code> to grant access to encrypted files. A separate guide will cover this method.</p>
+<p><!-- /wp:paragraph --></p>
+<p><!-- wp:paragraph {"style":{"typography":{"fontSize":"29px"}}} --></p>
+<p style="font-size:29px"><br><br><br></p>
+<p><!-- /wp:paragraph --></p>
+<p><!-- wp:paragraph --></p>
+<p><!-- /wp:paragraph --></p>
+<p><!-- wp:paragraph --></p>
+<p><!-- /wp:paragraph --><br />
+</body></html></p>

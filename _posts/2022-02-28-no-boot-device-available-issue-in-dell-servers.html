@@ -1,0 +1,94 @@
+---
+layout: post
+title: No Boot Device Available issue in Dell Servers?
+date: 2022-02-28 05:41:38.000000000 -05:00
+type: post
+parent_id: '0'
+published: true
+password: ''
+status: publish
+categories:
+- Sysadmin
+tags: []
+meta:
+  _edit_last: '1'
+  _aioseo_title: ''
+  _aioseo_description: ''
+  _aioseo_keywords: a:0:{}
+  _aioseo_og_title: ''
+  _aioseo_og_description: ''
+  _aioseo_og_article_section: ''
+  _aioseo_og_article_tags: a:0:{}
+  _aioseo_twitter_title: ''
+  _aioseo_twitter_description: ''
+  ocean_gallery_link_images: 'off'
+  ocean_sidebar: '0'
+  ocean_second_sidebar: '0'
+  ocean_disable_margins: enable
+  ocean_display_top_bar: default
+  ocean_display_header: default
+  ocean_center_header_left_menu: '0'
+  ocean_custom_header_template: '0'
+  ocean_header_custom_menu: '0'
+  ocean_menu_typo_font_family: '0'
+  ocean_disable_title: default
+  ocean_disable_heading: default
+  ocean_disable_breadcrumbs: default
+  ocean_display_footer_widgets: default
+  ocean_display_footer_bottom: default
+  ocean_custom_footer_template: '0'
+  ocean_link_format_target: self
+  ocean_quote_format_link: post
+  _yoast_wpseo_content_score: '60'
+  _yoast_wpseo_estimated-reading-time-minutes: '2'
+  _thumbnail_id: '1318'
+  _yoast_wpseo_primary_category: '40'
+  _wtpsw_views: '82'
+  rank_math_primary_category: '40'
+  rank_math_news_sitemap_robots: index
+  rank_math_robots: a:1:{i:0;s:5:"index";}
+  rank_math_internal_links_processed: '1'
+  rank_math_seo_score: '66'
+  rank_math_focus_keyword: No Boot Device Available
+  _yoast_wpseo_wordproof_timestamp: ''
+  wp_statistics_words_count: '256'
+permalink: "/2022/02/28/no-boot-device-available-issue-in-dell-servers/"
+---
+<p><!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN" "http://www.w3.org/TR/REC-html40/loose.dtd"><br />
+<!-- wp:paragraph {"fontSize":"medium"} --><html><body></p>
+<p class="has-medium-font-size">After replacing the 2 failed INTEL SSD drives with 2 new Samsung SSD drives and configuring RAID-1, I proceeded to install Ubuntu 20.04 on that Virtual Disk (VD).</p>
+<p><!-- /wp:paragraph --></p>
+<p><!-- wp:heading {"fontSize":"medium"} --></p>
+<h2 class="has-medium-font-size">I saw the following error,<br><span style="color:#ff6900" class="tadv-color"><strong>"No boot device available"</strong></span><br />
+</h2>
+<p><!-- /wp:heading --></p>
+<p><!-- wp:image {"id":1316,"sizeSlug":"large","linkDestination":"none"} --></p>
+<figure class="wp-block-image size-large"><img src="{{site.baseurl}}/assets/2022/02/no-boot-device-1024x226.png" alt="No Boot Device Available Dell Server" class="wp-image-1316"></figure>
+<p><!-- /wp:image --></p>
+<p><!-- wp:paragraph --></p>
+<p><!-- /wp:paragraph --></p>
+<p><!-- wp:paragraph {"fontSize":"medium"} --></p>
+<p class="has-medium-font-size">Despite ensuring that the RAID Controller card (PERC) was set as the primary boot device and confirming both PD drives showed as '<strong>Online</strong>' in the Raid Controller Configuration utility, the system still failed to boot.<br><br>Then I suspected something was wrong with my OS installation or some issue with the utility (Unetbootin) I used to create the bootable USB, So I tried to install the OS (ubuntu 20.04) again using a different utility (other than Unetbootin) on the same VD.</p>
+<p><!-- /wp:paragraph --></p>
+<p><!-- wp:paragraph {"fontSize":"medium"} --></p>
+<p class="has-medium-font-size">Still no luck with server boot? <strong>yes!!!</strong></p>
+<p><!-- /wp:paragraph --></p>
+<p><!-- wp:paragraph {"fontSize":"medium"} --></p>
+<p class="has-medium-font-size">So I found this nice article from the Dell portal,<br><a href="https://www.dell.com/support/kbdoc/en-us/000142265/dell-poweredge-no-boot-device-available-is-displayed-during-startup">https://www.dell.com/support/kbdoc/en-us/000142265/dell-poweredge-no-boot-device-available-is-displayed-during-startup</a></p>
+<p><!-- /wp:paragraph --></p>
+<p><!-- wp:paragraph {"fontSize":"medium"} --></p>
+<p class="has-medium-font-size">Going through the article everything looked perfect and it was the same way I had been troubleshooting the issue until I came across 2 lines that saved my day,</p>
+<p><!-- /wp:paragraph --></p>
+<p><!-- wp:quote {"className":"is-style-large"} --></p>
+<blockquote class="wp-block-quote is-style-large"><p>
+<!-- wp:paragraph --></p>
+<p>1) When the RAID is managing multiple VD,<strong> it is important to select which VD has to be presented when the server tries to boot on the raid controller</strong>.<br>2) The bootable Virtual Disk can be selected on the last tab "<strong>CTRL Mgmt</strong>". It is important to select the VD where the operating system is installed.</p>
+<p><!-- /wp:paragraph -->
+</p></blockquote>
+<p><!-- /wp:quote --></p>
+<p><!-- wp:paragraph {"fontSize":"medium"} --></p>
+<p class="has-medium-font-size">Since my server comprised three Virtual Drives (VD), with two designated as data VDs and one as the OS VD, I realized that the VD presented to the server wasn't the bootable VD.<br>Upon selecting the correct VD as the bootable VD in the Raid Controller, my server successfully booted.</p>
+<p><!-- /wp:paragraph --></p>
+<p><!-- wp:paragraph --></p>
+<p><!-- /wp:paragraph --><br />
+</body></html></p>

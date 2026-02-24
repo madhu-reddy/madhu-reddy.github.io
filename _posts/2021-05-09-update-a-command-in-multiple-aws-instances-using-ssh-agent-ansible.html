@@ -1,0 +1,64 @@
+---
+layout: post
+title: Update a command in AWS instances (using ansible & ssh-agent)?
+date: 2021-05-09 08:14:58.000000000 -04:00
+type: post
+parent_id: '0'
+published: true
+password: ''
+status: publish
+categories:
+- Ansible
+- AWS
+tags: []
+meta:
+  _edit_last: '1'
+  _yoast_wpseo_content_score: '60'
+  _yoast_wpseo_estimated-reading-time-minutes: '2'
+  _thumbnail_id: '651'
+  _yoast_wpseo_primary_category: '16'
+  ocean_gallery_link_images: 'off'
+  ocean_sidebar: '0'
+  ocean_second_sidebar: '0'
+  ocean_disable_margins: enable
+  ocean_display_top_bar: default
+  ocean_display_header: default
+  ocean_center_header_left_menu: '0'
+  ocean_custom_header_template: '0'
+  ocean_header_custom_menu: '0'
+  ocean_menu_typo_font_family: '0'
+  ocean_disable_title: default
+  ocean_disable_heading: default
+  ocean_disable_breadcrumbs: default
+  ocean_display_footer_widgets: default
+  ocean_display_footer_bottom: default
+  ocean_custom_footer_template: '0'
+  ocean_link_format_target: self
+  ocean_quote_format_link: post
+  _wtpsw_views: '47'
+  _aioseo_title: ''
+  _aioseo_description: ''
+  _aioseo_keywords: ''
+  _aioseo_og_title: ''
+  _aioseo_og_description: ''
+  _aioseo_og_article_section: ''
+  _aioseo_og_article_tags: ''
+  _aioseo_twitter_title: ''
+  _aioseo_twitter_description: ''
+  rank_math_primary_category: '16'
+  rank_math_news_sitemap_robots: index
+  rank_math_robots: a:1:{i:0;s:5:"index";}
+  rank_math_og_content_image: a:2:{s:5:"check";s:32:"15ec612cc3ffd854edbfe6f73ed23e55";s:6:"images";a:4:{i:0;i:560;i:1;i:563;i:2;i:566;i:3;i:567;}}
+  rank_math_internal_links_processed: '1'
+permalink: "/2021/05/09/update-a-command-in-multiple-aws-instances-using-ssh-agent-ansible/"
+---
+<p><!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN" "http://www.w3.org/TR/REC-html40/loose.dtd"><br />
+<!-- wp:tadv/classic-paragraph --><html><body></p>
+<p><span style="font-size: 20px;">1) First, we need to start the ssh-agent (this program holds private keys for public key authentication) using the command.</span><br><code><span style="font-size: 16px;"><span style="font-size: 20px;">ssh-agent bash</span><br><img class="alignnone size-full wp-image-560" src="{{site.baseurl}}/assets/2021/05/ansible1.png" alt="" width="297" height="23"><br><br><br></span></code><span style="font-size: 20px;">2) Now, we need to add the private key, along with its passphrase, to the list maintained by the ssh-agent using the following command:<br><code>ssh-add privatekey.pem<br></code></span><code><img class="alignnone size-full wp-image-563" src="{{site.baseurl}}/assets/2021/05/ansible2-2.png" alt="" width="445" height="59"><br><span style="font-size: 16px;"><span style="background-color: #ffffff;"><span style="color: #000000;"><span style="text-decoration: underline;"><strong><span style="font-size: 20px;"><br>NOTE</span>:</strong></span><br>The ssh-agent can then use the private key to log into other servers without requiring the user to retype the passphrase or provide the private key during an ssh connection.<br></span></span></span></code></p>
+<p> </p>
+<p><span style="font-size: 16px;"><span style="font-size: 20px;">3) Create a <strong>[aws]</strong> group in <strong>/etc/ansible/hosts</strong> and add all the IPs of the AWS instances where we want to execute a command.</span><br><img class="alignnone size-full wp-image-566" src="{{site.baseurl}}/assets/2021/05/ansible3-1.png" alt="" width="445" height="80"></span></p>
+<p><br><span style="font-size: 20px;">4) Run the ansible command,</span><br><span style="font-size: 20px;"><code>ansible aws -u ubuntu  -a "uname -r" </code></span><span style="font-size: 16px;"><span style="color: #ff6600; font-size: 20px;">("uname -r" is the ad-hoc command we want to run in all the AWS Instances)</span><br><img class="alignnone size-full wp-image-567" src="{{site.baseurl}}/assets/2021/05/ansible4.png" alt="" width="494" height="96"></span><br><br></p>
+<p><span style="font-size: 20px;">5) Following these steps enables us to execute a command on multiple AWS instances.</span></p>
+<p><code><br><br><br><br><br></code><br><code></code><br><br></p>
+<p><!-- /wp:tadv/classic-paragraph --><br />
+</body></html></p>

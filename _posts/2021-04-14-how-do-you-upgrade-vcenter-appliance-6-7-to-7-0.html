@@ -1,0 +1,272 @@
+---
+layout: post
+title: How do you upgrade vCenter appliance 6.7 to 7.0?
+date: 2021-04-14 03:40:13.000000000 -04:00
+type: post
+parent_id: '0'
+published: true
+password: ''
+status: publish
+categories:
+- VMware
+tags: []
+meta:
+  _aioseo_title: ''
+  _aioseo_description: ''
+  _aioseo_keywords: ''
+  _aioseo_og_title: ''
+  _aioseo_og_description: ''
+  _aioseo_og_article_section: ''
+  _aioseo_og_article_tags: ''
+  _aioseo_twitter_title: ''
+  _aioseo_twitter_description: ''
+  _edit_last: '1'
+  _kad_blog_head: default
+  _kad_post_summery: default
+  _kad_post_sidebar: 'yes'
+  _kad_sidebar_choice: sidebar-primary
+  _kad_blog_  _yoast_wpseo_estimated-reading-time-minutes: '5'
+  _yoast_wpseo_content_score: '60'
+  _yoast_wpseo_primary_category: '14'
+  _wp_page_template: default
+  _thumbnail_id: '294'
+  ocean_gallery_link_images: 'off'
+  ocean_sidebar: '0'
+  ocean_second_sidebar: '0'
+  ocean_disable_margins: enable
+  ocean_display_top_bar: default
+  ocean_display_header: default
+  ocean_center_header_left_menu: '0'
+  ocean_custom_header_template: '0'
+  ocean_header_custom_menu: '0'
+  ocean_menu_typo_font_family: '0'
+  ocean_disable_title: default
+  ocean_disable_heading: default
+  ocean_disable_breadcrumbs: default
+  ocean_display_footer_widgets: default
+  ocean_display_footer_bottom: default
+  ocean_custom_footer_template: '0'
+  ocean_link_format_target: self
+  ocean_quote_format_link: post
+  _wtpsw_views: '709'
+  rank_math_primary_category: '14'
+  rank_math_news_sitemap_robots: index
+  rank_math_robots: a:1:{i:0;s:5:"index";}
+  rank_math_og_content_image: a:2:{s:5:"check";s:32:"1fa6bc62c5b740cd6a0fee68f0b3821e";s:6:"images";a:1:{i:0;i:264;}}
+  rank_math_internal_links_processed: '1'
+permalink: "/2021/04/14/how-do-you-upgrade-vcenter-appliance-6-7-to-7-0/"
+---
+<p><!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN" "http://www.w3.org/TR/REC-html40/loose.dtd"><br />
+<!-- wp:paragraph {"fontSize":"medium"} --><html><body></p>
+<p class="has-medium-font-size"><strong>1)</strong> Download the vCSA 7.0 ISO and mount it on any Windows system.<br></p>
+<p><!-- /wp:paragraph --></p>
+<p><!-- wp:paragraph {"fontSize":"medium"} --></p>
+<p class="has-medium-font-size"><strong>2)</strong> Once the ISO is mounted, navigate to '<strong>vcsa-ui-installer</strong>' -&gt; '<strong>win32</strong>,' double-click '<strong>installer.exe</strong>,' and select '<strong>Upgrade</strong>.'<br></p>
+<p><!-- /wp:paragraph --></p>
+<p><!-- wp:paragraph {"fontSize":"medium"} --></p>
+<p class="has-medium-font-size"><strong>3)</strong> Proceed by clicking '<strong>Next</strong>' (Introduction) and '<strong>Next</strong>' (EULA).<br></p>
+<p><!-- /wp:paragraph --></p>
+<p><!-- wp:paragraph {"fontSize":"medium"} --></p>
+<p class="has-medium-font-size"><strong>4)</strong> Enter the following details and click '<strong>Next</strong>':</p>
+<p><!-- /wp:paragraph --></p>
+<p><!-- wp:group {"layout":{"type":"constrained"}} --></p>
+<div class="wp-block-group">
+<!-- wp:paragraph {"style":{"typography":{"fontSize":"18px"}}} --></p>
+<p style="font-size:18px">       <strong>Appliance FQDN or IP address: </strong>myvcenter.mylearningsguru.com</p>
+<p><!-- /wp:paragraph --></p>
+<p><!-- wp:paragraph {"style":{"typography":{"fontSize":"18px"}}} --></p>
+<p style="font-size:18px">       <strong>SSO Username:</strong> <a href="mailto:administrator@vsphere.local">administrator@vsphere.local</a></p>
+<p><!-- /wp:paragraph --></p>
+<p><!-- wp:paragraph {"style":{"typography":{"fontSize":"18px"}}} --></p>
+<p style="font-size:18px"><strong>       SSO Password:</strong> administratorpassword</p>
+<p><!-- /wp:paragraph --></p>
+<p><!-- wp:paragraph {"style":{"typography":{"fontSize":"18px"}}} --></p>
+<p style="font-size:18px"><strong>       Appliance (OS) root password:</strong> appliance root password</p>
+<p><!-- /wp:paragraph --></p>
+<p><!-- wp:paragraph {"style":{"typography":{"fontSize":"18px"}}} --></p>
+<p style="font-size:18px"><strong>       ESXi host or vCenter Server:</strong> ESXi name</p>
+<p><!-- /wp:paragraph --></p>
+<p><!-- wp:paragraph {"style":{"typography":{"fontSize":"18px"}}} --></p>
+<p style="font-size:18px"><strong>       HTTPS port:</strong> 443</p>
+<p><!-- /wp:paragraph --></p>
+<p><!-- wp:paragraph {"style":{"typography":{"fontSize":"18px"}}} --></p>
+<p style="font-size:18px"><strong>       Username:</strong> root</p>
+<p><!-- /wp:paragraph --></p>
+<p><!-- wp:paragraph {"style":{"typography":{"fontSize":"18px"}}} --></p>
+<p style="font-size:18px"><strong>       Password:</strong> ESXi root password"</p>
+<p><!-- /wp:paragraph -->
+</div>
+<p><!-- /wp:group --></p>
+<p><!-- wp:paragraph {"fontSize":"medium"} --></p>
+<p class="has-medium-font-size"><br><br><strong><span style="text-decoration: underline;"><mark style="background-color:rgba(0, 0, 0, 0);color:#a30016" class="has-inline-color">Example:</mark></span></strong></p>
+<p><!-- /wp:paragraph --></p>
+<p><!-- wp:image {"id":264,"sizeSlug":"large","linkDestination":"none"} --></p>
+<figure class="wp-block-image size-large"><img src="{{site.baseurl}}/assets/2021/04/image-22.png" alt="" class="wp-image-264"></figure>
+<p><!-- /wp:image --></p>
+<p><!-- wp:paragraph --></p>
+<p><!-- /wp:paragraph --></p>
+<p><!-- wp:paragraph {"fontSize":"medium"} --></p>
+<p class="has-medium-font-size"><strong>5)</strong> Click '<strong>YES</strong>' (Certificate Warning).<br><br><strong>6)</strong> In the Appliance Deployment Target, enter the following details and click '<strong>Next</strong>':</p>
+<p><!-- /wp:paragraph --></p>
+<p><!-- wp:group {"layout":{"type":"constrained"}} --></p>
+<div class="wp-block-group">
+<!-- wp:paragraph {"align":"left","style":{"typography":{"fontSize":"18px"}}} --></p>
+<p class="has-text-align-left" style="font-size:18px">       <strong>ESXi host or vCenter Server:</strong> ESXi host IP</p>
+<p><!-- /wp:paragraph --></p>
+<p><!-- wp:paragraph {"align":"left","style":{"typography":{"fontSize":"18px"}}} --></p>
+<p class="has-text-align-left" style="font-size:18px">       <strong>HTTPS port:</strong> 443</p>
+<p><!-- /wp:paragraph --></p>
+<p><!-- wp:paragraph {"align":"left","style":{"typography":{"fontSize":"18px"}}} --></p>
+<p class="has-text-align-left" style="font-size:18px">       <strong>Username:</strong> root</p>
+<p><!-- /wp:paragraph --></p>
+<p><!-- wp:paragraph {"align":"left","style":{"typography":{"fontSize":"18px"}}} --></p>
+<p class="has-text-align-left" style="font-size:18px">      <strong>Password:</strong> enter the password</p>
+<p><!-- /wp:paragraph -->
+</div>
+<p><!-- /wp:group --></p>
+<p><!-- wp:paragraph {"fontSize":"medium"} --></p>
+<p class="has-medium-font-size"><br><strong>7)</strong> Click 'YES' (Certificate Warning).<br><br><strong>8)</strong> Under '<strong>Setup Target Appliance VM</strong>,' enter the following details and click '<strong>Next</strong>':</p>
+<p><!-- /wp:paragraph --></p>
+<p><!-- wp:group {"layout":{"type":"constrained"}} --></p>
+<div class="wp-block-group">
+<!-- wp:paragraph {"style":{"typography":{"fontSize":"18px"}}} --></p>
+<p style="font-size:18px">        <strong>VM Name:</strong> vCenter Server Appliance (ensure it's different from the source if deploying on the same ESXi)</p>
+<p><!-- /wp:paragraph --></p>
+<p><!-- wp:paragraph {"style":{"typography":{"fontSize":"18px"}}} --></p>
+<p style="font-size:18px">        <strong>Set root password:</strong> password</p>
+<p><!-- /wp:paragraph --></p>
+<p><!-- wp:paragraph {"style":{"typography":{"fontSize":"18px"}}} --></p>
+<p style="font-size:18px">       <strong>Confirm root password:</strong> password</p>
+<p><!-- /wp:paragraph -->
+</div>
+<p><!-- /wp:group --></p>
+<p><!-- wp:paragraph {"fontSize":"medium"} --></p>
+<p class="has-medium-font-size"><br><strong>9)</strong> Under '<strong>Select Deployment Size</strong>,' choose the following options and click '<strong>Next</strong>':</p>
+<p><!-- /wp:paragraph --></p>
+<p><!-- wp:group {"layout":{"type":"constrained"}} --></p>
+<div class="wp-block-group">
+<!-- wp:paragraph {"style":{"typography":{"fontSize":"18px"}}} --></p>
+<p style="font-size:18px">        <strong>Deployment size:</strong> Small (depends on the VMs in your infrastructure)</p>
+<p><!-- /wp:paragraph --></p>
+<p><!-- wp:paragraph {"style":{"typography":{"fontSize":"18px"}}} --></p>
+<p style="font-size:18px">        <strong>Storage size:</strong> Default</p>
+<p><!-- /wp:paragraph -->
+</div>
+<p><!-- /wp:group --></p>
+<p><!-- wp:paragraph {"fontSize":"medium"} --></p>
+<p class="has-medium-font-size"><br><strong>10)</strong> Select the Datastore and check the box for '<strong>Enable Thin Disk Mode</strong>.'<br><br><strong>11) </strong>Configure temporary network settings and click '<strong>Next</strong>.'<br><br><strong>12)</strong> Now, you're ready to complete Stage 1 (click '<strong>FINISH</strong>').<br><br><strong>13) </strong>Wait for the temporary vCSA appliance to deploy.</p>
+<p><!-- /wp:paragraph --></p>
+<p><!-- wp:paragraph {"fontSize":"medium"} --></p>
+<p class="has-medium-font-size"><strong>14)</strong> Once Stage 1 is completed, proceed to Stage 2 (click '<strong>CONTINUE</strong>').<br><br><strong>15)</strong> Click '<strong>Next</strong>' (Stage 2 Introduction).<br><br><strong>16) </strong>After the pre-upgrade checks are done, you can proceed with the upgrade.<br><br></p>
+<p><!-- /wp:paragraph --></p>
+<p><!-- wp:paragraph --></p>
+<p><img width="442" height="276" alt="upgrade-vcenter-server-appliance-6.5-to-6.7-16" src="{{site.baseurl}}/assets/2021/04/puSrl72g0QiE7JAtddfVrSFJu1scsnIBww6Y6Gp3CtHpZQnl22Euh8XM0sfcya_EfYUzXwIdCI3A3qRe2IrxOxcJbBQDMiBbiAWk8E8eaKlzFlhcQbh0NTpRXi49zxp3pY38MEs"></p>
+<p><!-- /wp:paragraph --></p>
+<p><!-- wp:paragraph {"fontSize":"medium"} --></p>
+<p class="has-medium-font-size"><strong>17)</strong> Several warnings might appear. Read them carefully, and if there are no major issues, click on '<strong>CLOSE</strong>.'</p>
+<p><!-- /wp:paragraph --></p>
+<p><!-- wp:paragraph {"fontSize":"medium"} --></p>
+<p class="has-medium-font-size"><strong>18)</strong> Choose what data to copy from the old vCenter Server Appliance. <br>    Select the <strong>3rd </strong>option: '<em>Configuration &amp; historical data (events, tasks &amp; performance metrics).</em>'<br><br><strong>19)</strong> Choose whether you want to participate in CEIP (Customer Experience Improvement Program). Uncheck or check the '<strong>Join</strong>' box and click '<strong>NEXT</strong>.'</p>
+<p><!-- /wp:paragraph --></p>
+<p><!-- wp:paragraph {"fontSize":"medium"} --></p>
+<p class="has-medium-font-size"><strong>20)</strong> The final stage involves confirming that we have a backup and reviewing the summary.</p>
+<p><!-- /wp:paragraph --></p>
+<p><!-- wp:image {"id":268,"sizeSlug":"large","linkDestination":"none"} --></p>
+<figure class="wp-block-image size-large"><img src="{{site.baseurl}}/assets/2021/04/image-23.png" alt="" class="wp-image-268"></figure>
+<p><!-- /wp:image --></p>
+<p><!-- wp:paragraph {"fontSize":"medium"} --></p>
+<p class="has-medium-font-size"><strong>21)</strong> Please wait a few minutes for the data copying process.</p>
+<p><!-- /wp:paragraph --></p>
+<p><!-- wp:paragraph {"fontSize":"medium"} --></p>
+<p class="has-medium-font-size"><strong>22)</strong> You will receive the final message indicating completion before the upgrade concludes.</p>
+<p><!-- /wp:paragraph --></p>
+<p><!-- wp:image {"id":269,"sizeSlug":"large","linkDestination":"none"} --></p>
+<figure class="wp-block-image size-large"><img src="{{site.baseurl}}/assets/2021/04/image-24.png" alt="" class="wp-image-269"></figure>
+<p><!-- /wp:image --></p>
+<p><!-- wp:paragraph {"fontSize":"medium"} --></p>
+<p class="has-medium-font-size"><strong>23) </strong>The upgrade should be completed with this step.</p>
+<p><!-- /wp:paragraph --></p>
+<p><!-- wp:paragraph {"fontSize":"medium"} --></p>
+<p class="has-medium-font-size"><strong>24)</strong> After completion, you should be able to connect to <a href="https://myvcenter.mylearningsguru.com/">https://myvcenter.mylearningsguru.com</a>, log in to the web client, and verify that version 7.0 is visible.</p>
+<p><!-- /wp:paragraph --></p>
+<p><!-- wp:paragraph --></p>
+<p><!-- /wp:paragraph --></p>
+<p><!-- wp:spacer --></p>
+<div style="height:100px" aria-hidden="true" class="wp-block-spacer"></div>
+<p><!-- /wp:spacer --></p>
+<p><!-- wp:heading {"level":3,"fontSize":"medium"} --></p>
+<h3 class="has-medium-font-size"><span style="text-decoration: underline;"><span style="color:#a3000d" class="has-inline-color"><strong>ISSUES FACED:</strong></span></span></h3>
+<p><!-- /wp:heading --></p>
+<p><!-- wp:heading {"level":4,"style":{"typography":{"fontSize":"19px"}}} --></p>
+<h4 style="font-size:19px"><strong><span style="text-decoration: underline;"><span style="color:#a30009" class="has-inline-color">Problem1:</span></span></strong></h4>
+<p><!-- /wp:heading --></p>
+<p><!-- wp:paragraph {"fontSize":"medium"} --></p>
+<p class="has-medium-font-size">The pre-upgrade check has failed, and the error message is as follows:</p>
+<p><!-- /wp:paragraph --></p>
+<p><!-- wp:paragraph {"fontSize":"medium"} --></p>
+<p class="has-medium-font-size"><code>The machine SSL certificate in the VMware Endpoint Certificate Store (VECS) does not,</code><br><code>correspond with the service registration in the VMware Directory Service (vmdir)</code></p>
+<p><!-- /wp:paragraph --></p>
+<p><!-- wp:paragraph --></p>
+<p><strong><img src="{{site.baseurl}}/assets/2021/04/DWY0JHr57o7QZtIEzPlJU_hjZnl4AFjdLIB5DscZYwad2516sjiGjz5qfPoKKyyPRBXoG0NZvx-PFYBGJzlubK1_K1Cb-vLJtrhqAdIBCh1OPf96SK4DJvg2k0vpYA" width="584" height="262"></strong></p>
+<p><!-- /wp:paragraph --></p>
+<p><!-- wp:heading {"level":4,"style":{"typography":{"fontSize":"19px"}}} --></p>
+<h4 style="font-size:19px"><strong><mark style="background-color:rgba(0, 0, 0, 0);color:#a3000d" class="has-inline-color"><span style="text-decoration: underline;">Solution1: </span></mark></strong></h4>
+<p><!-- /wp:heading --></p>
+<p><!-- wp:paragraph {"fontSize":"medium"} --></p>
+<p class="has-medium-font-size">Navigate to the directory using the command: "<span style="color:#ff6900" class="tadv-color"><strong>cd /usr/lib/vmidentity/tools/scripts</strong></span>" and then execute the following two commands:</p>
+<p><!-- /wp:paragraph --></p>
+<p><!-- wp:paragraph {"fontSize":"medium"} --></p>
+<p class="has-medium-font-size"><span style="color:#ff6900" class="tadv-color"><strong>1)</strong> <strong>python ls_ssltrust_fixer.py -f scan</strong><br><strong>2)</strong> <strong>python ls_ssltrust_fixer.py -f fix</strong></span></p>
+<p><!-- /wp:paragraph --></p>
+<p><!-- wp:image {"id":276,"width":766,"height":250,"sizeSlug":"large","linkDestination":"none"} --></p>
+<figure class="wp-block-image size-large is-resized"><img src="{{site.baseurl}}/assets/2021/04/image-25.png" alt="" class="wp-image-276" width="766" height="250"></figure>
+<p><!-- /wp:image --></p>
+<p><!-- wp:image {"id":277,"width":747,"height":394,"sizeSlug":"large","linkDestination":"none"} --></p>
+<figure class="wp-block-image size-large is-resized"><img src="{{site.baseurl}}/assets/2021/04/image-26.png" alt="" class="wp-image-277" width="747" height="394"></figure>
+<p><!-- /wp:image --></p>
+<p><!-- wp:paragraph {"fontSize":"medium"} --></p>
+<p class="has-medium-font-size">
+<p><!-- /wp:paragraph --></p>
+<p><!-- wp:paragraph --></p>
+<p>                                                                                                                                                                                                               .</p>
+<p><!-- /wp:paragraph --></p>
+<p><!-- wp:image {"id":278,"width":753,"height":424,"sizeSlug":"large","linkDestination":"none"} --></p>
+<figure class="wp-block-image size-large is-resized"><img src="{{site.baseurl}}/assets/2021/04/image-27.png" alt="" class="wp-image-278" width="753" height="424"></figure>
+<p><!-- /wp:image --></p>
+<p><!-- wp:paragraph --></p>
+<p><!-- /wp:paragraph --></p>
+<p><!-- wp:paragraph --></p>
+<p><!-- /wp:paragraph --></p>
+<p><!-- wp:spacer {"height":"90px"} --></p>
+<div style="height:90px" aria-hidden="true" class="wp-block-spacer"></div>
+<p><!-- /wp:spacer --></p>
+<p><!-- wp:paragraph --></p>
+<p><!-- /wp:paragraph --></p>
+<p><!-- wp:heading {"level":4,"style":{"typography":{"fontSize":"19px"}}} --></p>
+<h4 style="font-size:19px">
+<span style="text-decoration: underline;"><span style="color:#a30012" class="has-inline-color"><strong>Problem2:</strong></span> </span>      <br>  <code>  Insufficient space on the source export partition ‘/’</code><br />
+</h4>
+<p><!-- /wp:heading --></p>
+<p><!-- wp:paragraph --></p>
+<p><strong><img src="{{site.baseurl}}/assets/2021/04/HWnwTleuac7rSgLZKMng_IDuwNMYIwC2lEouwxR88DVRcJcwymrQ2y3q4v49iPkePHgGGKoVfwYMt3Bdd_pxdZP6moLV3R5OgWQ94WgxCR1VRBKAwKPS_AzSgNYEBg" width="624" height="83"></strong></p>
+<p><!-- /wp:paragraph --></p>
+<p><!-- wp:heading {"level":4,"style":{"typography":{"fontSize":"19px"}}} --></p>
+<h4 style="font-size:19px"><mark style="background-color:rgba(0, 0, 0, 0);color:#a3000d" class="has-inline-color"><strong><span style="text-decoration: underline;">Solution2:</span></strong></mark></h4>
+<p><!-- /wp:heading --></p>
+<p><!-- wp:paragraph {"fontSize":"medium"} --></p>
+<p class="has-medium-font-size">Successfully increased the disk space allocated for /.<br>Initially, deleted the snapshot (<em>since increasing the virtual disk size is not possible if a snapshot is present</em>), then adjusted the virtual disk size for / from 12G to 20G, and finally recreated the snapshot.<br>Afterwards, executed the "<strong>autogrow.sh</strong>" script.</p>
+<p><!-- /wp:paragraph --></p>
+<p><!-- wp:image {"id":279,"width":850,"height":462,"sizeSlug":"large","linkDestination":"none"} --></p>
+<figure class="wp-block-image size-large is-resized"><img src="{{site.baseurl}}/assets/2021/04/image-28.png" alt="" class="wp-image-279" width="850" height="462"></figure>
+<p><!-- /wp:image --></p>
+<p><!-- wp:paragraph --></p>
+<p><img src="{{site.baseurl}}/assets/2021/04/J4H6TDAGpUC4-V3IqeU3Py6jFgmugRRSAXoKTDIhujETHN90kUYnQt1M-AoLo_ZMowhOO_SCHl1pzyW7xcwZnPgqkIeuqUul92hjsZ3p_EVNylKaZ_U4QLelKGWNlg" style="width: 820px;"></p>
+<p><!-- /wp:paragraph --></p>
+<p><!-- wp:heading {"level":4} --></p>
+<h4><br></h4>
+<p><!-- /wp:heading --></p>
+<p><!-- wp:paragraph --></p>
+<p><!-- /wp:paragraph --></p>
+<p><!-- wp:paragraph --></p>
+<p><!-- /wp:paragraph --><br />
+</body></html></p>

@@ -1,0 +1,71 @@
+---
+layout: post
+title: Adding SPF record to the domain for successful email delivery
+date: 2021-04-03 04:32:03.000000000 -04:00
+type: post
+parent_id: '0'
+published: true
+password: ''
+status: publish
+categories:
+- Mail
+tags: []
+meta:
+  _aioseo_title: ''
+  _aioseo_description: ''
+  _aioseo_keywords: ''
+  _aioseo_og_title: ''
+  _aioseo_og_description: ''
+  _aioseo_og_article_section: ''
+  _aioseo_og_article_tags: ''
+  _aioseo_twitter_title: ''
+  _aioseo_twitter_description: ''
+  _edit_last: '1'
+  _kad_blog_head: default
+  _kad_post_summery: default
+  _kad_post_sidebar: 'yes'
+  _kad_sidebar_choice: sidebar-primary
+  _kad_blog_  _yoast_wpseo_estimated-reading-time-minutes: '1'
+  rank_math_primary_category: '3'
+  rank_math_news_sitemap_robots: index
+  rank_math_robots: a:1:{i:0;s:5:"index";}
+  rank_math_internal_links_processed: '1'
+permalink: "/2021/04/03/adding-spf-record-to-domain-for-successful-email-delivery/"
+---
+<p><!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN" "http://www.w3.org/TR/REC-html40/loose.dtd"><br />
+<!-- wp:paragraph {"fontSize":"medium"} --><html><body></p>
+<p class="has-medium-font-size">If your company is using the paid version of Gmail for business and wants to have email IDs in the format of <a href="mailto:username@companydomain.com">username@companydomain.com</a>, then you need to add the 'SPF' record related to the Google mail servers. This is necessary if you want to use Google mail servers to successfully send emails for your domain.</p>
+<p><!-- /wp:paragraph --></p>
+<p><!-- wp:spacer {"height":"59px"} --></p>
+<div style="height:59px" aria-hidden="true" class="wp-block-spacer"></div>
+<p><!-- /wp:spacer --></p>
+<p><!-- wp:heading {"level":4} --></p>
+<h4><span style="text-decoration: underline;"><span class="has-inline-color has-black-color"><strong>Create TXT record for SPF</strong></span></span></h4>
+<p><!-- /wp:heading --></p>
+<p><!-- wp:paragraph {"fontSize":"medium"} --></p>
+<p class="has-medium-font-size"><mark style="background-color:rgba(0, 0, 0, 0)" class="has-inline-color has-black-color">A TXT record for SPF specifies the mail servers allowed to send emails on behalf of your domain</mark>.</p>
+<p><!-- /wp:paragraph --></p>
+<p><!-- wp:code {"fontSize":"medium"} --></p>
+<pre class="wp-block-code has-medium-font-size"><code><mark style="background-color:rgba(0, 0, 0, 0)" class="has-inline-color has-black-color">v=spf1 include:_spf.google.com ~all</mark></code></pre>
+<p><!-- /wp:code --></p>
+<p><!-- wp:quote {"className":"is-style-large"} --></p>
+<blockquote class="wp-block-quote is-style-large"><p>
+<!-- wp:paragraph --></p>
+<p>- The above example applies when all your domain emails are routed through Google mail servers. In such cases, an internal postfix SMTP Relay server can be configured optionally to relay all emails to the actual Google mail servers.</p>
+<p><!-- /wp:paragraph -->
+</p></blockquote>
+<p><!-- /wp:quote --></p>
+<p><!-- wp:paragraph {"fontSize":"medium"} --></p>
+<p class="has-medium-font-size"><br>However, if you also send emails using other service providers, you can add them to the existing SPF (TXT Record).</p>
+<p><!-- /wp:paragraph --></p>
+<p><!-- wp:code --></p>
+<pre class="wp-block-code"><code><mark style="background-color:rgba(0, 0, 0, 0)" class="has-inline-color has-black-color">v=spf1 ip4:70.70.20.20 include:_spf.google.com include:mailgun.org ~all</mark></code></pre>
+<p><!-- /wp:code --></p>
+<p><!-- wp:quote {"className":"is-style-large"} --></p>
+<blockquote class="wp-block-quote is-style-large"><p>
+<!-- wp:paragraph --></p>
+<p>- In this scenario, authorization includes an IPv4 address and a couple of domains permitted to send emails on behalf of your domain.</p>
+<p><!-- /wp:paragraph -->
+</p></blockquote>
+<p><!-- /wp:quote --><br />
+</body></html></p>

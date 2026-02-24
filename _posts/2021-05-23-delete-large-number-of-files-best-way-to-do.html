@@ -1,0 +1,157 @@
+---
+layout: post
+title: Delete a large number of files (best way to do this)?
+date: 2021-05-23 18:17:15.000000000 -04:00
+type: post
+parent_id: '0'
+published: true
+password: ''
+status: publish
+categories:
+- Linux
+tags: []
+meta:
+  _edit_last: '1'
+  ocean_gallery_link_images: 'off'
+  ocean_sidebar: '0'
+  ocean_second_sidebar: '0'
+  ocean_disable_margins: enable
+  ocean_display_top_bar: default
+  ocean_display_header: default
+  ocean_center_header_left_menu: '0'
+  ocean_custom_header_template: '0'
+  ocean_header_custom_menu: '0'
+  ocean_menu_typo_font_family: '0'
+  ocean_disable_title: default
+  ocean_disable_heading: default
+  ocean_disable_breadcrumbs: default
+  ocean_display_footer_widgets: default
+  ocean_display_footer_bottom: default
+  ocean_custom_footer_template: '0'
+  ocean_link_format_target: self
+  ocean_quote_format_link: post
+  _yoast_wpseo_content_score: '90'
+  _yoast_wpseo_estimated-reading-time-minutes: '4'
+  _yoast_wpseo_primary_category: '2'
+  _thumbnail_id: '781'
+  _wp_page_template: default
+  _wtpsw_views: '103'
+  _aioseo_title: ''
+  _aioseo_description: ''
+  _aioseo_keywords: ''
+  _aioseo_og_title: ''
+  _aioseo_og_description: ''
+  _aioseo_og_article_section: ''
+  _aioseo_og_article_tags: ''
+  _aioseo_twitter_title: ''
+  _aioseo_twitter_description: ''
+  rank_math_primary_category: '2'
+  rank_math_news_sitemap_robots: index
+  rank_math_robots: a:1:{i:0;s:5:"index";}
+  rank_math_og_content_image: a:2:{s:5:"check";s:32:"e644b600d844f924ceb4ae7a55578853";s:6:"images";a:4:{i:0;i:746;i:1;i:767;i:2;i:773;i:3;i:765;}}
+  rank_math_internal_links_processed: '1'
+  _yoast_wpseo_wordproof_timestamp: ''
+permalink: "/2021/05/23/delete-large-number-of-files-best-way-to-do/"
+---
+<p><!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN" "http://www.w3.org/TR/REC-html40/loose.dtd"><br />
+<!-- wp:paragraph --><html><body></p>
+<p><!-- /wp:paragraph --></p>
+<p><!-- wp:tadv/classic-paragraph --></p>
+<p><span style="font-size: 20px;">Imagine having millions of small files within a directory. When attempting to delete files in the directory that match a specific pattern using the "rm -rf" command, or to remove all files without a matching pattern, you might encounter an error such as "<strong>-su: /bin/rm: Argument list too long</strong>," much to your disappointment.</span></p>
+<p><span style="font-size: 20px;">Let's practically test this scenario and explore how to address this issue.</span></p>
+<p><span style="font-size: 20px;">First, I'll create a directory and populate it with several thousand small files (approximately 300K). Then, we'll explore various methods to delete these files.</span></p>
+<p><!-- /wp:tadv/classic-paragraph --></p>
+<p><!-- wp:tadv/classic-paragraph --></p>
+<p> </p>
+<p> </p>
+<p><!-- /wp:tadv/classic-paragraph --></p>
+<p><!-- wp:heading --></p>
+<h2><strong><span style="text-decoration: underline" class="underline"><span style="color:#ff6900" class="tadv-color">Creating 300K files:</span></span></strong></h2>
+<p><!-- /wp:heading --></p>
+<p><!-- wp:code --></p>
+<pre class="wp-block-code"><code>for num in $(seq 1 300000); do (touch file$num) &amp;&amp; echo "test$num" &gt; file$num; done</code></pre>
+<p><!-- /wp:code --></p>
+<p><!-- wp:tadv/classic-paragraph --></p>
+<p><span style="font-size: 20px;">Now, let's initiate file deletion based on a pattern using the find command and also explore removing all files in a directory using rsync.</span></p>
+<p><!-- /wp:tadv/classic-paragraph --></p>
+<p><!-- wp:tadv/classic-paragraph --></p>
+<p> </p>
+<p> </p>
+<p><!-- /wp:tadv/classic-paragraph --></p>
+<p><!-- wp:heading --></p>
+<h2>
+<span style="color:#ff6900" class="tadv-color">1</span><span style="text-decoration: underline" class="underline"><span style="color:#ff6900" class="tadv-color">) Deleting the files matching a pattern using the <span style="background-color:#eeeeee" class="tadv-background-color"><strong>rm -rf</strong> </span>command:</span></span><br />
+</h2>
+<p><!-- /wp:heading --></p>
+<p><!-- wp:image {"id":746,"width":778,"height":61,"sizeSlug":"large","linkDestination":"none"} --></p>
+<figure class="wp-block-image size-large is-resized"><img src="{{site.baseurl}}/assets/2021/05/image-3.png" alt="" class="wp-image-746" width="778" height="61"></figure>
+<p><!-- /wp:image --></p>
+<p><!-- wp:tadv/classic-paragraph --></p>
+<p><span style="font-size: 20px;">As observed earlier, executing "<strong>rm -rf file*</strong>" triggers an "<strong>Argument list too long</strong>" error. This occurs because in the bash shell, "<strong>file*</strong>" encompasses any file commencing with the name "file" (including the file named "file" if present).</span></p>
+<p><span style="font-size: 20px;">Consequently, all the matching files become command line arguments for the "<strong>rm -rf</strong>" command. Since there are approximately 300k files adhering to this pattern, they are passed as arguments to the "<strong>rm -rf</strong>" command.</span></p>
+<p><span style="font-size: 20px;">However, the kernel imposes a limit on the command line argument size. If this limit is exceeded, it results in the "<strong>Argument list too long</strong>" error.</span></p>
+<p><!-- /wp:tadv/classic-paragraph --></p>
+<p><!-- wp:tadv/classic-paragraph --></p>
+<p> </p>
+<p> </p>
+<p><!-- /wp:tadv/classic-paragraph --></p>
+<p><!-- wp:heading --></p>
+<h2><span style="text-decoration: underline" class="underline"><span style="color:#ff6900" class="tadv-color">2) Using the find with -exec option</span></span></h2>
+<p><!-- /wp:heading --></p>
+<p><!-- wp:code --></p>
+<pre class="wp-block-code"><code>find . -type f -iname "file*" -exec rm -rf {} \;</code></pre>
+<p><!-- /wp:code --></p>
+<p><!-- wp:tadv/classic-paragraph --></p>
+<p><span style="font-size: 20px;">The command successfully deleted all files starting with the specified pattern (<strong>file*</strong>).</span></p>
+<p><span style="font-size: 20px;">It took approximately 5 minutes and 23 seconds to complete the deletion of the 300 thousand matching files.</span></p>
+<p><span style="font-size: 20px;">When using <strong>-exec</strong> with the find command, a new child process is spawned for each matched file. Consequently, the matched file is removed, followed by the creation of a new child process for the subsequent matched file. This process continues iteratively until all files are deleted.</span><span style="font-size: 16px;"><br></span></p>
+<p><!-- /wp:tadv/classic-paragraph --></p>
+<p><!-- wp:image {"id":767,"sizeSlug":"large","linkDestination":"none"} --></p>
+<figure class="wp-block-image size-large"><img src="{{site.baseurl}}/assets/2021/05/find-exec-rm.png" alt="" class="wp-image-767"></figure>
+<p><!-- /wp:image --></p>
+<p><!-- wp:tadv/classic-paragraph --></p>
+<p> </p>
+<p> </p>
+<p><!-- /wp:tadv/classic-paragraph --></p>
+<p><!-- wp:heading --></p>
+<h2><span style="text-decoration: underline" class="underline"><span style="color:#ff6900" class="tadv-color">3) Using the find with -delete option (preferred method)</span></span></h2>
+<p><!-- /wp:heading --></p>
+<p><!-- wp:code --></p>
+<pre class="wp-block-code"><code>find . -type f -name "file*" -delete</code></pre>
+<p><!-- /wp:code --></p>
+<p><!-- wp:image {"id":773,"sizeSlug":"large","linkDestination":"none"} --></p>
+<figure class="wp-block-image size-large"><img src="{{site.baseurl}}/assets/2021/05/find-delete-1.png" alt="" class="wp-image-773"></figure>
+<p><!-- /wp:image --></p>
+<p><!-- wp:tadv/classic-paragraph --></p>
+<p><span style="font-size: 20px;">Using this particular command, the deletion of all 300 thousand files was completed in merely 4.32 seconds.</span></p>
+<p><span style="font-size: 20px;">The efficiency of this method is due to the utilization of the "<strong>-delete"</strong> option, which eliminates the necessity of spawning a child process for every matched file. However, it's essential to note that the<strong> "-delete"</strong> option might not be available in all versions of the find command. In cases where it's unavailable, the "<strong>find</strong>" command can be used in conjunction with the "<strong>-exec</strong>" option for similar functionality.</span></p>
+<p><!-- /wp:tadv/classic-paragraph --></p>
+<p><!-- wp:tadv/classic-paragraph --></p>
+<p> </p>
+<p> </p>
+<p><!-- /wp:tadv/classic-paragraph --></p>
+<p><!-- wp:heading --></p>
+<h2>
+<strong><span style="text-decoration: underline" class="underline"><span style="color:#ff6900" class="tadv-color">4) Using rsync with --delete option (</span></span><span style="color:#ff6900" class="tadv-color"><span style="text-decoration: underline" class="underline">preferred method)</span></span></strong> </h2>
+<p><!-- /wp:heading --></p>
+<p><!-- wp:code --></p>
+<pre class="wp-block-code"><code>rsync -a emptydir/ remove-files/ --delete</code></pre>
+<p><!-- /wp:code --></p>
+<p><!-- wp:tadv/classic-paragraph --></p>
+<p><span style="font-size: 20px;">This <code>rsync</code> command performs synchronization between the contents of two directories (<code>emptydir/</code> and <code>remove-files/</code>).<br><br></span></p>
+<ul>
+<li>
+<span style="font-size: 20px;"><code>emptydir/</code>: Source directory. This is where the synchronization process starts.</span><br><br>
+</li>
+<li><span style="font-size: 20px;"><code>remove-files/</code>: Destination directory. This is the directory that will be synchronized with the source directory (<code>emptydir/</code>).</span></li>
+</ul>
+<p><span style="font-size: 20px;"><br><code>--delete</code>: This option instructs <code>rsync</code> to delete files in the destination directory (<code>remove-files/</code>) if they don't exist in the source directory (<code>emptydir/</code>). It ensures that the destination directory mirrors the exact contents of the source directory after synchronization. Any files or directories in the destination that are not present in the source will be deleted.<br></span></p>
+<p><span style="font-size: 20px;">In our scenario, the "<code>emptydir</code>" directory is empty leading to the removal of all files in the <code>"remove-files"</code> directory.</span></p>
+<p><span style="font-size: 20px;">Remarkably, using rsync to delete 300k files required just under 3 seconds.</span></p>
+<p><!-- /wp:tadv/classic-paragraph --></p>
+<p><!-- wp:image {"id":765,"width":777,"height":103,"sizeSlug":"large","linkDestination":"none"} --></p>
+<figure class="wp-block-image size-large is-resized"><img src="{{site.baseurl}}/assets/2021/05/rsync-empty-dir.png" alt="" class="wp-image-765" width="777" height="103"></figure>
+<p><!-- /wp:image --></p>
+<p><!-- wp:paragraph --></p>
+<p><!-- /wp:paragraph --><br />
+</body></html></p>

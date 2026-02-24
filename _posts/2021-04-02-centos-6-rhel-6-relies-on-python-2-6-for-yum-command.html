@@ -1,0 +1,136 @@
+---
+layout: post
+title: Python2.6 dependency for yum in CentOS 6, RHEL 6?
+date: 2021-04-02 00:38:56.000000000 -04:00
+type: post
+parent_id: '0'
+published: true
+password: ''
+status: publish
+categories:
+- Linux
+tags: []
+meta:
+  _edit_last: '1'
+  _aioseo_title: ''
+  _aioseo_description: ''
+  _aioseo_keywords: ''
+  _aioseo_og_title: ''
+  _aioseo_og_description: ''
+  _aioseo_og_article_section: ''
+  _aioseo_og_article_tags: ''
+  _aioseo_twitter_title: ''
+  _aioseo_twitter_description: ''
+  site-sidebar-layout: default
+  site-content-layout: default
+  theme-transparent-header-meta: default
+  _thumbnail_id: '193'
+  _kad_blog_head: default
+  _kad_post_summery: default
+  _kad_post_sidebar: 'yes'
+  _kad_sidebar_choice: sidebar-primary
+  _kad_blog_  _yoast_wpseo_estimated-reading-time-minutes: '2'
+  ocean_gallery_link_images: 'off'
+  ocean_sidebar: '0'
+  ocean_second_sidebar: '0'
+  ocean_disable_margins: enable
+  ocean_display_top_bar: default
+  ocean_display_header: default
+  ocean_center_header_left_menu: '0'
+  ocean_custom_header_template: '0'
+  ocean_header_custom_menu: '0'
+  ocean_menu_typo_font_family: '0'
+  ocean_disable_title: default
+  ocean_disable_heading: default
+  ocean_disable_breadcrumbs: default
+  ocean_display_footer_widgets: default
+  ocean_display_footer_bottom: default
+  ocean_custom_footer_template: '0'
+  ocean_link_format_target: self
+  ocean_quote_format_link: post
+  _wtpsw_views: '339'
+  rank_math_primary_category: '2'
+  rank_math_news_sitemap_robots: index
+  rank_math_robots: a:1:{i:0;s:5:"index";}
+  rank_math_internal_links_processed: '1'
+  rank_math_seo_score: '60'
+  rank_math_focus_keyword: python2.6,relies,yum
+permalink: "/2021/04/02/centos-6-rhel-6-relies-on-python-2-6-for-yum-command/"
+---
+<p><!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN" "http://www.w3.org/TR/REC-html40/loose.dtd"><br />
+<!-- wp:paragraph {"fontSize":"medium"} --><html><body></p>
+<p class="has-medium-font-size">CentOS 6 ships with Python 2.6.6 and relies on that specific version. Take caution not to replace it, as 'yum' depends on Python2.6. It's best to compile and install a newer version of Python separately if you need access to an updated version, keeping it installed alongside the system version.</p>
+<p><!-- /wp:paragraph --></p>
+<p><!-- wp:paragraph --></p>
+<p><!-- /wp:paragraph --></p>
+<p><!-- wp:paragraph {"style":{"typography":{"lineHeight":"2.4"}},"textColor":"black","fontSize":"medium"} --></p>
+<p class="has-black-color has-text-color has-medium-font-size" style="line-height:2.4">Here are the necessary steps to install Python 2.7.6:</p>
+<p><!-- /wp:paragraph --></p>
+<p><!-- wp:heading {"level":3,"style":{"typography":{"fontSize":"23px"}}} --></p>
+<h3 style="font-size:23px"><strong><span class="has-inline-color has-vivid-red-color"><span style="text-decoration: underline;">Install development tools</span></span></strong></h3>
+<p><!-- /wp:heading --></p>
+<p><!-- wp:paragraph {"fontSize":"medium"} --></p>
+<p class="has-medium-font-size"><mark style="background-color:rgba(0, 0, 0, 0)" class="has-inline-color has-black-color">To compile Python, you must first install the development tools.</mark></p>
+<p><!-- /wp:paragraph --></p>
+<p><!-- wp:code --></p>
+<pre class="wp-block-code"><code><mark style="background-color:rgba(0, 0, 0, 0)" class="has-inline-color has-very-dark-gray-color">yum gro</mark><mark style="background-color:rgba(0, 0, 0, 0)" class="has-inline-color has-black-color">upinstall “Development tools”</mark></code></pre>
+<p><!-- /wp:code --></p>
+<p><!-- wp:paragraph {"fontSize":"medium"} --></p>
+<p class="has-medium-font-size">Additionally, installing a few extra libraries before compiling Python is crucial; otherwise, you might encounter issues when installing various packages later.</p>
+<p><!-- /wp:paragraph --></p>
+<p><!-- wp:code --></p>
+<pre class="wp-block-code"><code>yum install zlib-devel
+yum install bzip2-devel
+yum install openssl-devel
+yum install ncurses-devel
+yum install sqlite-devel</code></pre>
+<p><!-- /wp:code --></p>
+<p><!-- wp:heading {"level":3} --></p>
+<h3><strong><span class="has-inline-color has-vivid-red-color"><span style="text-decoration: underline;">Download - compile - install </span></span></strong></h3>
+<p><!-- /wp:heading --></p>
+<p><!-- wp:code --></p>
+<pre class="wp-block-code"><code><mark style="background-color:rgba(0, 0, 0, 0)" class="has-inline-color has-black-color">1) cd /opt 
+2) wget –no-check-certificate https://www.python.org/ftp/python/2.7.6/Python-2.7.6.tar.xz
+3) tar xf Python-2.7.6.tar.xz
+4) cd Python-2.7.6
+5) ./configure –prefix=/usr/local
+6) make &amp;&amp; make altinstall</mark></code></pre>
+<p><!-- /wp:code --></p>
+<p><!-- wp:paragraph {"fontSize":"medium"} --></p>
+<p class="has-medium-font-size">It's important to use '<strong>altinstall</strong>' instead of '<strong>install</strong>' to prevent ending up with two different versions of Python in the filesystem, both named python.</p>
+<p><!-- /wp:paragraph --></p>
+<p><!-- wp:paragraph {"fontSize":"medium"} --></p>
+<p class="has-medium-font-size">Upon executing the commands above, your newly installed Python 2.7.6 interpreter will be accessible at <strong>/usr/local/bin/python2.7</strong>, while the system version of Python 2.6.6 will remain available at <strong>/usr/bin/python</strong> and <strong>/usr/bin/python2.6</strong>.</p>
+<p><!-- /wp:paragraph --></p>
+<p><!-- wp:heading {"level":4} --></p>
+<h4><mark style="background-color:rgba(0, 0, 0, 0)" class="has-inline-color has-vivid-red-color"><span style="text-decoration: underline;">To confirm the path of 2.7 and also 2.6</span></mark></h4>
+<p><!-- /wp:heading --></p>
+<p><!-- wp:code --></p>
+<pre class="wp-block-code"><code><mark style="background-color:rgba(0, 0, 0, 0)" class="has-inline-color has-black-color">root@lg1:/opt/Python-2.7.6 ] ls -ltr /usr/bin/python*</mark>
+
+<mark style="background-color:rgba(0, 0, 0, 0)" class="has-inline-color has-black-color">lrwxrwxrwx 1 root root    6 Nov 16  2002 /usr/bin/python2 -&gt; python
+-rwxr-xr-x 1 root root 1418 Jul 10  2013 /usr/bin/python2.6-config
+-rwxr-xr-x 2 root root 4864 Jul 10  2013 /usr/bin/python2.6
+-rwxr-xr-x 2 root root 4864 Jul 10  2013 /usr/bin/python
+lrwxrwxrwx 1 root root   16 Oct 24 15:39 /usr/bin/python-config -&gt; python2.6-config</mark></code></pre>
+<p><!-- /wp:code --></p>
+<p><!-- wp:code --></p>
+<pre class="wp-block-code"><code>root@lg1:/opt/Python-2.7.6 ] ls -ltr /usr/local/bin/python*
+
+-rwxr-xr-x 1 root root 6214533 Mar 19 22:46 /usr/local/bin/python2.7
+-rwxr-xr-x 1 root root    1674 Mar 19 22:46 /usr/local/bin/python2.7-config</code></pre>
+<p><!-- /wp:code --></p>
+<p><!-- wp:paragraph {"fontSize":"medium"} --></p>
+<p class="has-medium-font-size">When using the '<strong>which python</strong>' command, the kernel will display the version of the first available Python executable based on the $PATH variable.</p>
+<p><!-- /wp:paragraph --></p>
+<p><!-- wp:code --></p>
+<pre class="wp-block-code"><code>root@openstack h2o]# echo $PATH
+/usr/local/sbin:/usr/local/bin:/sbin:/bin:/usr/sbin:/usr/bin:/root/bin</code></pre>
+<p><!-- /wp:code --></p>
+<p><!-- wp:paragraph {"fontSize":"medium"} --></p>
+<p class="has-medium-font-size"><mark style="background-color:rgba(0, 0, 0, 0)" class="has-inline-color has-black-color">In this case, '<strong>which python</strong>' will display Python 2.7 from /usr/local/sbin, assuming it is listed first in the $PATH.</mark></p>
+<p><!-- /wp:paragraph --></p>
+<p><!-- wp:paragraph {"fontSize":"medium"} --></p>
+<p class="has-medium-font-size">The key point is to exercise caution when dealing with Python 2.6 in CentOS 6 and RHEL 6 versions.</p>
+<p><!-- /wp:paragraph --><br />
+</body></html></p>

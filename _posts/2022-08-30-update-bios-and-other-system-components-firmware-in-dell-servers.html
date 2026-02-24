@@ -1,0 +1,106 @@
+---
+layout: post
+title: Update Bios and other system components firmware in Dell servers?
+date: 2022-08-30 01:18:56.000000000 -04:00
+type: post
+parent_id: '0'
+published: true
+password: ''
+status: publish
+categories:
+- Sysadmin
+tags: []
+meta:
+  _edit_last: '1'
+  _aioseo_title: ''
+  _aioseo_description: ''
+  _aioseo_keywords: ''
+  _aioseo_og_title: ''
+  _aioseo_og_description: ''
+  _aioseo_og_article_section: ''
+  _aioseo_og_article_tags: ''
+  _aioseo_twitter_title: ''
+  _aioseo_twitter_description: ''
+  ocean_gallery_link_images: 'off'
+  ocean_sidebar: '0'
+  ocean_second_sidebar: '0'
+  ocean_disable_margins: enable
+  ocean_display_top_bar: default
+  ocean_display_header: default
+  ocean_center_header_left_menu: '0'
+  ocean_custom_header_template: '0'
+  ocean_header_custom_menu: '0'
+  ocean_menu_typo_font_family: '0'
+  ocean_disable_title: default
+  ocean_disable_heading: default
+  ocean_disable_breadcrumbs: default
+  ocean_display_footer_widgets: default
+  ocean_display_footer_bottom: default
+  ocean_custom_footer_template: '0'
+  ocean_link_format_target: self
+  ocean_quote_format_link: post
+  _yoast_wpseo_content_score: '60'
+  _yoast_wpseo_estimated-reading-time-minutes: '2'
+  _yoast_wpseo_primary_category: '34'
+  _thumbnail_id: '1533'
+  _wtpsw_views: '281'
+  rank_math_primary_category: '34'
+  rank_math_news_sitemap_robots: index
+  rank_math_robots: a:1:{i:0;s:5:"index";}
+  rank_math_internal_links_processed: '1'
+  rank_math_seo_score: '66'
+  rank_math_focus_keyword: update bios
+  _yoast_wpseo_wordproof_timestamp: ''
+permalink: "/2022/08/30/update-bios-and-other-system-components-firmware-in-dell-servers/"
+---
+<p><!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN" "http://www.w3.org/TR/REC-html40/loose.dtd"><br />
+<!-- wp:paragraph {"fontSize":"medium"} --><html><body></p>
+<p class="has-medium-font-size">There are various methods to update BIOS and firmware associated with Raid Controllers, IDRAC, Life Cycle Controllers, etc.<br><br><strong><span style="text-decoration: underline" class="underline">One method involves using the Support Live Image:</span></strong> Support Live Image 3.0 is a CentOS image that includes a collection of utilities and diagnostic tools specifically designed for Dell PowerEdge servers.<br><br>For PowerEdge 12G to 14G servers, you can access the ISO image via this link: <a href="https://dl.dell.com/FOLDER04967352M/1/SLI_3.0.0_A00.iso">SLI_3.0.0_A00.iso</a>. For PowerEdge 9G to 11G servers, use this link: <a href="https://dl.dell.com/FOLDER02725522M/1/SLI22_A00.iso">SLI22_A00.iso</a>.<br><br>After downloading the ISO image, it needs to be burned onto a USB/DVD drive. Once booted into this Live Image, you can proceed to copy the BIOS (.BIN format) and other firmware update files (.BIN format) and install them accordingly.<br><br></p>
+<p><!-- /wp:paragraph --></p>
+<p><!-- wp:paragraph --></p>
+<p><!-- /wp:paragraph --></p>
+<p><!-- wp:heading {"style":{"typography":{"fontSize":"27px"}}} --></p>
+<h2 style="font-size:27px"><strong><span style="text-decoration: underline" class="underline"><span style="color:#ff6900" class="tadv-color">Example steps to update BIOS version from 6.4.0 to 6.6.0 using Support Live Image</span></span></strong></h2>
+<p><!-- /wp:heading --></p>
+<p><!-- wp:code --></p>
+<pre class="wp-block-code"><code>1) Boot the Dell PowerEdge server from the Live ISO USB
+2) Plug in the data USB with the .bin file related to latest BIOS version. 
+3) Copy the .bin file from the data USB  (“/home/media/sliuser”) over to “/tmp”
+4) Run “chmod +x  /tmp/BIOS-6.6.0.bin”
+5) Run “sudo ./BIOS-6.6.0.bin”</code></pre>
+<p><!-- /wp:code --></p>
+<p><!-- wp:paragraph {"fontSize":"medium"} --></p>
+<p class="has-medium-font-size"><br>Dell Documentation (<a href="https://www.dell.com/support/kbdoc/en-us/000128194/updating-firmware-and-drivers-on-dell-emc-poweredge-servers">https://www.dell.com/support/kbdoc/en-us/000128194/updating-firmware-and-drivers-on-dell-emc-poweredge-servers</a>) provides several alternative methods for updating BIOS and other firmware versions.</p>
+<p><!-- /wp:paragraph --></p>
+<p><!-- wp:paragraph --></p>
+<p><!-- /wp:paragraph --></p>
+<p><!-- wp:paragraph {"style":{"typography":{"fontSize":"27px"}}} --></p>
+<p style="font-size:27px"><strong><span style="text-decoration: underline" class="underline"><mark style="background-color:rgba(0, 0, 0, 0)" class="has-inline-color has-luminous-vivid-orange-color">Few <span style="color:#ff6900" class="tadv-color">Examples:</span></mark></span></strong></p>
+<p><!-- /wp:paragraph --></p>
+<p><!-- wp:paragraph {"fontSize":"medium"} --></p>
+<p class="has-medium-font-size"><br><strong><span style="color:#cf2e2e" class="tadv-color"><span style="text-decoration: underline" class="underline">Platform-Specific Bootable ISO</span></span></strong><br>With a 'Platform-Specific Bootable ISO,' all system components for a 12G, 13G, or 14G Dell EMC PowerEdge server are automatically updated. These updates occur automatically upon starting the server using the self-bootable ISO.<br></p>
+<p><!-- /wp:paragraph --></p>
+<p><!-- wp:paragraph {"fontSize":"medium"} --></p>
+<p class="has-medium-font-size"><a href="https://www.dell.com/support/article/sln292343/poweredge-server-lifecycle-controller-update" target="_blank" rel="noreferrer noopener"><strong><span style="color:#cf2e2e" class="tadv-color">LifeCycle Controller</span></strong></a><br>Dell Lifecycle Controller is an advanced embedded systems management technology that enables remote server management. Using Lifecycle Controller, you can update BIOS or update firmware using a local or Dell-based firmware repository.</p>
+<p><!-- /wp:paragraph --></p>
+<p><!-- wp:paragraph --></p>
+<p><!-- /wp:paragraph --></p>
+<p><!-- wp:paragraph {"fontSize":"medium"} --></p>
+<p class="has-medium-font-size"><a href="https://www.dell.com/support/article/sln283183/dell-emc-repository-manager-drm-guide-and-download" target="_blank" rel="noreferrer noopener"><strong><span style="color:#cf2e2e" class="tadv-color">Dell EMC Repository Manager (DRM)</span></strong></a><br>Dell Repository Manager provides a searchable interface that is used to create custom software collections that are known as bundles and repositories of Dell Update Packages (DUPs).<br>A DUP is an executable that contains firmware for a single component. </p>
+<p><!-- /wp:paragraph --></p>
+<p><!-- wp:paragraph --></p>
+<p><!-- /wp:paragraph --></p>
+<p><!-- wp:paragraph {"fontSize":"medium"} --></p>
+<p class="has-medium-font-size"><a href="https://www.dell.com/support/article/sln292363/dell-poweredge-how-to-a-remote-firmware-update-with-the-idrac" target="_blank" rel="noreferrer noopener"><strong><span style="color:#cf2e2e" class="tadv-color">Integrated Dell Remote Access Controller (iDRAC)</span></strong></a><br>An embedded systems management tool available on PowerEdge servers, iDRAC allows remote access to perform various systems management tasks, such as updating firmware. Certain additional features may necessitate an iDRAC Enterprise license.</p>
+<p><!-- /wp:paragraph --></p>
+<p><!-- wp:paragraph --></p>
+<p><!-- /wp:paragraph --></p>
+<p><!-- wp:paragraph {"fontSize":"medium"} --></p>
+<p class="has-medium-font-size"><a href="https://www.dell.com/support/article/sln310654/dell-emc-system-update-dsu" target="_blank" rel="noreferrer noopener"><strong><span style="text-decoration: underline" class="underline"><span style="color:#cf2e2e" class="tadv-color">Dell EMC System Update (DSU)</span></span></strong></a><br>The Command Line Interface (CLI) optimized deployment tool is designed for customers who prefer scripted management of updates. To utilize this tool, first, install the package "dell-system-update," then execute the command "dsu" along with specific options to upgrade the system firmware.</p>
+<p><!-- /wp:paragraph --></p>
+<p><!-- wp:paragraph --></p>
+<p><!-- /wp:paragraph --></p>
+<p><!-- wp:paragraph {"fontSize":"medium"} --></p>
+<p class="has-medium-font-size"><a href="https://www.dell.com/support/article/sln309132/how-to-create-a-firmware-baseline-and-update-firmware-in-dell-emc-openmanage-enterprise-ome" target="_blank" rel="noreferrer noopener"><strong><span style="text-decoration: underline" class="underline"><span style="color:#cf2e2e" class="tadv-color">OpenManage Enterprise (OM Enterprise)</span></span></strong></a><br>The OpenManage Enterprise systems management console streamlines, intelligently automates, and consolidates various IT infrastructure management functions. Among these functions is the ability to update multiple components simultaneously.<br></p>
+<p><!-- /wp:paragraph --><br />
+</body></html></p>

@@ -1,0 +1,117 @@
+---
+layout: post
+title: Failed to import the required python library docker-py docker module?
+date: 2022-12-24 04:23:19.000000000 -05:00
+type: post
+parent_id: '0'
+published: true
+password: ''
+status: publish
+categories:
+- Ansible
+- Docker
+tags: []
+meta:
+  _edit_last: '1'
+  _aioseo_title: "#post_title #separator_sa #site_title&nbsp;"
+  _aioseo_description: "#permalink &nbsp;"
+  _aioseo_keywords: ''
+  _aioseo_og_title: ''
+  _aioseo_og_description: ''
+  _aioseo_og_article_section: ''
+  _aioseo_og_article_tags: ''
+  _aioseo_twitter_title: ''
+  _aioseo_twitter_description: ''
+  ocean_gallery_link_images: 'off'
+  ocean_sidebar: '0'
+  ocean_second_sidebar: '0'
+  ocean_disable_margins: enable
+  ocean_display_top_bar: default
+  ocean_display_header: default
+  ocean_center_header_left_menu: '0'
+  ocean_custom_header_template: '0'
+  ocean_header_custom_menu: '0'
+  ocean_menu_typo_font_family: '0'
+  ocean_disable_title: default
+  ocean_disable_heading: default
+  ocean_disable_breadcrumbs: default
+  ocean_display_footer_widgets: default
+  ocean_display_footer_bottom: default
+  ocean_custom_footer_template: '0'
+  ocean_link_format_target: self
+  ocean_quote_format_link: post
+  _yoast_wpseo_content_score: '30'
+  _yoast_wpseo_estimated-reading-time-minutes: '2'
+  _oembed_aa3c61030240c076ca618300040407fd: "{{unknown}}"
+  _yoast_wpseo_primary_category: '16'
+  _thumbnail_id: '1764'
+  _wtpsw_views: '181'
+  rank_math_primary_category: '16'
+  rank_math_news_sitemap_robots: index
+  rank_math_robots: a:1:{i:0;s:5:"index";}
+  rank_math_ca_keyword: a:2:{s:7:"keyword";s:9:"docker-py";s:7:"country";s:3:"all";}
+  rank_math_seo_score: '70'
+  rank_math_focus_keyword: failed,import,docker-py
+  rank_math_contentai_score: a:5:{s:9:"wordCount";s:3:"100";s:9:"linkCount";s:2:"16";s:12:"headingCount";s:1:"0";s:10:"mediaCount";s:3:"100";s:8:"keywords";s:2:"10";}
+  rank_math_title: "%title%"
+  rank_math_internal_links_processed: '1'
+  _yoast_wpseo_wordproof_timestamp: ''
+permalink: "/2022/12/24/failed-to-import-the-required-python-library-docker-py-docker-module/"
+---
+<p><!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN" "http://www.w3.org/TR/REC-html40/loose.dtd"><br />
+<!-- wp:paragraph {"style":{"typography":{"fontSize":19}}} --><html><body></p>
+<p style="font-size:19px">Encountering an error "Failed to import Python library docker-py" while running an Ansible task.<br><br>My Ansible task example,</p>
+<p><!-- /wp:paragraph --></p>
+<p><!-- wp:code --></p>
+<pre class="wp-block-code"><code>---  
+- name: Perform Docker Registry Login
+  become: yes
+  docker_login: 
+    username: "{{ dockerhub_user }}"
+    password: "{{ dockerhub_pass }}"</code></pre>
+<p><!-- /wp:code --></p>
+<p><!-- wp:paragraph {"style":{"typography":{"fontSize":19}}} --></p>
+<p style="font-size:19px"><br><br>Encountering the following error when running the aforementioned Ansible task.</p>
+<p><!-- /wp:paragraph --></p>
+<p><!-- wp:preformatted --></p>
+<pre class="wp-block-preformatted">TASK [docker_run : Docker Login] ***********************************************
+fatal: [mytesthost]: FAILED! =&gt; {"changed": false, "msg": "Failed to import the required Python library (Docker SDK for Python: docker (Python &gt;= 2.7) or docker-py (Python 2.6)) on mytesthost's Python /usr/bin/python3. Please read module documentation and install in the appropriate location, for example via `pip install docker` or `pip install docker-py` (Python 2.6). The error was: No module named 'docker'"}</pre>
+<p><!-- /wp:preformatted --></p>
+<p><!-- wp:kadence/spacer {"uniqueID":"_38a974-60"} --></p>
+<div class="wp-block-kadence-spacer aligncenter kt-block-spacer-_38a974-60">
+<div class="kt-block-spacer kt-block-spacer-halign-center" style="height:60px">
+<hr class="kt-divider" style="border-top-color:rgba(238, 238, 238, 1);border-top-width:1px;width:80%;border-top-style:solid"></div>
+</div>
+<p><!-- /wp:kadence/spacer --></p>
+<p><!-- wp:paragraph --></p>
+<p><!-- /wp:paragraph --></p>
+<p><!-- wp:heading {"level":4} --></p>
+<h4><span style="text-decoration: underline" class="underline">An explanation for the above error "failed to import the docker-py library" is as follows:</span></h4>
+<p><!-- /wp:heading --></p>
+<p><!-- wp:paragraph {"style":{"typography":{"fontSize":19}}} --></p>
+<p style="font-size:19px">In my scenario, I am utilizing the Ansible module "docker_login." This module facilitates logging into a Docker registry, offering functionality akin to the 'docker login' command. It's important to note that the successful execution of this Ansible module, necessitates the presence of the Docker module for Python on the host where it is being executed.<br></p>
+<p><!-- /wp:paragraph --></p>
+<p><!-- wp:paragraph {"style":{"typography":{"fontSize":19}}} --></p>
+<p style="font-size:19px">The aforementioned error indicates that there is no suitable Docker module (or Docker SDK) for Python installed on the host where the Ansible task is intended to run.</p>
+<p><!-- /wp:paragraph --></p>
+<p><!-- wp:paragraph {"style":{"typography":{"fontSize":19}}} --></p>
+<p style="font-size:19px"><br>To successfully execute any Docker-related Ansible modules, such as "docker_login," the Docker module (or Docker SDK) for Python must be installed and available on the host where the Ansible task is intended to run. This ensures that Ansible can communicate with the Docker daemon and perform the required Docker-related actions.<br><br>Some of the <strong>Docker related Ansible modules</strong>, we can use in our Ansible tasks are,<br><code><strong>docker_login</strong></code>  ---&gt; To log into a docker registry<br><code><strong>docker_container</strong></code> ---&gt; To create/start/stop a docker container<br><code><strong>docker_image</strong></code> ---&gt; To build, pull an image<br></p>
+<p><!-- /wp:paragraph --></p>
+<p><!-- wp:paragraph {"style":{"typography":{"fontSize":19}}} --></p>
+<p style="font-size:19px">Now, the command to install the Docker module (or Docker SDK) for Python can vary based on the Python version on the host,<br><br>For example,<br>If <strong>Python version &gt;=  2.7</strong>, we need to execute the following command <code>pip install docker</code> <br>If <strong>Python version = 2.6</strong>, we need to execute the following command <code>pip install docker-py</code><br></p>
+<p><!-- /wp:paragraph --></p>
+<p><!-- wp:paragraph {"style":{"typography":{"fontSize":19}}} --></p>
+<p style="font-size:19px"><br><br><strong><span style="text-decoration: underline" class="underline">NOTE:</span></strong><br><br>1)  According to the Ansible documentation, Ansible 2.1.0 introduces significant updates to the Docker modules and necessitates the installation of Python Docker module version &gt;= 1.7.0.<br><br>2) Additionally, ensure that only one instance of <code>docker</code> and <code>docker-py</code> is installed. Installing both will lead to a broken installation. If this situation occurs, Ansible will detect it and display a corresponding message when running an Ansible job, as illustrated below.</p>
+<p><!-- /wp:paragraph --></p>
+<p><!-- wp:preformatted --></p>
+<pre class="wp-block-preformatted">Cannot have both the docker-py and docker python modules installed together as they use the same
+namespace and cause a corrupt installation. Please uninstall both packages, and re-install only
+the docker-py or docker python module. It is recommended to install the docker module if no support
+for Python 2.6 is required. Please note that simply uninstalling one of the modules can leave the
+other module in a broken state.</pre>
+<p><!-- /wp:preformatted --></p>
+<p><!-- wp:paragraph --></p>
+<p><!-- /wp:paragraph --></p>
+<p><!-- wp:paragraph --></p>
+<p><!-- /wp:paragraph --><br />
+</body></html></p>

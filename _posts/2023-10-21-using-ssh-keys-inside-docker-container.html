@@ -1,0 +1,128 @@
+---
+layout: post
+title: Harnessing The Potential Of SSH Keys Within Your Dockerized Environment
+date: 2023-10-21 03:50:47.000000000 -04:00
+type: post
+parent_id: '0'
+published: true
+password: ''
+status: publish
+categories:
+- Docker
+- Sysadmin
+tags:
+- docker ssh keys
+meta:
+  _edit_last: '1'
+  _aioseo_title: ''
+  _aioseo_description: ''
+  _aioseo_keywords: ''
+  _aioseo_og_title: ''
+  _aioseo_og_description: ''
+  _aioseo_og_article_section: ''
+  _aioseo_og_article_tags: ''
+  _aioseo_twitter_title: ''
+  _aioseo_twitter_description: ''
+  ocean_gallery_link_images: 'off'
+  ocean_sidebar: '0'
+  ocean_second_sidebar: '0'
+  ocean_disable_margins: enable
+  ocean_display_top_bar: default
+  ocean_display_header: default
+  ocean_center_header_left_menu: '0'
+  ocean_custom_header_template: '0'
+  ocean_header_custom_menu: '0'
+  ocean_menu_typo_font_family: '0'
+  ocean_disable_title: default
+  ocean_disable_heading: default
+  ocean_disable_breadcrumbs: default
+  ocean_display_footer_widgets: default
+  ocean_display_footer_bottom: default
+  ocean_custom_footer_template: '0'
+  ocean_link_format_target: self
+  ocean_quote_format_link: post
+  _yoast_wpseo_primary_category: '9'
+  _yoast_wpseo_content_score: '30'
+  _yoast_wpseo_estimated-reading-time-minutes: '2'
+  _yoast_wpseo_wordproof_timestamp: ''
+  _thumbnail_id: '1993'
+  _wtpsw_views: '49'
+permalink: "/2023/10/21/using-ssh-keys-inside-docker-container/"
+---
+<p><!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN" "http://www.w3.org/TR/REC-html40/loose.dtd"><br />
+<!-- wp:paragraph {"fontSize":"medium"} --><html><body></p>
+<p class="has-medium-font-size"><br>If you find yourself in a situation inside your Docker container where you need to clone a Git repository using SSH keys, but the SSH keys are located within your Docker host, and you want to make them available inside the Docker containers for successful cloning of the Git repository, failure to do so will result in the following error:</p>
+<p><!-- /wp:paragraph --></p>
+<p><!-- wp:code --></p>
+<pre class="wp-block-code"><code>root@0e6d9b720655:/# git clone git@github.com:madhu-reddy/ansible-playbooks.git
+Cloning into 'ansible-playbooks'...
+The authenticity of host 'github.com (140.82.112.3)' can't be established.
+ECDSA key fingerprint is SHA256:p2QAMXNIC1TJYWeIOttrVc98/R1BUFWu3/LiyKgUfQM.
+Are you sure you want to continue connecting (yes/no/[fingerprint])? yes
+Warning: Permanently added 'github.com,140.82.112.3' (ECDSA) to the list of known hosts.
+git@github.com: Permission denied (publickey).
+fatal: Could not read from remote repository.
+
+Please make sure you have the correct access rights
+and the repository exists.
+</code></pre>
+<p><!-- /wp:code --></p>
+<p><!-- wp:paragraph --></p>
+<p><!-- /wp:paragraph --></p>
+<p><!-- wp:paragraph {"fontSize":"medium"} --></p>
+<p class="has-medium-font-size">Let us see some of the different ways to do this,</p>
+<p><!-- /wp:paragraph --></p>
+<p><!-- wp:paragraph {"style":{"typography":{"fontSize":"25px"}},"textColor":"luminous-vivid-orange"} --></p>
+<p class="has-luminous-vivid-orange-color has-text-color" style="font-size:25px">Firstly, if the <strong>docker container is already running</strong>, then</p>
+<p><!-- /wp:paragraph --></p>
+<p><!-- wp:paragraph {"fontSize":"medium"} --></p>
+<p class="has-medium-font-size">1) Copy the SSH private key directly from the host to inside the Docker container, placing it in the file <code>~/.ssh/id_rsa</code>. Ensure that the permissions are set to 600 for the file <code>~/.ssh/id_rsa</code>.</p>
+<p><!-- /wp:paragraph --></p>
+<p><!-- wp:paragraph {"fontSize":"medium"} --></p>
+<p class="has-medium-font-size">2) Test the Docker container's interaction with GitHub using the SSH keys by running the command<code> ssh -T git@github.com </code>from inside the container or directly from the docker host using the command <code>docker exec &lt;container_id&gt; ssh -T git@github.com</code>.</p>
+<p><!-- /wp:paragraph --></p>
+<p><!-- wp:paragraph {"fontSize":"medium"} --></p>
+<p class="has-medium-font-size">3) With successful authentication, you should be able to clone a Git repository using SSH keys from inside the container. You can now proceed with cloning the repository inside the container.</p>
+<p><!-- /wp:paragraph --></p>
+<p><!-- wp:code --></p>
+<pre class="wp-block-code"><code>root@98d9f0b03168:~/.ssh# chmod 600 id_rsa  <br>root@98d9f0b03168:~/.ssh# ssh -T git@github.com  <br>Hi madhu-reddy! You've successfully authenticated, but GitHub does not provide shell access.</code></pre>
+<p><!-- /wp:code --></p>
+<p><!-- wp:paragraph --></p>
+<p><!-- /wp:paragraph --></p>
+<p><!-- wp:paragraph --></p>
+<p><!-- /wp:paragraph --></p>
+<p><!-- wp:spacer --></p>
+<div style="height:100px" aria-hidden="true" class="wp-block-spacer"></div>
+<p><!-- /wp:spacer --></p>
+<p><!-- wp:paragraph --></p>
+<p><!-- /wp:paragraph --></p>
+<p><!-- wp:paragraph --></p>
+<p><!-- /wp:paragraph --></p>
+<p><!-- wp:paragraph {"style":{"typography":{"fontSize":"25px"}},"textColor":"luminous-vivid-orange"} --></p>
+<p class="has-luminous-vivid-orange-color has-text-color" style="font-size:25px">Secondly, if you want to copy or forward the SSH keys/agent into the Docker container at the time of creating the container, you have a few options. Here are two common approaches:</p>
+<p><!-- /wp:paragraph --></p>
+<p><!-- wp:paragraph {"fontSize":"medium"} --></p>
+<p class="has-medium-font-size">-&gt; Copying SSH Keys during Container Creation using a volume mount <br>-&gt; Using the ssh-agent forwarding<br><br>Let's look at the second approach (ssh-agent forwarding),</p>
+<p><!-- /wp:paragraph --></p>
+<p><!-- wp:paragraph {"fontSize":"medium"} --></p>
+<p class="has-medium-font-size">1) Using a single-line Docker command, achieve this with the following:<br><code>docker run --rm -ti  -v ${SSH_AUTH_SOCK}:${SSH_AUTH_SOCK} -e SSH_AUTH_SOCK=${SSH_AUTH_SOCK} nginx bash</code></p>
+<p><!-- /wp:paragraph --></p>
+<p><!-- wp:paragraph {"fontSize":"medium"} --></p>
+<p class="has-medium-font-size">2) In the above command, pay attention to the environmental variable "<code>SSH_AUTH_SOCK</code>." This variable holds the location of the ssh-agent UNIX socket file, enabling communication between the docker container and the docker host to address authentication queries from GitHub.</p>
+<p><!-- /wp:paragraph --></p>
+<p><!-- wp:paragraph {"fontSize":"medium"} --></p>
+<p class="has-medium-font-size">3)<strong> To ensure success</strong>, an ssh-agent must already be running on the host, and the ssh private key should be added to it.</p>
+<p><!-- /wp:paragraph --></p>
+<p><!-- wp:paragraph {"fontSize":"medium"} --></p>
+<p class="has-medium-font-size">4) To verify whether the ssh-agent daemon is active, check if the environment variable <code>"SSH_AUTH_SOCK"</code> is set using the "env" command on the host.</p>
+<p><!-- /wp:paragraph --></p>
+<p><!-- wp:paragraph {"fontSize":"medium"} --></p>
+<p class="has-medium-font-size">5) If it's set, the ssh-agent daemon is confirmed to be running. If not, initiate the ssh-agent and add the ssh private key to it before executing the Docker command mentioned in the first step.</p>
+<p><!-- /wp:paragraph --></p>
+<p><!-- wp:spacer --></p>
+<div style="height:100px" aria-hidden="true" class="wp-block-spacer"></div>
+<p><!-- /wp:spacer --></p>
+<p><!-- wp:paragraph {"textColor":"luminous-vivid-orange","fontSize":"medium"} --></p>
+<p class="has-luminous-vivid-orange-color has-text-color has-medium-font-size">Please check out <a href="https://mylearningsguru.com/2021/11/07/how-to-perform-ssh-agent-forwarding-for-git-clone-using-ssh-authentication/">this related post</a> about ssh-agent forwarding and how it works.<br></p>
+<p><!-- /wp:paragraph --><br />
+</body></html></p>

@@ -1,0 +1,103 @@
+---
+layout: post
+title: Wanted to know the differences between "order by" and  "group by" clauses in
+  MySQL?
+date: 2022-12-04 04:35:26.000000000 -05:00
+type: post
+parent_id: '0'
+published: true
+password: ''
+status: publish
+categories:
+- MySQL
+tags: []
+meta:
+  _edit_last: '1'
+  ocean_gallery_link_images: 'off'
+  ocean_sidebar: '0'
+  ocean_second_sidebar: '0'
+  ocean_disable_margins: enable
+  ocean_display_top_bar: default
+  ocean_display_header: default
+  ocean_center_header_left_menu: '0'
+  ocean_custom_header_template: '0'
+  ocean_header_custom_menu: '0'
+  ocean_menu_typo_font_family: '0'
+  ocean_disable_title: default
+  ocean_disable_heading: default
+  ocean_disable_breadcrumbs: default
+  ocean_display_footer_widgets: default
+  ocean_display_footer_bottom: default
+  ocean_custom_footer_template: '0'
+  ocean_link_format_target: self
+  ocean_quote_format_link: post
+  _yoast_wpseo_estimated-reading-time-minutes: '2'
+  _aioseo_title: ''
+  _aioseo_description: ''
+  _aioseo_keywords: ''
+  _aioseo_og_title: ''
+  _aioseo_og_description: ''
+  _aioseo_og_article_section: ''
+  _aioseo_og_article_tags: ''
+  _aioseo_twitter_title: ''
+  _aioseo_twitter_description: ''
+  _yoast_wpseo_primary_category: '31'
+  _yoast_wpseo_content_score: '60'
+  _thumbnail_id: '1688'
+  _wtpsw_views: '65'
+  rank_math_primary_category: '31'
+  rank_math_news_sitemap_robots: index
+  rank_math_robots: a:1:{i:0;s:5:"index";}
+  rank_math_internal_links_processed: '1'
+  rank_math_seo_score: '64'
+  rank_math_focus_keyword: order by,group by
+  rank_math_og_content_image: a:2:{s:5:"check";s:32:"625445d5011147fcf92c3bdfa39afd3d";s:6:"images";a:1:{i:0;i:1645;}}
+  _yoast_wpseo_wordproof_timestamp: ''
+permalink: "/2022/12/04/wanted-to-know-the-differences-between-order-by-and-group-by-clauses-in-mysql/"
+---
+<p><!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN" "http://www.w3.org/TR/REC-html40/loose.dtd"><br />
+<!-- wp:paragraph --><html><body></p>
+<p>In this, we are going to look into "<strong>order by</strong>" and "<strong>group by</strong>"clauses in SQL.</p>
+<p><!-- /wp:paragraph --></p>
+<p><!-- wp:heading {"style":{"typography":{"fontSize":24}}} --></p>
+<h2 style="font-size:24px">
+<br><strong><span style="text-decoration: underline" class="underline"><span style="color:#cf2e2e" class="tadv-color">Group By</span></span></strong><br />
+</h2>
+<p><!-- /wp:heading --></p>
+<p><!-- wp:paragraph {"fontSize":"medium"} --></p>
+<p class="has-medium-font-size">The "<strong>GROUP BY</strong>" clause is utilized to aggregate data based on one or more columns, employing aggregate functions such as <strong>COUNT()</strong>, <strong>SUM()</strong>, <strong>MIN()</strong>, <strong>MAX()</strong>, and <strong>AVG()</strong>.<br><br>Let's consider an example with the following table related to "pets."</p>
+<p><!-- /wp:paragraph --></p>
+<p><!-- wp:image {"align":"left","id":1645,"width":523,"height":241,"sizeSlug":"large","linkDestination":"none"} --></p>
+<figure class="wp-block-image alignleft size-large is-resized"><img src="{{site.baseurl}}/assets/2022/12/image.png" alt="" class="wp-image-1645" width="523" height="241"></figure>
+<p><!-- /wp:image --></p>
+<p><!-- wp:paragraph {"fontSize":"medium"} --></p>
+<p class="has-medium-font-size"><br><br><br><br><br><br><br><br><br><br>To determine the total number of a specific species (e.g., the total number of cats or dogs), you would need to execute the following query:<br><strong><span style="color:#cf2e2e" class="tadv-color"><code>mysql&gt; select species, count(*) from pet group by species;</code></span></strong><br><br><br><strong><span style="text-decoration: underline" class="underline">Executing the above query involves three crucial steps:</span></strong><br>1) Collecting all records from the "pet" table - (<strong>FROM</strong> Clause)<br>2) Grouping unique values in the "species" column  - (<strong>GROUP BY</strong> Clause)<br>3) Applying the aggregate function (<strong>COUNT(*)</strong>) to each group obtained in the second step - (<strong>SELECT</strong> Clause)<br><br>In the execution order of the above SQL query, the sequence is <code>"<strong>FROM Clause</strong> → <strong>GROUP BY Clause</strong> → <strong>SELECT Clause</strong>."</code></p>
+<p><!-- /wp:paragraph --></p>
+<p><!-- wp:image {"align":"left","id":1658,"width":390,"height":152,"sizeSlug":"large","linkDestination":"none"} --></p>
+<figure class="wp-block-image alignleft size-large is-resized"><img src="{{site.baseurl}}/assets/2022/12/image-3.png" alt="" class="wp-image-1658" width="390" height="152"></figure>
+<p><!-- /wp:image --></p>
+<p><!-- wp:paragraph --></p>
+<p><br><br><br><br><br><br><br><br></p>
+<p><!-- /wp:paragraph --></p>
+<p><!-- wp:paragraph --></p>
+<p><!-- /wp:paragraph --></p>
+<p><!-- wp:heading {"style":{"typography":{"fontSize":24}}} --></p>
+<h2 style="font-size:24px"><strong><span style="text-decoration: underline" class="underline"><span style="color:#cf2e2e" class="tadv-color">Order By</span></span></strong></h2>
+<p><!-- /wp:heading --></p>
+<p><!-- wp:paragraph {"fontSize":"medium"} --></p>
+<p class="has-medium-font-size">The "<strong>ORDER BY</strong>" clause is employed to arrange the results of a SQL query based on one or more columns. Let's use the same example with the "pets" table to illustrate how the "ORDER BY" clause can be integrated into our query.<br><br>Suppose we wish to sort the results obtained from the SQL query (<code>select species, count(*) from pet group by species</code>), which we executed in the preceding section to explore the "<strong><code>GROUP BY</code></strong>" clause.</p>
+<p><!-- /wp:paragraph --></p>
+<p><!-- wp:image {"align":"left","width":387,"height":151} --></p>
+<figure class="wp-block-image alignleft is-resized"><img src="{{site.baseurl}}/assets/2022/12/image-3.png" alt="This image has an empty alt attribute; its file name is image-3.png" width="387" height="151"></figure>
+<p><!-- /wp:image --></p>
+<p><!-- wp:paragraph {"fontSize":"medium"} --></p>
+<p class="has-medium-font-size"><br><br><br><br><br><br><br>To sort the result using the "<strong><code>ORDER BY</code></strong>" clause, execute the following SQL query:<br><code><strong>mysql&gt; select species, count(*) from pet group by species order by count(*);</strong></code><br><br>By default, the sorting is in ascending order. For descending order, append the <code>DESC</code> keyword at the end of the query:<br><code><strong>mysql&gt; select species, count(*) from pet group by species order by count(*) DESC;</strong></code></p>
+<p><!-- /wp:paragraph --></p>
+<p><!-- wp:image {"align":"left","id":1662,"width":520,"height":311,"sizeSlug":"large","linkDestination":"none"} --></p>
+<figure class="wp-block-image alignleft size-large is-resized"><img src="{{site.baseurl}}/assets/2022/12/image-4.png" alt="" class="wp-image-1662" width="520" height="311"></figure>
+<p><!-- /wp:image --></p>
+<p><!-- wp:paragraph --></p>
+<p><!-- /wp:paragraph --></p>
+<p><!-- wp:paragraph --></p>
+<p><!-- /wp:paragraph --><br />
+</body></html></p>

@@ -1,0 +1,69 @@
+---
+layout: post
+title: Look at the file system resize progress with resize2fs
+date: 2021-04-02 03:08:10.000000000 -04:00
+type: post
+parent_id: '0'
+published: true
+password: ''
+status: publish
+categories:
+- Linux
+tags: []
+meta:
+  _aioseo_title: ''
+  _aioseo_description: ''
+  _aioseo_keywords: ''
+  _aioseo_og_title: ''
+  _aioseo_og_description: ''
+  _aioseo_og_article_section: ''
+  _aioseo_og_article_tags: ''
+  _aioseo_twitter_title: ''
+  _aioseo_twitter_description: ''
+  _edit_last: '1'
+  _kad_blog_head: default
+  _kad_post_summery: default
+  _kad_post_sidebar: 'yes'
+  _kad_sidebar_choice: sidebar-primary
+  _kad_blog_  _yoast_wpseo_estimated-reading-time-minutes: '1'
+  _wtpsw_views: '879'
+  rank_math_primary_category: '2'
+  rank_math_news_sitemap_robots: index
+  rank_math_robots: a:1:{i:0;s:5:"index";}
+  rank_math_internal_links_processed: '1'
+permalink: "/2021/04/02/extend-lvm-and-see-the-progress-with-resize2fs/"
+---
+<p><!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN" "http://www.w3.org/TR/REC-html40/loose.dtd"><br />
+<!-- wp:code --><html><body></p>
+<pre class="wp-block-code"><code>lvextend -L +100G /dev/sda2</code></pre>
+<p><!-- /wp:code --></p>
+<p><!-- wp:code --></p>
+<pre class="wp-block-code"><code>resize2fs -p /dev/sda2 </code></pre>
+<p><!-- /wp:code --></p>
+<p><!-- wp:quote {"className":"is-style-large"} --></p>
+<blockquote class="wp-block-quote is-style-large"><p>
+<!-- wp:paragraph --></p>
+<p><strong><span class="has-inline-color has-vivid-red-color"><em>-p option</em></span></strong><em><span class="has-inline-color has-vivid-red-color"> ---&gt; Prints out a percentage completion bars for each </span></em><strong><span class="has-inline-color has-vivid-red-color"><em>resize2fs</em></span></strong><em><span class="has-inline-color has-vivid-red-color"> operation, so that the user can keep track of what the program is doing</span></em></p>
+<p><!-- /wp:paragraph -->
+</p></blockquote>
+<p><!-- /wp:quote --></p>
+<p><!-- wp:code --></p>
+<pre class="wp-block-code"><code>resize2fs 1.41.12 (17-May-2010)
+Resizing the filesystem on /dev/sda2 to 26214400 
+(4k) blocks.
+Begin pass 2 (max = 5713)
+Relocating blocks         XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX
+Begin pass 3 (max = 1480)
+Scanning inode table      XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX
+Begin pass 4 (max = 1547)|
+Updating inode references XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX
+The filesystem on /dev/sda2 is now 26214400 blocks long.</code></pre>
+<p><!-- /wp:code --></p>
+<p><!-- wp:quote {"className":"is-style-large"} --></p>
+<blockquote class="wp-block-quote is-style-large"><p>
+<!-- wp:paragraph --></p>
+<p>This is very helpful, especially when the partition resizing size is significant, taking a few minutes to complete the resize. This helps to avoid confusion about whether the command is hung or not.</p>
+<p><!-- /wp:paragraph -->
+</p></blockquote>
+<p><!-- /wp:quote --><br />
+</body></html></p>

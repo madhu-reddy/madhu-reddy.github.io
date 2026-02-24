@@ -1,0 +1,383 @@
+---
+layout: post
+title: What's the difference between ENTRYPOINT  and CMD in a Dockerfile?
+date: 2021-04-07 14:21:07.000000000 -04:00
+type: post
+parent_id: '0'
+published: true
+password: ''
+status: publish
+categories:
+- Docker
+tags: []
+meta:
+  _aioseo_title: "#post_title #separator_sa #site_title"
+  _aioseo_description: "#post_excerpt"
+  _aioseo_keywords: ''
+  _aioseo_og_title: ''
+  _aioseo_og_description: ''
+  _aioseo_og_article_section: ''
+  _aioseo_og_article_tags: ''
+  _aioseo_twitter_title: ''
+  _aioseo_twitter_description: ''
+  _edit_last: '1'
+  _kad_blog_head: default
+  _kad_post_summery: default
+  _kad_post_sidebar: 'yes'
+  _kad_sidebar_choice: sidebar-primary
+  _kad_blog_  _yoast_wpseo_estimated-reading-time-minutes: '5'
+  _elementor_template_type: wp-post
+  _elementor_version: 3.1.4
+  _wp_page_template: default
+  _elementor_data: '[{"id":"80ecc4c","elType":"section","settings":[],"elements":[{"id":"5d7f5b9b","elType":"column","settings":{"_column_size":100},"elements":[{"id":"6f20a701","elType":"widget","settings":{"editor":"<p><!--
+    wp:heading {\"level\":1} --><\/p>\n<h1><span class=\"has-inline-color has-vivid-red-color\"><u>About<\/u><\/span><strong><span
+    class=\"has-inline-color has-vivid-red-color\"><u> CMD:<\/u><\/span><\/strong><\/h1>\n<p><!--
+    \/wp:heading --><\/p>\n<p><!-- wp:paragraph {\"fontSize\":\"medium\"} --><\/p>\n<p
+    class=\"has-medium-font-size\"><span style=\"color: #000000; font-family: S\u00f6hne,
+    ui-sans-serif, system-ui, -apple-system, ''Segoe UI'', Roboto, Ubuntu, Cantarell,
+    ''Noto Sans'', sans-serif, ''Helvetica Neue'', Arial, ''Apple Color Emoji'', ''Segoe
+    UI Emoji'', ''Segoe UI Symbol'', ''Noto Color Emoji''; font-size: 20px; font-style:
+    normal; font-variant-ligatures: normal; font-variant-caps: normal; font-weight:
+    400; white-space-collapse: preserve;\">The Docker CMD defines the default executable
+    of a Docker image.<\/span><\/p>\n<p><!-- \/wp:paragraph --><\/p>\n<p><!-- wp:paragraph
+    {\"fontSize\":\"medium\"} --><\/p>\n<p class=\"has-medium-font-size\"><span style=\"color:
+    #000000; font-family: S\u00f6hne, ui-sans-serif, system-ui, -apple-system, ''Segoe
+    UI'', Roboto, Ubuntu, Cantarell, ''Noto Sans'', sans-serif, ''Helvetica Neue'',
+    Arial, ''Apple Color Emoji'', ''Segoe UI Emoji'', ''Segoe UI Symbol'', ''Noto
+    Color Emoji''; font-size: 20px; font-style: normal; font-variant-ligatures: normal;
+    font-variant-caps: normal; font-weight: 400; white-space-collapse: preserve;\">The
+    CMD instruction is used only when no arguments are added to the run command while
+    starting a container. Therefore, adding an argument to the ''<strong>docker run<\/strong>''
+    command overrides the CMD.<\/span><\/p>\n<p><!-- \/wp:paragraph --><\/p>\n<p><!--
+    wp:paragraph --><\/p>\n<p><!-- \/wp:paragraph --><\/p>\n<p><!-- wp:paragraph {\"fontSize\":\"medium\"}
+    --><\/p>\n<h2><span style=\"text-decoration: underline;\"><strong><span class=\"has-inline-color
+    has-luminous-vivid-orange-color\">Creating the Dockerfile with CMD :<br \/><\/span><\/strong><\/span><br
+    \/><img class=\"wp-image-123 alignleft\" src=\"https:\/\/mylearningsguru.com\/wp-content\/uploads\/2021\/04\/image-4.png\"
+    alt=\"\" \/><\/h2>\n<p><!-- \/wp:paragraph --><\/p>\n<p><!-- wp:image {\"id\":123,\"sizeSlug\":\"large\",\"linkDestination\":\"none\"}
+    --><\/p>\n<p><!-- \/wp:image --><\/p>\n<p><!-- wp:paragraph {\"fontSize\":\"medium\"}
+    --><\/p>\n<p>\u00a0<\/p>\n<p><strong><br \/><br \/><br \/><br \/><span style=\"text-decoration:
+    underline;\"><span style=\"color: #ff6600; font-size: 20px; text-decoration: underline;\">Build
+    the Image<br \/><br \/><\/span><\/span><\/strong><img class=\"wp-image-124\" src=\"https:\/\/mylearningsguru.com\/wp-content\/uploads\/2021\/04\/image-5.png\"
+    alt=\"\" \/><\/p>\n<p><!-- \/wp:paragraph --><\/p>\n<p><!-- wp:image {\"id\":124,\"sizeSlug\":\"large\",\"linkDestination\":\"none\"}
+    --><\/p>\n<p><!-- \/wp:image --><\/p>\n<p><!-- wp:paragraph {\"fontSize\":\"medium\"}
+    --><\/p>\n<p class=\"has-medium-font-size\"><span style=\"color: #000000; font-size:
+    20px;\">When running the command <strong><code>docker run testing-cmd<\/code><\/strong>
+    without providing any additional arguments to the ''<strong>docker run<\/strong>''
+    command, the output will be the default executable specified after the CMD instruction
+    in the Dockerfile.<\/span><\/p>\n<p><!-- \/wp:paragraph --><\/p>\n<p><!-- wp:paragraph
+    {\"fontSize\":\"medium\"} --><\/p>\n<h2><strong><span class=\"has-inline-color
+    has-luminous-vivid-orange-color\"><span style=\"text-decoration: underline;\"><br
+    \/>\"docker run\" without arguments<br \/><\/span><\/span><\/strong><br \/><img
+    class=\"wp-image-126 alignleft\" src=\"https:\/\/mylearningsguru.com\/wp-content\/uploads\/2021\/04\/image-6.png\"
+    alt=\"\" \/><\/h2>\n<p><!-- \/wp:paragraph --><\/p>\n<p><!-- wp:image {\"id\":126,\"sizeSlug\":\"large\",\"linkDestination\":\"none\"}
+    --><\/p>\n<p><!-- \/wp:image --><\/p>\n<p><!-- wp:paragraph {\"fontSize\":\"medium\"}
+    --><\/p>\n<p class=\"has-medium-font-size\">\u00a0<\/p>\n<p><strong><br \/><span
+    style=\"text-decoration: underline; color: #000000; font-size: 20px;\">NOTE<\/span><span
+    style=\"color: #000000; font-size: 20px;\">:<\/span><\/strong><span style=\"color:
+    #000000; font-size: 20px;\">''<strong>testing-cmd<\/strong>'' is the name of the
+    Docker image we''ve built.<\/span><\/p>\n<p><!-- \/wp:paragraph --><\/p>\n<p><!--
+    wp:paragraph --><\/p>\n<p><!-- \/wp:paragraph --><\/p>\n<p><!-- wp:paragraph {\"fontSize\":\"medium\"}
+    --><\/p>\n<h2><strong><span class=\"has-inline-color has-luminous-vivid-orange-color\"><span
+    style=\"text-decoration: underline;\"><br \/>\"docker run\" with arguments<\/span><\/span><\/strong><\/h2>\n<p><span
+    style=\"font-size: 20px; color: #000000;\">Now, let''s observe the output when
+    an argument is added to the ''<strong>docker run<\/strong>'' command.<\/span><\/p>\n<p><span
+    class=\"has-inline-color has-black-color\"><code>docker run testing-cmd echo \"run
+    command I wish to run\"<\/code><\/span><\/p>\n<p><!-- \/wp:paragraph --><\/p>\n<p><!--
+    wp:image {\"id\":129,\"sizeSlug\":\"large\",\"linkDestination\":\"none\"} --><\/p>\n<figure
+    class=\"wp-block-image size-large\"><img class=\"wp-image-129\" src=\"https:\/\/mylearningsguru.com\/wp-content\/uploads\/2021\/04\/image-7.png\"
+    alt=\"\" \/><\/figure>\n<p><!-- \/wp:image --><\/p>\n<p><!-- wp:paragraph {\"fontSize\":\"medium\"}
+    --><\/p>\n<p class=\"has-medium-font-size\"><span style=\"font-size: 20px;\">Upon
+    reviewing the above output,<\/span> <span style=\"font-size: 20px; color: #000000;\">it''s
+    evident that the executable\u2014specifically, the executable with an argument\u2014that
+    we included in the ''<strong>docker run<\/strong>'' command overrides the default
+    CMD executable. Consequently, the default CMD executable (<em><strong>[''echo'',
+    ''running default command'']<\/strong><\/em>) was not executed.<\/span><\/p>\n<p><!--
+    \/wp:paragraph --><\/p>\n<p><!-- wp:paragraph {\"fontSize\":\"medium\"} --><\/p>\n<p
+    class=\"has-medium-font-size\"><span class=\"has-inline-color has-luminous-vivid-orange-color\"><span
+    style=\"font-size: 20px;\"><span style=\"color: #000000;\"><strong><span style=\"text-decoration:
+    underline;\">NOTE:<\/span><\/strong><\/span>\u00a0<\/span> <span style=\"font-size:
+    20px; color: #000000;\">If a Dockerfile contains multiple CMD instructions, only
+    the instructions from the last one will be applied.<\/span><\/span><\/p>\n<p><!--
+    \/wp:paragraph --><\/p>\n<p><!-- wp:paragraph --><\/p>\n<p><!-- \/wp:paragraph
+    --><\/p>\n<p><!-- wp:paragraph --><\/p>\n<p><!-- \/wp:paragraph --><\/p>\n<p><!--
+    wp:heading {\"level\":1,\"fontSize\":\"medium\"} --><\/p>\n<h1><strong><span class=\"has-inline-color
+    has-vivid-red-color\">\u00a0 \u00a0 \u00a0 \u00a0 \u00a0 \u00a0 \u00a0 \u00a0
+    \u00a0 \u00a0 \u00a0 \u00a0 \u00a0 \u00a0<br \/><\/span><\/strong><strong style=\"font-size:
+    1.25em;\"><span style=\"text-decoration-line: underline;\"><span class=\"has-inline-color
+    has-vivid-red-color\"><br \/>About ENTRYPOINT:<\/span><\/span><\/strong><\/h1>\n<p><!--
+    \/wp:heading --><\/p>\n<p><!-- wp:paragraph {\"fontSize\":\"medium\"} --><\/p>\n<p
+    class=\"has-medium-font-size\"><span style=\"color: #000000; font-family: S\u00f6hne,
+    ui-sans-serif, system-ui, -apple-system, ''Segoe UI'', Roboto, Ubuntu, Cantarell,
+    ''Noto Sans'', sans-serif, ''Helvetica Neue'', Arial, ''Apple Color Emoji'', ''Segoe
+    UI Emoji'', ''Segoe UI Symbol'', ''Noto Color Emoji''; font-size: 20px; font-style:
+    normal; font-variant-ligatures: normal; font-variant-caps: normal; font-weight:
+    400; white-space-collapse: preserve;\"><strong>ENTRYPOINT<\/strong> is akin to
+    <strong>CMD<\/strong> but comes with a few distinctions.<\/span><\/p>\n<ol>\n<li><span
+    style=\"font-size: 20px; color: #000000;\">ENTRYPOINT can only be overridden by
+    providing the ''<strong>--entrypoint<\/strong>'' option along with the executable
+    in the ''<strong>docker run<\/strong>'' command. Conversely, to override CMD,
+    no additional option is required in the ''<strong>docker run<\/strong>'' command;
+    providing just the executable as an argument suffices.<br \/><br \/><\/span><\/li>\n<li><span
+    style=\"color: #000000; font-family: arial, helvetica, sans-serif; font-size:
+    20px; font-style: normal; font-variant-ligatures: normal; font-variant-caps: normal;
+    font-weight: 400; white-space-collapse: preserve;\">If the Dockerfile contains
+    only an ENTRYPOINT (without a CMD), the output will be identical to that of CMD
+    when the ''<strong>docker run<\/strong>'' command is executed without any extra
+    arguments.<\/span><\/li>\n<\/ol>\n<h2><span class=\"has-inline-color has-luminous-vivid-orange-color\"><strong><span
+    style=\"text-decoration: underline;\"><br \/><span style=\"font-size: 20px;\">Dockerfile
+    (containing only ENTRYPOINT):<\/span><br \/><br \/><\/span><\/strong><\/span><img
+    class=\"wp-image-141 alignleft\" src=\"https:\/\/mylearningsguru.com\/wp-content\/uploads\/2021\/04\/image-11.png\"
+    alt=\"\" \/><\/h2>\n<p><!-- \/wp:paragraph --><\/p>\n<p><!-- wp:image {\"id\":141,\"sizeSlug\":\"large\",\"linkDestination\":\"none\"}
+    --><\/p>\n<p><!-- \/wp:image --><\/p>\n<p><!-- wp:paragraph {\"fontSize\":\"medium\"}
+    --><\/p>\n<p>\u00a0<\/p>\n<p><strong><br \/><br \/><br \/><br \/><br \/><span
+    style=\"text-decoration: underline;\"><span style=\"font-size: 20px; color: #ff6600;
+    text-decoration: underline;\">Build the Image<br \/><br \/><\/span><\/span><\/strong><img
+    class=\"wp-image-139 alignleft\" src=\"https:\/\/mylearningsguru.com\/wp-content\/uploads\/2021\/04\/image-9.png\"
+    alt=\"\" \/><\/p>\n<p><!-- \/wp:paragraph --><\/p>\n<p><!-- wp:image {\"id\":139,\"sizeSlug\":\"large\",\"linkDestination\":\"none\"}
+    --><\/p>\n<p><!-- \/wp:image --><\/p>\n<p><!-- wp:paragraph {\"fontSize\":\"medium\"}
+    --><\/p>\n<p class=\"has-medium-font-size\">\u00a0<\/p>\n<p>\u00a0<\/p>\n<p><strong><br
+    \/><br \/><br \/><br \/><br \/><span style=\"text-decoration: underline;\"><span
+    style=\"font-size: 20px; color: #ff6600; text-decoration: underline;\">\"docker
+    run\" without arguments:<\/span><\/span><\/strong><\/p>\n<p><span style=\"font-size:
+    20px; color: #000000;\">Observing the image below, executing the ''docker run''
+    command (<strong>docker run test-entrypoint<\/strong>) without arguments yields
+    results exactly mirroring those obtained with CMD.<br \/><br \/><\/span><img class=\"wp-image-142\"
+    src=\"https:\/\/mylearningsguru.com\/wp-content\/uploads\/2021\/04\/image-12.png\"
+    alt=\"\" \/><\/p>\n<p><!-- \/wp:paragraph --><\/p>\n<p><!-- wp:image {\"id\":142,\"sizeSlug\":\"large\",\"linkDestination\":\"none\"}
+    --><\/p>\n<p><!-- \/wp:image --><\/p>\n<p><!-- wp:paragraph {\"fontSize\":\"medium\"}
+    --><\/p>\n<p class=\"has-medium-font-size\">\u00a0<\/p>\n<h3><strong style=\"color:
+    #ff6900; font-size: 20px;\"><span style=\"text-decoration-line: underline;\"><br
+    \/><span style=\"font-size: 20px;\">\"docker run\" with arguments:<\/span><\/span><\/strong><\/h3>\n<h3><span
+    class=\"has-inline-color has-black-color\" style=\"font-weight: normal; color:
+    #000000; font-size: 20px;\">Executing the ''<strong>docker run<\/strong>'' command
+    (<em>docker run test-entrypoint echo ''running custom command''<\/em>) with arguments
+    yields different results compared to those obtained with CMD.<br \/><br \/><\/span><img
+    class=\"wp-image-143\" src=\"https:\/\/mylearningsguru.com\/wp-content\/uploads\/2021\/04\/image-13.png\"
+    alt=\"\" \/><\/h3>\n<p><!-- \/wp:paragraph --><\/p>\n<p><!-- wp:image {\"id\":143,\"sizeSlug\":\"large\",\"linkDestination\":\"none\"}
+    --><\/p>\n<p><!-- \/wp:image --><\/p>\n<p><!-- wp:paragraph {\"fontSize\":\"medium\"}
+    --><\/p>\n<p class=\"has-medium-font-size\"><span style=\"color: #000000; font-size:
+    20px;\">Notably, Docker did not override the original command specified in the
+    Dockerfile for the ENTRYPOINT instruction. Instead, it simply appended the executable
+    provided during ''<strong>docker run<\/strong>'' as a standard argument to the
+    existing command specified in the Dockerfile for the ENTRYPOINT instruction.<\/span><\/p>\n<p><!--
+    \/wp:paragraph --><\/p>\n<p><!-- wp:paragraph --><\/p>\n<p><!-- \/wp:paragraph
+    --><\/p>\n<p><!-- wp:paragraph --><\/p>\n<p><!-- \/wp:paragraph --><\/p>\n<p><!--
+    wp:paragraph --><\/p>\n<p><!-- \/wp:paragraph --><\/p>\n<p><!-- wp:heading {\"level\":1}
+    --><\/p>\n<h1>\u00a0<\/h1>\n<h1 style=\"text-align: left;\"><span class=\"has-inline-color
+    has-vivid-red-color\">\u00a0 \u00a0 \u00a0 \u00a0 \u00a0 \u00a0 \u00a0<u>CMD and
+    ENTRYPOINT together:<\/u><\/span><\/h1>\n<p><!-- \/wp:heading --><\/p>\n<p><!--
+    wp:paragraph {\"fontSize\":\"medium\"} --><\/p>\n<p class=\"has-medium-font-size\"><span
+    style=\"font-size: 20px; color: #000000;\">When both CMD and ENTRYPOINT instructions
+    are present in the Dockerfile, it''s analogous to defining the main executable
+    or command with ENTRYPOINT, <strong>while CMD specifies the default parameters
+    for that command set by ENTRYPOINT<\/strong>.<\/span><\/p>\n<p><!-- \/wp:paragraph
+    --><\/p>\n<p><!-- wp:paragraph {\"fontSize\":\"medium\"} --><\/p>\n<h2><strong><span
+    style=\"text-decoration: underline;\"><span class=\"has-inline-color has-luminous-vivid-orange-color\"><span
+    style=\"font-size: 20px;\">Dockerfile<\/span><br \/><br \/><\/span><\/span><\/strong><img
+    class=\"wp-image-148\" src=\"https:\/\/mylearningsguru.com\/wp-content\/uploads\/2021\/04\/image-14.png\"
+    alt=\"\" \/><\/h2>\n<p><!-- \/wp:paragraph --><\/p>\n<p><!-- wp:image {\"id\":148,\"sizeSlug\":\"large\",\"linkDestination\":\"none\"}
+    --><\/p>\n<p><!-- \/wp:image --><\/p>\n<p><!-- wp:paragraph {\"fontSize\":\"medium\"}
+    --><\/p>\n<h2><span class=\"has-inline-color has-luminous-vivid-orange-color\"><strong><span
+    style=\"text-decoration: underline;\"><br \/><span style=\"font-size: 20px;\">Build
+    the Image<\/span><br \/><br \/><\/span><\/strong><\/span><img class=\"wp-image-149\"
+    src=\"https:\/\/mylearningsguru.com\/wp-content\/uploads\/2021\/04\/image-15.png\"
+    alt=\"\" \/><\/h2>\n<p><!-- \/wp:paragraph --><\/p>\n<p><!-- wp:image {\"id\":149,\"sizeSlug\":\"large\",\"linkDestination\":\"none\"}
+    --><\/p>\n<p><!-- \/wp:image --><\/p>\n<p><!-- wp:paragraph {\"fontSize\":\"medium\"}
+    --><\/p>\n<h2><strong><span style=\"text-decoration: underline;\"><span class=\"has-inline-color
+    has-luminous-vivid-orange-color\"><br \/><span style=\"font-size: 20px;\">\"docker
+    run\" without arguments<\/span><br \/><br \/><\/span><\/span><\/strong><img class=\"wp-image-150\"
+    src=\"https:\/\/mylearningsguru.com\/wp-content\/uploads\/2021\/04\/image-16.png\"
+    alt=\"\" \/><\/h2>\n<p><!-- \/wp:paragraph --><\/p>\n<p><!-- wp:image {\"id\":150,\"sizeSlug\":\"large\",\"linkDestination\":\"none\"}
+    --><\/p>\n<p><!-- \/wp:image --><\/p>\n<p><!-- wp:paragraph --><\/p>\n<p><!--
+    \/wp:paragraph --><\/p>\n<p><!-- wp:paragraph {\"fontSize\":\"medium\"} --><\/p>\n<p
+    class=\"has-medium-font-size\">\u00a0<\/p>\n<h2><span class=\"has-inline-color
+    has-luminous-vivid-orange-color\" style=\"font-size: 20px;\"><strong><span style=\"text-decoration:
+    underline;\">\"docker run\" with arguments<\/span><\/strong><\/span><\/h2>\n<h3><span
+    class=\"has-inline-color has-black-color\" style=\"font-weight: normal;\"><span
+    style=\"font-size: 20px; color: #000000;\">In this scenario, we override the default
+    parameters of CMD by providing specific parameters during the ''<strong>docker
+    run<\/strong>'' command.<br \/><\/span><br \/><img class=\"alignnone size-full
+    wp-image-151\" src=\"https:\/\/mylearningsguru.com\/wp-content\/uploads\/2021\/04\/image-17.png\"
+    alt=\"\" width=\"820\" height=\"47\" \/><\/span><\/h3>\n<p>\u00a0<\/p>\n<p><!--
+    \/wp:paragraph --><\/p>\n<p><!-- wp:image {\"id\":151,\"sizeSlug\":\"large\",\"linkDestination\":\"none\"}
+    --><\/p>\n<p><!-- \/wp:image --><\/p>"},"elements":[],"widgetType":"text-editor"}],"isInner":false}],"isInner":false}]'
+  _elementor_edit_mode: builder
+  ocean_gallery_link_images: 'off'
+  ocean_sidebar: '0'
+  ocean_second_sidebar: '0'
+  ocean_disable_margins: enable
+  ocean_display_top_bar: default
+  ocean_display_header: default
+  ocean_center_header_left_menu: '0'
+  ocean_custom_header_template: '0'
+  ocean_header_custom_menu: '0'
+  ocean_menu_typo_font_family: '0'
+  ocean_disable_title: default
+  ocean_disable_heading: default
+  ocean_disable_breadcrumbs: default
+  ocean_display_footer_widgets: default
+  ocean_display_footer_bottom: default
+  ocean_custom_footer_template: '0'
+  ocean_link_format_target: self
+  ocean_quote_format_link: post
+  _wtpsw_views: '120'
+  rank_math_primary_category: '9'
+  rank_math_news_sitemap_robots: index
+  rank_math_robots: a:1:{i:0;s:5:"index";}
+  rank_math_og_content_image: a:2:{s:5:"check";s:32:"74905ca082d7ace98dab763b91b4565d";s:6:"images";a:2:{i:0;i:123;i:1;i:124;}}
+  rank_math_internal_links_processed: '1'
+  _elementor_controls_usage: a:3:{s:11:"text-editor";a:3:{s:5:"count";i:1;s:15:"control_percent";i:0;s:8:"controls";a:1:{s:7:"content";a:1:{s:14:"section_editor";a:1:{s:6:"editor";i:1;}}}}s:6:"column";a:3:{s:5:"count";i:1;s:15:"control_percent";i:0;s:8:"controls";a:0:{}}s:7:"section";a:3:{s:5:"count";i:1;s:15:"control_percent";i:0;s:8:"controls";a:0:{}}}
+permalink: "/2021/04/07/whats-the-difference-between-entrypoint-and-cmd-in-a-dockerfile/"
+---
+<p><!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN" "http://www.w3.org/TR/REC-html40/loose.dtd"><br />
+<html><body></p>
+<p><!-- wp:heading {"level":1} --></p>
+<h1>
+<u>About</u><strong><u> CMD:</u></strong><br />
+</h1>
+<p><!-- /wp:heading --></p>
+<p><!-- wp:paragraph {"fontSize":"medium"} --></p>
+<p>The Docker CMD defines the default executable of a Docker image.</p>
+<p><!-- /wp:paragraph --></p>
+<p><!-- wp:paragraph {"fontSize":"medium"} --></p>
+<p>The CMD instruction is used only when no arguments are added to the run command while starting a container. Therefore, adding an argument to the '<strong>docker run</strong>' command overrides the CMD.</p>
+<p><!-- /wp:paragraph --></p>
+<p><!-- wp:paragraph --></p>
+<p><!-- /wp:paragraph --></p>
+<p><!-- wp:paragraph {"fontSize":"medium"} --></p>
+<h2>
+<strong>Creating the Dockerfile with CMD :<br></strong><br><img src="{{site.baseurl}}/assets/2021/04/image-4.png" alt=""><br />
+</h2>
+<p><!-- /wp:paragraph --></p>
+<p><!-- wp:image {"id":123,"sizeSlug":"large","linkDestination":"none"} --></p>
+<p><!-- /wp:image --></p>
+<p><!-- wp:paragraph {"fontSize":"medium"} --></p>
+<p> </p>
+<p><strong><br><br><br><br>Build the Image<br><br></strong><img src="{{site.baseurl}}/assets/2021/04/image-5.png" alt=""></p>
+<p><!-- /wp:paragraph --></p>
+<p><!-- wp:image {"id":124,"sizeSlug":"large","linkDestination":"none"} --></p>
+<p><!-- /wp:image --></p>
+<p><!-- wp:paragraph {"fontSize":"medium"} --></p>
+<p>When running the command <strong><code>docker run testing-cmd</code></strong> without providing any additional arguments to the '<strong>docker run</strong>' command, the output will be the default executable specified after the CMD instruction in the Dockerfile.</p>
+<p><!-- /wp:paragraph --></p>
+<p><!-- wp:paragraph {"fontSize":"medium"} --></p>
+<h2>
+<strong><br>"docker run" without arguments<br></strong><br><img src="{{site.baseurl}}/assets/2021/04/image-6.png" alt=""><br />
+</h2>
+<p><!-- /wp:paragraph --></p>
+<p><!-- wp:image {"id":126,"sizeSlug":"large","linkDestination":"none"} --></p>
+<p><!-- /wp:image --></p>
+<p><!-- wp:paragraph {"fontSize":"medium"} --></p>
+<p> </p>
+<p><strong><br>NOTE:</strong>'<strong>testing-cmd</strong>' is the name of the Docker image we've built.</p>
+<p><!-- /wp:paragraph --></p>
+<p><!-- wp:paragraph --></p>
+<p><!-- /wp:paragraph --></p>
+<p><!-- wp:paragraph {"fontSize":"medium"} --></p>
+<h2><strong><br>"docker run" with arguments</strong></h2>
+<p>Now, let's observe the output when an argument is added to the '<strong>docker run</strong>' command.</p>
+<p><code>docker run testing-cmd echo "run command I wish to run"</code></p>
+<p><!-- /wp:paragraph --></p>
+<p><!-- wp:image {"id":129,"sizeSlug":"large","linkDestination":"none"} --></p>
+<figure><img src="{{site.baseurl}}/assets/2021/04/image-7.png" alt=""></figure>
+<p><!-- /wp:image --></p>
+<p><!-- wp:paragraph {"fontSize":"medium"} --></p>
+<p>Upon reviewing the above output, it's evident that the executable—specifically, the executable with an argument—that we included in the '<strong>docker run</strong>' command overrides the default CMD executable. Consequently, the default CMD executable (<em><strong>['echo', 'running default command']</strong></em>) was not executed.</p>
+<p><!-- /wp:paragraph --></p>
+<p><!-- wp:paragraph {"fontSize":"medium"} --></p>
+<p><strong>NOTE:</strong>  If a Dockerfile contains multiple CMD instructions, only the instructions from the last one will be applied.</p>
+<p><!-- /wp:paragraph --></p>
+<p><!-- wp:paragraph --></p>
+<p><!-- /wp:paragraph --></p>
+<p><!-- wp:paragraph --></p>
+<p><!-- /wp:paragraph --></p>
+<p><!-- wp:heading {"level":1,"fontSize":"medium"} --></p>
+<h1>
+<strong>                           <br></strong><strong style="font-size: 1.25em;"><br>About ENTRYPOINT:</strong><br />
+</h1>
+<p><!-- /wp:heading --></p>
+<p><!-- wp:paragraph {"fontSize":"medium"} --></p>
+<p><strong>ENTRYPOINT</strong> is akin to <strong>CMD</strong> but comes with a few distinctions.</p>
+<ol>
+<li>ENTRYPOINT can only be overridden by providing the '<strong>--entrypoint</strong>' option along with the executable in the '<strong>docker run</strong>' command. Conversely, to override CMD, no additional option is required in the '<strong>docker run</strong>' command; providing just the executable as an argument suffices.<br><br>
+</li>
+<li>If the Dockerfile contains only an ENTRYPOINT (without a CMD), the output will be identical to that of CMD when the '<strong>docker run</strong>' command is executed without any extra arguments.</li>
+</ol>
+<h2>
+<strong><br>Dockerfile (containing only ENTRYPOINT):<br><br></strong><img src="{{site.baseurl}}/assets/2021/04/image-11.png" alt=""><br />
+</h2>
+<p><!-- /wp:paragraph --></p>
+<p><!-- wp:image {"id":141,"sizeSlug":"large","linkDestination":"none"} --></p>
+<p><!-- /wp:image --></p>
+<p><!-- wp:paragraph {"fontSize":"medium"} --></p>
+<p> </p>
+<p><strong><br><br><br><br><br>Build the Image<br><br></strong><img src="{{site.baseurl}}/assets/2021/04/image-9.png" alt=""></p>
+<p><!-- /wp:paragraph --></p>
+<p><!-- wp:image {"id":139,"sizeSlug":"large","linkDestination":"none"} --></p>
+<p><!-- /wp:image --></p>
+<p><!-- wp:paragraph {"fontSize":"medium"} --></p>
+<p> </p>
+<p> </p>
+<p><strong><br><br><br><br><br>"docker run" without arguments:</strong></p>
+<p>Observing the image below, executing the 'docker run' command (<strong>docker run test-entrypoint</strong>) without arguments yields results exactly mirroring those obtained with CMD.<br><br><img src="{{site.baseurl}}/assets/2021/04/image-12.png" alt=""></p>
+<p><!-- /wp:paragraph --></p>
+<p><!-- wp:image {"id":142,"sizeSlug":"large","linkDestination":"none"} --></p>
+<p><!-- /wp:image --></p>
+<p><!-- wp:paragraph {"fontSize":"medium"} --></p>
+<p> </p>
+<h3><strong style="color: #ff6900; font-size: 20px;"><br>"docker run" with arguments:</strong></h3>
+<h3>Executing the '<strong>docker run</strong>' command (<em>docker run test-entrypoint echo 'running custom command'</em>) with arguments yields different results compared to those obtained with CMD.<br><br><img src="{{site.baseurl}}/assets/2021/04/image-13.png" alt=""><br />
+</h3>
+<p><!-- /wp:paragraph --></p>
+<p><!-- wp:image {"id":143,"sizeSlug":"large","linkDestination":"none"} --></p>
+<p><!-- /wp:image --></p>
+<p><!-- wp:paragraph {"fontSize":"medium"} --></p>
+<p>Notably, Docker did not override the original command specified in the Dockerfile for the ENTRYPOINT instruction. Instead, it simply appended the executable provided during '<strong>docker run</strong>' as a standard argument to the existing command specified in the Dockerfile for the ENTRYPOINT instruction.</p>
+<p><!-- /wp:paragraph --></p>
+<p><!-- wp:paragraph --></p>
+<p><!-- /wp:paragraph --></p>
+<p><!-- wp:paragraph --></p>
+<p><!-- /wp:paragraph --></p>
+<p><!-- wp:paragraph --></p>
+<p><!-- /wp:paragraph --></p>
+<p><!-- wp:heading {"level":1} --></p>
+<h1> </h1>
+<h1 style="text-align: left;">             <u>CMD and ENTRYPOINT together:</u><br />
+</h1>
+<p><!-- /wp:heading --></p>
+<p><!-- wp:paragraph {"fontSize":"medium"} --></p>
+<p>When both CMD and ENTRYPOINT instructions are present in the Dockerfile, it's analogous to defining the main executable or command with ENTRYPOINT, <strong>while CMD specifies the default parameters for that command set by ENTRYPOINT</strong>.</p>
+<p><!-- /wp:paragraph --></p>
+<p><!-- wp:paragraph {"fontSize":"medium"} --></p>
+<h2>
+<strong>Dockerfile<br><br></strong><img src="{{site.baseurl}}/assets/2021/04/image-14.png" alt=""><br />
+</h2>
+<p><!-- /wp:paragraph --></p>
+<p><!-- wp:image {"id":148,"sizeSlug":"large","linkDestination":"none"} --></p>
+<p><!-- /wp:image --></p>
+<p><!-- wp:paragraph {"fontSize":"medium"} --></p>
+<h2>
+<strong><br>Build the Image<br><br></strong><img src="{{site.baseurl}}/assets/2021/04/image-15.png" alt=""><br />
+</h2>
+<p><!-- /wp:paragraph --></p>
+<p><!-- wp:image {"id":149,"sizeSlug":"large","linkDestination":"none"} --></p>
+<p><!-- /wp:image --></p>
+<p><!-- wp:paragraph {"fontSize":"medium"} --></p>
+<h2>
+<strong><br>"docker run" without arguments<br><br></strong><img src="{{site.baseurl}}/assets/2021/04/image-16.png" alt=""><br />
+</h2>
+<p><!-- /wp:paragraph --></p>
+<p><!-- wp:image {"id":150,"sizeSlug":"large","linkDestination":"none"} --></p>
+<p><!-- /wp:image --></p>
+<p><!-- wp:paragraph --></p>
+<p><!-- /wp:paragraph --></p>
+<p><!-- wp:paragraph {"fontSize":"medium"} --></p>
+<p> </p>
+<h2><strong>"docker run" with arguments</strong></h2>
+<h3>In this scenario, we override the default parameters of CMD by providing specific parameters during the '<strong>docker run</strong>' command.<br><br><img src="{{site.baseurl}}/assets/2021/04/image-17.png" alt="" width="820" height="47"><br />
+</h3>
+<p> </p>
+<p><!-- /wp:paragraph --></p>
+<p><!-- wp:image {"id":151,"sizeSlug":"large","linkDestination":"none"} --></p>
+<p><!-- /wp:image --></p>
+<p></body></html></p>

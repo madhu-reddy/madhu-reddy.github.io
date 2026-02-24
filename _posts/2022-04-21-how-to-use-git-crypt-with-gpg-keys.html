@@ -1,0 +1,310 @@
+---
+layout: post
+title: How to use git-crypt with gpg keys?
+date: 2022-04-21 04:20:30.000000000 -04:00
+type: post
+parent_id: '0'
+published: true
+password: ''
+status: publish
+categories:
+- Devops
+- GitHub
+tags: []
+meta:
+  _edit_last: '1'
+  _aioseo_title: ''
+  _aioseo_description: ''
+  _aioseo_keywords: ''
+  _aioseo_og_title: ''
+  _aioseo_og_description: ''
+  _aioseo_og_article_section: ''
+  _aioseo_og_article_tags: ''
+  _aioseo_twitter_title: ''
+  _aioseo_twitter_description: ''
+  ocean_gallery_link_images: 'off'
+  ocean_sidebar: '0'
+  ocean_second_sidebar: '0'
+  ocean_disable_margins: enable
+  ocean_display_top_bar: default
+  ocean_display_header: default
+  ocean_center_header_left_menu: '0'
+  ocean_custom_header_template: '0'
+  ocean_header_custom_menu: '0'
+  ocean_menu_typo_font_family: '0'
+  ocean_disable_title: default
+  ocean_disable_heading: default
+  ocean_disable_breadcrumbs: default
+  ocean_display_footer_widgets: default
+  ocean_display_footer_bottom: default
+  ocean_custom_footer_template: '0'
+  ocean_link_format_target: self
+  ocean_quote_format_link: post
+  _yoast_wpseo_estimated-reading-time-minutes: '1'
+  _yoast_wpseo_primary_category: '8'
+  _yoast_wpseo_content_score: '90'
+  _thumbnail_id: '1347'
+  _wtpsw_views: '123'
+  rank_math_primary_category: '8'
+  rank_math_news_sitemap_robots: index
+  rank_math_robots: a:1:{i:0;s:5:"index";}
+  rank_math_internal_links_processed: '1'
+  rank_math_seo_score: '70'
+  rank_math_focus_keyword: use git-crypt
+  _yoast_wpseo_wordproof_timestamp: ''
+permalink: "/2022/04/21/how-to-use-git-crypt-with-gpg-keys/"
+---
+<p><!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN" "http://www.w3.org/TR/REC-html40/loose.dtd"><br />
+<!-- wp:paragraph {"fontSize":"medium"} --><html><body></p>
+<p class="has-medium-font-size">The purpose of this guide is to explore using <code>git-crypt</code> alongside GPG keys for encryption within Git repositories.</p>
+<p><!-- /wp:paragraph --></p>
+<p><!-- wp:paragraph {"style":{"typography":{"fontSize":"30px"}}} --></p>
+<p style="font-size:30px"><strong><span style="text-decoration: underline" class="underline"><mark style="background-color:rgba(0, 0, 0, 0)" class="has-inline-color has-vivid-red-color">Step-by-Step Procedure:</mark></span></strong><br></p>
+<p><!-- /wp:paragraph --></p>
+<p><!-- wp:paragraph --></p>
+<p><!-- /wp:paragraph --></p>
+<p><!-- wp:paragraph {"fontSize":"medium"} --></p>
+<p class="has-medium-font-size"><strong><span style="text-decoration: underline" class="underline"><mark style="background-color:rgba(0, 0, 0, 0)" class="has-inline-color has-luminous-vivid-orange-color">Step 1: Preparation</mark></span></strong></p>
+<p><!-- /wp:paragraph --></p>
+<p><!-- wp:paragraph {"fontSize":"medium"} --></p>
+<p class="has-medium-font-size">Navigate to your Git repository and create the file you wish to encrypt.</p>
+<p><!-- /wp:paragraph --></p>
+<p><!-- wp:code --></p>
+<pre class="wp-block-code"><code>madhu@madhu-Inspiron-5567:~/madhu-github-testing$ cat mysecretsfile.txt 
+MysecretPassword
+MysecretPassword1</code></pre>
+<p><!-- /wp:code --></p>
+<p><!-- wp:spacer {"height":"54px"} --></p>
+<div style="height:54px" aria-hidden="true" class="wp-block-spacer"></div>
+<p><!-- /wp:spacer --></p>
+<p><!-- wp:paragraph {"fontSize":"medium"} --></p>
+<p class="has-medium-font-size"><br><strong><span style="text-decoration: underline" class="underline"><mark style="background-color:rgba(0, 0, 0, 0)" class="has-inline-color has-luminous-vivid-orange-color">Step 2: Initializing <code>git-crypt</code></mark></span></strong></p>
+<p><!-- /wp:paragraph --></p>
+<p><!-- wp:paragraph {"fontSize":"medium"} --></p>
+<p class="has-medium-font-size">Execute the command <code>git-crypt init</code> to set up <code>git-crypt</code> within your Git repository. This command generates the encryption key and configures the repository to use <code>git-crypt</code>.</p>
+<p><!-- /wp:paragraph --></p>
+<p><!-- wp:code --></p>
+<pre class="wp-block-code"><code>madhu@madhu-Inspiron-5567:~/madhu-github-testing$ git-crypt init
+Generating key...</code></pre>
+<p><!-- /wp:code --></p>
+<p><!-- wp:spacer {"height":"58px"} --></p>
+<div style="height:58px" aria-hidden="true" class="wp-block-spacer"></div>
+<p><!-- /wp:spacer --></p>
+<p><!-- wp:paragraph {"fontSize":"medium"} --></p>
+<p class="has-medium-font-size"><strong><span style="text-decoration: underline" class="underline"><mark style="background-color:rgba(0, 0, 0, 0)" class="has-inline-color has-luminous-vivid-orange-color">Step 3: Specifying Files for Encryption</mark></span></strong></p>
+<p><!-- /wp:paragraph --></p>
+<p><!-- wp:paragraph {"fontSize":"medium"} --></p>
+<p class="has-medium-font-size">Define the files intended for encryption in the <code>.gitattributes</code> file by mentioning the file(s) and indicating <code>git-crypt</code> as the filter.</p>
+<p><!-- /wp:paragraph --></p>
+<p><!-- wp:code --></p>
+<pre class="wp-block-code"><code>madhu@madhu-Inspiron-5567:~/madhu-github-testing$ cat .gitattributes 
+mysecretsfile.txt filter=git-crypt diff=git-crypt
+</code></pre>
+<p><!-- /wp:code --></p>
+<p><!-- wp:paragraph --></p>
+<p><!-- /wp:paragraph --></p>
+<p><!-- wp:spacer {"height":"55px"} --></p>
+<div style="height:55px" aria-hidden="true" class="wp-block-spacer"></div>
+<p><!-- /wp:spacer --></p>
+<p><!-- wp:paragraph {"fontSize":"medium"} --></p>
+<p class="has-medium-font-size"><strong><span style="text-decoration: underline" class="underline"><mark style="background-color:rgba(0, 0, 0, 0)" class="has-inline-color has-luminous-vivid-orange-color">Step 4: GPG Key Generation and Usage</mark></span></strong></p>
+<p><!-- /wp:paragraph --></p>
+<p><!-- wp:paragraph {"fontSize":"medium"} --></p>
+<p class="has-medium-font-size"><span style="text-decoration: underline" class="underline"><strong>4.1)</strong> Generate a GPG key on your local machine, necessary for decrypting the repository's encrypted files.</span><br><br><span style="color:#ff6900" class="tadv-color"><strong><span style="text-decoration: underline" class="underline">Example:</span></strong></span></p>
+<p><!-- /wp:paragraph --></p>
+<p><!-- wp:code --></p>
+<pre class="wp-block-code"><code>madhu@myclient:~/madhu-github-testing$ <span style="color:#ff6900" class="tadv-color">gpg --gen-key</span>
+gpg (GnuPG) 1.4.20; Copyright (C) 2015 Free Software Foundation, Inc.
+This is free software: you are free to change and redistribute it.
+There is NO WARRANTY, to the extent permitted by law.
+
+Please select what kind of key you want:
+   (1) RSA and RSA (default)
+   (2) DSA and Elgamal
+   (3) DSA (sign only)
+   (4) RSA (sign only)
+Your selection? 
+RSA keys may be between 1024 and 4096 bits long.
+What keysize do you want? (2048) 
+Requested keysize is 2048 bits
+Please specify how long the key should be valid.
+         0 = key does not expire
+      &lt;n&gt;  = key expires in n days
+      &lt;n&gt;w = key expires in n weeks
+      &lt;n&gt;m = key expires in n months
+      &lt;n&gt;y = key expires in n years
+Key is valid for? (0) 
+Key does not expire at all
+Is this correct? (y/N) <span style="color:#ff6900" class="tadv-color">y</span>
+
+You need a user ID to identify your key; the software constructs the user ID
+from the Real Name, Comment and Email Address in this form:
+    "Heinrich Heine (Der Dichter) &lt;heinrichh@duesseldorf.de&gt;"
+
+Real name: <span style="color:#ff6900" class="tadv-color">madhu kunta</span>     # Not mandatory, but it would be good if it matches the real GitHub user name
+Email address: <span style="color:#ff6900" class="tadv-color">madhu@mylearningsguru.com </span># Not mandatory, but it would be good if it matches real GitHub user's mail ID. 
+Comment: 
+You selected this USER-ID:
+    "madhu kunta &lt;madhu@mylearningsguru.com&gt;"
+
+Change (N)ame, (C)omment, (E)mail or (O)kay/(Q)uit? <span style="color:#ff6900" class="tadv-color">O</span>
+You need a Passphrase to protect your secret key.
+
+gpg: key 09F305B1 marked as ultimately trusted
+public and secret key created and signed.
+
+gpg: checking the trustdb
+gpg: 3 marginal(s) needed, 1 complete(s) needed, PGP trust model
+gpg: depth: 0  valid:   2  signed:   0  trust: 0-, 0q, 0n, 0m, 0f, 2u
+pub   2048R/09F305B1 2022-04-12
+      Key fingerprint = 4FF4 1694 5A32 F162 D7BB  73C9 2107 C977 09F3 05B1
+uid                  madhu kunta &lt;madhu@mylearningsguru.com&gt;
+sub   2048R/4EDA4314 2022-04-12
+</code></pre>
+<p><!-- /wp:code --></p>
+<p><!-- wp:spacer {"height":"68px"} --></p>
+<div style="height:68px" aria-hidden="true" class="wp-block-spacer"></div>
+<p><!-- /wp:spacer --></p>
+<p><!-- wp:paragraph --></p>
+<p><!-- /wp:paragraph --></p>
+<p><!-- wp:paragraph {"fontSize":"medium"} --></p>
+<p class="has-medium-font-size"><span style="text-decoration: underline" class="underline"><strong>4.2)</strong> Confirm key creation</span><br><span style="color:#ff6900" class="tadv-color">gpg --list-keys </span><br><span style="color:#ff6900" class="tadv-color">gpg --list-secret-keys</span></p>
+<p><!-- /wp:paragraph --></p>
+<p><!-- wp:paragraph {"fontSize":"medium"} --></p>
+<p class="has-medium-font-size"><strong><span style="text-decoration: underline" class="underline"><span style="color:#ff6900" class="tadv-color">Example:</span></span></strong></p>
+<p><!-- /wp:paragraph --></p>
+<p><!-- wp:code --></p>
+<pre class="wp-block-code"><code>madhu@myclient:~/madhu-github-testing$ <span style="color:#ff6900" class="tadv-color">gpg --list-keys</span>
+/home/madhu/.gnupg/pubring.gpg
+------------------------------
+<span style="color:#ff6900" class="tadv-color">pub</span>   2048R/<span style="color:#ff6900" class="tadv-color">09F305B1</span> 2022-04-12
+uid                  madhu kunta &lt;madhu@mylearningsguru.com&gt;
+sub   2048R/4EDA4314 2022-04-12
+
+madhu@myclient:~/madhu-github-testing$ <span style="color:#ff6900" class="tadv-color">gpg --list-secret-keys</span>
+/home/madhu/.gnupg/secring.gpg
+------------------------------
+<span style="color:#ff6900" class="tadv-color">sec</span>   2048R/<span style="color:#ff6900" class="tadv-color">09F305B1</span> 2022-04-12
+uid                  madhu kunta &lt;madhu@mylearningsguru.com&gt;
+ssb   2048R/4EDA4314 2022-04-12
+</code></pre>
+<p><!-- /wp:code --></p>
+<p><!-- wp:spacer {"height":"64px"} --></p>
+<div style="height:64px" aria-hidden="true" class="wp-block-spacer"></div>
+<p><!-- /wp:spacer --></p>
+<p><!-- wp:paragraph {"fontSize":"medium"} --></p>
+<p class="has-medium-font-size"><span style="text-decoration: underline" class="underline"><strong>4.3)</strong> Export your GPG public key</span></p>
+<p><!-- /wp:paragraph --></p>
+<p><!-- wp:paragraph {"fontSize":"medium"} --></p>
+<p class="has-medium-font-size"><strong><span style="text-decoration: underline" class="underline">Syntax: </span></strong><span style="color:#ff6900" class="tadv-color">gpg --armor --export --output pubkeyname.gpg pubkeyID</span><br></p>
+<p><!-- /wp:paragraph --></p>
+<p><!-- wp:code --></p>
+<pre class="wp-block-code"><code>madhu@myclient:~/madhu-github-testing$ <span style="color:#ff6900" class="tadv-color">gpg --armor --export --output madhukunta_pubkey.gpg 09F305B1</span>
+
+madhu@myserver:~/madhu-github-testing$ <span style="color:#ff6900" class="tadv-color">ls -ltrh | grep madhukunta_pubkey.gpg</span> 
+-rw-rw-r-- 1 madhu madhu 1.7K Apr 12 03:00 madhukunta_pubkey.gpg
+</code></pre>
+<p><!-- /wp:code --></p>
+<p><!-- wp:spacer {"height":"65px"} --></p>
+<div style="height:65px" aria-hidden="true" class="wp-block-spacer"></div>
+<p><!-- /wp:spacer --></p>
+<p><!-- wp:paragraph {"fontSize":"medium"} --></p>
+<p class="has-medium-font-size"><span style="text-decoration: underline" class="underline"><strong>4.4)</strong> <strong>Import</strong> the GPG public key to the server <strong><mark style="background-color:rgba(0, 0, 0, 0)" class="has-inline-color has-luminous-vivid-amber-color">where the <code>git-crypt</code> initialization was performed</mark>.</strong></span></p>
+<p><!-- /wp:paragraph --></p>
+<p><!-- wp:paragraph {"fontSize":"medium"} --></p>
+<p class="has-medium-font-size"><strong><span style="text-decoration: underline" class="underline">Syntax</span></strong>: gpg --import gpg-pub-key</p>
+<p><!-- /wp:paragraph --></p>
+<p><!-- wp:code --></p>
+<pre class="wp-block-code"><code>madhu@madhu-Inspiron-5567:~/madhu-github-testing$ <span style="color:#ff6900" class="tadv-color">gpg --import madhukunta_pubkey.gpg </span>
+gpg: key 09F305B1: "madhu kunta &lt;madhu@mylearningsguru.com&gt;" not changed
+gpg: Total number processed: 1
+gpg:              unchanged: 1
+</code></pre>
+<p><!-- /wp:code --></p>
+<p><!-- wp:paragraph {"fontSize":"medium"} --></p>
+<p class="has-medium-font-size">
+<p><!-- /wp:paragraph --></p>
+<p><!-- wp:spacer {"height":"86px"} --></p>
+<div style="height:86px" aria-hidden="true" class="wp-block-spacer"></div>
+<p><!-- /wp:spacer --></p>
+<p><!-- wp:paragraph {"fontSize":"medium"} --></p>
+<p class="has-medium-font-size"><strong><span style="text-decoration: underline" class="underline"><mark style="background-color:rgba(0, 0, 0, 0)" class="has-inline-color has-luminous-vivid-orange-color">Step 5: Adding User GPG Key to <code>git-crypt</code></mark></span></strong></p>
+<p><!-- /wp:paragraph --></p>
+<p><!-- wp:code --></p>
+<pre class="wp-block-code"><code>madhu@madhu-Inspiron-5567:~/madhu-github-testing$ <span style="color:#ff6900" class="tadv-color">git-crypt add-gpg-user --trusted madhu@mylearningsguru.com</span>
+[madhu-projects f247991] Add 1 git-crypt collaborator
+ 1 file changed, 0 insertions(+), 0 deletions(-)
+ create mode 100644 .git-crypt/keys/default/0/4FF416945A32F162D7BB73C92107C97709F305B1.gpg
+</code></pre>
+<p><!-- /wp:code --></p>
+<p><!-- wp:paragraph --></p>
+<p><!-- /wp:paragraph --></p>
+<p><!-- wp:spacer {"height":"79px"} --></p>
+<div style="height:79px" aria-hidden="true" class="wp-block-spacer"></div>
+<p><!-- /wp:spacer --></p>
+<p><!-- wp:paragraph {"fontSize":"medium"} --></p>
+<p class="has-medium-font-size"><strong><span style="text-decoration: underline" class="underline"><mark style="background-color:rgba(0, 0, 0, 0)" class="has-inline-color has-luminous-vivid-orange-color">Step 6: Pushing Changes</mark></span></strong></p>
+<p><!-- /wp:paragraph --></p>
+<p><!-- wp:paragraph {"fontSize":"medium"} --></p>
+<p class="has-medium-font-size">Perform a <code>git push</code> to push the auto-generated commit after adding the user's GPG key to <code>git-crypt</code>.</p>
+<p><!-- /wp:paragraph --></p>
+<p><!-- wp:code --></p>
+<pre class="wp-block-code"><code>madhu@madhu-Inspiron-5567:~/madhu-github-testing$ <span style="color:#ff6900" class="tadv-color">git push</span>
+Enumerating objects: 9, done.
+Counting objects: 100% (9/9), done.
+Delta compression using up to 4 threads
+Compressing objects: 100% (6/6), done.
+Writing objects: 100% (8/8), 1.14 KiB | 1.14 MiB/s, done.
+Total 8 (delta 1), reused 0 (delta 0)
+remote: Resolving deltas: 100% (1/1), completed with 1 local object.
+To github.com:madhu-reddy/shell-scripts.git
+   ce73f20..a4a2a68  madhu-projects -&gt; madhu-projects</code></pre>
+<p><!-- /wp:code --></p>
+<p><!-- wp:paragraph --></p>
+<p><!-- /wp:paragraph --></p>
+<p><!-- wp:spacer {"height":"69px"} --></p>
+<div style="height:69px" aria-hidden="true" class="wp-block-spacer"></div>
+<p><!-- /wp:spacer --></p>
+<p><!-- wp:paragraph {"fontSize":"medium"} --></p>
+<p class="has-medium-font-size"><strong><span style="text-decoration: underline" class="underline"><mark style="background-color:rgba(0, 0, 0, 0)" class="has-inline-color has-luminous-vivid-orange-color">Step 7: Decrypting Files</mark></span></strong><br><br>On the client machine, clone the repository or execute <code>git pull</code>.</p>
+<p><!-- /wp:paragraph --></p>
+<p><!-- wp:code {"fontSize":"medium"} --></p>
+<pre class="wp-block-code has-medium-font-size"><code>madhu@myclient:~/madhu-github-testing$ <span style="color:#ff6900" class="tadv-color">git pull</span>
+remote: Enumerating objects: 9, done.
+remote: Counting objects: 100% (9/9), done.
+remote: Compressing objects: 100% (5/5), done.
+remote: Total 8 (delta 1), reused 8 (delta 1), pack-reused 0
+Unpacking objects: 100% (8/8), done.
+From https://github.com/madhu-reddy/shell-scripts
+   ce73f20..a4a2a68  madhu-projects -&gt; origin/madhu-projects
+Updating ce73f20..a4a2a68
+Fast-forward
+ .git-crypt/.gitattributes                                              |   4 ++++
+ .git-crypt/keys/default/0/0319FE440F58CA13A132AA77388C7E249E62F31A.gpg | Bin 0 -&gt; 469 bytes
+ 2 files changed, 4 insertions(+)
+ create mode 100644 .git-crypt/.gitattributes
+ create mode 100644 .git-crypt/keys/default/0/0319FE440F58CA13A132AA77388C7E249E62F31A.gpg
+</code></pre>
+<p><!-- /wp:code --></p>
+<p><!-- wp:paragraph {"fontSize":"medium"} --></p>
+<p class="has-medium-font-size">Run <code>git-crypt unlock</code> and enter the passphrase used while generating the GPG key.<br></p>
+<p><!-- /wp:paragraph --></p>
+<p><!-- wp:code --></p>
+<pre class="wp-block-code"><code>madhu@myclient:~/shell-scripts$ <span style="color:#ff6900" class="tadv-color">cat mysecretsfile.txt</span> 
+GITCRYPTXQq����S�▒�]\y�UwZ�-=�
+
+madhu@myclient:~/shell-scripts$ <span style="color:#ff6900" class="tadv-color">git-crypt unlock</span>
+You need a passphrase to unlock the secret key for
+user: "madhu kunta &lt;madhu@mylearningsguru.com&gt;"
+2048-bit RSA key, ID 7A807071, created 2022-04-10 (main key ID 9E62F31A)
+
+madhu@myclient:~/shell-scripts$ <span style="color:#ff6900" class="tadv-color">cat mysecretsfile.txt</span> 
+apmanorame
+
+
+</code></pre>
+<p><!-- /wp:code --></p>
+<p><!-- wp:paragraph {"fontSize":"medium"} --></p>
+<p class="has-medium-font-size">That's it, by following these steps, you can encrypt and decrypt files within a Git repository using <code>git-crypt</code> with GPG keys, ensuring secure handling of sensitive information.</p>
+<p><!-- /wp:paragraph --><br />
+</body></html></p>

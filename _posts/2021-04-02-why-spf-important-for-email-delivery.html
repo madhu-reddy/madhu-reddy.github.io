@@ -1,0 +1,89 @@
+---
+layout: post
+title: Why is SPF important for email delivery?
+date: 2021-04-02 15:36:37.000000000 -04:00
+type: post
+parent_id: '0'
+published: true
+password: ''
+status: publish
+categories:
+- Mail
+tags:
+- dns
+- mail
+- spf
+meta:
+  _aioseo_title: ''
+  _aioseo_description: ''
+  _aioseo_keywords: ''
+  _aioseo_og_title: ''
+  _aioseo_og_description: ''
+  _aioseo_og_article_section: ''
+  _aioseo_og_article_tags: ''
+  _aioseo_twitter_title: ''
+  _aioseo_twitter_description: ''
+  _edit_last: '1'
+  _thumbnail_id: '505'
+  _kad_blog_head: default
+  _kad_post_summery: default
+  _kad_post_sidebar: 'yes'
+  _kad_sidebar_choice: sidebar-primary
+  _kad_blog_  _yoast_wpseo_estimated-reading-time-minutes: '2'
+  _wtpsw_views: '17'
+  ocean_gallery_link_images: 'off'
+  ocean_sidebar: '0'
+  ocean_second_sidebar: '0'
+  ocean_disable_margins: enable
+  ocean_display_top_bar: default
+  ocean_display_header: default
+  ocean_center_header_left_menu: '0'
+  ocean_custom_header_template: '0'
+  ocean_header_custom_menu: '0'
+  ocean_menu_typo_font_family: '0'
+  ocean_disable_title: default
+  ocean_disable_heading: default
+  ocean_disable_breadcrumbs: default
+  ocean_display_footer_widgets: default
+  ocean_display_footer_bottom: default
+  ocean_custom_footer_template: '0'
+  ocean_link_format_target: self
+  ocean_quote_format_link: post
+  rank_math_primary_category: '3'
+  rank_math_news_sitemap_robots: index
+  rank_math_robots: a:1:{i:0;s:5:"index";}
+  rank_math_internal_links_processed: '1'
+permalink: "/2021/04/02/why-spf-important-for-email-delivery/"
+---
+<p><!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN" "http://www.w3.org/TR/REC-html40/loose.dtd"><br />
+<!-- wp:paragraph {"fontSize":"medium"} --><html><body></p>
+<p class="has-medium-font-size">The Sender Policy Framework (SPF) Record is created to prevent applications or users that you don't trust from sending emails on behalf of your domain.</p>
+<p><!-- /wp:paragraph --></p>
+<p><!-- wp:heading {"level":4} --></p>
+<h4><span style="text-decoration: underline;"><span class="has-inline-color has-vivid-red-color">Mail delivery process with SPF record</span></span></h4>
+<p><!-- /wp:heading --></p>
+<p><!-- wp:paragraph {"fontSize":"medium"} --></p>
+<p class="has-medium-font-size">Let me provide a real-time example: Suppose we are using '<strong>mailgun</strong>' as the email service provider for our domain. Since our domain doesn't have a dedicated SMTP server like PostFix, we rely on third-party email providers such as '<strong>mailgun</strong>' e.t.c.</p>
+<p><!-- /wp:paragraph --></p>
+<p><!-- wp:paragraph {"fontSize":"medium"} --></p>
+<p class="has-medium-font-size">SPF plays a crucial role in ensuring successful delivery of emails sent using '<strong>mailgun</strong>.' To simplify, let's use the following names for the sending and receiving domains in action.</p>
+<p><!-- /wp:paragraph --></p>
+<p><!-- wp:code {"style":{"typography":{"fontSize":15}}} --></p>
+<pre class="wp-block-code" style="font-size:15px"><code><strong><span style="text-decoration: underline;">sending mail server domain</span></strong>: mylearningsguru.com (this is the domain name on behalf of which "mailgun" send mails)
+
+<strong><span style="text-decoration: underline;">receiving mail server domain</span></strong>: madhutesting.com
+</code></pre>
+<p><!-- /wp:code --></p>
+<p><!-- wp:paragraph {"fontSize":"medium"} --></p>
+<p class="has-medium-font-size">Suppose the receiving domain (<strong>madhutesting.com</strong>) mail server receives an email from '<strong>mailgun</strong>.' The receiving mail server of '<strong>madhutesting.com</strong>' will go through the following steps:</p>
+<p><!-- /wp:paragraph --></p>
+<p><!-- wp:code --></p>
+<pre class="wp-block-code"><code>1)It contacts the DNS server 'mylearningsguru.com' for the SPF record.
+
+2)It checks the SPF record for all the IP addresses that are approved to send emails on behalf of 'mylearningsguru.com.'
+
+3)If it finds that the IP address from which 'mailgun' had previously sent the email matches with the IP address from which the mail is received, then it's considered an SPF check pass.
+
+4) Otherwise, it considers it an SPF check failure and treats the email as illegitimate. It might discard the email without receiving it or send the email to the spam folder.</code></pre>
+<p><!-- /wp:code --><br />
+</body></html></p>
