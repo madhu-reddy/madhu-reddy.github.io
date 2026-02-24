@@ -5,8 +5,7 @@ date: 2021-04-26
 categories: ['Networking', 'General']
 ---
 
-## 
-**On receiving server B:**
+## On receiving server B:
 
 `madhu@192.168.1.100:~$ **while true; do netcat -vvlnp 5656 > /dev/null; done**
 Listening on [0.0.0.0] (family 0, port 5656)
@@ -19,9 +18,7 @@ Listening on [0.0.0.0] (family 0, port 5656)`
 
 ## On sending server A:
 
-## 
-
-**`dd if=/dev/zero bs=1024k count=1024 | nc -vvn 192.168.1.100 5656`**
+## `dd if=/dev/zero bs=1024k count=1024 | nc -vvn 192.168.1.100 5656`
 
 ![]({{site.baseurl}}/assets/img/2021/04/image-30.png)
 

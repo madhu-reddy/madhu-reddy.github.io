@@ -33,7 +33,6 @@ TLDs are categorized into two subcategories: **Organizational Hierarchy** (com, 
 
 **NOTE:** **Authoritative DNS servers **are responsible for providing answers to queries made by **Recursive DNS resolver **servers regarding the IP address related to a specific domain name.
 
-## 
-**[Pictorial representation of how DNS works:**
+## [Pictorial representation of how DNS works:
 
 ![]({{site.baseurl}}/assets/img/2021/11/dns-works.png)

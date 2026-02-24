@@ -77,8 +77,7 @@ The efficiency of this method is due to the utilization of the "**-delete"** opt
 
  
 
-## 
-**4) Using rsync with --delete option (preferred method)** 
+## 4) Using rsync with --delete option (preferred method) 
 
 ```
 rsync -a emptydir/ remove-files/ --delete

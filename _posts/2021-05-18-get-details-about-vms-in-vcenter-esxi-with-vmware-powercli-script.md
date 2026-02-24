@@ -5,8 +5,7 @@ date: 2021-05-18
 categories: ['VMware', 'General']
 ---
 
-## 
-**1) VMware PowerCLI Script using Linux PowerShell (pwsh-preview)****,**** which has the **"VMware.PowerCLI" module installed.
+## 1) VMware PowerCLI Script using Linux PowerShell (pwsh-preview)**,**** which has the **"VMware.PowerCLI" module installed.
 
 ```
 Connect-VIServer -Server myvcenter.mylearningsguru.com -User username -Password password
@@ -71,6 +70,7 @@ function LoadSnapin{
     Add-pssnapin -name $PSSnapinName
   }
 }
+
 # Load PowerCLI snapin
 LoadSnapin -PSSnapinName   "VMware.VimAutomation.Core"
 

@@ -7,9 +7,7 @@ categories: ['Linux', 'Administration']
 
 AWK, a versatile text-processing tool, comes in different versions, such as **mawk**, **gawk**, and **nawk**. Let's specifically explore the distinctions between **mawk** and **gawk**.
 
-## 
-
-**mawk:**
+## mawk:
 
 **[mawk **is an older version of AWK that lacks full POSIX compliance. Depending on the specific version, **mawk** may not support certain features such as special character classes like **[[:digit:]]**, **[[:alnum:]]**, **[[:lower:]],** **[[:space:]]**, and some Extended Regular Expression (ERE) patterns like curly braces {}.
 

@@ -126,8 +126,7 @@ Navigate to the directory using the command: "**cd /usr/lib/vmidentity/tools/scr
 
 ![]({{site.baseurl}}/assets/img/2021/04/image-27.png)
 
-#### 
-**Problem2:**       
+## Problem2:       
   `  Insufficient space on the source export partition ‘/’`
 
 **

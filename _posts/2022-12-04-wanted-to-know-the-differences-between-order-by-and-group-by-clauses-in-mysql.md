@@ -7,9 +7,7 @@ categories: ['Database', 'MySQL']
 
 In this, we are going to look into "**order by**" and "**group by**"clauses in SQL.
 
-## 
-
-**Group By**
+## Group By
 
 The "**GROUP BY**" clause is utilized to aggregate data based on one or more columns, employing aggregate functions such as **COUNT()**, **SUM()**, **MIN()**, **MAX()**, and **AVG()**.
 

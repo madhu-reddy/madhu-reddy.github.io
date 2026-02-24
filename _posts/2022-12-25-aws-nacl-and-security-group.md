@@ -7,8 +7,7 @@ categories: ['AWS', 'General']
 
 Both NACL and Security Group function as virtual firewalls in your VPC; however, there's a key distinction between them. NACL operates at the subnet level, whereas Security Group functions as an instance-level firewall.
 
-#### 
-**About NACL (Network Access Control List****)**
+## About NACL (Network Access Control List**)**
 
 NACLs are associated with a subnet in the VPC and govern the allowance or denial of traffic at the subnet level. Every VPC comes with a default NACL that, by default, permits all incoming and outgoing traffic to the subnet.
 

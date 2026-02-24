@@ -54,6 +54,7 @@ SyntaxError: Non-ASCII character '\xef' in file pyss1.py on line 2, but no encod
 To handle Unicode characters in Python 2.x, you need to explicitly specify the encoding method using a special comment at the beginning of the program file as shown below,
 
 ```
+
 # -*- coding: utf-8 -*-
 ```
 

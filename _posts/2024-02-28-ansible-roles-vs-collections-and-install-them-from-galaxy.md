@@ -5,9 +5,7 @@ date: 2024-02-28
 categories: ['DevOps', 'Ansible']
 ---
 
-## 
-
-**Roles**
+## Roles
 
 - **Roles** are community-provided resources in Ansible.
 

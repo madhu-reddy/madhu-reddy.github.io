@@ -17,9 +17,7 @@ A built-in command is hardcoded into the shell, executing faster than external c
 compgen -b
 ```
 
-## 
-
-**Shell Keyword **
+## Shell Keyword 
 
 Similar to a built-in, a keyword is hardcoded into the shell. However, unlike a built-in command, a keyword isn't a command but a reserved word with a specific meaning in the shell. Using a keyword as a variable within the shell isn't permissible due to its special reserved status.
 
