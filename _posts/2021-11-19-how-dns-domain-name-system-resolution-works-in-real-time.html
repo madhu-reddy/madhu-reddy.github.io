@@ -1,4 +1,5 @@
 ---
+categories: ['Networking', 'DNS']
 layout: post
 title: How does DNS (Domain Name System) resolution work in real-time?
 date: 2021-11-19 08:58:56.000000000 -05:00
@@ -7,7 +8,6 @@ parent_id: '0'
 published: true
 password: ''
 status: publish
-categories:
 - DNS
 tags: []
 meta:
@@ -69,8 +69,7 @@ permalink: "/2021/11/19/how-dns-domain-name-system-resolution-works-in-real-time
 <h1 class="has-medium-font-size"><span style="text-decoration: underline" class="underline"><strong><mark style="background-color:rgba(0, 0, 0, 0)" class="has-inline-color has-luminous-vivid-orange-color">How DNS works:</mark></strong></span></h1>
 <p><!-- /wp:heading --></p>
 <p><!-- wp:paragraph {"fontSize":"medium"} --></p>
-<p class="has-medium-font-size"><br>1) Whenever we visit a website (e.g., google.com), our client system (laptop/desktop, etc.) tries to retrieve the IP address for that domain. To obtain the IP Address, our system first checks the local system cache for the IP related to the domain (google.com).<br><br>2) If the local system cache lacks the IP address, our system connects to the DNS server known as the "DNS Recursive Resolver" (also called DNS Recursor), often managed by the Internet Service Provider (ISP). If the DNS Recursor cache already contains the IP address, it promptly responds with the IP corresponding to the domain (google.com).<br><br>3) If the DNS Recursor does not have the IP address in its cache, it reaches out to the DNS Root Server (usually denoted with a dot "."). The DNS maintains a hierarchy (using DNS zones) to manage its distributed database system. The DNS Root Server sits atop the DNS hierarchy and contains all DNS information related to various Top-level domains (TLDs).<br><br>TLDs are categorized into two subcategories: <strong>Organizational Hierarchy</strong> (com, org, gov, edu, net, etc.) and<strong> Geographic Hierarchy </strong>(in, uk, fr, etc.).<br><br><img class="wp-image-991" style="width: 900px;" src="{{site.baseurl}}/assets/2021/11/dn-work-root-1.png" alt=""><br></p>
-<p><!-- /wp:paragraph --></p>
+<p class="has-medium-font-size"><br>1) Whenever we visit a website (e.g., google.com), our client system (laptop/desktop, etc.) tries to retrieve the IP address for that domain. To obtain the IP Address, our system first checks the local system cache for the IP related to the domain (google.com).<br><br>2) If the local system cache lacks the IP address, our system connects to the DNS server known as the "DNS Recursive Resolver" (also called DNS Recursor), often managed by the Internet Service Provider (ISP). If the DNS Recursor cache already contains the IP address, it promptly responds with the IP corresponding to the domain (google.com).<br><br>3) If the DNS Recursor does not have the IP address in its cache, it reaches out to the DNS Root Server (usually denoted with a dot "."). The DNS maintains a hierarchy (using DNS zones) to manage its distributed database system. The DNS Root Server sits atop the DNS hierarchy and contains all DNS information related to various Top-level domains (TLDs).<br><br>TLDs are categorized into two sub<p><!-- /wp:paragraph --></p>
 <p><!-- wp:paragraph --></p>
 <p>                                                                                                                                                                                                                .</p>
 <p><!-- /wp:paragraph --></p>
