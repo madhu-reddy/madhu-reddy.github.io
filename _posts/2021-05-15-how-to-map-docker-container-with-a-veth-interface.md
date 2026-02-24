@@ -16,7 +16,7 @@ madhu@myserver:~$ ip addr list | grep veth | wc -l
 ```
 
 ```
-madhu@myserver:~$ sudo docker ps --format '{{.ID}}'
+madhu@myserver:~$ sudo docker ps --format '{% raw %}{{.ID}}{% endraw %}'
 dcfb47b708fc
 b4e72699410a
 4c187a15f99d
