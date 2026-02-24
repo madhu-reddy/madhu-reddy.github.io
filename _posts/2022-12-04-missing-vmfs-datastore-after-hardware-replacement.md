@@ -1,6 +1,6 @@
 ---
 layout: post
-title: "Troubleshooting Missing VMFS Datastore After RAID Controller Card Replacement"
+title: Troubleshooting Missing VMFS Datastore After RAID Controller Card Replacement
 date: 2022-12-04
 categories: ['VMware', 'Storage']
 ---
@@ -8,6 +8,8 @@ categories: ['VMware', 'Storage']
 Are you experiencing a missing VMFS datastore after replacing the RAID Controller Card in your server. Although all the disk's foreign configurations have been successfully imported, the datastore is still missing.
 
 While the storage device (Disk/LUN) is detected and visible in the vCenter, the VMFS volume/datastore associated with the storage device remains unmounted and invisible in the vCenter. Consequently, all my VMs are displaying as inaccessible.
+
+![]({{site.baseurl}}/assets/img/2022/12/image-1.png)
 
 After troubleshooting, I discovered that the issue stemmed from the ESXi host identifying the LUN as a `Snapshot LUN`. According to VMware, this problem may arise after replacing SAN hardware, performing firmware upgrades, SAN replication, DR tests, or certain HBA firmware upgrades.
 
@@ -17,10 +19,14 @@ A Snapshot LUN is essentially a copy of the original LUN. When a VMFS volume is 
 
 After changing the RAID controller, the properties of the LUN could undergo internal modifications. Subsequently, when the ESXi discovers the Disk/LUN, it compares the VMFS metadata with the LUN properties. `If a mismatch is detected, ESXi identifies the LUN as a snapshot.` To confirm this, check the 'vmkernel.log' file
 
+![image]({{site.baseurl}}/assets/img/2022/12/OR-P0NmLzUEyHLwMmkacyyCliP-Dfyl7XgEuTHi2SRPiGLUducFwd8NVX-Oiny6HgpGx3Fiw1utLZdlB0VWsNFW-sOeFk5UKRpFahE6U_L0NuKQAl4PaI6lkL5BkpTLEv22I6R55fxZm3aOs5bPN1WvWTObl-q45pOWePfZsANkHod0YDQOs4ThrnSgQ)
+
 ## **Resolution for Missing VMFS Datastore is force mounting**
 
 1) From the ESXi SSH shell, execute the following command to list the LUNs detected as snapshot LUNs
 `**esxcli storage vmfs snapshot list**`
+
+![]({{site.baseurl}}/assets/img/2022/12/image-2.png)
 
 The above provided screenshot illustrates that the VMFS datastore (TEST_DATASTORE) exists on the snapshot LUN.
 

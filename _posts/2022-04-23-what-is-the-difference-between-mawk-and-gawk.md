@@ -1,6 +1,6 @@
 ---
 layout: post
-title: "What is the difference between mawk and gawk?"
+title: What is the difference between mawk and gawk?
 date: 2022-04-23
 categories: ['Linux', 'Administration']
 ---
@@ -20,14 +20,20 @@ In the mawk version 1.3.3 (Nov 1996), the tool does not support special characte
 Even with **mawk** version 1.3.4, the below result remains empty, indicating that **mawk** does not support the POSIX ERE curly braces pattern.
 **echo "tot" | mawk '/to{1}t/{print $0}'**  
 
+![]({{site.baseurl}}/assets/img/2022/04/image-8.png)
+
 **Example2**
 
 Even when using **mawk** version 1.3.3, the result remains empty, as this version of mawk does not support special character classes.
 **echo "Madhu" | mawk '/[[:lower:]]/ {print}'**
 
+![]({{site.baseurl}}/assets/img/2022/04/image-10.png)
+
 However, in the screenshot below using mawk 1.3.4, we notice a different result, indicating that special character classes appear to be supported in this version of mawk.
 
 **echo "Madhu" | mawk '/[[:lower:]]/ {print}'**
+
+![]({{site.baseurl}}/assets/img/2022/04/image-12.png)
 
 .
 
@@ -36,8 +42,12 @@ However, in the screenshot below using mawk 1.3.4, we notice a different result,
 The command below uses "[gawk", which supports curly braces, resulting in the expected output.
 **echo "tot" | gawk '/to{1}t/{print $0}'  ** 
 
+![]({{site.baseurl}}/assets/img/2022/04/image-9.png)
+
 Once more, the command utilizes 'gawk,' enabling support for special character classes.
 **echo "Madhu" | gawk '/[[:lower:]]/ {print}'**
+
+![]({{site.baseurl}}/assets/img/2022/04/image-13.png)
 
 **NOTE:**
 

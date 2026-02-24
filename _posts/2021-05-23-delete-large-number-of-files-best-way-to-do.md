@@ -1,6 +1,6 @@
 ---
 layout: post
-title: "Delete a large number of files (best way to do this)?"
+title: Delete a large number of files (best way to do this)?
 date: 2021-05-23
 categories: ['Linux', 'Administration']
 ---
@@ -18,7 +18,7 @@ First, I'll create a directory and populate it with several thousand small files
 ## **Creating 300K files:**
 
 ```
-`for num in $(seq 1 300000); do (touch file$num) && echo "test$num" > file$num; done`
+for num in $(seq 1 300000); do (touch file$num) && echo "test$num" > file$num; done
 ```
 
 Now, let's initiate file deletion based on a pattern using the find command and also explore removing all files in a directory using rsync.
@@ -29,6 +29,8 @@ Now, let's initiate file deletion based on a pattern using the find command and 
 
 ## 
 1) Deleting the files matching a pattern using the **rm -rf** command:
+
+![]({{site.baseurl}}/assets/img/2021/05/image-3.png)
 
 As observed earlier, executing "**rm -rf file***" triggers an "**Argument list too long**" error. This occurs because in the bash shell, "**file***" encompasses any file commencing with the name "file" (including the file named "file" if present).
 
@@ -43,7 +45,7 @@ However, the kernel imposes a limit on the command line argument size. If this l
 ## 2) Using the find with -exec option
 
 ```
-`find . -type f -iname "file*" -exec rm -rf {} \;`
+find . -type f -iname "file*" -exec rm -rf {} \;
 ```
 
 The command successfully deleted all files starting with the specified pattern (**file***).
@@ -52,6 +54,8 @@ It took approximately 5 minutes and 23 seconds to complete the deletion of the 3
 
 When using **-exec** with the find command, a new child process is spawned for each matched file. Consequently, the matched file is removed, followed by the creation of a new child process for the subsequent matched file. This process continues iteratively until all files are deleted.
 
+![]({{site.baseurl}}/assets/img/2021/05/find-exec-rm.png)
+
  
 
  
@@ -59,8 +63,10 @@ When using **-exec** with the find command, a new child process is spawned for e
 ## 3) Using the find with -delete option (preferred method)
 
 ```
-`find . -type f -name "file*" -delete`
+find . -type f -name "file*" -delete
 ```
+
+![]({{site.baseurl}}/assets/img/2021/05/find-delete-1.png)
 
 Using this particular command, the deletion of all 300 thousand files was completed in merely 4.32 seconds.
 
@@ -74,7 +80,7 @@ The efficiency of this method is due to the utilization of the "**-delete"** opt
 **4) Using rsync with --delete option (preferred method)** 
 
 ```
-`rsync -a emptydir/ remove-files/ --delete`
+rsync -a emptydir/ remove-files/ --delete
 ```
 
 This `rsync` command performs synchronization between the contents of two directories (`emptydir/` and `remove-files/`).
@@ -89,3 +95,5 @@ This `rsync` command performs synchronization between the contents of two direct
 In our scenario, the "`emptydir`" directory is empty leading to the removal of all files in the `"remove-files"` directory.
 
 Remarkably, using rsync to delete 300k files required just under 3 seconds.
+
+![]({{site.baseurl}}/assets/img/2021/05/rsync-empty-dir.png)

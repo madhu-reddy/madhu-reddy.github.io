@@ -1,6 +1,6 @@
 ---
 layout: post
-title: "Get to know about Symbolic links and Hard links?"
+title: Get to know about Symbolic links and Hard links?
 date: 2021-11-06
 categories: ['Linux', 'Administration']
 ---

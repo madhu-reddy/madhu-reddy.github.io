@@ -1,6 +1,6 @@
 ---
 layout: post
-title: "Adding a service (TeamCity Agent) to systemd"
+title: Adding a service (TeamCity Agent) to systemd
 date: 2024-08-24
 categories: ['DevOps', 'TeamCity']
 ---
@@ -8,6 +8,8 @@ categories: ['DevOps', 'TeamCity']
 [This configuration is a `systemd` service unit file for managing a TeamCity Build Agent.
 
 `**cat /etc/systemd/system/teamcity-agent.service**`
+
+![]({{site.baseurl}}/assets/img/2024/08/image-13.png)
 
 `**After=network.target**:` 
 This directive ensures that the service starts only after the network is available.
@@ -28,6 +30,8 @@ The `systemctl status teamcity-agent` command will show the service as "`active 
 **With **`RemainAfterExit=yes`: 
 --> It keeps the status as **active (running)**,  if the `ExecStart` command exited with a status defined in `SuccessExitStatus`. 
 --> It keeps the status as **active (exited)**, if the `ExecStart` command exited with a status code, which is not listed in `SuccessExitStatus`.
+
+![]({{site.baseurl}}/assets/img/2024/08/image-14.png)
 
 **`SuccessExitStatus=0 143`:**
 Defines the exit codes that systemd will consider a successful exit. `143` is used when the process is killed with `SIGTERM`, which is expected during an upgrade.

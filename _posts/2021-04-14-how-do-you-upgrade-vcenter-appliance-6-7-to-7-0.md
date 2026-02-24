@@ -1,6 +1,6 @@
 ---
 layout: post
-title: "How do you upgrade vCenter appliance 6.7 to 7.0?"
+title: How do you upgrade vCenter appliance 6.7 to 7.0?
 date: 2021-04-14
 categories: ['VMware', 'vCenter']
 ---
@@ -30,6 +30,8 @@ categories: ['VMware', 'vCenter']
 **       Password:** ESXi root password"
 
 **Example:**
+
+![]({{site.baseurl}}/assets/img/2021/04/image-22.png)
 
 **5)** Click '**YES**' (Certificate Warning).
 
@@ -73,6 +75,8 @@ categories: ['VMware', 'vCenter']
 
 **16) **After the pre-upgrade checks are done, you can proceed with the upgrade.
 
+![upgrade-vcenter-server-appliance-6.5-to-6.7-16]({{site.baseurl}}/assets/img/2021/04/puSrl72g0QiE7JAtddfVrSFJu1scsnIBww6Y6Gp3CtHpZQnl22Euh8XM0sfcya_EfYUzXwIdCI3A3qRe2IrxOxcJbBQDMiBbiAWk8E8eaKlzFlhcQbh0NTpRXi49zxp3pY38MEs)
+
 **17)** Several warnings might appear. Read them carefully, and if there are no major issues, click on '**CLOSE**.'
 
 **18)** Choose what data to copy from the old vCenter Server Appliance. 
@@ -82,9 +86,13 @@ categories: ['VMware', 'vCenter']
 
 **20)** The final stage involves confirming that we have a backup and reviewing the summary.
 
+![]({{site.baseurl}}/assets/img/2021/04/image-23.png)
+
 **21)** Please wait a few minutes for the data copying process.
 
 **22)** You will receive the final message indicating completion before the upgrade concludes.
+
+![]({{site.baseurl}}/assets/img/2021/04/image-24.png)
 
 **23) **The upgrade should be completed with this step.
 
@@ -99,7 +107,9 @@ The pre-upgrade check has failed, and the error message is as follows:
 `The machine SSL certificate in the VMware Endpoint Certificate Store (VECS) does not,`
 `correspond with the service registration in the VMware Directory Service (vmdir)`
 
-****
+**
+![image]({{site.baseurl}}/assets/img/2021/04/DWY0JHr57o7QZtIEzPlJU_hjZnl4AFjdLIB5DscZYwad2516sjiGjz5qfPoKKyyPRBXoG0NZvx-PFYBGJzlubK1_K1Cb-vLJtrhqAdIBCh1OPf96SK4DJvg2k0vpYA)
+**
 
 #### **Solution1: **
 
@@ -108,18 +118,30 @@ Navigate to the directory using the command: "**cd /usr/lib/vmidentity/tools/scr
 **1)** **python ls_ssltrust_fixer.py -f scan**
 **2)** **python ls_ssltrust_fixer.py -f fix**
 
+![]({{site.baseurl}}/assets/img/2021/04/image-25.png)
+
+![]({{site.baseurl}}/assets/img/2021/04/image-26.png)
+
                                                                                                                                                                                                                .
+
+![]({{site.baseurl}}/assets/img/2021/04/image-27.png)
 
 #### 
 **Problem2:**       
   `  Insufficient space on the source export partition ‘/’`
 
-****
+**
+![image]({{site.baseurl}}/assets/img/2021/04/HWnwTleuac7rSgLZKMng_IDuwNMYIwC2lEouwxR88DVRcJcwymrQ2y3q4v49iPkePHgGGKoVfwYMt3Bdd_pxdZP6moLV3R5OgWQ94WgxCR1VRBKAwKPS_AzSgNYEBg)
+**
 
 #### **Solution2:**
 
 Successfully increased the disk space allocated for /.
 Initially, deleted the snapshot (*since increasing the virtual disk size is not possible if a snapshot is present*), then adjusted the virtual disk size for / from 12G to 20G, and finally recreated the snapshot.
 Afterwards, executed the "**autogrow.sh**" script.
+
+![]({{site.baseurl}}/assets/img/2021/04/image-28.png)
+
+![image]({{site.baseurl}}/assets/img/2021/04/J4H6TDAGpUC4-V3IqeU3Py6jFgmugRRSAXoKTDIhujETHN90kUYnQt1M-AoLo_ZMowhOO_SCHl1pzyW7xcwZnPgqkIeuqUul92hjsZ3p_EVNylKaZ_U4QLelKGWNlg)
 
 ####

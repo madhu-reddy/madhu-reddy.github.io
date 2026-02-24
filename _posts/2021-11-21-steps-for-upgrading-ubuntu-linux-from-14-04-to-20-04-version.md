@@ -1,6 +1,6 @@
 ---
 layout: post
-title: "Steps for upgrading Ubuntu Linux from 14.04 to 20.04 version?"
+title: Steps for upgrading Ubuntu Linux from 14.04 to 20.04 version?
 date: 2021-11-21
 categories: ['Linux', 'Administration']
 ---
@@ -49,14 +49,14 @@ To execute unattended upgrades (without the OS requesting user input or confirma
 When upgrading from 18.04 to 20.04, I encountered an error during the "**do-release-upgrade**" step. The problem appeared to stem from the /boot partition being full. To address this, I needed to remove old, unused Linux kernels and then rerun the "**do-release-upgrade**" command.
 
 ```
-`Error 24 : Write error : cannot write compressed block  
+Error 24 : Write error : cannot write compressed block  
 E: mkinitramfs failure cpio 141 lz4 -9 -l 24 
 update-initramfs: failed for /boot/initrd.img-5.4.0-84-generic with 1. 
 dpkg: error processing package initramfs-tools (--configure): 
 installed initramfs-tools package post-installation script subprocess returned error exit status 1 
 Errors were encountered while processing: 
 initramfs-tools 
-E: Sub-process /usr/bin/dpkg returned an error code (1)`
+E: Sub-process /usr/bin/dpkg returned an error code (1)
 ```
 
 **Issue2:**

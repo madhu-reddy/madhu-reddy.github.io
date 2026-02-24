@@ -1,6 +1,6 @@
 ---
 layout: post
-title: "Harnessing The Potential Of SSH Keys Within Your Dockerized Environment"
+title: Harnessing The Potential Of SSH Keys Within Your Dockerized Environment
 date: 2023-10-21
 categories: ['DevOps', 'Docker']
 ---
@@ -8,7 +8,7 @@ categories: ['DevOps', 'Docker']
 If you find yourself in a situation inside your Docker container where you need to clone a Git repository using SSH keys, but the SSH keys are located within your Docker host, and you want to make them available inside the Docker containers for successful cloning of the Git repository, failure to do so will result in the following error:
 
 ```
-`root@0e6d9b720655:/# git clone git@github.com:madhu-reddy/ansible-playbooks.git
+root@0e6d9b720655:/# git clone git@github.com:madhu-reddy/ansible-playbooks.git
 Cloning into 'ansible-playbooks'...
 The authenticity of host 'github.com (140.82.112.3)' can't be established.
 ECDSA key fingerprint is SHA256:p2QAMXNIC1TJYWeIOttrVc98/R1BUFWu3/LiyKgUfQM.
@@ -19,7 +19,7 @@ fatal: Could not read from remote repository.
 
 Please make sure you have the correct access rights
 and the repository exists.
-`
+
 ```
 
 Let us see some of the different ways to do this,
@@ -33,9 +33,9 @@ Firstly, if the **docker container is already running**, then
 3) With successful authentication, you should be able to clone a Git repository using SSH keys from inside the container. You can now proceed with cloning the repository inside the container.
 
 ```
-`root@98d9f0b03168:~/.ssh# chmod 600 id_rsa  
+root@98d9f0b03168:~/.ssh# chmod 600 id_rsa  
 root@98d9f0b03168:~/.ssh# ssh -T git@github.com  
-Hi madhu-reddy! You've successfully authenticated, but GitHub does not provide shell access.`
+Hi madhu-reddy! You've successfully authenticated, but GitHub does not provide shell access.
 ```
 
 Secondly, if you want to copy or forward the SSH keys/agent into the Docker container at the time of creating the container, you have a few options. Here are two common approaches:

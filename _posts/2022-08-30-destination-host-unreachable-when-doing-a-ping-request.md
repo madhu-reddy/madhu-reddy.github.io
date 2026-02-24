@@ -1,6 +1,6 @@
 ---
 layout: post
-title: "'"Destination Host Unreachable" when doing a ping request?'"
+title: Destination Host Unreachable when doing a ping request?
 date: 2022-08-30
 categories: ['Networking', 'Troubleshooting']
 ---
@@ -14,12 +14,12 @@ Let me first explain how routing works on a host.
 I'll use a Linux box as an example, and below is the output for '`**route -n**`,' which displays all the route table information present on your host.
 
 ```
-`Kernel IP routing table
+Kernel IP routing table
 Destination     Gateway         Genmask         Flags Metric Ref    Use Iface
 0.0.0.0         192.168.10.1     0.0.0.0         UG    600    0        0 wlp2s0
 172.13.10.0     0.0.0.0         255.255.255.0   U     600    0        0 wlp2s0
 192.168.16.0    0.0.0.0         255.255.240.0   U     0      0        0 docker0
-`
+
 ```
 
 Now, considering the above routing table, we can infer that any ping request with a destination outside the network (172.13.10.0/24, 192.168.16.0/20) is directed to the default gateway 192.168.10.1, which is usually the router's IP.
@@ -31,13 +31,13 @@ This situation occurs due to two reasons:
 **1) **These networks are directly connected to the machine itself. For instance, when utilizing Docker within your machine, this setup appears as follows:
 
 ```
-`docker0: <BROADCAST,MULTICAST,UP,LOWER_UP> mtu 1500 qdisc noqueue state UP group default 
+docker0: <BROADCAST,MULTICAST,UP,LOWER_UP> mtu 1500 qdisc noqueue state UP group default 
     link/ether 02:42:12:d3:aa:96 brd ff:ff:ff:ff:ff:ff
     inet 192.168.16.1/20 brd 192.168.31.255 scope global docker0
        valid_lft forever preferred_lft forever
     inet6 fe80::42:12ff:fed3:aa96/64 scope link 
        valid_lft forever preferred_lft forever
-`
+
 ```
 
 As a result, packets related to `192.168.16.0/24` are directly forwarded to the destination host within these networks. In this scenario, there's no need for external routing since the machine handles the internal routing process.

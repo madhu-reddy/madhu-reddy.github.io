@@ -1,6 +1,6 @@
 ---
 layout: post
-title: "what's the need for getopts shell builtin?"
+title: whats the need for getopts shell builtin?
 date: 2021-05-29
 categories: ['Linux', 'Bash']
 ---
@@ -14,7 +14,7 @@ The 'getopts' command is a built-in tool in shell scripting. It helps in handlin
 ## Syntax:
 
 ```
-`getopts: getopts optstring name [arg]`
+getopts: getopts optstring name [arg]
 ```
 
 In this context:
@@ -32,7 +32,7 @@ In this context:
 # Example using just options/flags
 
 ```
-`#!/bin/bash
+#!/bin/bash
 
 while getopts "ab" option_char                    
 do
@@ -48,7 +48,7 @@ do
     ;;
   esac
 done
-`
+
 ```
 
 **Explaining the 'while getopts' line:**
@@ -64,6 +64,8 @@ done
 
 **Output**
 
+![]({{site.baseurl}}/assets/img/2021/05/getopts-option.png)
+
  
 
  
@@ -71,7 +73,7 @@ done
 # Example using options/flags with arguments
 
 ```
-`#!/bin/bash
+#!/bin/bash
 
 while getopts "a:b:" option_char
 do
@@ -87,7 +89,7 @@ do
     ;;
   esac
 done
-`
+
 ```
 
 ** Explaining the 'while getopts' line: **
@@ -103,6 +105,8 @@ done
 3) In this script, the 'a' and 'b' options require arguments, so $OPTARG will contain the argument passed.
 
 # **Output:**
+
+![]({{site.baseurl}}/assets/img/2021/05/getops-option1.png)
 
  
 
@@ -137,7 +141,7 @@ done
 **Testing the first way (silent error reporting) practically**
 
 ```
-`#!/bin/bash
+#!/bin/bash
 
 **while getopts ":a:b:" option_char**     #silent error reporting enabled
 do
@@ -153,10 +157,12 @@ do
     ;;
   esac
 done
-`
+
 ```
 
 ## Output:
+
+![]({{site.baseurl}}/assets/img/2021/05/getopts-3.png)
 
  
 
@@ -165,7 +171,7 @@ done
 **Testing the second way (silent error reporting disabled) practically**
 
 ```
-`#!/bin/bash
+#!/bin/bash
 
 **while getopts "a:b:" option_char**** **     # silent error reporting disabled
 do
@@ -181,10 +187,12 @@ do
     ;;
   esac
 done
-`
+
 ```
 
 ## Output:
+
+![]({{site.baseurl}}/assets/img/2021/05/getopts-4.png)
 
 .
 
@@ -193,3 +201,5 @@ done
 # Points to be noted:
 
 When `getopts` identifies an option from the script's command line, it internally maintains the index of the option in the shell variable `OPTIND`. This approach allows `getopts` to effectively manage and process options, particularly those that come with associated arguments. Instead of utilizing the `shift` command to cycle through all the options, `getopts` intelligently handles the parsing and processing of individual options and their arguments, simplifying the script's logic.
+
+![]({{site.baseurl}}/assets/img/2021/05/getopts-5.png)

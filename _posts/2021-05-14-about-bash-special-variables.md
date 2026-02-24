@@ -1,6 +1,6 @@
 ---
 layout: post
-title: "About Bash Special variables and differences between $*, "$*", $@, "$@"?"
+title: About Bash Special variables and differences between $*, $*, $@, $@?
 date: 2021-05-14
 categories: ['Linux', 'Bash']
 ---
@@ -43,7 +43,7 @@ If the arguments are double quoted, then the double quoted arguments are treated
 **positionalargstest.sh**
 
 ```
-`#!/bin/bash
+#!/bin/bash
 
 echo arguments passed: $1 $2 $3 $4
 echo total arguments passed: $#
@@ -84,11 +84,14 @@ do
         echo argument is: $argument
 done
 
-`
 ```
 
 ## 
 
 ## **Arguments passed without any double quotes:**
 
+![]({{site.baseurl}}/assets/img/2021/05/positional-args-2.png)
+
 ## **Only a few arguments passed with double quotes:**
+
+![]({{site.baseurl}}/assets/img/2021/05/positional-args-1-1.png)

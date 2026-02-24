@@ -1,11 +1,13 @@
 ---
 layout: post
-title: "About Car Insurance Policies?"
+title: About Car Insurance Policies?
 date: 2024-08-22
 categories: ['Personal', 'General']
 ---
 
 This is my insurance policy, it doesn't have **collision coverage**, which is also very important but optional in the state of VA, more information about **collision coverage** is at the bottom of this post.
+
+![]({{site.baseurl}}/assets/img/2024/08/image-12.png)
 
 Explanation of my above insurance policy coverage is below.
 

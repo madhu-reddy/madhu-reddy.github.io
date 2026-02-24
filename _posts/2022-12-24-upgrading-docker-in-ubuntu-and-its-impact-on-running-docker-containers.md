@@ -1,6 +1,6 @@
 ---
 layout: post
-title: "Upgrading docker in Ubuntu and its impact on running containers?"
+title: Upgrading docker in Ubuntu and its impact on running containers?
 date: 2022-12-24
 categories: ['DevOps', 'Docker']
 ---
@@ -11,10 +11,12 @@ Suppose the current Docker version is 18.09, and the target version for the upgr
 
 1) Verify the latest Docker package version in the APT cache with the command:  `apt-cache policy docker-ce`
 
+![]({{site.baseurl}}/assets/img/2022/12/image-4.png)
+
 **If the package is present**, execute the following command,
 
 ```
-`apt-get install docker-ce docker-ce-cli containerd.io`
+apt-get install docker-ce docker-ce-cli containerd.io
 ```
 
 Where, 
@@ -29,14 +31,14 @@ After completing the upgrade, execute '`docker version`.' You should observe the
 **Example output**
 
 ```
-`Client:
+Client:
  Version:           20.10.7
  API version:       1.39
  
 Server: Docker Engine - Community
  Engine:
   Version:          20.10.7
-  API version:      1.41 (minimum version 1.12)`
+  API version:      1.41 (minimum version 1.12)
 
  containerd:
   Version:          1.4.6
@@ -61,7 +63,7 @@ Suppose your application, running on Docker containers, is sensitive and require
 However, if a brief period of container downtime is acceptable (depending on the application's ability to quickly start and resume traffic), there is an option called
 
 ```
-`restart: unless-stopped`
+restart: unless-stopped
 ```
 
 When this option is added to each section of the Docker containers in the `docker-compose.yml` file, the Docker containers that automatically stop just before the Docker upgrade will be automatically restarted after the upgrade. This automated process eliminates the need to start each Docker container manually, minimizing downtime for the applications.

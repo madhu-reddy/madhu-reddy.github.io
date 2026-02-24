@@ -1,6 +1,6 @@
 ---
 layout: post
-title: "How does DNS (Domain Name System) resolution work in real-time?"
+title: How does DNS (Domain Name System) resolution work in real-time?
 date: 2021-11-19
 categories: ['Networking', 'DNS']
 ---
@@ -21,7 +21,9 @@ Once the DNS service finds the IP address, the end-user can connect to the serve
 
 3) If the DNS Recursor does not have the IP address in its cache, it reaches out to the DNS Root Server (usually denoted with a dot "."). The DNS maintains a hierarchy (using DNS zones) to manage its distributed database system. The DNS Root Server sits atop the DNS hierarchy and contains all DNS information related to various Top-level domains (TLDs).
 
-TLDs are categorized into two sub
+TLDs are categorized into two subcategories: **Organizational Hierarchy** (com, org, gov, edu, net, etc.) and** Geographic Hierarchy **(in, uk, fr, etc.).
+
+![]({{site.baseurl}}/assets/img/2021/11/dn-work-root-1.png)
 
                                                                                                                                                                                                                 .
 
@@ -33,3 +35,5 @@ TLDs are categorized into two sub
 
 ## 
 **[Pictorial representation of how DNS works:**
+
+![]({{site.baseurl}}/assets/img/2021/11/dns-works.png)

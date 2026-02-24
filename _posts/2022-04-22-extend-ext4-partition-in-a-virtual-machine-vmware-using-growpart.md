@@ -1,6 +1,6 @@
 ---
 layout: post
-title: "Extend ext4 partition(/) in a Virtual machine (VMware) using "growpart"?"
+title: Extend ext4 partition(/) in a Virtual machine (VMware) using growpart?
 date: 2022-04-22
 categories: ['Linux', 'Administration']
 ---
@@ -12,25 +12,31 @@ Initially, we'll focus on extending the LVM root partition (/), followed by exte
 
 1) From the VM, navigate to 'Edit settings' and adjust the hard disk size according to your needs. In my case, I increased it from 120GB to 140GB.
 
+![]({{site.baseurl}}/assets/img/2022/04/image-2.png)
+
 2) Now, execute the following command to rescan the block device, updating the kernel with the latest disk size information:
 `echo '1' > /sys/class/scsi_disk/32\:0\:0\:0/device/rescan` –> (where “32\:0\:0\:0” is the SCSI disk ID for my disk, which might differ for yours; verify the correct value inside the directory).
 
 3) When you use the command '**fdisk -l**' observe that the '**/dev/sda5**' LVM partition is created within an '**Extended**' partition. Consequently, we need to extend the '**Extended**' partition (/dev/sda2) first, and then proceed to extend the actual LVM partition (/dev/sda5).
 
 ```
-`root@madhu-testvm:~# fdisk -l
+root@madhu-testvm:~# fdisk -l
 Disk /dev/sda: 150.3 GB, 150323855360 bytes
 /dev/sda1   *        2048      499711      248832   83  Linux
 /dev/sda2          499712   251658239   125579264    5  Extended
 /dev/sda5          501760   251658239   125578240   8e  Linux LVM
-`
+
 ```
 
 4) First extending the "Extended" partition as shown in the below command
 growpart /dev/sda 2
 
+![]({{site.baseurl}}/assets/img/2022/04/image-3.png)
+
 5) Now after extending the "Extended" partition, we can go ahead and extend the actual LVM partition with the following command,
 growpart /dev/sda 5
+
+![]({{site.baseurl}}/assets/img/2022/04/image-4.png)
 
 6) partprobe /dev/sda # **To request the kernel to re-read the partition table**.
 
@@ -46,19 +52,23 @@ growpart /dev/sda 5
 
 1) From the VM, navigate to “Edit settings” and increase the size of the hard disk as per the requirement. In my case, it was 130GB, so I have increased it to 150GB.
 
+![]({{site.baseurl}}/assets/img/2022/04/image-5.png)
+
 2) Now, execute the following command to rescan the block device, so that the kernel has the latest disk size information.
 `echo '1' > /sys/class/scsi_disk/32\:0\:1\:0/device/rescan` –> (where “32\:0\:0\:0” is the SCSI disk ID).
 
 3) Identify the partition we need to expand (using fdisk or lsblk), in my case, it's '**/dev/sdb1**'.
 
 ```
-`root@madhu-server~# fdisk -l | grep sdb
+root@madhu-server~# fdisk -l | grep sdb
 Disk /dev/sdb: 161.1 GB, 161061273600 bytes
 /dev/sdb1            2048   314568764   157283358+  83  Linux
-`
+
 ```
 
 4) Now extend the partition (/dev/sdb1) with growpart.
+
+![]({{site.baseurl}}/assets/img/2022/04/image-7.png)
 
 5) partprobe /dev/sdb # **To request the kernel to re-read the partition table**.
 

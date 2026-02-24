@@ -1,6 +1,6 @@
 ---
 layout: post
-title: "VMware PowerCLI update root password in all ESXi Hosts?"
+title: VMware PowerCLI update root password in all ESXi Hosts?
 date: 2021-05-18
 categories: ['VMware', 'General']
 ---
@@ -9,7 +9,7 @@ categories: ['VMware', 'General']
 Script to change a common password of all the ESXIs in a vCenter:  
 
 ```
-`#need to enter the current root password at command line
+#need to enter the current root password at command line
 $rootpswd = read-host "Please enter the current root password"
 
 #need to enter the new root password at command line 
@@ -41,7 +41,7 @@ foreach ($vihost in $vihosts){
 }
 
 Write-Host "Script complete....check /home/madhu/failed_to_connect.txt for failed hosts" -foregroundcolor white
-`
+
 ```
 
  
@@ -51,7 +51,7 @@ Write-Host "Script complete....check /home/madhu/failed_to_connect.txt for faile
 ## Script to change a common password in a list of ESXi not in a vCenter
 
 ```
-`#need to enter the current root password at command line
+#need to enter the current root password at command line
 $rootpswd = read-host "Please enter the current root password"
 
 #need to enter the new root password at command line 
@@ -78,7 +78,6 @@ foreach ($vihost in $vihosts){
 
 Write-Host "Script complete....check /home/madhu/failed_to_connect.txt for failed hosts" -foregroundcolor white
 
-`
 ```
 
  

@@ -1,6 +1,6 @@
 ---
 layout: post
-title: "'bash: value too great for base (error token is "08/09")?'"
+title: "bash - value too great for base (error token is 08 or 09)?"
 date: 2021-11-14
 categories: ['Linux', 'Bash']
 ---
@@ -15,7 +15,7 @@ Now there are quite a few workarounds for this,
 # 1) Using sed "\<" to match the beginning of a word (even number considered as a word):
 
 ```
-`#https://www.gnu.org/software/sed/manual/sed.html
+#https://www.gnu.org/software/sed/manual/sed.html
 
 #! /bin/bash -e
 TDATE=2021-08-08
@@ -32,7 +32,7 @@ if [[ $MDATE1 < $TDATE1 ]]; then
 else
    echo "FAILED"
    exit 1
-fi`
+fi
 ```
 
 The `\<0` part of the command matches any character that is a word boundary (`e.g., a space or the beginning of the string or any non-word character`) followed by a zero.
@@ -47,7 +47,7 @@ echo "2021-08-08" | sed 's/\<0//g'      **#output: **2021-8-8
 # 2) Using sed "\b" to match any word boundary:
 
 ```
-`#! /bin/bash -e
+#! /bin/bash -e
 TDATE=2021-08-08
 #Match all zeroes (0's) after any word boundary match and remove those zeroes
 TDATE1=$(echo $TDATE | sed 's/\b0//g')   # 2021-8-8
@@ -62,7 +62,7 @@ if [[ $MDATE1 < $TDATE1 ]]; then
 else
    echo "FAILED"
    exit 1
-fi`
+fi
 ```
 
 Generally in a string, the bash shell considers a word boundary for any of the following,
@@ -88,7 +88,7 @@ echo "2021-08-08" | sed 's/\b0//g'                   # **Output:** 2021-8-8
 # **3)By converting dates to epoch time using the "date" command(epoch time also referred to as POSIX time or UNIX time)**
 
 ```
-`#! /bin/bash -e
+#! /bin/bash -e
 TDATE=2021-08-08
 TDATE_EPOCH=$(date -d "$TDATE" +"%s")  #1628395200
 
@@ -101,5 +101,5 @@ if [[ $MDATE_EPOCH < $TDATE_EPOCH ]]; then
 else
    echo "FAILED"
    exit 1
-fi`
+fi
 ```

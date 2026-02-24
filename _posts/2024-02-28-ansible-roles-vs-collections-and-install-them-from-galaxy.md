@@ -1,6 +1,6 @@
 ---
 layout: post
-title: "Ansible Roles vs Collections and installing them from Galaxy"
+title: Ansible Roles vs Collections and installing them from Galaxy
 date: 2024-02-28
 categories: ['DevOps', 'Ansible']
 ---
@@ -33,11 +33,15 @@ categories: ['DevOps', 'Ansible']
 
 The role mentioned below can be utilized to install **Docker** and **Docker Compose** binaries, configure the **/etc/docker/daemon.json** file, and optionally add any user to the Docker group, etc.
 
+![]({{site.baseurl}}/assets/img/2024/02/image.png)
+
 After installing the role (**geerlingguy.docker**), you can customize the defaults in the /root/.ansible/roles/geerlingguy.docker/defaults/main.yaml file according to your needs. For example, specify the version of **Docker** and **Docker Compose**, choose **'ce' (Community Edition)** or **'ee' (Enterprise Edition)**, and update the **docker_daemon_options** dictionary.
 
 **main.yaml**
 
 Now we are ready to execute the main playbook (**main.yaml**), which includes just the role (name of the role) that you want to be executed from the main playbook.
+
+![]({{site.baseurl}}/assets/img/2024/02/image-1.png)
 
 **Collections**
 
@@ -51,8 +55,14 @@ Now we are ready to execute the main playbook (**main.yaml**), which includes ju
 
 **ansible-galaxy collection install freeipa.ansible_freeipa**
 
+![]({{site.baseurl}}/assets/img/2024/02/image-2.png)
+
 To list the available Roles in the above Collection,
+
+![]({{site.baseurl}}/assets/img/2024/02/image-3.png)
 
 Now to include the above Collection Roles in our main playbook (**main.yaml**), we can use define it as following,
 
 **main.yaml**
+
+![]({{site.baseurl}}/assets/img/2024/02/image-4.png)

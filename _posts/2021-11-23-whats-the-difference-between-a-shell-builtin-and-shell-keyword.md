@@ -1,6 +1,6 @@
 ---
 layout: post
-title: "'Shell Built-ins vs. Shell Keywords: Understanding the Differences'"
+title: "Whats the difference between a shell builtin and shell keyword?"
 date: 2021-11-23
 categories: ['Linux', 'Bash']
 ---
@@ -14,7 +14,7 @@ A built-in command is hardcoded into the shell, executing faster than external c
 **To list all Shell Built-ins:**
 
 ```
-`compgen -b`
+compgen -b
 ```
 
 ## 
@@ -26,7 +26,7 @@ Similar to a built-in, a keyword is hardcoded into the shell. However, unlike a 
 **To list all Shell Keywords:**
 
 ```
-`compgen -k`
+compgen -k
 ```
 
                                                                                                                                                                                                     .
@@ -38,7 +38,7 @@ Let's delve into the distinction between the shell built-in "single square brack
 **# Using single square bracket "["****   (****equivalent to "test" command)**
 
 ```
-`#!/bin/bash -e
+#!/bin/bash -e
 
 string="my learnings guru"
 if [ "my learnings guru" = $string ]
@@ -47,7 +47,7 @@ echo "strings are equal"
 else
 echo "strings are not equal"
 fi
-`
+
 ```
 
 In the above example, we are using single square bracket "[", which is a shell builtin and thus the shell treats this single square bracket "[" as a command with the following arguments
@@ -62,7 +62,11 @@ The "**]**" denoting the end of the test condition, serves as the last argument 
 
 **Unquoted variable usage** within the if statement causes the **$string **variable to split into three separate strings, leading the string comparison operators (=) to throw an error (**[: too many arguments**). This error results from receiving more than one string for comparison on the right-hand side.
 
+![]({{site.baseurl}}/assets/img/2021/11/image-19.png)
+
 The solution to this error involves quoting the **$string** variable within the if statement. By doing so, word splitting doesn't occur, keeping the **$string** variable value intact as a single string inside the if statement.
+
+![]({{site.baseurl}}/assets/img/2021/11/image-20.png)
 
                                                                                                                                                                                                .
 
@@ -72,3 +76,5 @@ Double square brackets [[ ]] serve as examples of bash shell keywords.
 These keywords hold a special significance within the shell. When the bash script is parsed, the shell identifies **[[** and seeks the corresponding closing **]]**. Any code enclosed within these brackets is handled uniquely as per its intended treatment.
 
 It's unnecessary to quote **$string** within the double square brackets. The shell recognizes these constructions as keywords, treating their contents differently compared to regular variable usage.
+
+![]({{site.baseurl}}/assets/img/2021/11/image-21.png)

@@ -1,6 +1,6 @@
 ---
 layout: post
-title: "How to use custom SSL certificates in vCenter?"
+title: How to use custom SSL certificates in vCenter?
 date: 2022-02-28
 categories: ['VMware', 'vCenter']
 ---
@@ -10,14 +10,20 @@ In this guide, we will examine the installation and update procedures for custom
 1) /usr/lib/vmware-vmca/bin/certificate-manager
 2) select option "1"
 
+![]({{site.baseurl}}/assets/img/2022/02/image.png)
+
 3) Enter the username (default to "Administrator@vsphere.local") and password for the user, then select option "2" to import the custom certificate and key.
 
+![]({{site.baseurl}}/assets/img/2022/02/vcenter1.png)
+
 4)  As per this article ([https://kb.vmware.com/s/article/2112277), provide the path to all keys and all certificate files in .cer format (base64 encoded).
+
+![]({{site.baseurl}}/assets/img/2022/02/vcenter2-1.png)
 
 ***Note**:* If you have one or more intermediate certificate authorities, the `root64.cer` should be a chain of all intermediate CA and Root CA certificates. The `machine_name_ssl.cer` should be a full chain for certificate+inter(s)+root.
 
 ```
-`The machine_name_ssl.cer should be a complete chain file similar to:
+The machine_name_ssl.cer should be a complete chain file similar to:
 -----BEGIN CERTIFICATE-----
 MIIFxTCCBK2gAwIBAgIKYaLJSgAAAAAAITANBgkqhkiG9w0BAQUFADBGMRMwEQYK
 CZImiZPyLGQBGRYDbmV0MRYwFAYKCZImiZPyLGQBGRYGbW5uZXh0MRcwFQYDVQQD
@@ -41,7 +47,7 @@ GXaS5/YCv5B4q4T+j5pa2f+a61ygjN1YQRoZf2CHLe7Zq89Xv90nhPM4foWdNNkr
 /Esf1E6fnrItsXpIchQOmvQViis12YyUvwko2aidjVm9sML0ANiLJZSoQ9Zs/WGC
 TLqwbQm6tNyFB8c=
 -----END CERTIFICATE-----
-`
+
 ```
 
 5) You will now receive a prompt to replace the Machine SSL certificate using a custom certificate. Press "y" to continue the custom certificate installation in vCenter.
@@ -65,7 +71,7 @@ The vCenter GUI was displaying the error message "No healthy Upstream" and multi
 1) I checked the expiration dates of all certificates and found that the** vsphere-webclient Solution user certificate had expired**.
 
 ```
-`for store in $(/usr/lib/vmware-vmafd/bin/vecs-cli store list | grep -v TRUSTED_ROOT_CRLS); do echo "[*] Store :" $store; /usr/lib/vmware-vmafd/bin/vecs-cli entry list --store $store --text | grep -ie "Alias" -ie "Not After";done;`
+for store in $(/usr/lib/vmware-vmafd/bin/vecs-cli store list | grep -v TRUSTED_ROOT_CRLS); do echo "[*] Store :" $store; /usr/lib/vmware-vmafd/bin/vecs-cli entry list --store $store --text | grep -ie "Alias" -ie "Not After";done;
 ```
 
 2) I attempted to reset the Solution Users certificates using the certificate-manager tool (using option "6") manually, but it failed with the error message "Access denied, reason = rpc_s_auth_method".
@@ -75,11 +81,11 @@ The vCenter GUI was displaying the error message "No healthy Upstream" and multi
 **Example:**
 
 ```
-`2022-02-28T02:25:43.133044+00:00 err vmdird  t@139713625134848: SASLSessionStep: sasl error (-13)(SASL(-13): authentication failure: client evidence does not match what we calculated. Probably a password error)
+2022-02-28T02:25:43.133044+00:00 err vmdird  t@139713625134848: SASLSessionStep: sasl error (-13)(SASL(-13): authentication failure: client evidence does not match what we calculated. Probably a password error)
 
 2022-02-28T02:25:43.133211+00:00 err vmdird  t@139713625134848: VmDirSendLdapResult: Request (Bind), Error (LDAP_INVALID_CREDENTIALS(49)), Message ((49)(SASL step failed.)), (0) socket (192.168.1.1)
 
-2022-02-28T02:25:43.133393+00:00 err vmdird  t@139713625134848: Bind Request Failed (172.17.10.10) error 49: Protocol version: 3, Bind DN: "cn=myvcenter.mylearningsguru.com,ou=Domain Controllers,dc=vsphere,dc=local", Method: SASL`
+2022-02-28T02:25:43.133393+00:00 err vmdird  t@139713625134848: Bind Request Failed (172.17.10.10) error 49: Protocol version: 3, Bind DN: "cn=myvcenter.mylearningsguru.com,ou=Domain Controllers,dc=vsphere,dc=local", Method: SASL
 ```
 
 4) To ensure that the password for the machine account (myvcenter.mylearningsguru.com@vsphere.local) only contains valid characters, I reset it multiple times using the vdcadmin tool provided in this link: [https://kb.vmware.com/s/article/70756
@@ -87,7 +93,7 @@ The vCenter GUI was displaying the error message "No healthy Upstream" and multi
 To test if the new reset password is valid, we can use this handy command, 
 
 ```
-`/opt/likewise/bin/ldapsearch -b "dc=vsphere,dc=local" -s sub -D "cn=myvcenter.mylearningsguru.com,ou=Domain Controllers,dc=vsphere,dc=local" -w "new-machine-account-password" > /tmp/PSC_FQDN.ldif`
+/opt/likewise/bin/ldapsearch -b "dc=vsphere,dc=local" -s sub -D "cn=myvcenter.mylearningsguru.com,ou=Domain Controllers,dc=vsphere,dc=local" -w "new-machine-account-password" > /tmp/PSC_FQDN.ldif
 ```
 
 [**NOTE:** This step is crucial because if the password is invalid, the error will persist even after resetting it. Therefore, it is essential to ensure the password is valid and free of invalid characters.
@@ -98,7 +104,7 @@ This is an **optional** step and is only necessary if you have forgotten the pas
 To test if the new reset password is valid, we can again use the following command,
 
 ```
-`/opt/likewise/bin/ldapsearch -b "dc=vsphere,dc=local" -s sub -D "cn=Administrator,cn=Users,dc=vsphere,dc=local" -w "new-admin-account-password" > /tmp/PSC_FQDN1.ldif`
+/opt/likewise/bin/ldapsearch -b "dc=vsphere,dc=local" -s sub -D "cn=Administrator,cn=Users,dc=vsphere,dc=local" -w "new-admin-account-password" > /tmp/PSC_FQDN1.ldif
 ```
 
 6) Used the certificate manager tool (option "4") to reset the** Root CA **and **all other certificates** with the native VMCA certificate.

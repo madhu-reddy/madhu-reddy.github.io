@@ -1,6 +1,6 @@
 ---
 layout: post
-title: "why do we need to use nice and ionice?"
+title: why do we need to use nice and ionice?
 date: 2021-04-12
 categories: ['Linux', 'Administration']
 ---
@@ -36,6 +36,8 @@ Setting CPU priority for a command using **nice** as shown below:
 `**nice -n 19 top  --> giving "top' command least CPU prioriy
 nice -n -20 htop --> giving "htop" command highest CPU priority**`
 
+![]({{site.baseurl}}/assets/img/2021/04/image-20.png)
+
 #### Schedule the Linux process IO priority with ionice?
 
 **ionice** sets or retrieves the I/O scheduling class and priority for a program. It is employed to specify the priority for I/O operations, thereby lessening the load on a disk by minimizing disk input/output operations.
@@ -49,6 +51,8 @@ A process can belong to one of three scheduling classes:
 **Real Time** – This is scheduling class 1, with 8 priority levels that define the size of a time slice a given process will receive on each scheduling window. This scheduling class is not accessible for an ordinary (non-root) user. Processes in this class are granted primary access to the disk, regardless of other system activities. Thus, the RT class requires careful usage as it can starve other processes.
 
 Setting IO priority for a process using **ionice** as shown below,
+
+![]({{site.baseurl}}/assets/img/2021/04/image-21.png)
 
 **Using nice and ionice together for a command**
 

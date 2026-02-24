@@ -1,27 +1,26 @@
 ---
 layout: post
-title: "How to reset a forgotten MySQL root password?"
+title: How to reset a forgotten MySQL root password?
 date: 2021-11-19
 categories: ['Database', 'MySQL']
 ---
 
 Did you forget your MySQL root password and want to reset the password?
 
-## 
-[Then let's look at a way to reset your MySQL root password.
+## Then let's look at a way to reset your MySQL root password.
 
 **1) Stop the MySQL server**
 
 ```
-`service mysql stop (for "**init**" systems)
-systemctl stop mysql.service (for "**systemd**" systems)`
+service mysql stop (for "**init**" systems)
+systemctl stop mysql.service (for "**systemd**" systems)
 ```
 
 **2) Start the MySQL server with the "--skip-grant-tables" option**
 
 ```
-`mysqld_safe --skip-grant-tables --skip-networking &  
-`
+mysqld_safe --skip-grant-tables --skip-networking &  
+
 ```
 
 **W.R.T to this above command, let me explain how it works**
@@ -67,14 +66,14 @@ mysql.proxies_priv
 **3) log in to MySQL passwordless with the following command**
 
 ```
-`mysql -u root`
+mysql -u root
 ```
 
 **4) Update the MySQL "root" user password & exit MySQL prompt**
 
 ```
-`UPDATE mysql.user SET Password=PASSWORD('new-password') WHERE User='root';
-exit;`
+UPDATE mysql.user SET Password=PASSWORD('new-password') WHERE User='root';
+exit;
 ```
 
 Please note, in newer MySQL versions (8 and above), if you encounter the following error while attempting to update the "**root**" password using the aforementioned "UPDATE" command:
@@ -90,9 +89,9 @@ Then the following steps can be performed to reset the password,
 ---> The **third** command, associated with "**ALTER**" is used to reset the "root" user password. 
 
 ```
-`mysql> UPDATE mysql.user SET authentication_string=null WHERE User='root';
+mysql> UPDATE mysql.user SET authentication_string=null WHERE User='root';
 mysql> flush privileges;
-mysql> ALTER USER 'root'@'localhost' IDENTIFIED WITH mysql_native_password BY 'pass123'; `
+mysql> ALTER USER 'root'@'localhost' IDENTIFIED WITH mysql_native_password BY 'pass123'; 
 ```
 
 **5)Stop the MySQL server**
@@ -100,6 +99,8 @@ mysql> ALTER USER 'root'@'localhost' IDENTIFIED WITH mysql_native_password BY 'p
 ```
 mysqladmin shutdown (if this command does not work, use the command "killall mysqld")
 ```
+
+![]({{site.baseurl}}/assets/img/2021/11/image-13.png)
 
 **6)Start the MySQL server**
 

@@ -1,6 +1,6 @@
 ---
 layout: post
-title: "About PermitRootLogin and PasswordAuthentication in the sshd_config file?"
+title: About PermitRootLogin and PasswordAuthentication in the sshd_config file?
 date: 2021-05-08
 categories: ['Linux', 'SSH']
 ---

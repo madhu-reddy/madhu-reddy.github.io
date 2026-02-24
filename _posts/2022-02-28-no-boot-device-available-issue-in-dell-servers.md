@@ -1,6 +1,6 @@
 ---
 layout: post
-title: "No Boot Device Available issue in Dell Servers?"
+title: No Boot Device Available issue in Dell Servers?
 date: 2022-02-28
 categories: ['Sysadmin', 'Hardware']
 ---
@@ -9,6 +9,8 @@ After replacing the 2 failed INTEL SSD drives with 2 new Samsung SSD drives and 
 
 ## I saw the following error,
 **"No boot device available"**
+
+![No Boot Device Available Dell Server]({{site.baseurl}}/assets/img/2022/02/no-boot-device.png)
 
 Despite ensuring that the RAID Controller card (PERC) was set as the primary boot device and confirming both PD drives showed as '**Online**' in the Raid Controller Configuration utility, the system still failed to boot.
 

@@ -1,6 +1,6 @@
 ---
 layout: post
-title: "Famous Motivational Quotes!"
+title: Famous Motivational Quotes!
 date: 2024-11-10
 categories: ['Personal', 'Quotes']
 ---

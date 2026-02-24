@@ -1,6 +1,6 @@
 ---
 layout: post
-title: "How to perform ssh agent forwarding for git clone using ssh authentication?"
+title: How to perform ssh agent forwarding for git clone using ssh authentication?
 date: 2021-11-07
 categories: ['Linux', 'SSH']
 ---
@@ -52,5 +52,5 @@ Upon receiving the decrypted message, GitHub verifies that it matches the origin
 I found [this nice article, which explains clearly with real-world example,
 
 ```
-`It works like this: you ask your remote server to pull some code from Github, and Github says “who are you?” to the server. Usually the server would consult its own id_rsa files to answer, but instead it will forward the question to your local machine. Your local machine answers the question and sends the response (which does not include your private key) to the server, which forwards it back to Github. Github doesn’t care that your local machine answered the question, it just sees that it’s been answered, and lets you connect.`
+It works like this: you ask your remote server to pull some code from Github, and Github says “who are you?” to the server. Usually the server would consult its own id_rsa files to answer, but instead it will forward the question to your local machine. Your local machine answers the question and sends the response (which does not include your private key) to the server, which forwards it back to Github. Github doesn’t care that your local machine answered the question, it just sees that it’s been answered, and lets you connect.
 ```

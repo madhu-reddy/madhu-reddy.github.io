@@ -1,6 +1,6 @@
 ---
 layout: post
-title: "What's the difference between ENTRYPOINT  and CMD in a Dockerfile?"
+title: Whats the difference between ENTRYPOINT  and CMD in a Dockerfile?
 date: 2021-04-07
 categories: ['DevOps', 'Docker']
 ---
@@ -16,6 +16,8 @@ The CMD instruction is used only when no arguments are added to the run command 
 **Creating the Dockerfile with CMD :
 **
 
+![]({{site.baseurl}}/assets/img/2021/04/image-4.png)
+
  
 
 **
@@ -23,6 +25,7 @@ The CMD instruction is used only when no arguments are added to the run command 
 Build the Image
 
 **
+![]({{site.baseurl}}/assets/img/2021/04/image-5.png)
 
 When running the command **`docker run testing-cmd`** without providing any additional arguments to the '**docker run**' command, the output will be the default executable specified after the CMD instruction in the Dockerfile.
 
@@ -30,6 +33,8 @@ When running the command **`docker run testing-cmd`** without providing any addi
 **
 "docker run" without arguments
 **
+
+![]({{site.baseurl}}/assets/img/2021/04/image-6.png)
 
  
 
@@ -42,6 +47,8 @@ NOTE:**'**testing-cmd**' is the name of the Docker image we've built.
 Now, let's observe the output when an argument is added to the '**docker run**' command.
 
 `docker run testing-cmd echo "run command I wish to run"`
+
+![]({{site.baseurl}}/assets/img/2021/04/image-7.png)
 
 Upon reviewing the above output, it's evident that the executable—specifically, the executable with an argument—that we included in the '**docker run**' command overrides the default CMD executable. Consequently, the default CMD executable (***['echo', 'running default command']***) was not executed.
 
@@ -63,6 +70,7 @@ About ENTRYPOINT:**
 Dockerfile (containing only ENTRYPOINT):
 
 **
+![]({{site.baseurl}}/assets/img/2021/04/image-11.png)
 
  
 
@@ -71,6 +79,7 @@ Dockerfile (containing only ENTRYPOINT):
 Build the Image
 
 **
+![]({{site.baseurl}}/assets/img/2021/04/image-9.png)
 
  
 
@@ -82,12 +91,16 @@ Build the Image
 
 Observing the image below, executing the 'docker run' command (**docker run test-entrypoint**) without arguments yields results exactly mirroring those obtained with CMD.
 
+![]({{site.baseurl}}/assets/img/2021/04/image-12.png)
+
  
 
 ### **
 "docker run" with arguments:**
 
 ### Executing the '**docker run**' command (*docker run test-entrypoint echo 'running custom command'*) with arguments yields different results compared to those obtained with CMD.
+
+![]({{site.baseurl}}/assets/img/2021/04/image-13.png)
 
 Notably, Docker did not override the original command specified in the Dockerfile for the ENTRYPOINT instruction. Instead, it simply appended the executable provided during '**docker run**' as a standard argument to the existing command specified in the Dockerfile for the ENTRYPOINT instruction.
 
@@ -101,21 +114,26 @@ When both CMD and ENTRYPOINT instructions are present in the Dockerfile, it's an
 **Dockerfile
 
 **
+![]({{site.baseurl}}/assets/img/2021/04/image-14.png)
 
 ## 
 **
 Build the Image
 
 **
+![]({{site.baseurl}}/assets/img/2021/04/image-15.png)
 
 ## 
 **
 "docker run" without arguments
 
 **
+![]({{site.baseurl}}/assets/img/2021/04/image-16.png)
 
  
 
 ## **"docker run" with arguments**
 
 ### In this scenario, we override the default parameters of CMD by providing specific parameters during the '**docker run**' command.
+
+![]({{site.baseurl}}/assets/img/2021/04/image-17.png)

@@ -1,6 +1,6 @@
 ---
 layout: post
-title: "About Encoding in Python and handling Unicode characters in Python2.x?"
+title: About Encoding in Python and handling Unicode characters in Python2.x?
 date: 2021-12-08
 categories: ['Python', 'General']
 ---
@@ -48,13 +48,13 @@ In **UTF-8**, code points above 128 are stored using 2, 3, up to 6 bytes.
 Since Python 2.x uses ASCII as the default encoding method, attempting to process a string containing non-ASCII characters (e.g., Unicode characters not part of the ASCII character set) will result in errors.
 
 ```
-`SyntaxError: Non-ASCII character '\xef' in file pyss1.py on line 2, but no encoding declared; see http://www.python.org/peps/pep-0263.html for details`
+SyntaxError: Non-ASCII character '\xef' in file pyss1.py on line 2, but no encoding declared; see http://www.python.org/peps/pep-0263.html for details
 ```
 
 To handle Unicode characters in Python 2.x, you need to explicitly specify the encoding method using a special comment at the beginning of the program file as shown below,
 
 ```
-`# -*- coding: utf-8 -*-`
+# -*- coding: utf-8 -*-
 ```
 
 This comment informs the interpreter to use UTF-8 (or UTF-16 or UTF-32) for encoding Unicode characters. Additionally, Unicode strings in Python 2.x must be prefixed with the letter "u" (e.g., u"s3rr2�"). This tells the interpreter to treat the string as a Unicode type variable.
@@ -62,19 +62,19 @@ This comment informs the interpreter to use UTF-8 (or UTF-16 or UTF-32) for enco
 **Example:**
 
 ```
-`#-*- coding: utf-8 -*- 
+#-*- coding: utf-8 -*- 
 s = u"s3rr2�"
 print(s)
 print(type(s))
-`
+
 ```
 
 **Output:**
 
 ```
-`root@my-server:~# python python2.x-unicode-test.py  
+root@my-server:~# python python2.x-unicode-test.py  
 s3rr2�
-<type 'unicode'>`
+<type 'unicode'>
 ```
 
 **NOTE:**

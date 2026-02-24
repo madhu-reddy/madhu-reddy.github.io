@@ -1,6 +1,6 @@
 ---
 layout: post
-title: "How to configure SSL Certificates for Apache2, Nginx and HaProxy servers?"
+title: How to configure SSL Certificates for Apache2, Nginx and HaProxy servers?
 date: 2021-11-29
 categories: ['Sysadmin', 'SSL']
 ---
@@ -10,13 +10,13 @@ To configure the SSL certificate, follow these steps:
 1) First, generate a private key and a CSR, a process common to all three servers (Apache2, Nginx, HAProxy).
 
 ```
-`**openssl req –new –newkey rsa:2048 –nodes –keyout mylearningsguru.key –out mylearningsguru.csr**`
+**openssl req –new –newkey rsa:2048 –nodes –keyout mylearningsguru.key –out mylearningsguru.csr**
 ```
 
 **Example:**
 
 ```
-`root@madhuserver:~# **openssl req -new -newkey rsa:2048 -nodes -keyout mylearningsguru.key -out mylearningsguru.csr**
+root@madhuserver:~# **openssl req -new -newkey rsa:2048 -nodes -keyout mylearningsguru.key -out mylearningsguru.csr**
 Generating a 2048 bit RSA private key
 .................+++
 .....................................................................................+++
@@ -41,7 +41,7 @@ Please enter the following 'extra' attributes
 to be sent with your certificate request
 A challenge password []:
 An optional company name []:
-`
+
 ```
 
 2) Upload the CSR file to your certificate provider's portal (e.g., GoDaddy, DigiCert, Comodo, etc.) to obtain the new SSL certificate.
@@ -55,10 +55,10 @@ An optional company name []:
 In your Apache2 server, access the related site config file (e.g., /etc/apache2/sites-enabled/mylearningsguru). Insert the specified directives and their corresponding values within the suitable <VirtualHost> block.
 
 ```
-`SSLEngine on
+SSLEngine on
 SSLCertificateFile /path/to/actualcertificate/mylearningsguru.crt
 SSLCertificateKeyFile /path/to/privatekey/mylearningsguru.key
-SSLCACertificateFile /path/to/intermediate-CA-certificate-chain-bundle.crt`
+SSLCACertificateFile /path/to/intermediate-CA-certificate-chain-bundle.crt
 ```
 
                                                                                                                                                                                                              .
@@ -68,17 +68,17 @@ SSLCACertificateFile /path/to/intermediate-CA-certificate-chain-bundle.crt`
 For Nginx, open the relevant site config file (e.g., /etc/nginx/sites-enabled/mylearningsguru). Insert the directives and their respective values within the appropriate "server" block.
 
 ```
-`ssl on
+ssl on
 ssl_certificate /path/to/actualcert-and-CA-bundle/mylearningsguru-nginx.crt
 ssl_certificate_key /path/to/privatekey/mylearningsguru.key
-`
+
 ```
 
 **NOTE: **
 Unlike Apache2, in Nginx, both the actual certificate and intermediate CA certificate chain bundle are combined into a single file.
 
 ```
-`cat mylearningaguru.crt intermediate-CA-certificate-chain-bundle.crt > mylearningsguru-nginx.crt`
+cat mylearningaguru.crt intermediate-CA-certificate-chain-bundle.crt > mylearningsguru-nginx.crt
 ```
 
                                                                                                                                                                                                .
@@ -88,12 +88,12 @@ Unlike Apache2, in Nginx, both the actual certificate and intermediate CA certif
 For HAProxy, access the related haproxy config file (e.g., /etc/haproxy/haproxy.conf). Within the suitable "frontend" section, include the specified directive with its related value.
 
 ```
-`bind *:443 ssl crt /etc/ssl/mylearningsguru-haproxy.pem`
+bind *:443 ssl crt /etc/ssl/mylearningsguru-haproxy.pem
 ```
 
 **NOTE: **
 In HAProxy, the actual certificate, intermediate CA certificate chain bundle, and the private key are combined into a single file with a .pem extension.
 
 ```
-`cat mylearningaguru.crt intermediate-CA-certificate-chain-bundle.crt mylearningsguru.key  > mylearningsguru-haproxy.pem`
+cat mylearningaguru.crt intermediate-CA-certificate-chain-bundle.crt mylearningsguru.key  > mylearningsguru-haproxy.pem
 ```

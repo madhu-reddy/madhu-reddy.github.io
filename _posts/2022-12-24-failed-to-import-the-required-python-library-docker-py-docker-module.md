@@ -1,6 +1,6 @@
 ---
 layout: post
-title: "Failed to import the required python library docker-py docker module?"
+title: Failed to import the required python library docker-py docker module?
 date: 2022-12-24
 categories: ['DevOps', 'Docker']
 ---
@@ -10,12 +10,12 @@ Encountering an error "Failed to import Python library docker-py" while running 
 My Ansible task example,
 
 ```
-`---  
+---  
 - name: Perform Docker Registry Login
   become: yes
   docker_login: 
     username: "{{ dockerhub_user }}"
-    password: "{{ dockerhub_pass }}"`
+    password: "{{ dockerhub_pass }}"
 ```
 
 Encountering the following error when running the aforementioned Ansible task.

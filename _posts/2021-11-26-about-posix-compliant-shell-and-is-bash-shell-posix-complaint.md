@@ -1,6 +1,6 @@
 ---
 layout: post
-title: "About the POSIX-compliant shell and is Bash shell POSIX-compliant?"
+title: About the POSIX-compliant shell and is Bash shell POSIX-compliant?
 date: 2021-11-26
 categories: ['Linux', 'Bash']
 ---
@@ -22,9 +22,9 @@ The "sh" command, also known as the "Bourne shell," is often implemented by prog
  For example, in Ubuntu 20.04, the "sh" command is symlinked to the POSIX-compliant shell "dash".
 
 ```
-`root@madhu-Inspiron-5567:~# ls -ltrh /bin/sh
+root@madhu-Inspiron-5567:~# ls -ltrh /bin/sh
 lrwxrwxrwx 1 root root 4 Jan  3  2021 /bin/sh -> dash
-`
+
 ```
 
                                                                                                               .
@@ -39,14 +39,14 @@ For many years, "/bin/sh" was linked to "/bin/bash". However, as new features an
 To verify if your shell script complies with POSIX standards, you can utilize the "spellcheck" application with the following option (**-s dash**) as demonstrated below:
 
 ```
-`shellcheck -s dash shell-script-name.sh`
+shellcheck -s dash shell-script-name.sh
 ```
 
 **Example:**
 In the following example bash script, we utilize double square brackets "[[" which are not defined in POSIX but have been introduced as an extension to the single square brackets defined in POSIX within the "bash" shell.
 
 ```
-`#name:  mytest.sh
+#name:  mytest.sh
 
 #!/bin/bash
 if [[ -z $1 ]]
@@ -56,12 +56,16 @@ else
    echo "entered value other than numbers"
 exit 1
 fi
-`
+
 ```
 
 Upon observation of the output below, it becomes evident that when attempting to analyze the aforementioned bash script using the "dash" shell (which is fully POSIX compatible), an error is encountered.
 
+![]({{site.baseurl}}/assets/img/2021/11/image-14.png)
+
 However, when the same bash script is analyzed using the "bash" shell, no errors occur as double square brackets are supported within the "bash" shell.
+
+![]({{site.baseurl}}/assets/img/2021/11/image-16.png)
 
 **Few additional features in "bash" that are not present in POSIX:**
 

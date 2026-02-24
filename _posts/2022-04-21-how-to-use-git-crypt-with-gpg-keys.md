@@ -1,6 +1,6 @@
 ---
 layout: post
-title: "How to use git-crypt with gpg keys?"
+title: How to use git-crypt with gpg keys?
 date: 2022-04-21
 categories: ['DevOps', 'Git']
 ---
@@ -14,9 +14,9 @@ The purpose of this guide is to explore using `git-crypt` alongside GPG keys for
 Navigate to your Git repository and create the file you wish to encrypt.
 
 ```
-`madhu@madhu-Inspiron-5567:~/madhu-github-testing$ cat mysecretsfile.txt 
+madhu@madhu-Inspiron-5567:~/madhu-github-testing$ cat mysecretsfile.txt 
 MysecretPassword
-MysecretPassword1`
+MysecretPassword1
 ```
 
 **Step 2: Initializing `git-crypt`**
@@ -24,8 +24,8 @@ MysecretPassword1`
 Execute the command `git-crypt init` to set up `git-crypt` within your Git repository. This command generates the encryption key and configures the repository to use `git-crypt`.
 
 ```
-`madhu@madhu-Inspiron-5567:~/madhu-github-testing$ git-crypt init
-Generating key...`
+madhu@madhu-Inspiron-5567:~/madhu-github-testing$ git-crypt init
+Generating key...
 ```
 
 **Step 3: Specifying Files for Encryption**
@@ -33,9 +33,9 @@ Generating key...`
 Define the files intended for encryption in the `.gitattributes` file by mentioning the file(s) and indicating `git-crypt` as the filter.
 
 ```
-`madhu@madhu-Inspiron-5567:~/madhu-github-testing$ cat .gitattributes 
+madhu@madhu-Inspiron-5567:~/madhu-github-testing$ cat .gitattributes 
 mysecretsfile.txt filter=git-crypt diff=git-crypt
-`
+
 ```
 
 **Step 4: GPG Key Generation and Usage**
@@ -45,7 +45,7 @@ mysecretsfile.txt filter=git-crypt diff=git-crypt
 **Example:**
 
 ```
-`madhu@myclient:~/madhu-github-testing$ gpg --gen-key
+madhu@myclient:~/madhu-github-testing$ gpg --gen-key
 gpg (GnuPG) 1.4.20; Copyright (C) 2015 Free Software Foundation, Inc.
 This is free software: you are free to change and redistribute it.
 There is NO WARRANTY, to the extent permitted by law.
@@ -92,7 +92,7 @@ pub   2048R/09F305B1 2022-04-12
       Key fingerprint = 4FF4 1694 5A32 F162 D7BB  73C9 2107 C977 09F3 05B1
 uid                  madhu kunta <madhu@mylearningsguru.com>
 sub   2048R/4EDA4314 2022-04-12
-`
+
 ```
 
 **4.2)** Confirm key creation
@@ -102,7 +102,7 @@ gpg --list-secret-keys
 **Example:**
 
 ```
-`madhu@myclient:~/madhu-github-testing$ gpg --list-keys
+madhu@myclient:~/madhu-github-testing$ gpg --list-keys
 /home/madhu/.gnupg/pubring.gpg
 ------------------------------
 pub   2048R/09F305B1 2022-04-12
@@ -115,7 +115,7 @@ madhu@myclient:~/madhu-github-testing$ gpg --list-secret-keys
 sec   2048R/09F305B1 2022-04-12
 uid                  madhu kunta <madhu@mylearningsguru.com>
 ssb   2048R/4EDA4314 2022-04-12
-`
+
 ```
 
 **4.3)** Export your GPG public key
@@ -123,11 +123,11 @@ ssb   2048R/4EDA4314 2022-04-12
 **Syntax: **gpg --armor --export --output pubkeyname.gpg pubkeyID
 
 ```
-`madhu@myclient:~/madhu-github-testing$ gpg --armor --export --output madhukunta_pubkey.gpg 09F305B1
+madhu@myclient:~/madhu-github-testing$ gpg --armor --export --output madhukunta_pubkey.gpg 09F305B1
 
 madhu@myserver:~/madhu-github-testing$ ls -ltrh | grep madhukunta_pubkey.gpg 
 -rw-rw-r-- 1 madhu madhu 1.7K Apr 12 03:00 madhukunta_pubkey.gpg
-`
+
 ```
 
 **4.4)** **Import** the GPG public key to the server **where the `git-crypt` initialization was performed.**
@@ -135,21 +135,21 @@ madhu@myserver:~/madhu-github-testing$ ls -ltrh | grep madhukunta_pubkey.gpg
 **Syntax**: gpg --import gpg-pub-key
 
 ```
-`madhu@madhu-Inspiron-5567:~/madhu-github-testing$ gpg --import madhukunta_pubkey.gpg 
+madhu@madhu-Inspiron-5567:~/madhu-github-testing$ gpg --import madhukunta_pubkey.gpg 
 gpg: key 09F305B1: "madhu kunta <madhu@mylearningsguru.com>" not changed
 gpg: Total number processed: 1
 gpg:              unchanged: 1
-`
+
 ```
 
 **Step 5: Adding User GPG Key to `git-crypt`**
 
 ```
-`madhu@madhu-Inspiron-5567:~/madhu-github-testing$ git-crypt add-gpg-user --trusted madhu@mylearningsguru.com
+madhu@madhu-Inspiron-5567:~/madhu-github-testing$ git-crypt add-gpg-user --trusted madhu@mylearningsguru.com
 [madhu-projects f247991] Add 1 git-crypt collaborator
  1 file changed, 0 insertions(+), 0 deletions(-)
  create mode 100644 .git-crypt/keys/default/0/4FF416945A32F162D7BB73C92107C97709F305B1.gpg
-`
+
 ```
 
 **Step 6: Pushing Changes**
@@ -157,7 +157,7 @@ gpg:              unchanged: 1
 Perform a `git push` to push the auto-generated commit after adding the user's GPG key to `git-crypt`.
 
 ```
-`madhu@madhu-Inspiron-5567:~/madhu-github-testing$ git push
+madhu@madhu-Inspiron-5567:~/madhu-github-testing$ git push
 Enumerating objects: 9, done.
 Counting objects: 100% (9/9), done.
 Delta compression using up to 4 threads
@@ -166,7 +166,7 @@ Writing objects: 100% (8/8), 1.14 KiB | 1.14 MiB/s, done.
 Total 8 (delta 1), reused 0 (delta 0)
 remote: Resolving deltas: 100% (1/1), completed with 1 local object.
 To github.com:madhu-reddy/shell-scripts.git
-   ce73f20..a4a2a68  madhu-projects -> madhu-projects`
+   ce73f20..a4a2a68  madhu-projects -> madhu-projects
 ```
 
 **Step 7: Decrypting Files**
@@ -174,7 +174,7 @@ To github.com:madhu-reddy/shell-scripts.git
 On the client machine, clone the repository or execute `git pull`.
 
 ```
-`madhu@myclient:~/madhu-github-testing$ git pull
+madhu@myclient:~/madhu-github-testing$ git pull
 remote: Enumerating objects: 9, done.
 remote: Counting objects: 100% (9/9), done.
 remote: Compressing objects: 100% (5/5), done.
@@ -189,13 +189,13 @@ Fast-forward
  2 files changed, 4 insertions(+)
  create mode 100644 .git-crypt/.gitattributes
  create mode 100644 .git-crypt/keys/default/0/0319FE440F58CA13A132AA77388C7E249E62F31A.gpg
-`
+
 ```
 
 Run `git-crypt unlock` and enter the passphrase used while generating the GPG key.
 
 ```
-`madhu@myclient:~/shell-scripts$ cat mysecretsfile.txt 
+madhu@myclient:~/shell-scripts$ cat mysecretsfile.txt 
 GITCRYPTXQq����S�▒�]\y�UwZ�-=�
 
 madhu@myclient:~/shell-scripts$ git-crypt unlock
@@ -206,7 +206,6 @@ user: "madhu kunta <madhu@mylearningsguru.com>"
 madhu@myclient:~/shell-scripts$ cat mysecretsfile.txt 
 apmanorame
 
-`
 ```
 
 That's it, by following these steps, you can encrypt and decrypt files within a Git repository using `git-crypt` with GPG keys, ensuring secure handling of sensitive information.

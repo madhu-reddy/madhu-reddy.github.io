@@ -1,6 +1,6 @@
 ---
 layout: post
-title: "SSH public key authentication fails under what kind of scenarios?"
+title: SSH public key authentication fails under what kind of scenarios?
 date: 2023-10-22
 categories: ['Linux', 'SSH']
 ---
@@ -24,14 +24,14 @@ With the release of OpenSSH version 8.8, the RSA algorithm/signature is disabled
 1) Re-enable RSA by editing the sshd_config file and adding the following lines:
 
 ```
-`HostKeyAlgorithms +ssh-rsa
-PubkeyAcceptedKeyTypes +ssh-rsa`
+HostKeyAlgorithms +ssh-rsa
+PubkeyAcceptedKeyTypes +ssh-rsa
 ```
 
 2) Generate SSH keys using another key type, such as ECDSA or Ed25519, and then copy the public key to the remote SSH server (which has OpenSSH version greater than or equal to 8.8).
 
 ```
-`ssh-keygen -t ed25519`
+ssh-keygen -t ed25519
 ```
 
 **Scenario3**
