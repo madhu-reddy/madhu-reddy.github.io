@@ -28,6 +28,7 @@ Now, let's initiate file deletion based on a pattern using the find command and 
  
 
 ## 
+
 1) Deleting the files matching a pattern using the **rm -rf** command:
 
 ![]({{site.baseurl}}/assets/img/2021/05/image-3.png)

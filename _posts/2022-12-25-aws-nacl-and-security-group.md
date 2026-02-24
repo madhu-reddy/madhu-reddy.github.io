@@ -36,7 +36,7 @@ To ensure the response from the EC2 instance or ELB reaches the actual client, w
 **Port range**: ephemeral ports range
 ```
 
-In terms of the Port range, it's essential to choose the `ephemeral ports` range. This is because the actual client's source port, to which the response has to be sent, is dynamic and can be any port within the  `[ephemeral ports range`. 
+In terms of the Port range, it's essential to choose the `ephemeral ports` range. This is because the actual client's source port, to which the response has to be sent, is dynamic and can be any port within the  `ephemeral ports range`. 
 
 ![]({{site.baseurl}}/assets/img/2022/12/image-21.png)
 
@@ -45,5 +45,7 @@ In terms of the Port range, it's essential to choose the `ephemeral ports` range
 Security Groups are associated with an EC2 instance in the VPC and regulate traffic at the EC2 instance level.
 
 Unlike NACL:
+
 1) Security Groups cannot have rules (Inbound/Outbound) that deny access to resources.
+
 2)  Security Groups are stateful, meaning responses to allowed inbound traffic are automatically permitted to flow out. This behavior occurs regardless of any specific outbound rules defined in the Security Group. This is possible because Security Groups maintain a connection state, tracking connections to and from the EC2 instances.

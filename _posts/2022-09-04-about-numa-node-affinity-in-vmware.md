@@ -35,8 +35,11 @@ In this example, I have an ESXi host (Dell PowerEdge R610), which has 2 CPU sock
 I have created 2 VMs with 1 vCPU and 6 cores each.
 
 To configure NUMA node affinity for each VM, follow these steps:
+
 1) Go to VM settings.
+
 2) Navigate to VM options > Advanced > Edit configuration.
+
 3) Add an option with the key name '`numa.nodeAffinity`' and set a value of either 0 or 1. This constrains the virtual machine resource scheduling to NUMA nodes 0 or 1."
 
 ![]({{site.baseurl}}/assets/img/2022/09/image-12.png)

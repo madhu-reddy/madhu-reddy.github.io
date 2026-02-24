@@ -8,6 +8,7 @@ categories: ['VMware', 'vCenter']
 In this guide, we will examine the installation and update procedures for custom SSL certificates in vCenter.
 
 1) /usr/lib/vmware-vmca/bin/certificate-manager
+
 2) select option "1"
 
 ![]({{site.baseurl}}/assets/img/2022/02/image.png)

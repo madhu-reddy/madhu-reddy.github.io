@@ -51,11 +51,16 @@ fi
 ```
 
 In the above example, we are using single square bracket "[", which is a shell builtin and thus the shell treats this single square bracket "[" as a command with the following arguments
+
 1) my learnings guru
+
 2) = 
+
 3) my
+
 4) learnings
 5)guru
+
 6) ]     
 
 The "**]**" denoting the end of the test condition, serves as the last argument for "**[**".

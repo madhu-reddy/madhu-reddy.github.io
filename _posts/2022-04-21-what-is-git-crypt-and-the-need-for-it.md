@@ -97,5 +97,7 @@ git-crypt unlock ../git-crypt-key
 **Other collaborators wants to access the GitHub Repo?**
 
 Collaborators who need access to the encrypted file can use either of the following two methods:
+
 1) Sharing the `git-crypt` symmetric key with collaborators directly.
+
 2) Utilizing GPG keys with `git-crypt` to grant access to encrypted files. A separate guide will cover this method.

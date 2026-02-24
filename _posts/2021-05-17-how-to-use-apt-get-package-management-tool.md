@@ -8,6 +8,7 @@ categories: ['Linux', 'Package Management']
 **apt-get** is a command-line tool in the Ubuntu OS used for installing, removing, upgrading, and updating packages. It can also be employed to upgrade the entire operating system.
 
 ## 
+
 1) Updating the repository List:
 
 ```
@@ -29,6 +30,7 @@ The source repositories are specified in the '**/etc/apt/sources.list**' file an
  
 
 ## 
+
 2) Installing a Package
 
 ```
@@ -64,6 +66,7 @@ The image displays that approximately 103 packages are awaiting an upgrade.
  
 
 ## 
+
 4) Cleaning up downloaded packages with the "apt-get clean" command
 
 ```
@@ -87,6 +90,7 @@ All the packages that are downloaded (when we do apt-get install package-name or
  
 
 ## 
+
 5) Cleaning up downloaded packages which are obsolete with "apt-get autoclean" command
 
 ```
@@ -132,6 +136,7 @@ However, using '**apt-get remove package**' solely removes the package itself, l
  
 
 # 
+
 8) apt-get dist-upgrade?
 
 Using '**apt-get dist-upgrade**' encompasses all the functionalities of '**apt-get upgrade**.' Additionally, it manages the installation or removal of any additional dependent packages required for newer versions of existing packages.

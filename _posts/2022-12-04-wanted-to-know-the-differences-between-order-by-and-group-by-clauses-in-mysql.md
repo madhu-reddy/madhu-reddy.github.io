@@ -21,8 +21,11 @@ To determine the total number of a specific species (e.g., the total number of c
 **`mysql> select species, count(*) from pet group by species;`**
 
 **Executing the above query involves three crucial steps:**
+
 1) Collecting all records from the "pet" table - (**FROM** Clause)
+
 2) Grouping unique values in the "species" column  - (**GROUP BY** Clause)
+
 3) Applying the aggregate function (**COUNT(*)**) to each group obtained in the second step - (**SELECT** Clause)
 
 In the execution order of the above SQL query, the sequence is `"**FROM Clause** → **GROUP BY Clause** → **SELECT Clause**."`

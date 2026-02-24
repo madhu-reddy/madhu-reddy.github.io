@@ -63,6 +63,7 @@ The '**X11 authentication**' is typically cookie-based and generated upon the us
 However, when you switch users using 'su -' or 'sudo,' these cookies are not automatically transferred to the new user ('root,' for example). Consequently, this leads to the '`X11 connection rejected because of wrong authentication`' error.
 
 To resolve this, 
+
 1) You can execute the command '**`xauth list`**' to retrieve the cookie value associated with the initial user used to log in via SSH or Putty.
 
 ![]({{site.baseurl}}/assets/img/2022/08/image-5.png)

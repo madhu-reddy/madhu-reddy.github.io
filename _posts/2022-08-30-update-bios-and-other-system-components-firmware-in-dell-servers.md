@@ -16,10 +16,15 @@ After downloading the ISO image, it needs to be burned onto a USB/DVD drive. Onc
 ## **Example steps to update BIOS version from 6.4.0 to 6.6.0 using Support Live Image**
 
 ```
+
 1) Boot the Dell PowerEdge server from the Live ISO USB
+
 2) Plug in the data USB with the .bin file related to latest BIOS version. 
+
 3) Copy the .bin file from the data USB  (“/home/media/sliuser”) over to “/tmp”
+
 4) Run “chmod +x  /tmp/BIOS-6.6.0.bin”
+
 5) Run “sudo ./BIOS-6.6.0.bin”
 ```
 

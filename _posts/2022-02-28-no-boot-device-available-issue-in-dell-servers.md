@@ -24,6 +24,7 @@ So I found this nice article from the Dell portal,
 Going through the article everything looked perfect and it was the same way I had been troubleshooting the issue until I came across 2 lines that saved my day,
 
 1) When the RAID is managing multiple VD,** it is important to select which VD has to be presented when the server tries to boot on the raid controller**.
+
 2) The bootable Virtual Disk can be selected on the last tab "**CTRL Mgmt**". It is important to select the VD where the operating system is installed.
 
 Since my server comprised three Virtual Drives (VD), with two designated as data VDs and one as the OS VD, I realized that the VD presented to the server wasn't the bootable VD.

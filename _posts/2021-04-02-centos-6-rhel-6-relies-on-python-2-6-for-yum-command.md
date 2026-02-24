@@ -30,11 +30,17 @@ yum install sqlite-devel
 ### **Download - compile - install **
 
 ```
+
 1) cd /opt 
+
 2) wget –no-check-certificate https://www.python.org/ftp/python/2.7.6/Python-2.7.6.tar.xz
+
 3) tar xf Python-2.7.6.tar.xz
+
 4) cd Python-2.7.6
+
 5) ./configure –prefix=/usr/local
+
 6) make && make altinstall
 ```
 

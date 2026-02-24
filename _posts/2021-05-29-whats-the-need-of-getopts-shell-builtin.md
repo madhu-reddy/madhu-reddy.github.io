@@ -56,8 +56,11 @@ done
  2) If 'a' or 'b' is passed as an argument, the case statement executes accordingly. 
 
 **About $OPTARG:** 
+
 1) It contains the argument value passed to an option.
+
 2) If no argument is provided, $OPTARG remains empty.
+
 3) In this script, 'a' and 'b' options don’t take arguments, so $OPTARG will be empty.
 
  
@@ -100,8 +103,11 @@ done
  
 
 **About $OPTARG: **
+
 1) It contains the argument value passed to an option. 
+
 2) If an argument is expected but not provided, $OPTARG will be empty. 
+
 3) In this script, the 'a' and 'b' options require arguments, so $OPTARG will contain the argument passed.
 
 # **Output:**

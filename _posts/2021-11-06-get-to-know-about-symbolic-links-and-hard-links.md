@@ -27,6 +27,7 @@ Once the files and directories have been copied, modify the application's confi
 
 **Option 2:**
 Utilize symbolic links to maintain the application's existing location (/var/lib/docker) while actually storing the files and directories in the new location (/mnt/data/var-lib-docker).
+
 1) `mv /var/lib/docker/* /mnt/data/var-lib-docker
 `2) `ln -s /mnt/data/var-lib-docker /var/lib/docker`
 

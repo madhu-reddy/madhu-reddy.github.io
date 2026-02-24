@@ -54,7 +54,9 @@ Number  Start   End    Size   Type      File system  Flags
 Next, execute the following commands to update the kernel and enable it to recognize the updated partition table. This will also allow the Logical Volume to be resized to reflect the new disk size.
 
 5) partprobe /dev/sda                              # **To request the kernel to re-read the partition table**.
+
 6) pvresize /dev/sda5
+
 7) lvextend -l +100%FREE /dev/madhu-vg/root
 8)resize2fs /dev/madhu-vg/root
 
@@ -80,4 +82,5 @@ Save the changes using the command `print` and then `quit`.
 Subsequently, execute the following commands to instruct the kernel to reread the partition table and subsequently resize the filesystem using resize2fs.
 
 4) partprobe /dev/sda
+
 5) resize2fs /dev/sda1

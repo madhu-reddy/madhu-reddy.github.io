@@ -11,6 +11,7 @@ My Ansible task example,
 
 ```
 ---  
+
 - name: Perform Docker Registry Login
   become: yes
   docker_login: 
