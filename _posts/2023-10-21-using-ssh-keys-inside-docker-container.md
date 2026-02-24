@@ -5,7 +5,7 @@ date: 2023-10-21
 categories: ['DevOps', 'Docker']
 ---
 
-If you find yourself in a situation inside your Docker container where you need to clone a Git repository using SSH keys, but the SSH keys are located within your Docker host, and you want to make them available inside the Docker containers for successful cloning of the Git repository, failure to do so will result in the following error:
+If you find yourself inside a Docker container needing to clone a Git repository using SSH keys that are located on the Docker host, failure to make them available inside the container will result in the following error:
 
 ```
 root@0e6d9b720655:/# git clone git@github.com:madhu-reddy/ansible-playbooks.git
@@ -16,44 +16,80 @@ Are you sure you want to continue connecting (yes/no/[fingerprint])? yes
 Warning: Permanently added 'github.com,140.82.112.3' (ECDSA) to the list of known hosts.
 git@github.com: Permission denied (publickey).
 fatal: Could not read from remote repository.
-
 Please make sure you have the correct access rights
 and the repository exists.
-
 ```
 
-Let us see some of the different ways to do this,
+Let's look at the different ways to handle this.
 
-Firstly, if the **docker container is already running**, then
+---
 
-1) Copy the SSH private key directly from the host to inside the Docker container, placing it in the file `~/.ssh/id_rsa`. Ensure that the permissions are set to 600 for the file `~/.ssh/id_rsa`.
+## Option 1: Container Already Running
 
-2) Test the Docker container's interaction with GitHub using the SSH keys by running the command` ssh -T git@github.com `from inside the container or directly from the docker host using the command `docker exec <container_id> ssh -T git@github.com`.
+If the Docker container is already running, follow these steps:
 
-3) With successful authentication, you should be able to clone a Git repository using SSH keys from inside the container. You can now proceed with cloning the repository inside the container.
+1. Copy the SSH private key directly from the host into the container at `~/.ssh/id_rsa` and set the correct permissions:
+
+   ```bash
+   chmod 600 ~/.ssh/id_rsa
+   ```
+
+2. Test the container's SSH connection to GitHub from inside the container:
+
+   ```bash
+   ssh -T git@github.com
+   ```
+
+   Or directly from the Docker host:
+
+   ```bash
+   docker exec <container_id> ssh -T git@github.com
+   ```
+
+3. With successful authentication, you can now clone the repository from inside the container.
+
+**Example output after a successful setup:**
 
 ```
-root@98d9f0b03168:~/.ssh# chmod 600 id_rsa  
-root@98d9f0b03168:~/.ssh# ssh -T git@github.com  
+root@98d9f0b03168:~/.ssh# chmod 600 id_rsa
+root@98d9f0b03168:~/.ssh# ssh -T git@github.com
 Hi madhu-reddy! You've successfully authenticated, but GitHub does not provide shell access.
 ```
 
-Secondly, if you want to copy or forward the SSH keys/agent into the Docker container at the time of creating the container, you have a few options. Here are two common approaches:
+---
 
--> Copying SSH Keys during Container Creation using a volume mount 
--> Using the ssh-agent forwarding
+## Option 2: Forwarding SSH Keys at Container Creation
 
-Let's look at the second approach (ssh-agent forwarding),
+If you want to make SSH keys available at the time of creating the container, there are two common approaches:
 
-1) Using a single-line Docker command, achieve this with the following:
-`docker run --rm -ti  -v ${SSH_AUTH_SOCK}:${SSH_AUTH_SOCK} -e SSH_AUTH_SOCK=${SSH_AUTH_SOCK} nginx bash`
+- Copying SSH keys during container creation using a volume mount
+- Using SSH agent forwarding
 
-2) In the above command, pay attention to the environmental variable "`SSH_AUTH_SOCK`." This variable holds the location of the ssh-agent UNIX socket file, enabling communication between the docker container and the docker host to address authentication queries from GitHub.
+### SSH Agent Forwarding
 
-3)** To ensure success**, an ssh-agent must already be running on the host, and the ssh private key should be added to it.
+1. Use the following Docker command to forward the SSH agent socket into the container:
 
-4) To verify whether the ssh-agent daemon is active, check if the environment variable `"SSH_AUTH_SOCK"` is set using the "env" command on the host.
+   ```bash
+   docker run --rm -ti \
+     -v ${SSH_AUTH_SOCK}:${SSH_AUTH_SOCK} \
+     -e SSH_AUTH_SOCK=${SSH_AUTH_SOCK} \
+     nginx bash
+   ```
 
-5) If it's set, the ssh-agent daemon is confirmed to be running. If not, initiate the ssh-agent and add the ssh private key to it before executing the Docker command mentioned in the first step.
+2. The environment variable `SSH_AUTH_SOCK` holds the location of the ssh-agent UNIX socket file. This enables communication between the Docker container and the Docker host to handle authentication queries from GitHub.
 
-Please check out [this related post about ssh-agent forwarding and how it works.
+3. For this to work, an ssh-agent must already be running on the host with the SSH private key added to it.
+
+4. To verify whether the ssh-agent is active, check if `SSH_AUTH_SOCK` is set on the host:
+
+   ```bash
+   env | grep SSH_AUTH_SOCK
+   ```
+
+5. If the variable is set, the ssh-agent is confirmed to be running. If not, start the ssh-agent and add your private key before running the Docker command above:
+
+   ```bash
+   eval $(ssh-agent)
+   ssh-add ~/.ssh/id_rsa
+   ```
+
