@@ -11,34 +11,28 @@ This is my insurance policy, it doesn't have **collision coverage**, which is al
 
 Explanation of my above insurance policy coverage is below.
 
-**Liability - Bodily Injury / Property Damage**
-
+**Liability - Bodily Injury / Property Damage** 
 **Liability Coverage** is the typically the most expensive part of your policy,  as it covers damages you might cause to others.
 
--> **Bodily Injury**
-
+-> **Bodily Injury** 
 This covers injuries to other people if you're at fault in an accident. The first number ($30,000) is the maximum amount the insurance will pay per person injured. The second number ($60,000) is the maximum total payout per accident, regardless of the number of people injured.
 
-**-> Property Damage**
-
+**-> Property Damage** 
 This covers damage to someone else's property (like their car, garage, light pole etc.) if you're at fault in an accident. The limit is $100,000.
 
 **Other Than Collision (Comprehensive coverage)**
 
 Also known as comprehensive coverage, this pays for damage to your car that isn’t caused by a collision (e.g., theft, floods, natural disasters, fire, hitting an animal e.t.c.). You pay the first $500 (the deductible), and the insurance covers the rest.
 
-**Emergency Road Service Coverage**
-
+**Emergency Road Service Coverage** 
 This typically covers costs associated with roadside assistance, such as towing, battery service, or flat tire changes.
 
-**Uninsured Motorists Coverage**
-
+**Uninsured Motorists Coverage** 
 This coverage protects you if you're involved in an accident with a driver who doesn’t have insurance or doesn’t have enough insurance. It covers your injuries (bodily injury) and your vehicle damage (property damage).
 
 This is important, protects you in cases where the other party is uninsured or underinsured.
 
-**Collision Coverage**
-
+**Collision Coverage** 
 The one main thing missing from my coverage is collision coverage.
 **Collision coverage** helps pay for the cost of** repairs to your vehicle** if it's damaged in an accident, regardless of who is at fault. Collision coverage does not have a pre-selected limit, you will be only responsible for paying your** selected deductible** before the coverage takes effect.
 

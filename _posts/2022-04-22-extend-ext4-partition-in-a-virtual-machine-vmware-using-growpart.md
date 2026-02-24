@@ -73,4 +73,4 @@ Disk /dev/sdb: 161.1 GB, 161061273600 bytes
 5) partprobe /dev/sdb # **To request the kernel to re-read the partition table**.
 
 6) Now the final step is to extend the file system on the partition.
-     **resize2fs /dev/sdb1**
+     **resize2fs /dev/sdb1** 

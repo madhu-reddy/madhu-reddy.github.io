@@ -54,8 +54,7 @@ Setting IO priority for a process using **ionice** as shown below,
 
 ![]({{site.baseurl}}/assets/img/2021/04/image-21.png)
 
-**Using nice and ionice together for a command**
-
+**Using nice and ionice together for a command** 
 **I'll provide a brief example here:** Let's consider a scenario where a production server has a 1TB disk allocated for the / partition, which is nearly full. The objective is to identify which directory is consuming the most space within this 1TB disk.
 
 However, a concern arises if several CPU-intensive critical processes are already running within the production server. These processes are both CPU and disk I/O intensive. Consequently, we aim to execute commands (such as du or ncdu) to evaluate disk usage, but we prefer these commands not to consume CPU cycles or perform disk I/O activities when the CPU or disk is busy due to the critical processes.

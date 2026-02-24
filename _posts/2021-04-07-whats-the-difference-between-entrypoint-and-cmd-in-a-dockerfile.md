@@ -42,8 +42,7 @@ When running the command **`docker run testing-cmd`** without providing any addi
 NOTE:**'**testing-cmd**' is the name of the Docker image we've built.
 
 ## **
-"docker run" with arguments**
-
+"docker run" with arguments** 
 Now, let's observe the output when an argument is added to the '**docker run**' command.
 
 `docker run testing-cmd echo "run command I wish to run"`
@@ -132,8 +131,7 @@ Build the Image
 
  
 
-## **"docker run" with arguments**
-
+## **"docker run" with arguments** 
 ### In this scenario, we override the default parameters of CMD by providing specific parameters during the '**docker run**' command.
 
 ![]({{site.baseurl}}/assets/img/2021/04/image-17.png)

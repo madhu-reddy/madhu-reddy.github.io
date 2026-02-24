@@ -39,8 +39,7 @@ Now, let's talk about the "**do-release-upgrade**" command. This command facilit
 
 To execute unattended upgrades (without the OS requesting user input or confirmation), use the following command:
 
-**do-release-upgrade -f DistUpgradeViewNonInteractive**
-
+**do-release-upgrade -f DistUpgradeViewNonInteractive** 
                                                                                                                                                          
 **Issues faced:**
 

@@ -21,8 +21,7 @@ After changing the RAID controller, the properties of the LUN could undergo inte
 
 ![image]({{site.baseurl}}/assets/img/2022/12/OR-P0NmLzUEyHLwMmkacyyCliP-Dfyl7XgEuTHi2SRPiGLUducFwd8NVX-Oiny6HgpGx3Fiw1utLZdlB0VWsNFW-sOeFk5UKRpFahE6U_L0NuKQAl4PaI6lkL5BkpTLEv22I6R55fxZm3aOs5bPN1WvWTObl-q45pOWePfZsANkHod0YDQOs4ThrnSgQ)
 
-## **Resolution for Missing VMFS Datastore is force mounting**
-
+## **Resolution for Missing VMFS Datastore is force mounting** 
 1) From the ESXi SSH shell, execute the following command to list the LUNs detected as snapshot LUNs
 `**esxcli storage vmfs snapshot list**`
 
@@ -40,8 +39,7 @@ esxcli storage vmfs snapshot mount -u "9532244d-a124e5c7-39c6-635678884144"**`
 The command above mounts the VMFS datastore without changing its existing signature (`no change in VMFS UUID`). 
 However, there is a drawback to this approach. If in the future we need to increase the VMFS datastore size, it won't be possible. `'Force mounting' `is a temporary step for immediate access. Later, to allow for size expansion, all VMs must be migrated or stopped, enabling the assignment of a new signature (`resulting in a change in VMFS UUID`) to the VMFS datastore.
 
-**Assigning a new signature to the VMFS Datastore**
-
+**Assigning a new signature to the VMFS Datastore** 
 **NOTE:**
 Before proceeding with the resignature, ensure that all VMs are either stopped or migrated off this datastore, and unmount it from the ESXi Host.
 

@@ -16,8 +16,7 @@ Now, this is because there is no "**X server**" running on the remote Linux syst
 In this article, we'll explore the steps to resolve this problem.
 Utilizing the '**X server**' enables the display of graphical applications such as Firefox or the clock."
 
-**To check if "X server" is running**
-
+**To check if "X server" is running** 
 **ps -e | grep X **     # checks if the X11 or X server is currently running on your system.
 
 ![]({{site.baseurl}}/assets/img/2022/08/image-1.png)
@@ -34,8 +33,7 @@ ssh -X user@remotelinuxserver-name
 
 2) This single command connects you to a remote Linux server lacking an '**X server**,' allowing you to execute GUI-based applications effortlessly.
 
-**Steps to perform X11 Forwarding from a Windows desktop-based operating system and execute GUI-based applications on a remote Linux server**
-
+**Steps to perform X11 Forwarding from a Windows desktop-based operating system and execute GUI-based applications on a remote Linux server** 
 In a Windows environment, the '**X server**' isn't pre-installed, requiring the installation and launch of an application named '**Xming**' to serve as the '**X server**' for Windows.
 
 1) Begin by installing and running '**Xming**,' the designated '**X server**' application for Microsoft Windows.
@@ -69,8 +67,7 @@ To resolve this,
 ![]({{site.baseurl}}/assets/img/2022/08/image-5.png)
 
 2) Next, utilize the '**xauth add**' command to incorporate this cookie for the '**root**' user (or any other user to which you've switched). 
-**Example**
-xauth add madhu-server/unix:10  MIT-MAGIC-COOKIE-1  f95a2f111fb4ae17435ccf3b245e9770
+**Example** xauth add madhu-server/unix:10  MIT-MAGIC-COOKIE-1  f95a2f111fb4ae17435ccf3b245e9770
 
 ![]({{site.baseurl}}/assets/img/2022/08/image-6.png)
 

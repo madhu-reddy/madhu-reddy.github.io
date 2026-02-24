@@ -65,8 +65,7 @@ done
 
  
 
-**Output**
-
+**Output** 
 ![]({{site.baseurl}}/assets/img/2021/05/getopts-option.png)
 
  
@@ -144,8 +143,7 @@ done
 
 - In case of an error, a "?" is assigned to the 'name' variable, and the related case statement also executes.
 
-**Testing the first way (silent error reporting) practically**
-
+**Testing the first way (silent error reporting) practically** 
 ```
 #!/bin/bash
 
@@ -174,8 +172,7 @@ done
 
  
 
-**Testing the second way (silent error reporting disabled) practically**
-
+**Testing the second way (silent error reporting disabled) practically** 
 ```
 #!/bin/bash
 

@@ -15,22 +15,19 @@ The NUMA architecture, as the name implies, provides non-uniform memory access. 
 
 To better leverage NUMA, configuring something called '**`NUMA node affinity`**' is necessary.
 
-**Without NUMA Node Affinity**
-
+**Without NUMA Node Affinity** 
 Without 'NUMA node affinity,' a process scheduled to run on a CPU (e.g., CPU 0) may find its related data in remote memory (memory related to CPU 1), potentially causing performance issues for the application."
 
 ![]({{site.baseurl}}/assets/img/2022/09/image-9.png)
 
-**With NUMA Node Affinity**
-
+**With NUMA Node Affinity** 
 However, with '`NUMA node affinity'`, a process scheduled to run on a CPU (e.g., CPU 0) ensures that the related data is consistently present in local memory (related to CPU 0 itself) when needed. This optimizes memory access speed for the CPU when processing the application."
 
 ![]({{site.baseurl}}/assets/img/2022/09/image-10.png)
 
 .
 
-**Enabling NUMA Node affinity for Virtual Machines in VMWare ESXi**
-
+**Enabling NUMA Node affinity for Virtual Machines in VMWare ESXi** 
 In this example, I have an ESXi host (Dell PowerEdge R610), which has 2 CPU sockets with 6 cores each.
 I have created 2 VMs with 1 vCPU and 6 cores each.
 

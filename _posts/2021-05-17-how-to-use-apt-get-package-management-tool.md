@@ -47,8 +47,7 @@ Should the software require additional packages for seamless functionality, '**a
 
  
 
-**3) Upgrading a Package**
-
+**3) Upgrading a Package** 
 ```
 apt-get upgrade
 ```

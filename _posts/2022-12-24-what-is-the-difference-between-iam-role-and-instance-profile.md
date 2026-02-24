@@ -5,8 +5,7 @@ date: 2022-12-24
 categories: ['AWS', 'IAM']
 ---
 
-**IAM Roles**
-
+**IAM Roles** 
 An IAM role, akin to an IAM user, is an AWS identity with attached IAM policies that dictate the actions the identity is allowed or disallowed to perform in AWS.
 
 IAM roles provide a secure method for granting permissions to your EC2 instances. By utilizing an IAM role, an EC2 instance can obtain temporary credentials for accessing AWS services without the need to hardcode access keys within the instance.
@@ -37,8 +36,7 @@ I will now retest the file upload to S3 from the EC2 instance, and this time, th
 
 .
 
-**Instance Profile**
-
+**Instance Profile** 
 An instance profile serves as a container for an IAM role, allowing you to pass the IAM role to an EC2 instance. Each instance profile can accommodate only one IAM role, though a role has the flexibility to belong to multiple instance profiles.
 
 When you create an IAM Role for EC2 using the IAM Console, both an EC2 instance profile and an IAM role with matching names are generated.

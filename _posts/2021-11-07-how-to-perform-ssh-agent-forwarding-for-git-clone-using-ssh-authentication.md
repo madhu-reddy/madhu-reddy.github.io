@@ -11,12 +11,10 @@ One option, which is not recommended, is to manually copy the private key to the
 
 SSH agent forwarding provides a more secure and efficient solution for this task.
 
-**1) Start the ssh-agent and then add the SSH private key to the ssh-agent**
-`ssh-agent bash
+**1) Start the ssh-agent and then add the SSH private key to the ssh-agent** `ssh-agent bash
 ssh-add /home/user/id_rsa`
 
-**2)** **Enabling the ssh agent forwarding**
-
+**2)** **Enabling the ssh agent forwarding** 
 In your client's **ssh_config** file, add the following line:
 Host *
   ForwardAgent yes

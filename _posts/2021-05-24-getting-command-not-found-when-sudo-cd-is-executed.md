@@ -8,8 +8,7 @@ categories: ['Linux', 'Bash']
 ```
 madhu@madhu-Inspiron-5567:~$ sudo cd /root
 [sudo] password for madhu: 
-**sudo: cd: command not found**
-
+**sudo: cd: command not found** 
 ```
 
 If you encountered the mentioned error after running `sudo` with the "cd" command, it occurred because:

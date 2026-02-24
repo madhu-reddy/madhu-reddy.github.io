@@ -5,8 +5,7 @@ date: 2021-11-19
 categories: ['Networking', 'DNS']
 ---
 
-# **About DNS resolution**
-
+# **About DNS resolution** 
 DNS resolution is pivotal for seamless internet functionality for end-users. For instance, imagine the inconvenience of entering the IP Address directly instead of typing "google.com" into the browser's search bar.
 
 The DNS service's responsibility is to locate the server's IP address for the entered domain (e.g., "google.com") in the browser.

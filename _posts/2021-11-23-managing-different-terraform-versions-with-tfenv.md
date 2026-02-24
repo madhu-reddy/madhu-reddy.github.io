@@ -25,31 +25,26 @@ export PATH="$HOME/.tfenv/bin:$PATH"
 
 **Using "tfenv" to install/uninstall and manage different Terraform versions:**
 
-**1) Install a specific version of Terraform**
-Syntax: tfenv install [version]
+**1) Install a specific version of Terraform** Syntax: tfenv install [version]
 Example: tfenv install 0.12.30
 
 ![]({{site.baseurl}}/assets/img/2021/11/image-9.png)
 
-**2) List all Terraform versions installed**
-
+**2) List all Terraform versions installed** 
 Syntax: tfenv list
 
 ![]({{site.baseurl}}/assets/img/2021/11/image-10.png)
 
-**3) List all installable Terraform versions**
-
+**3) List all installable Terraform versions** 
 Syntax: tfenv list-remote
 
-**4) Use a specific Terraform version**
-
+**4) Use a specific Terraform version** 
 Syntax: tfenv use [version]
 Example:  tfenv use 0.12.30
 
 ![]({{site.baseurl}}/assets/img/2021/11/image-11.png)
 
-**5) Uninstall a specific Terraform version**
-
+**5) Uninstall a specific Terraform version** 
 Syntax: tfenv uninstall [version]
 Example: tfenv uninstall 0.11.14
 

@@ -27,32 +27,27 @@ categories: ['DevOps', 'Ansible']
 
 - Tasks within a role are typically executed after the **pre_tasks** section and before the **post_tasks** section of a playbook.
 
-**Installing an Ansible Role**
-
+**Installing an Ansible Role** 
 The role mentioned below can be utilized to install **Docker** and **Docker Compose** binaries, configure the **/etc/docker/daemon.json** file, and optionally add any user to the Docker group, etc.
 
 ![]({{site.baseurl}}/assets/img/2024/02/image.png)
 
 After installing the role (**geerlingguy.docker**), you can customize the defaults in the /root/.ansible/roles/geerlingguy.docker/defaults/main.yaml file according to your needs. For example, specify the version of **Docker** and **Docker Compose**, choose **'ce' (Community Edition)** or **'ee' (Enterprise Edition)**, and update the **docker_daemon_options** dictionary.
 
-**main.yaml**
-
+**main.yaml** 
 Now we are ready to execute the main playbook (**main.yaml**), which includes just the role (name of the role) that you want to be executed from the main playbook.
 
 ![]({{site.baseurl}}/assets/img/2024/02/image-1.png)
 
-**Collections**
-
+**Collections** 
 - **Collections** are a modern approach to packaging Ansible content for improved manageability. 
 
 - They can originate from various sources, such as the Ansible community and Red Hat partners. Collections encompass a range of components, including **roles** (included in playbooks for common task execution), **modules** (provides Ansible core functionality), and **plugins** (extend the Python code on the Ansible control host).
 
 - Collections introduce a fully qualified Collection Name (FQCN) structure, this contrasts with the pre-collection era, where you would address a module simply by its name, such as `**user**`. Now, you address the same module as `**ansible.builtin.user**` within the context of Collections.
 
-**Installing a Collection**
-
-**ansible-galaxy collection install freeipa.ansible_freeipa**
-
+**Installing a Collection** 
+**ansible-galaxy collection install freeipa.ansible_freeipa** 
 ![]({{site.baseurl}}/assets/img/2024/02/image-2.png)
 
 To list the available Roles in the above Collection,
@@ -61,6 +56,5 @@ To list the available Roles in the above Collection,
 
 Now to include the above Collection Roles in our main playbook (**main.yaml**), we can use define it as following,
 
-**main.yaml**
-
+**main.yaml** 
 ![]({{site.baseurl}}/assets/img/2024/02/image-4.png)

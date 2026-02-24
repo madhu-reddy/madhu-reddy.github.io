@@ -30,8 +30,7 @@ In the execution order of the above SQL query, the sequence is `"**FROM Clause**
 
 ![]({{site.baseurl}}/assets/img/2022/12/image-3.png)
 
-## **Order By**
-
+## **Order By** 
 The "**ORDER BY**" clause is employed to arrange the results of a SQL query based on one or more columns. Let's use the same example with the "pets" table to illustrate how the "ORDER BY" clause can be integrated into our query.
 
 Suppose we wish to sort the results obtained from the SQL query (`select species, count(*) from pet group by species`), which we executed in the preceding section to explore the "**`GROUP BY`**" clause.

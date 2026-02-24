@@ -43,8 +43,7 @@ ASCII encoding follows the ASCII character set.
 In **ASCII** and **UTF-8**, every code point from 0 to 127 is stored in a single byte.
 In **UTF-8**, code points above 128 are stored using 2, 3, up to 6 bytes.
 
-## Encoding and d**ealing with Unicode characters in Python2.x**
-
+## Encoding and d **ealing with Unicode characters in Python2.x** 
 Since Python 2.x uses ASCII as the default encoding method, attempting to process a string containing non-ASCII characters (e.g., Unicode characters not part of the ASCII character set) will result in errors.
 
 ```

@@ -9,8 +9,7 @@ categories: ['DevOps', 'Git']
 
 **Step-by-Step Procedure:**
 
-**Step 1: Creation and Initialization**
-
+**Step 1: Creation and Initialization** 
 Create the file you intend to encrypt within your Git repository and add the relevant sensitive information.
 
 ```
@@ -27,8 +26,7 @@ madhu@madhu-Inspiron-5567:~/madhu-github-testing$ git-crypt init
 Generating key...
 ```
 
-**Step 2: Exporting `git-crypt` Symmetric K****ey**
-
+**Step 2: Exporting `git-crypt` Symmetric K****ey** 
 Export the `git-crypt` symmetric key using the command `git-crypt export-key`
 
 ```
@@ -41,8 +39,7 @@ madhu@madhu-Inspiron-5567:~/madhu-github-testing$ ls -ltrh /home/madhu/git-crypt
 
 **NOTE:** `git-crypt` symmetric key is crucial for collaborators who need access to the encrypted file within the repository.
 
-**Step 3: Specifying Files for Encryption**
-
+**Step 3: Specifying Files for Encryption** 
 Indicate the file to encrypt within the `.gitattributes` file using `git-crypt`.
 
 ```
@@ -51,8 +48,7 @@ mysecretsfile.txt filter=git-crypt diff=git-crypt
 
 ```
 
-**Step 4: Git Operations**
-
+**Step 4: Git Operations** 
 Perform Git operations like `git add`, `git commit`, and `git push` to push the updated code to GitHub.
 
 ```
@@ -74,8 +70,7 @@ Total 4 (delta 0), reused 0 (delta 0)
 
 ```
 
-**Step 5: Validation on GitHub**
-
+**Step 5: Validation on GitHub** 
 Verify on GitHub that the encrypted file (`mysecretsfile.txt`) is no longer readable.
 
 ![]({{site.baseurl}}/assets/img/2022/04/image-1.png)
@@ -84,8 +79,7 @@ You can see that the git-crypt has successfully encrypted the "mysecretsfile.txt
 
 .
 
-**Using the Same `git-crypt` Symmetric Key for Other Repositories**
-
+**Using the Same `git-crypt` Symmetric Key for Other Repositories** 
 Unlock encrypted files in other repositories using the same `git-crypt` symmetric key via `git-crypt unlock`.
 
 ```

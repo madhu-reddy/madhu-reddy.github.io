@@ -115,9 +115,7 @@ The pre-upgrade check has failed, and the error message is as follows:
 
 Navigate to the directory using the command: "**cd /usr/lib/vmidentity/tools/scripts**" and then execute the following two commands:
 
-**1)** **python ls_ssltrust_fixer.py -f scan**
-**2)** **python ls_ssltrust_fixer.py -f fix**
-
+**1)** **python ls_ssltrust_fixer.py -f scan** **2)** **python ls_ssltrust_fixer.py -f fix** 
 ![]({{site.baseurl}}/assets/img/2021/04/image-25.png)
 
 ![]({{site.baseurl}}/assets/img/2021/04/image-26.png)

@@ -13,8 +13,7 @@ For PowerEdge 12G to 14G servers, you can access the ISO image via this link: [S
 
 After downloading the ISO image, it needs to be burned onto a USB/DVD drive. Once booted into this Live Image, you can proceed to copy the BIOS (.BIN format) and other firmware update files (.BIN format) and install them accordingly.
 
-## **Example steps to update BIOS version from 6.4.0 to 6.6.0 using Support Live Image**
-
+## **Example steps to update BIOS version from 6.4.0 to 6.6.0 using Support Live Image** 
 ```
 
 1) Boot the Dell PowerEdge server from the Live ISO USB
@@ -32,11 +31,9 @@ Dell Documentation ([https://www.dell.com/support/kbdoc/en-us/000128194/updating
 
 **Few Examples:**
 
-**Platform-Specific Bootable ISO**
-With a 'Platform-Specific Bootable ISO,' all system components for a 12G, 13G, or 14G Dell EMC PowerEdge server are automatically updated. These updates occur automatically upon starting the server using the self-bootable ISO.
+**Platform-Specific Bootable ISO** With a 'Platform-Specific Bootable ISO,' all system components for a 12G, 13G, or 14G Dell EMC PowerEdge server are automatically updated. These updates occur automatically upon starting the server using the self-bootable ISO.
 
-[**LifeCycle Controller**
-Dell Lifecycle Controller is an advanced embedded systems management technology that enables remote server management. Using Lifecycle Controller, you can update BIOS or update firmware using a local or Dell-based firmware repository.
+[**LifeCycle Controller** Dell Lifecycle Controller is an advanced embedded systems management technology that enables remote server management. Using Lifecycle Controller, you can update BIOS or update firmware using a local or Dell-based firmware repository.
 
 [**Dell EMC Repository Manager (DRM)**
 Dell Repository Manager provides a searchable interface that is used to create custom software collections that are known as bundles and repositories of Dell Update Packages (DUPs).

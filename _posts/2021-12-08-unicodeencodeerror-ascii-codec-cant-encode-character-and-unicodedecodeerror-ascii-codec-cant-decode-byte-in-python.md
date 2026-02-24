@@ -34,8 +34,7 @@ Traceback (most recent call last):
 
 ```
 
-**UnicodeDecodeError: 'ascii' codec can't decode byte**
-
+**UnicodeDecodeError: 'ascii' codec can't decode byte** 
 **UnicodeDecodeError **typically arises when you attempt to decode a byte string, created by encoding a Unicode string containing at least one non-ASCII character using a UTF encoding method, using the "ASCII" decoding method instead of using the corresponding UTF decoding method.
 
 **Example in Python3:**

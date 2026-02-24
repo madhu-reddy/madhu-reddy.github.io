@@ -7,8 +7,7 @@ categories: ['DevOps', 'Docker']
 
 Suppose the current Docker version is 18.09, and the target version for the upgrade is 20.10. There are several methods for upgrading, such as manual upgrading, utilizing convenience scripts, or leveraging the APT repository.
 
-**Upgrading Docker Using the APT Repository**
-
+**Upgrading Docker Using the APT Repository** 
 1) Verify the latest Docker package version in the APT cache with the command:  `apt-cache policy docker-ce`
 
 ![]({{site.baseurl}}/assets/img/2022/12/image-4.png)
@@ -28,8 +27,7 @@ Where,
  
 After completing the upgrade, execute '`docker version`.' You should observe the latest Docker version (`20.10.7`) installed.
 
-**Example output**
-
+**Example output** 
 ```
 Client:
  Version:           20.10.7

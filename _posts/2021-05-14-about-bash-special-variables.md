@@ -40,8 +40,7 @@ Even if the arguments are passed with double quotes, each argument inside double
 This will print all the arguments, but with a condition,
 If the arguments are double quoted, then the double quoted arguments are treated  as single entity and the remaining arguments as separate entities.
 
-**positionalargstest.sh**
-
+**positionalargstest.sh** 
 ```
 #!/bin/bash
 

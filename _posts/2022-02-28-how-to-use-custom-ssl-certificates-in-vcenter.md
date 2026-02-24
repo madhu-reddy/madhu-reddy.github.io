@@ -62,8 +62,7 @@ You are going to replace Machine SSL cert using custom cert
 
 Sure, here is the English grammar correction for the text:
 
-**Issues Faced When Updating Custom SSL Certificates in vCenter**
-
+**Issues Faced When Updating Custom SSL Certificates in vCenter** 
 **Issue:**
 The vCenter GUI was displaying the error message "No healthy Upstream" and multiple services were stopped in vCenter.
 

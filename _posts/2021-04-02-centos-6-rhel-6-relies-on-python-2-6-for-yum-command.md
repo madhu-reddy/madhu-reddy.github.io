@@ -9,8 +9,7 @@ CentOS 6 ships with Python 2.6.6 and relies on that specific version. Take cauti
 
 Here are the necessary steps to install Python 2.7.6:
 
-### **Install development tools**
-
+### **Install development tools** 
 To compile Python, you must first install the development tools.
 
 ```

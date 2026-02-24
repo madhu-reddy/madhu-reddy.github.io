@@ -23,8 +23,7 @@ In the aforementioned illustration, what we're explaining is that, in order for 
 
 - 
 
-**Connect to the DNS server**
-
+**Connect to the DNS server** 
 - 
 
 **Retrieve the SRV record for the domain "madhu.choosebestldapserver.com"**

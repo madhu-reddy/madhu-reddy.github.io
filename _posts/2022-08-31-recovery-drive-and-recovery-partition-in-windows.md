@@ -5,12 +5,10 @@ date: 2022-08-31
 categories: ['Sysadmin', 'Windows']
 ---
 
-**About Recovery Drive**
-
+**About Recovery Drive** 
 If you encounter OS booting issues on your Windows PC or need to perform a factory reset or start-up repairs, having a recovery drive proves incredibly helpful.
 
-## **[Process for creating a recovery drive**
-
+## **[Process for creating a recovery drive** 
 1.  Open the search box and type in 'Recovery.' Select the app from the search results.
 
 2. Ensure '`Backup system files to the recovery drive`' is checked, then proceed by selecting 'Next.' This option is crucial; if unchecked, you won't be able to reinstall the OS or perform a factory reset on your PC.
@@ -27,8 +25,7 @@ In the event that your PC is unable to boot the Windows OS and you opt to reinst
 
         .
 
-**Recovery partition**
-
+**Recovery partition** 
 1. If Windows was preinstalled on your computer as an OEM copy, you would have a recovery partition on your hard disk.
 
 ![]({{site.baseurl}}/assets/img/2022/08/image-10.png)

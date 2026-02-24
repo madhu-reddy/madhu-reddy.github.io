@@ -7,8 +7,7 @@ categories: ['Networking', 'Email']
 
 If your company is using the paid version of Gmail for business and wants to have email IDs in the format of [username@companydomain.com, then you need to add the 'SPF' record related to the Google mail servers. This is necessary if you want to use Google mail servers to successfully send emails for your domain.
 
-#### **Create TXT record for SPF**
-
+#### **Create TXT record for SPF** 
 A TXT record for SPF specifies the mail servers allowed to send emails on behalf of your domain.
 
 ```

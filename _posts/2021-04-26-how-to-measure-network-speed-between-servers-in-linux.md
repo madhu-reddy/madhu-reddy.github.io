@@ -7,8 +7,7 @@ categories: ['Networking', 'General']
 
 ## On receiving server B:
 
-`madhu@192.168.1.100:~$ **while true; do netcat -vvlnp 5656 > /dev/null; done**
-Listening on [0.0.0.0] (family 0, port 5656)
+`madhu@192.168.1.100:~$ **while true; do netcat -vvlnp 5656 > /dev/null; done** Listening on [0.0.0.0] (family 0, port 5656)
 Connection from [192.168.1.100] port 5656 [tcp/*] accepted (family 2, sport 53714)
 Listening on [0.0.0.0] (family 0, port 5656)`
 

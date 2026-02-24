@@ -29,8 +29,7 @@ compgen -k
 
                                                                                                                                                                                                     .
 
-**[Example for Shell Built-in and Keyword**
-
+**[Example for Shell Built-in and Keyword** 
 Let's delve into the distinction between the shell built-in "single square bracket [" and the shell keyword "double square brackets [[ ]]".
 
 **# Using single square bracket "["****   (****equivalent to "test" command)**

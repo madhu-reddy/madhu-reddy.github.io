@@ -9,8 +9,7 @@ The purpose of this guide is to explore using `git-crypt` alongside GPG keys for
 
 **Step-by-Step Procedure:**
 
-**Step 1: Preparation**
-
+**Step 1: Preparation** 
 Navigate to your Git repository and create the file you wish to encrypt.
 
 ```
@@ -28,8 +27,7 @@ madhu@madhu-Inspiron-5567:~/madhu-github-testing$ git-crypt init
 Generating key...
 ```
 
-**Step 3: Specifying Files for Encryption**
-
+**Step 3: Specifying Files for Encryption** 
 Define the files intended for encryption in the `.gitattributes` file by mentioning the file(s) and indicating `git-crypt` as the filter.
 
 ```
@@ -38,8 +36,7 @@ mysecretsfile.txt filter=git-crypt diff=git-crypt
 
 ```
 
-**Step 4: GPG Key Generation and Usage**
-
+**Step 4: GPG Key Generation and Usage** 
 **4.1)** Generate a GPG key on your local machine, necessary for decrypting the repository's encrypted files.
 
 **Example:**
@@ -152,8 +149,7 @@ madhu@madhu-Inspiron-5567:~/madhu-github-testing$ git-crypt add-gpg-user --trust
 
 ```
 
-**Step 6: Pushing Changes**
-
+**Step 6: Pushing Changes** 
 Perform a `git push` to push the auto-generated commit after adding the user's GPG key to `git-crypt`.
 
 ```
@@ -169,8 +165,7 @@ To github.com:madhu-reddy/shell-scripts.git
    ce73f20..a4a2a68  madhu-projects -> madhu-projects
 ```
 
-**Step 7: Decrypting Files**
-
+**Step 7: Decrypting Files** 
 On the client machine, clone the repository or execute `git pull`.
 
 ```

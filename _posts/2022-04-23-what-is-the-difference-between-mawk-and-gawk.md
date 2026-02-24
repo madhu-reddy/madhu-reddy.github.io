@@ -14,14 +14,12 @@ AWK, a versatile text-processing tool, comes in different versions, such as **ma
 **NOTE:**
 In the mawk version 1.3.3 (Nov 1996), the tool does not support special character classes. However, in the mawk version 1.3.4 (20200120), I observed that special character classes are supported.
 
-**Example1**
-Even with **mawk** version 1.3.4, the below result remains empty, indicating that **mawk** does not support the POSIX ERE curly braces pattern.
+**Example1** Even with **mawk** version 1.3.4, the below result remains empty, indicating that **mawk** does not support the POSIX ERE curly braces pattern.
 **echo "tot" | mawk '/to{1}t/{print $0}'**  
 
 ![]({{site.baseurl}}/assets/img/2022/04/image-8.png)
 
-**Example2**
-
+**Example2** 
 Even when using **mawk** version 1.3.3, the result remains empty, as this version of mawk does not support special character classes.
 **echo "Madhu" | mawk '/[[:lower:]]/ {print}'**
 
@@ -35,8 +33,7 @@ However, in the screenshot below using mawk 1.3.4, we notice a different result,
 
 .
 
-## **GAWK**
-
+## **GAWK** 
 The command below uses "[gawk", which supports curly braces, resulting in the expected output.
 **echo "tot" | gawk '/to{1}t/{print $0}'  ** 
 

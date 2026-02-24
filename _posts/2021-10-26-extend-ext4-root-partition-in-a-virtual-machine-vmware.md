@@ -35,8 +35,7 @@ Using /dev/sda
 Welcome to GNU Parted! Type 'help' to view a list of commands.
 (parted) print                                                            
 Model: VMware Virtual disk (scsi)
-Disk /dev/sda: 129GB                                            ** # New size**
-Sector size (logical/physical): 512B/512B
+Disk /dev/sda: 129GB                                            ** # New size** Sector size (logical/physical): 512B/512B
 Partition Table: msdos
 
 Number  Start   End    Size   Type      File system  Flags
